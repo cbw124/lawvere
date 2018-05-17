@@ -1,0 +1,5158 @@
+
+\newcommand{\corelation}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-0.125, -0) {};
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\node [style=none] (4) at (-1, -1.5) {};
+		\node [style=none] (5) at (-1, -2.5) {};
+		\node [style=none] (6) at (1, -1.5) {};
+		\node [style=none] (7) at (1, -2.5) {};
+		\node [style=none] (9) at (-1.5, -1) {3};
+		\node [style=none] (10) at (1.5, -1) {4};
+		\node  [circle,draw,inner sep=1pt,fill]   (8) at (0, -2) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (8.center) to (6.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (8.center) to (7.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (8.center) to (4.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (8.center) to (5.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\mult}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\unit}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\comult}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-0.125, -0) {};
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (1.center) to (3.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\counit}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1, -0) {};
+		\node [style=none] (1) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\edge}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1, -0) {};
+		\node [style=none] (1) at (1, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (1)  node [above, pos=0.25] {\Huge $\ell$};
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+
+\newcommand{\idone}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1, -0) {};
+		\node [style=none] (1) at (1, -0) {};
+		\node [style=none] (2) at (0, 0.5) {};
+		\node [style=none] (3) at (0, -0.5) {};
+		\draw[line width = 1.5pt] (1.center) to (0.center);
+}
+\end{tikzpicture} 
+  \end{aligned}
+}
+
+\newcommand{\idonezero}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1, -0) {};
+		\node [style=none] (1) at (1, -0) {};
+		\node [style=none] (2) at (0, 0.5) {};
+		\node [style=none] (3) at (0, -0.5) {};
+}
+\end{tikzpicture} 
+  \end{aligned}
+}
+
+\newcommand{\identitytwo}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-.75, -.25) {};
+		\node [style=none] (1) at (.75, -.25) {};
+		\node [style=none] (2) at (-.75, 0.25) {};
+		\node [style=none] (3) at (.75, 0.25) {};
+		\draw[line width=1.5pt] (1.center) to (0.center);
+		\draw[line width=1.5pt] (2.center) to (3.center);
+}
+\end{tikzpicture} 
+  \end{aligned}
+}
+
+\newcommand{\two}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node  [circle,draw,inner sep=1pt,fill]   (0) at (0,-.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0, .5) {};
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\singlegen}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1, -0) {};
+		\node [style=none] (1) at (1, -0) {};
+		\node [style=none] (2) at (0, 0.5) {};
+		\node [style=none] (3) at (0, -0.5) {};
+		\draw[line width = 1.5pt] (1.center) to (0.center) node[midway,above] {\Huge $\ell$};
+}
+\end{tikzpicture} 
+  \end{aligned}
+}
+
+\newcommand{\swap}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (2) at (-0.5, -0.5) {};
+		\node [style=none] (3) at (-2, 0.5) {};
+		\node [style=none] (4) at (-0.5, 0.5) {};
+		\node [style=none] (5) at (-2, -0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1.00] (3.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.00] (4.center) to (5.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\newcommand{\parmult}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weirdmult}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.75) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.75) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1.25) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.50] (5.center) to (7.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.50] (5.center) to (6.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\parcomult}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\parunit}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node [style=none] (4) at (-1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+
+\newcommand{\parcounit}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node [style=none] (4) at (-1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+\end{scope}
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+%%fakesubsubsection associativity
+\newcommand{\assocl}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+\scalebox{0.8}{
+		\node  [circle,draw,inner sep=2pt,fill]   (0) at (0.125, -0) {};
+		\node [style=none] (1) at (-1, 0.5) {};
+		\node [style=none] (2) at (-1, -0.5) {};
+		\node [style=none] (3) at (0, -1) {};
+		\node [style=none] (4) at (1.8, -0.5) {};
+		\node [style=none] (5) at (0.25, -0) {};
+		\node  [circle,draw,inner sep=2pt,fill]   (6) at (1.25, -0.5) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw [in=0, out=120, looseness=1.20] (0.center) to (1.center);
+		\draw [in=0, out=-120, looseness=1.20] (0.center) to (2.center);
+		\draw (4.center) to (6);
+		\draw [in=0, out=120, looseness=1.20] (6) to (5.center);
+		\draw [in=0, out=-120, looseness=1.20] (6) to (3.center);
+		\draw (3.center) to (7.center);
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+
+\newcommand{\assocr}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+\scalebox{.8}{
+		\node  [circle,draw,inner sep=2pt, fill]   (0) at (0.125, -0.5) {};
+		\node [style=none] (1) at (-1, -1) {};
+		\node [style=none] (2) at (-1, 0) {};
+		\node [style=none] (3) at (0, 0.5) {};
+		\node [style=none] (4) at (1.8, 0) {};
+		\node [style=none] (5) at (0.25, -0.5) {};
+		\node  [circle,draw,inner sep=2pt, fill]   (6) at (1.25, 0) {};
+		\node [style=none] (7) at (-1, 0.5) {};
+		\draw [in=0, out=-120, looseness=1.20] (0.center) to (1.center);
+		\draw [in=0, out=120, looseness=1.20] (0.center) to (2.center);
+		\draw (4.center) to (6);
+		\draw [in=0, out=-120, looseness=1.20] (6) to (5.center);
+		\draw [in=0, out=120, looseness=1.20] (6) to (3.center);
+		\draw (3.center) to (7.center);
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+
+\newcommand{\coassocl}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node  [circle,draw,inner sep=1pt,fill]   (0) at (1.125, -0.5) {};
+		\node [style=none] (1) at (2.25, -1) {};
+		\node [style=none] (2) at (2.25, 0) {};
+		\node [style=none] (3) at (1.25, 0.5) {};
+		\node [style=none] (4) at (-1, 0) {};
+		\node [style=none] (5) at (1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (6) at (0, 0) {};
+		\node [style=none] (7) at (2.25, 0.5) {};
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (0.center) to (2.center);
+		\draw[line width = 1.5pt] (4.center) to (6);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (6) to (5.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (6) to (3.center);
+		\draw[line width = 1.5pt] (3.center) to (7.center);
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+
+\newcommand{\parassocl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {}; 
+		\node [style=none] (9) at (-3, 1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.west);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (6.center) to (8.center);
+\begin{scope}[shift={(-2,-.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\parcoassocl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {}; 
+		\node [style=none] (9) at (-3, 1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.east);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.east);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.east);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.east);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (6.center) to (8.center);
+\begin{scope}[shift={(-2,-.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\parassocr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+\scalebox{1}{
+\begin{scope}[yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {}; 
+		\node [style=none] (9) at (-3, 1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.west);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (6.center) to (8.center);
+\end{scope}
+\begin{scope}[shift={(-2,.5)}, yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\parcoassocr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+\begin{scope}[yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {}; 
+		\node [style=none] (9) at (-3, 1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.east);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.east);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.east);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.east);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (6.center) to (8.center);
+\end{scope}
+\begin{scope}[shift={(-2,.5)}, yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadassocl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-1, 2) {};
+		\node [style=none] (14) at (-1, 2.5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (6) to [in=0, out=0,looseness = 3] (9);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6.east);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8.east);
+	\draw[line width = 1.5pt] (8) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (11) to [in=180, out=0, looseness = 1] (12);
+	\draw[line width = 1.5pt] (13) to [in=180, out=0, looseness = 1] (9.east);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (11.east);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\monadcoassocl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-1, 2) {};
+		\node [style=none] (14) at (-1, 2.5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3.west);
+	\draw[line width = 1.5pt] (6) to [in=0, out=0,looseness = 3] (9.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6.west);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8.west);
+	\draw[line width = 1.5pt] (8) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (11) to [in=180, out=0, looseness = 1] (12);
+	\draw[line width = 1.5pt] (13) to [in=180, out=0, looseness = 1] (9.west);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (11.west);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadassocm}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-1, 2) {};
+		\node [style=none] (14) at (-1, 2.5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (5) to [in=0, out=0,looseness = 3] (13);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (12);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadcoassocm}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-1, 2) {};
+		\node [style=none] (14) at (-1, 2.5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3.west);
+	\draw[line width = 1.5pt] (5) to [in=0, out=0,looseness = 3] (13.west);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (12);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadassocr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-1, 2) {};
+		\node [style=none] (14) at (-1, 2.5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (6) to [in=0, out=0,looseness = 3] (9);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6.east);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8.east);
+	\draw[line width = 1.5pt] (8) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (11) to [in=180, out=0, looseness = 1] (12);
+	\draw[line width = 1.5pt] (13) to [in=180, out=0, looseness = 1] (9.east);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (11.east);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadcoassocr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[yscale=-1,rotate = 180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-1, 2) {};
+		\node [style=none] (14) at (-1, 2.5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3.west);
+	\draw[line width = 1.5pt] (6) to [in=0, out=0,looseness = 3] (9.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6.west);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8.west);
+	\draw[line width = 1.5pt] (8) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (11) to [in=180, out=0, looseness = 1] (12);
+	\draw[line width = 1.5pt] (13) to [in=180, out=0, looseness = 1] (9.west);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (11.west);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\coassocr}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node  [circle,draw,inner sep=1pt,fill]   (0) at (1.125, 0) {};
+		\node [style=none] (1) at (2.25, 0.5) {};
+		\node [style=none] (2) at (2.25, -0.5) {};
+		\node [style=none] (3) at (1.25, -1) {};
+		\node [style=none] (4) at (-1, -0.5) {};
+		\node [style=none] (5) at (1, 0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (6) at (0, -0.5) {};
+		\node [style=none] (7) at (2.25, -1) {};
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (0.center) to (2.center);
+		\draw[line width = 1.5pt] (4.center) to (6);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (6) to (5.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (6) to (3.center);
+		\draw[line width = 1.5pt] (3.center) to (7.center);
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+%%fakesubsubsection unitality
+\newcommand{\unitl}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+\scalebox{0.8}{
+		\node [style=none] (0) at (0.7, -0) {};
+		\node  [circle,draw,inner sep=2pt,fill]   (1) at (0.125, -0) {};
+		\node  [circle,draw,inner sep=2pt,fill]   (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (-2, -0.5) {};
+		\draw (0.center) to (1.center);
+		\draw [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw (4.center) to (3.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\unitr}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}
+\scalebox{0.8}{
+		\node [style=none] (0) at (0.7, -0) {};
+		\node  [circle,draw,inner sep=2pt,fill]   (1) at (0.125, -0) {};
+		\node  [circle,draw,inner sep=2pt,fill]   (2) at (-1, -0.5) {};
+		\node [style=none] (3) at (-1, 0.5) {};
+		\node [style=none] (4) at (-2, 0.5) {};
+		\draw (0.center) to (1.center);
+		\draw [in=0, out=120, looseness=1.20] (1.center) to (3.center);
+		\draw [in=0, out=-120, looseness=1.20] (1.center) to (2.center);
+		\draw (4.center) to (3.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\parunitl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {}; 
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {}; 
+		\node  [circle,draw,inner sep=1pt,fill]   (8) at (-1.5, -1) {}; 
+		\node  [circle,draw,inner sep=1pt,fill]   (9) at (-1.5, -0.5) {}; 
+		\node [style=none] (10) at (-2, .5) {};
+		\node [style=none] (11) at (-2, 0) {}; 
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (7.east) to (8);
+		\draw[line width = 1.5pt] (3.east) to (9);
+		\draw[line width = 1.5pt] (2.east) to (10);
+		\draw[line width = 1.5pt] (6.east) to (11);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\parcounitl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {}; 
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {}; 
+		\node  [circle,draw,inner sep=1pt,fill]   (8) at (-1.5, -1) {}; 
+		\node  [circle,draw,inner sep=1pt,fill]   (9) at (-1.5, -0.5) {}; 
+		\node [style=none] (10) at (-2, .5) {};
+		\node [style=none] (11) at (-2, 0) {}; 
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (7.west) to (8);
+		\draw[line width = 1.5pt] (3.west) to (9);
+		\draw[line width = 1.5pt] (2.west) to (10);
+		\draw[line width = 1.5pt] (6.west) to (11);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\parunitr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {}; 
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {}; 
+		\node  [circle,draw,inner sep=1pt,fill]   (8) at (-1.5, -1) {}; 
+		\node  [circle,draw,inner sep=1pt,fill]   (9) at (-1.5, -0.5) {}; 
+		\node [style=none] (10) at (-2, .5) {};
+		\node [style=none] (11) at (-2, 0) {}; 
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (7.east) to (8);
+		\draw[line width = 1.5pt] (3.east) to (9);
+		\draw[line width = 1.5pt] (2.east) to (10);
+		\draw[line width = 1.5pt] (6.east) to (11);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\parcounitr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+\begin{scope}[yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {}; 
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {}; 
+		\node  [circle,draw,inner sep=1pt,fill]   (8) at (-1.5, -1) {}; 
+		\node  [circle,draw,inner sep=1pt,fill]   (9) at (-1.5, -0.5) {}; 
+		\node [style=none] (10) at (-2, .5) {};
+		\node [style=none] (11) at (-2, 0) {}; 
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (7.west) to (8);
+		\draw[line width = 1.5pt] (3.west) to (9);
+		\draw[line width = 1.5pt] (2.west) to (10);
+		\draw[line width = 1.5pt] (6.west) to (11);
+\end{scope}
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadunitl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (-2, 1) {};
+		\node [style=none] (10) at (-2, .5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (3.east) to [in=180, out=180,looseness = 4] (7.east);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (5.east) to  (9);
+	\draw[line width = 1.5pt] (2.east) to  (10);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadcounitl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (-2, 1) {};
+		\node [style=none] (10) at (-2, .5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (3.west) to [in=180, out=180,looseness = 4] (7.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (5.west) to  (9);
+	\draw[line width = 1.5pt] (2.west) to  (10);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadunitr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (-2, 1) {};
+		\node [style=none] (10) at (-2, .5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (3.east) to [in=180, out=180,looseness = 4] (7.east);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (5.east) to  (9);
+	\draw[line width = 1.5pt] (2.east) to  (10);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadcounitr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[yscale=-1, rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (-2, 1) {};
+		\node [style=none] (10) at (-2, .5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (3.west) to [in=180, out=180,looseness = 4] (7.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (5.west) to  (9);
+	\draw[line width = 1.5pt] (2.west) to  (10);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\counitl}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-2, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-1.125, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, 0.5) {};
+		\node [style=none] (3) at (0, -0.5) {};
+		\node [style=none] (4) at (1, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (3.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\counitr}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-2, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-1.125, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0.5) {};
+		\node [style=none] (3) at (0, 0.5) {};
+		\node [style=none] (4) at (1, 0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] (4.center) to (3.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+%%fakesubsubsection commutativity
+\newcommand{\commute}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1.25, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.375, -0) {};
+		\node [style=none] (2) at (-0.5, -0.5) {};
+		\node [style=none] (3) at (-2, 0.5) {};
+		\node [style=none] (4) at (-0.5, 0.5) {};
+		\node [style=none] (5) at (-2, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1.00] (3.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (4.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.00] (4.center) to (5.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+
+\newcommand{\cocommute}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-2, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-1.125, -0) {};
+		\node [style=none] (2) at (-0.25, -0.5) {};
+		\node [style=none] (3) at (1.25, 0.5) {};
+		\node [style=none] (4) at (-0.25, 0.5) {};
+		\node [style=none] (5) at (1.25, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.00] (3.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (1.center) to (4.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1.00] (4.center) to (5.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+%%fakesubsubsection symmetric
+\newcommand{\symmetric}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1.25, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.375, -0) {};
+		\node [style=none] (2) at (-0.5, -0.5) {};
+		\node [style=none] (3) at (-2, 0.5) {};
+		\node [style=none] (4) at (-0.5, 0.5) {};
+		\node [style=none] (5) at (-2, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (6) at (1.25, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1.00] (3.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (4.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.00] (4.center) to (5.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\monadsymml}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (10) at (-3, 1) {};
+		\node [style=none] (11) at (-3, .5) {};
+		\node [style=none] (12) at (-3, -.5) {};
+		\node [style=none] (13) at (-3, -1) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (6.west) to [in=0, out=0,looseness = 3] (8.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (5.east) to  [in=0, out=180, looseness = .5]   (12);
+	\draw[line width = 1.5pt] (2.east) to [in=0, out=180, looseness = .5]  (13);
+	\draw[line width = 1.5pt] (7.east) to  [in=0, out=180, looseness = .5] (11);
+	\draw[line width = 1.5pt] (3.east) to [in=0, out=180, looseness = .5]  (10);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadsymmm}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (10) at (-3, 1) {};
+		\node [style=none] (11) at (-3, .5) {};
+		\node [style=none] (12) at (-3, -.5) {};
+		\node [style=none] (13) at (-3, -1) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (6.west) to [in=0, out=0,looseness = 3] (8.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (5.east) to  [in=0, out=180, looseness = .5]   (12);
+	\draw[line width = 1.5pt] (2.east) to [in=0, out=180, looseness = 1]  (10);
+	\draw[line width = 1.5pt] (7.east) to  [in=0, out=180, looseness = .5] (11);
+	\draw[line width = 1.5pt] (3.east) to [in=0, out=180, looseness = 1]  (13);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadsymmr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (10) at (-3, 1) {};
+		\node [style=none] (11) at (-3, .5) {};
+		\node [style=none] (12) at (-3, -.5) {};
+		\node [style=none] (13) at (-3, -1) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (6.west) to [in=0, out=0,looseness = 3] (8.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (5.east) to  [in=0, out=180, looseness = 1]   (11);
+	\draw[line width = 1.5pt] (2.east) to [in=0, out=180, looseness = 1]  (10);
+	\draw[line width = 1.5pt] (7.east) to  [in=0, out=180, looseness = 1] (12);
+	\draw[line width = 1.5pt] (3.east) to [in=0, out=180, looseness = 1]  (13);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadsymmrr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (10) at (-3, 1) {};
+		\node [style=none] (11) at (-3, .5) {};
+		\node [style=none] (12) at (-3, -.5) {};
+		\node [style=none] (13) at (-3, -1) {};
+	\draw[line width = 1.5pt] (10) to [in=0, out=0,looseness = 4] (13);
+	\draw[line width = 1.5pt] (5) to [in=0, out=0,looseness = 2] (7);
+	\draw[line width = 1.5pt] (5.east) to  [in=0, out=180, looseness = 1.5]   (11);
+	\draw[line width = 1.5pt] (7.east) to  [in=0, out=180, looseness = 1.5] (12);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadsymmcups}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (-1) at (-4.5, -0) {};
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (10) at (-3, 1) {};
+		\node [style=none] (11) at (-3, .5) {};
+		\node [style=none] (12) at (-3, -.5) {};
+		\node [style=none] (13) at (-3, -1) {};
+	\draw[line width = 1.5pt] (10) to [in=0, out=0,looseness = 4] (13);
+	\draw[line width = 1.5pt] (11) to [in=0, out=0,looseness = 5] (12);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\monadsymmend}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[shift={(-1,0)}]
+		\node [style=none] (-1) at (2.5, -0) {};
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (10) at (-3, 1) {};
+		\node [style=none] (11) at (-3, .5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (6.west) to [in=0, out=0,looseness = 3] (8.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weirdthing}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[shift={(-1,0)}]
+		\node [style=none] (-1) at (2.5, -0) {};
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (10) at (-3, 1) {};
+		\node [style=none] (11) at (-3, .5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (6.west) to [in=0, out=0,looseness = 3] (8.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+\begin{scope}[rotate=180]
+\begin{scope}[shift={(-3,0)}]
+		\node [style=none] (-1) at (2.5, -0) {};
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (10) at (-3, 1) {};
+		\node [style=none] (11) at (-3, .5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (6.west) to [in=0, out=0,looseness = 3] (8.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\multunit}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\cuptwo}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 4] (3);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadmult}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\monadcomult}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\cosymmetric}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-2, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-1.125, -0) {};
+		\node [style=none] (2) at (-0.25, -0.5) {};
+		\node [style=none] (3) at (1.25, 0.5) {};
+		\node [style=none] (4) at (-0.25, 0.5) {};
+		\node [style=none] (5) at (1.25, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (6) at (-2, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.00] (3.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (1.center) to (4.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1.00] (4.center) to (5.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\comultcounit}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-0.125, -0) {};
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (-1, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (1.center) to (3.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\captwo}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-.75, -0) {};
+		\node [style=none] (1) at (-0.125, -0) {};
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\node [style=none] (4) at (-1, -0) {};
+		\node [style=none] (5) at (-0.5, -.5) {};
+		\node [style=none] (6) at (-0.5, .5) {};
+	\draw[line width = 1.5pt] (2) to [in=180, out=180,looseness = 4] (3);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\capn}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-.75, -0) {};
+		\node [style=none] (1) at (-0.125, -0) {};
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\node [style=none] (4) at (-1, -0) {};
+		\node [style=none] (5) at (-0.5, -.5) {};
+		\node [style=none] (6) at (-0.5, .5) {};
+		\node [style=none] (7) at (1, 1) {};
+		\node [style=none] (8) at (1, -1) {};
+	\draw[line width = 1.5pt] (2) to [in=180, out=180,looseness = 4] (3);
+	\draw[line width = 1.5pt] (7) to [in=180, out=180,looseness = 3] (8);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\zigzag}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-0.125, -0) {};
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\node [style=circ, draw,inner sep=1pt,fill] (4) at (-1, -0) {};
+		\node [style=none] (5) at (1, -0.5) {};
+		\node [style=none] (6) at (1, -1.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (7) at (2.125, -1) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (8) at (3, -1) {};
+		\node [style=none] (9) at (3, -1) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (-1, -1.5) {};
+		\draw[line width=1pt] (0.center) to (1.center);
+		\draw[line width=1pt] [in=180, out=60, looseness=1.20] (1.center) to (2.center);
+		\draw[line width=1pt] [in=180, out=-60, looseness=1.20] (1.center) to (3.center);
+		\draw[line width=1pt] [in=0, out=120, looseness=1.20] (7.center) to (5.center);
+		\draw[line width=1pt] [in=0, out=-120, looseness=1.20] (7.center) to (6.center);
+		\draw[line width=1pt] (9.center) to (7.center);
+		\draw[line width=1pt] (10.center) to (2.center);
+		\draw[line width=1pt] (11.center) to (6.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\zigzaglaw}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\node [style=none] (4) at (1, -1.5) {};
+		\node [style=none] (5) at (2.25, 0.5) {};
+		\node [style=none] (6) at (-.25, -1.5) {};
+	\draw[line width = 1.5pt] (2) to [in=180, out=180,looseness = 4] (3.east);
+	\draw[line width = 1.5pt] (3) to [in=0, out=0,looseness = 4] (4);
+	\draw[line width = 1.5pt] (2.west) to (5.west);
+	\draw[line width = 1.5pt] (4.east) to  (6.east);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\zigzaglawother}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\node [style=none] (4) at (1, -1.5) {};
+		\node [style=none] (5) at (-.25, 0.5) {};
+		\node [style=none] (6) at (2.25, -1.5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 4] (3.west);
+	\draw[line width = 1.5pt] (3) to [in=180, out=180,looseness = 4] (4);
+	\draw[line width = 1.5pt] (2.east) to (5.east);
+	\draw[line width = 1.5pt] (4.west) to  (6.west);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+%%fakesubsubsection frobenius
+
+\newcommand{\frobs}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1.5, 0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-0.75, 0.5) {};
+		\node [style=none] (2) at (0.25, -0) {};
+		\node [style=none] (3) at (0.25, 1) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0.5) {};
+		\node [style=none] (5) at (0, -0) {};
+		\node [style=none] (6) at (1.75, -0.5) {};
+		\node [style=none] (7) at (0, -1) {};
+		\node [style=none] (8) at (1.75, 1) {};
+		\node [style=none] (9) at (-1.5, -1) {};
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (1) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (1) to (3.center);
+		\draw[line width = 1.5pt] (0.center) to (1);
+		\draw[line width = 1.5pt] (6.center) to (4);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (4) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (4) to (7.center);
+		\draw[line width = 1.5pt] (3.center) to (8.center);
+		\draw[line width = 1.5pt] (7.center) to (9.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\frobx}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node  [circle,draw,inner sep=1pt,fill]   (0) at (-0.5, -0) {};
+		\node [style=none] (1) at (-1.5, -0.5) {};
+		\node [style=none] (2) at (-1.5, 0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (3) at (0.5, -0) {};
+		\node [style=none] (4) at (1.5, -0.5) {};
+		\node [style=none] (5) at (1.5, 0.5) {};
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (0.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (3) to (4.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (3) to (5.center);
+		\draw[line width = 1.5pt] (0) to (3);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\frobz}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1.75, 0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (1, 0.5) {};
+		\node [style=none] (2) at (0, -0) {};
+		\node [style=none] (3) at (0, 1) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (-0.75, -0.5) {};
+		\node [style=none] (5) at (0.25, -0) {};
+		\node [style=none] (6) at (-1.5, -0.5) {};
+		\node [style=none] (7) at (0.25, -1) {};
+		\node [style=none] (8) at (-1.5, 1) {};
+		\node [style=none] (9) at (1.75, -1) {};
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1) to (3.center);
+		\draw[line width = 1.5pt] (0.center) to (1);
+		\draw[line width = 1.5pt] (6.center) to (4);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (4) to (5.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (4) to (7.center);
+		\draw[line width = 1.5pt] (3.center) to (8.center);
+		\draw[line width = 1.5pt] (7.center) to (9.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+
+\newcommand{\parfrobl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, 0) {}; 
+		\node [style=none] (9) at (-3, .5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.west);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.west);
+		\draw[line width = 1.5pt] [in=0, out=180] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180] (6.center) to (8.center);
+\begin{scope}[shift={(-2,-1.5)}, rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, 0) {}; 
+		\node [style=none] (9) at (-3, .5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.east);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.east);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.east);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.east);
+		\draw[line width = 1.5pt] [in=0, out=180] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180] (6.center) to (8.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\parfrobm}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\begin{scope}[shift={(2,-.5)}, rotate =180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\parfrobr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, 0) {}; 
+		\node [style=none] (9) at (-3, .5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.west);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.west);
+		\draw[line width = 1.5pt] [in=0, out=180] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180] (6.center) to (8.center);
+\begin{scope}[shift={(-2,-1.5)}, rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, 0) {}; 
+		\node [style=none] (9) at (-3, .5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.east);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.east);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.east);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.east);
+		\draw[line width = 1.5pt] [in=0, out=180] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180] (6.center) to (8.center);
+\end{scope}
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\monadfrobl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; 
+		\node [style=none] (3) at (-1, -0.5) {}; %%
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {}; %%%
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (-1, -2) {}; %%%
+		\node [style=none] (10) at (-3, -1.25) {}; %%
+		\node [style=none] (11) at (-1, -2.5) {}; 
+		\node [style=none] (12) at (-3, -1.75) {}; 
+		\node [style=none] (13) at (1, -2) {}; 
+		\node [style=none] (14) at (1, -2.5) {}; 
+		\node [style=none] (15) at (-3, 1) {}; 
+		\node [style=none] (16) at (-3, .5) {}; 
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (7.east) to [in=180, out=180,looseness = 3] (9.east);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (3.east) to [in=0, out=180,looseness = 1] (10);
+	\draw[line width = 1.5pt] (11.east) to [in=0, out=180,looseness = 1] (12);
+	\draw[line width = 1.5pt] (9.east) to (13);
+	\draw[line width = 1.5pt] (11.east) to (14);
+	\draw[line width = 1.5pt] (5.east) to (15);
+	\draw[line width = 1.5pt] (2.east) to (16);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadfrobm}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; 
+		\node [style=none] (3) at (-1, -0.5) {}; %%
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {}; %%%
+		\node [style=none] (8) at (1, -1) {};
+		\node [style=none] (9) at (-1, -2) {}; %%%
+		\node [style=none] (10) at (-3, -.5) {}; %%
+		\node [style=none] (11) at (-1, -2.5) {}; 
+		\node [style=none] (12) at (-3, -1.75) {}; 
+		\node [style=none] (13) at (1, -2) {}; 
+		\node [style=none] (14) at (1, -2.5) {}; 
+		\node [style=none] (15) at (-3, 1) {}; 
+		\node [style=none] (16) at (-3, .5) {}; 
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (7.east) to [in=180, out=180,looseness = 3] (9.east);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (3.east) to [in=0, out=180,looseness = 1] (10);
+	\draw[line width = 1.5pt] (11.east) to [in=0, out=180,looseness = 1] (12);
+	\draw[line width = 1.5pt] (9.east) to (13);
+	\draw[line width = 1.5pt] (11.east) to (14);
+	\draw[line width = 1.5pt] (5.east) to (15);
+	\draw[line width = 1.5pt] (2.east) to (16);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadfrob}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (3, 1) {};
+		\node [style=none] (10) at (3, -1) {};
+		\node [style=none] (11) at (3, .5) {};
+		\node [style=none] (12) at (3, -.5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (11) to [in=180, out=180,looseness = 3] (12);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6.east);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8.east);
+	\draw[line width = 1.5pt] (6.east) to [in=180, out=0,looseness = 1] (9);
+	\draw[line width = 1.5pt] (8.east) to [in=180, out=0, looseness = 1] (10);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+%%fakesubsubsection bimonoid
+
+\newcommand{\bi}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-2, 0.75) {};
+		\node [style=none] (1) at (-2, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (-1, 0.75) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (0, 1.25) {};
+		\node [style=none] (5) at (-0.25, 0.25) {};
+		\node [style=none] (6) at (-0.25, -0) {};
+		\node [style=none] (7) at (0, -1) {};
+		\node [style=none] (8) at (0, 1.25) {};
+		\node [style=none] (9) at (0.25, 0.25) {};
+		\node [style=none] (10) at (0.25, -0) {};
+		\node [style=none] (11) at (0, -1) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (12) at (1, 0.75) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (13) at (1, -0.5) {};
+		\node [style=none] (14) at (2, 0.75) {};
+		\node [style=none] (15) at (2, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (1.center) to (3);
+		\draw[line width = 1.5pt] (12) to (14.center);
+		\draw[line width = 1.5pt] (13) to (15.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (2) to (4.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (2) to (5.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (3) to (6.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (3) to (7.center);
+		\draw[line width = 1.5pt] [in=120, out=0, looseness=1.20] (8.center) to (12);
+		\draw[line width = 1.5pt] [in=-120, out=0, looseness=1.20] (9.center) to (12);
+		\draw[line width = 1.5pt] [in=120, out=0, looseness=1.20] (10.center) to (13);
+		\draw[line width = 1.5pt] [in=-120, out=0, looseness=1.20] (11.center) to (13);
+		\draw[line width = 1.5pt] (4.center) to (8.center);
+		\draw[line width = 1.5pt] [in=150, out=-30, looseness=1.00] (5.center) to (10.center);
+		\draw[line width = 1.5pt] [in=-150, out=30, looseness=1.00] (6.center) to (9.center);
+		\draw[line width = 1.5pt] (7.center) to (11.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\bimultl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node  [circle,draw,inner sep=1pt,fill]   (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\bimultr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (e) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (0) at (0.125, 0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0.5) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\draw[line width = 1.5pt] (2.center) to (0.center);
+		\draw[line width = 1.5pt] (3.center) to (1.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\bicomultl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node  [circle,draw,inner sep=1pt,fill]   (0) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-0.125, -0) {};
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (1.center) to (3.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\bicomultr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (e) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (0) at (-0.125, 0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-0.125, -0.5) {};
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2.center);
+		\draw[line width = 1.5pt] (1.center) to (3.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakbil}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] [in=0, out=180] (1.center) to (5.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakbim}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+		\node [style=none] (5) at (-3, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] (3.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\begin{scope}[shift={(0,2)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+	     \node [style=none] (5) at (-3, 0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] (2.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\end{scope}
+\begin{scope}[shift={(-2,1)}, rotate =180 ]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakbir}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+		\node [style=none] (5) at (-4, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] (3.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\begin{scope}[shift={(0,2)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+	     \node [style=none] (5) at (-4, 0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] (2.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\end{scope}
+\begin{scope}[shift={(-3,1)}, rotate =180 ]
+		\node [style=none] (0) at (1.25, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.375, -0) {};
+		\node [style=none] (2) at (-0.5, -0.5) {};
+		\node [style=none] (3) at (-2, 0.5) {};
+		\node [style=none] (4) at (-0.5, 0.5) {};
+		\node [style=none] (5) at (-2, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1.00] (3.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (4.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.00] (4.center) to (5.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakcobil}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate =180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] [in=0, out=180] (1.center) to (5.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakcobim}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+		\node [style=none] (5) at (-3, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] (3.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\begin{scope}[shift={(0,2)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+	     \node [style=none] (5) at (-3, 0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] (2.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\end{scope}
+\begin{scope}[shift={(-2,1)}, rotate =180 ]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\end{scope}
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\weakcobir}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+		\node [style=none] (5) at (-4, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] (3.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\begin{scope}[shift={(0,2)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+	     \node [style=none] (5) at (-4, 0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] (2.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\end{scope}
+\begin{scope}[shift={(-3,1)}, rotate =180 ]
+		\node [style=none] (0) at (1.25, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.375, -0) {};
+		\node [style=none] (2) at (-0.5, -0.5) {};
+		\node [style=none] (3) at (-2, 0.5) {};
+		\node [style=none] (4) at (-0.5, 0.5) {};
+		\node [style=none] (5) at (-2, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1.00] (3.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (4.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.00] (4.center) to (5.center);
+\end{scope}
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakbimonoidtwol}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {}; 
+		\node [style=none] (9) at (-3, 1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.west);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (6.center) to (8.center);
+		\draw[line width = 1.5pt] (0.west) to [in=0, out=0,looseness = 3] (4.west);
+\begin{scope}[shift={(-2,-.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakbimonoidtwom}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {}; 
+		\node [style=none] (9) at (-3, 1) {};
+		\node [style=none] (10) at (-3, -1) {}; 
+		\node [style=none] (11) at (-3, -1.5) {};
+		\node [style=none] (12) at (-5, .5) {}; 
+		\node [style=none] (13) at (-5, 1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.west);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (6.center) to (8.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (7.center) to (11.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (3.center) to (10.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (8.center) to (12.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (9.center) to (13.west);
+		\draw[line width = 1.5pt] (0.west) to [in=0, out=0,looseness = 3] (4.west);
+\begin{scope}[shift={(0,-4)}]
+\begin{scope}[yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {}; 
+		\node [style=none] (9) at (-3, 1) {};
+		\node [style=none] (10) at (-3, -1) {}; 
+		\node [style=none] (11) at (-3, -1.5) {};
+		\node [style=none] (12) at (-5, .5) {}; 
+		\node [style=none] (13) at (-5, 1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.west);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (6.center) to (8.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (7.center) to (11.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (3.center) to (10.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (8.center) to (12.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (9.center) to (13.west);
+		\draw[line width = 1.5pt] (0.west) to [in=0, out=0,looseness = 3] (4.west);
+\end{scope}
+\end{scope}
+\begin{scope}[rotate=180,shift={(4,2)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakbimonoidtwor}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {}; 
+		\node [style=none] (9) at (-3, 1) {};
+		\node [style=none] (10) at (-3, -2.5) {}; 
+		\node [style=none] (11) at (-3, -3) {};
+		\node [style=none] (12) at (-5, .5) {}; 
+		\node [style=none] (13) at (-5, 1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.west);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (6.center) to (8.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1] (7.center) to (11.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1] (3.center) to (10.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (8.center) to (12.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (9.center) to (13.west);
+		\draw[line width = 1.5pt] (0.west) to [in=0, out=0,looseness = 3] (4.west);
+\begin{scope}[shift={(0,-4)}]
+\begin{scope}[yscale=-1]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {}; %
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {}; %
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {}; 
+		\node [style=none] (9) at (-3, 1) {};
+		\node [style=none] (10) at (-3, -2.5) {}; 
+		\node [style=none] (11) at (-3, -3) {};
+		\node [style=none] (12) at (-5, .5) {}; 
+		\node [style=none] (13) at (-5, 1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.west);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (2.center) to (9.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (6.center) to (8.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1] (7.center) to (11.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1] (3.center) to (10.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (8.center) to (12.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1.5] (9.center) to (13.west);
+		\draw[line width = 1.5pt] (0.west) to [in=0, out=0,looseness = 3] (4.west);
+\end{scope}
+\end{scope}
+\begin{scope}[rotate=180,shift={(4,2)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3.west);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakbimonoidcotwol}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-1, 2) {};
+		\node [style=none] (14) at (-1, 2.5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3.west);
+	\draw[line width = 1.5pt] (5) to [in=0, out=0,looseness = 3] (13.west);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (12);
+\end{scope}
+\begin{scope}[shift={(-4,-.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node [style=none] (4) at (-1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakbimonoidcotwom}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[yscale=-1,rotate = 180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-2, 1.25) {};
+		\node [style=none] (14) at (-2, 1.75) {};
+		\node [style=none] (15) at (-0, .25) {};
+		\node [style=none] (16) at (-0, -.25) {};
+	\draw[line width = 1.5pt] (6) to [in=0, out=0,looseness = 3] (9.west);
+	\draw[line width = 1.5pt] (8) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (11) to [in=180, out=0, looseness = 1] (12);
+	\draw[line width = 1.5pt] (13) to [in=180, out=0, looseness = 1] (9.west);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (11.west);
+	\draw[line width = 1.5pt] (6.west) to [in=0, out=180,looseness = 3] (15.east);
+	\draw[line width = 1.5pt] (8.west) to [in=0, out=180,looseness = 3] (16.east);
+\end{scope}
+\begin{scope}[rotate = 180, shift={(0,1)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-2, 1.25) {};
+		\node [style=none] (14) at (-2, 1.75) {};
+		\node [style=none] (15) at (-0, .25) {};
+		\node [style=none] (16) at (-0, -.25) {};
+	\draw[line width = 1.5pt] (6) to [in=0, out=0,looseness = 3] (9.west);
+	\draw[line width = 1.5pt] (8) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (11) to [in=180, out=0, looseness = 1] (12);
+	\draw[line width = 1.5pt] (13) to [in=180, out=0, looseness = 1] (9.west);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (11.west);
+	\draw[line width = 1.5pt] (6.west) to [in=0, out=180,looseness = 3] (15.east);
+	\draw[line width = 1.5pt] (8.west) to [in=0, out=180,looseness = 3] (16.east);
+\end{scope}
+\begin{scope}[shift={(1,-.25)}]
+	\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+\begin{scope}[shift={(-4,1)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+\end{scope}
+\begin{scope}[shift={(-4,-1.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\weakbimonoidcotwor}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[yscale=-1,rotate = 180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-2, 1.25) {};
+		\node [style=none] (14) at (-2, 1.75) {};
+		\node [style=none] (15) at (-0, -.75) {};
+		\node [style=none] (16) at (-0, -1.25) {};
+	\draw[line width = 1.5pt] (6) to [in=0, out=0,looseness = 3] (9.west);
+	\draw[line width = 1.5pt] (8) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (11) to [in=180, out=0, looseness = 1] (12);
+	\draw[line width = 1.5pt] (13) to [in=180, out=0, looseness = 1] (9.west);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (11.west);
+	\draw[line width = 1.5pt] (6.west) to [in=0, out=180,looseness = 1] (15.east);
+	\draw[line width = 1.5pt] (8.west) to [in=0, out=180,looseness = 1] (16.east);
+\end{scope}
+\begin{scope}[rotate = 180, shift={(0,1)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (1, 1.25) {};
+		\node [style=none] (10) at (3, .5) {};
+		\node [style=none] (11) at (1, 1.75) {};
+		\node [style=none] (12) at (3, 1) {};
+		\node [style=none] (13) at (-2, 1.25) {};
+		\node [style=none] (14) at (-2, 1.75) {};
+		\node [style=none] (15) at (-0, -.75) {};
+		\node [style=none] (16) at (-0, -1.25) {};
+	\draw[line width = 1.5pt] (6) to [in=0, out=0,looseness = 3] (9.west);
+	\draw[line width = 1.5pt] (8) to [in=180, out=0, looseness = 1] (10);
+	\draw[line width = 1.5pt] (11) to [in=180, out=0, looseness = 1] (12);
+	\draw[line width = 1.5pt] (13) to [in=180, out=0, looseness = 1] (9.west);
+	\draw[line width = 1.5pt] (14) to [in=180, out=0, looseness = 1] (11.west);
+	\draw[line width = 1.5pt] (6.west) to [in=0, out=180,looseness = 1] (15.east);
+	\draw[line width = 1.5pt] (8.west) to [in=0, out=180,looseness = 1] (16.east);
+\end{scope}
+\begin{scope}[shift={(1,-.25)}]
+	\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+\begin{scope}[shift={(-4,1)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+\end{scope}
+\begin{scope}[shift={(-4,-1.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\bigbimonoidone}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.4]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-7, -1) {};
+		\node [style=none] (9) at (-7, -.5) {};
+		\node [style=none] (10) at (-7, 3) {};
+		\node [style=none] (11) at (-7, 3.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (7.center) to (8.west);
+		\draw[line width = 1.5pt] (3.center) to (9.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (6.center) to (10.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (2.center) to (11.west);
+\begin{scope}[shift={(0,4.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-7, 0) {};
+		\node [style=none] (9) at (-7, .5) {};
+		\node [style=none] (10) at (-7, -4) {};
+		\node [style=none] (11) at (-7, -3.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (6.center) to (8.west);
+		\draw[line width = 1.5pt] (2.center) to (9.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (7.center) to (10.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (3.center) to (11.west);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,0)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,-4)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\bigbimonoidtwo}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.4]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-7, -1) {};
+		\node [style=none] (9) at (-3.5, -.5) {};
+		\node [style=none] (10) at (-7, 3) {};
+		\node [style=none] (11) at (-3.5, 3.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (7.center) to (8.west);
+		\draw[line width = 1.5pt] (3.center) to (9.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (6.center) to (10.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (2.center) to (11.west);
+\begin{scope}[shift={(0,4.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3.5, 0) {};
+		\node [style=none] (9) at (-7, .5) {};
+		\node [style=none] (10) at (-3.5, -4) {};
+		\node [style=none] (11) at (-7, -3.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (6.center) to (8.west);
+		\draw[line width = 1.5pt] (2.center) to (9.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (7.center) to (10.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (3.center) to (11.west);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,0)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-4.5, 0.5) {};
+		\node [style=none] (3) at (-4.5, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,-4)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-4.5, 0.5) {};
+		\node [style=none] (3) at (-4.5, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\bigbimonoidthree}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.4]
+\scalebox{1}{
+		\node [style=none] (0) at (1, 1) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, 1) {};
+		\node [style=none] (2) at (-1, 1.5) {};
+		\node [style=none] (3) at (-1, .5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-7, -1) {};
+		\node [style=none] (9) at (-1.5, .5) {};
+		\node [style=none] (10) at (-7, 3) {};
+		\node [style=none] (11) at (-1.5, 2.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (7.center) to (8.west);
+		\draw[line width = 1.5pt] (3.center) to (9.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1] (6.center) to (10.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.8] (2.center) to (11.center);
+\begin{scope}[shift={(0,4.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -1.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -1.5) {};
+		\node [style=none] (6) at (-1, -1) {};
+		\node [style=none] (7) at (-1, -2) {};
+		\node [style=none] (8) at (-1.5, -1) {};
+		\node [style=none] (9) at (-7, .5) {};
+		\node [style=none] (10) at (-1.5, -3) {};
+		\node [style=none] (11) at (-7, -3.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (6.center) to (8.west);
+		\draw[line width = 1.5pt] (2.center) to (9.west);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=.8] (10.center) to (7.center);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=1] (3.center) to (11.west);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,0)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-6.5, -.5) {};
+		\node [style=none] (3) at (-6.5, -1.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2.east) to [in=0, out=0,looseness = 3] (3.east);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,-4)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-6.5, 1.5) {};
+		\node [style=none] (3) at (-6.5, .5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2.east) to [in=0, out=0,looseness = 3] (3.east);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\bigbimonoidfour}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.4]
+\scalebox{1}{
+		\node [style=none] (0) at (1, 1) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, 1) {};
+		\node [style=none] (2) at (-1, 1.5) {};
+		\node [style=none] (3) at (-1, .5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-7, -1) {};
+		\node [style=none] (9) at (-1.5, .5) {};
+		\node [style=none] (10) at (-7, 3) {};
+		\node [style=none] (11) at (-1.5, 2.5) {};
+		\node [style=none] (12) at (-1, 3.5) {};
+		\node [style=none] (13) at (-1, 2.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.east);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (7.center) to (8.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (6.center) to (10.west);
+		\draw[line width = 1.5pt] (12.east) to [in=180, out=180,looseness = 2.5] (3.east);
+		\draw[line width = 1.5pt] (13.east) to [in=180, out=180,looseness = 3] (2.east);
+\begin{scope}[shift={(0,4.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -1.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -1.5) {};
+		\node [style=none] (6) at (-1, -1) {};
+		\node [style=none] (7) at (-1, -2) {};
+		\node [style=none] (8) at (-1.5, -1) {};
+		\node [style=none] (9) at (-7, .5) {};
+		\node [style=none] (10) at (-1.5, -3) {};
+		\node [style=none] (11) at (-7, -3.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (2.center) to (9.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (3.center) to (11.west);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,0)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-6.5, -.5) {};
+		\node [style=none] (3) at (-6.5, -1.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,-4)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-6.5, 1.5) {};
+		\node [style=none] (3) at (-6.5, .5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\bigbimonoidfive}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.4]
+\scalebox{1}{
+		\node [style=none] (0) at (1, 1) {};
+		\node [style=none] (1) at (1, 3) {};
+		\node [style=none] (2) at (-1, 1.5) {};
+		\node [style=none] (3) at (-1, .5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-7, -1) {};
+		\node [style=none] (9) at (-1.5, .5) {};
+		\node [style=none] (10) at (-7, 3) {};
+		\node [style=none] (11) at (-1.5, 2.5) {};
+		\node [style=none] (12) at (-1, 3.5) {};
+		\node [style=none] (13) at (-1, 2.5) {};
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (7.center) to (8.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (6.center) to (10.west);
+		\draw[line width = 1.5pt] (0) to [in=180, out=180,looseness = 4] (1);
+\begin{scope}[shift={(0,4.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (8) at (-1.5, -1) {};
+		\node [style=none] (9) at (-7, .5) {};
+		\node [style=none] (10) at (-1.5, -3) {};
+		\node [style=none] (11) at (-7, -3.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (2.center) to (9.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (3.center) to (11.west);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,0)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-6.5, -.5) {};
+		\node [style=none] (3) at (-6.5, -1.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,-4)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-6.5, 1.5) {};
+		\node [style=none] (3) at (-6.5, .5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\bigbimonoidsix}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.4]
+\scalebox{1}{
+		\node [style=none] (0) at (1, 1) {};
+		\node [style=none] (1) at (1, 3) {};
+		\node [style=none] (2) at (-1, 1.5) {};
+		\node [style=none] (3) at (-1, .5) {};
+		\node [style=none] (4) at (1, 0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125-4, 0) {};
+		\node [style=none] (6) at (-5, .5) {};
+		\node [style=none] (7) at (-5, -.5) {};
+		\node [style=none] (8) at (-7, -.5) {};
+		\node [style=none] (9) at (-1.5, .5) {};
+		\node [style=none] (10) at (-7, 2.5) {};
+		\node [style=none] (11) at (-1.5, 2.5) {};
+		\node [style=none] (12) at (-1, 3.5) {};
+		\node [style=none] (13) at (-1, 2.5) {};
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (7.center) to (8.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (6.center) to (10.west);
+		\draw[line width = 1.5pt] (0) to [in=180, out=180,looseness = 6] (1);
+\begin{scope}[shift={(0,4.5)}]
+		\node [style=none] (0) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125-4, -.5) {};
+		\node [style=none] (2) at (-5, 0) {};
+		\node [style=none] (3) at (-5, -1) {};
+		\node [style=none] (8) at (-1.5, -1) {};
+		\node [style=none] (9) at (-7, 0) {};
+		\node [style=none] (10) at (-1.5, -3) {};
+		\node [style=none] (11) at (-7, -3) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (2.center) to (9.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.75] (3.center) to (11.west);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,-.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-6.5, -.5) {};
+		\node [style=none] (3) at (-6.5, -1.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,-3.5)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-6.5, 1.5) {};
+		\node [style=none] (3) at (-6.5, .5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\bigbimonoidseven}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.4]
+\scalebox{1}{
+\begin{scope}[yscale=2]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (7, -0) {};
+		\node [style=none] (9) at (7, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (0.center) to (8.center);
+		\draw[line width = 1.5pt] (4.center) to (9.center);
+\begin{scope}[rotate=180, shift ={(-8,.25)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+
+\newcommand{\bigbimonoidstepthree}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, 1) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, 1) {};
+		\node [style=none] (2) at (-1, 1.5) {};
+		\node [style=none] (3) at (-1, .5) {};
+		\node [style=none] (9) at (-1.5, .5) {};
+		\node [style=none] (11) at (-1.5, 2.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (3.center) to (9.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.8] (2.center) to (11.center);
+\begin{scope}[shift={(0,4.5)}]
+		\node [style=none] (4) at (1, -1.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -1.5) {};
+		\node [style=none] (6) at (-1, -1) {};
+		\node [style=none] (7) at (-1, -2) {};
+		\node [style=none] (8) at (-1.5, -1) {};
+		\node [style=none] (10) at (-1.5, -3) {};
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] (6.center) to (8.west);
+		\draw[line width = 1.5pt] [in=0, out=180, looseness=.8] (7.center) to (10.center);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,0)}]
+		\node [style=none] (2) at (-6.5, -.5) {};
+		\node [style=none] (3) at (-6.5, -1.5) {};
+	\draw[line width = 1.5pt] (2.east) to [in=0, out=0,looseness = 3] (3.east);
+\end{scope}
+\begin{scope}[rotate=180, shift={(8,-4)}]
+		\node [style=none] (2) at (-6.5, 1.5) {};
+		\node [style=none] (3) at (-6.5, .5) {};
+	\draw[line width = 1.5pt] (2.east) to [in=0, out=0,looseness = 3] (3.east);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\bigbimonoidstepfour}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, 1) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, 1) {};
+		\node [style=none] (2) at (-1, 1.5) {};
+		\node [style=none] (3) at (-1, .5) {};
+		\node [style=none] (9) at (-1.5, .5) {};
+		\node [style=none] (11) at (-1.5, 2.5) {};
+		\node [style=none] (12) at (-1, 3.5) {};
+		\node [style=none] (13) at (-1, 2.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] (12.east) to [in=180, out=180,looseness = 2.5] (3.east);
+		\draw[line width = 1.5pt] (13.east) to [in=180, out=180,looseness = 3] (2.east);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\begin{scope}[shift={(0,4.5)}]
+		\node [style=none] (4) at (1, -1.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -1.5) {};
+		\node [style=none] (6) at (-1, -1) {};
+		\node [style=none] (7) at (-1, -2) {};
+		\node [style=none] (8) at (-1.5, -1) {};
+		\node [style=none] (10) at (-1.5, -3) {};
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\bigbimonoidstepfive}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (-0.125, -0) {};
+		\node [style=none] (2) at (1, 0.5) {};
+		\node [style=none] (3) at (1, -0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (1.center) to (2.east);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (1.center) to (3.east);
+\begin{scope}[shift={(2,1)}]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-3, 0.5) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 4] (3);
+	\draw[line width = 1.5pt] (2.east) to (5.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\bimonoidextral}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node [style=none] (4) at (-1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+		\draw[line width = 1.5pt] (0.west) to [in=0, out=0,looseness = 3] (3.west);
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\bimonoidextram}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node [style=none] (4) at (-1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (6) at (3, -.25) {};
+		\node [style=none] (7) at (1.4, -.25) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+		\draw[line width = 1.5pt] (6.center) to (7.west);
+		\draw[line width = 1.5pt] (0.west) to [in=0, out=0,looseness = 3] (3.west);
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\bimonoidextrar}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node [style=none] (4) at (-1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+%%fakesubsubsection speciality
+
+
+\newcommand{\parcoml}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {};
+		\node [style=none] (9) at (-3, -.5) {};
+		\node [style=none] (10) at (-3, -0) {};
+		\node [style=none] (11) at (-3, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (9.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (8.center) to (3.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (11.center) to (6.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (10.center) to (7.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\parcomm}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {};
+		\node [style=none] (9) at (-3, -.5) {};
+		\node [style=none] (10) at (-3, -0) {};
+		\node [style=none] (11) at (-3, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (8.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (9.center) to (3.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (11.center) to (6.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (10.center) to (7.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\parcomr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (-3, .5) {};
+		\node [style=none] (9) at (-3, -.5) {};
+		\node [style=none] (10) at (-3, -0) {};
+		\node [style=none] (11) at (-3, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (8.center) to (2.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (9.center) to (3.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (10.center) to (6.center);
+		\draw[line width = 1.5pt] [in=180, out=0, looseness=1] (11.center) to (7.center);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\spec}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1.75, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.75, -0) {};
+		\node [style=none] (2) at (0, -0.5) {};
+		\node [style=none] (3) at (0, 0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (-0.75, -0) {};
+		\node [style=none] (5) at (0, -0.5) {};
+		\node [style=none] (6) at (-1.75, -0) {};
+		\node [style=none] (7) at (0, 0.5) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (6.center) to (4);
+		\draw[line width = 1.5pt] [in=180, out=-60, looseness=1.20] (4) to (5.center);
+		\draw[line width = 1.5pt] [in=180, out=60, looseness=1.20] (4) to (7.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\parspec}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.west);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.west);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.west);
+\begin{scope}[shift={(-2,-.5)}, rotate = 180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\parextra}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node [style=none] (4) at (-1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2.center);
+		\draw[line width = 1.5pt] (3.center) to (5.center);
+\begin{scope}[shift={(1.5,-.5)}, rotate = 180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (-1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (2) at (0, -0) {};
+		\node [style=none] (3) at (1, -.5) {};
+		\node [style=none] (4) at (-1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0, -.5) {};
+		\draw[line width = 1.5pt] (0.center) to (2);
+		\draw[line width = 1.5pt] (3.center) to (5);
+\end{scope}
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+
+\newcommand{\monadextra}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+	\draw[line width = 1.5pt] (2.east) to [in=0, out=0,looseness = 3] (3.west);
+	\draw[line width = 1.5pt] (2.east) to [in=180, out=180,looseness = 3] (3.west);
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadextram}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\begin{scope}[shift={(-2,0)}, rotate = 180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (1, -0) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\monadspec}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2.west) to [in=0, out=0,looseness = 3] (3.west);
+	\draw[line width = 1.5pt] (5.west) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7.west) to [in=180, out=0, looseness = 1] (8);
+\begin{scope}[shift={(-2,0)}, rotate = 180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\extral}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1.75, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.75, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (4) at (-0.75, -0) {};
+		\node [style=none] (6) at (-1.75, -0) {};
+	  \draw[line width = 1.5pt] (1.center) to (4.center);
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\extrar}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1.75, -0) {};
+		\node [style=none] (6) at (-1.75, -0) {};
+}
+\end{tikzpicture}
+  \end{aligned}
+}
+
+\newcommand{\strangelawl}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (-2, .75) {};
+		\node [style=none] (10) at (-2, -.75) {};
+		\node [style=none] (11) at (-2, .25) {};
+		\node [style=none] (12) at (-2, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (5.east) to [in=0, out=180,looseness = 1] (9.west);
+	\draw[line width = 1.5pt] (7.east) to [in=0, out=180, looseness = 1] (10.west);
+	\draw[line width = 1.5pt] (2.east) to [in=0, out=180,looseness = 1] (11.west);
+	\draw[line width = 1.5pt] (3.east) to [in=0, out=180, looseness = 1] (12.west);
+\begin{scope}[shift={(-3,-.25)}]
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\newcommand{\strangelawr}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node [style=none] (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -0) {};
+		\node [style=none] (5) at (-1, 1) {};
+		\node [style=none] (6) at (1, .25) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\node [style=none] (8) at (1, -.25) {};
+		\node [style=none] (9) at (-2, .75) {};
+		\node [style=none] (10) at (-2, -.75) {};
+		\node [style=none] (11) at (-2, .25) {};
+		\node [style=none] (12) at (-2, -.25) {};
+	\draw[line width = 1.5pt] (2) to [in=0, out=0,looseness = 3] (3);
+	\draw[line width = 1.5pt] (5) to [in=180, out=0,looseness = 1] (6);
+	\draw[line width = 1.5pt] (7) to [in=180, out=0, looseness = 1] (8);
+	\draw[line width = 1.5pt] (5.west) to [in=0, out=180,looseness = 1] (9.east);
+	\draw[line width = 1.5pt] (7.west) to [in=0, out=180, looseness = 1] (10.east);
+	\draw[line width = 1.5pt] (2.west) to [in=0, out=180,looseness = 1] (11.east);
+	\draw[line width = 1.5pt] (3.east) to [in=0, out=180, looseness = 1] (12.east);
+\begin{scope}[shift={(-3,-.25)}]
+\begin{scope}[rotate=180]
+		\node [style=none] (0) at (1, -0) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -0) {};
+		\node [style=none] (2) at (-1, 0.5) {};
+		\node [style=none] (3) at (-1, -0.5) {};
+		\node [style=none] (4) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (5) at (0.125, -.5) {};
+		\node [style=none] (6) at (-1, -0) {};
+		\node [style=none] (7) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\draw[line width = 1.5pt] (4.center) to (5.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (5.center) to (6.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (5.center) to (7.center);
+\end{scope}
+\end{scope}
+\end{scope}
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\def\sigflowadd{
+   \node[plus] (adder) {};
+   \node[coordinate] (f) at (-0.5,0.65) {};
+   \node[coordinate] (g) at (0.5,0.65) {};
+   \node (out) [right of=adder] {};
+   \node (pref) [left of=f] {};
+   \node (preg) [left of=g] {};
+%   \node (caption) [right of=out, shift={(0,0.25)}] {addition};
+   \draw[rounded corners,thick] (pref) -- (f) -- (adder.addend);
+   \draw[rounded corners,thick] (preg) -- (g) -- (adder.summand);
+   \draw[thick] (adder) -- (out);
+}
+
+\def\sigflowaddsideways{
+\begin{scope}[rotate=90]
+\sigflowadd
+\end{scope}
+}
+
+\newcommand{\sigflowpicadd}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+	\begin{pgfonlayer}{nodelayer}
+\sigflowaddsideways
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\sigflowcoadd{
+   \node[coplus] (adder) {};
+   \node[coordinate] (g) at (-0.5,0.65) {};
+   \node[coordinate] (f) at (0.5,0.65) {};
+   \node (out) [left of=adder] {};
+   \node (pref) [right of=f] {};
+   \node (preg) [right of=g] {};
+%   \node (caption) [above of=out, shift={(0,0.25)}] {addition};
+   \draw[rounded corners,thick] (pref) -- (f) -- (adder.addend);
+   \draw[rounded corners,thick] (preg) -- (g) -- (adder.summand);
+   \draw[thick] (adder) -- (out);
+}
+
+\def\sigflowcoaddsideways{
+\begin{scope}[rotate=90]
+\sigflowcoadd
+\end{scope}
+}
+
+\newcommand{\sigflowpiccoadd}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, xscale = -1]
+	\begin{pgfonlayer}{nodelayer}
+\sigflowcoaddsideways
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\sigflowdup{
+   \node[delta] (dupe){};
+   \node[coordinate] (o2) at (-0.5,-0.65) {};
+   \node[coordinate] (o1) at (0.5,-0.65) {};
+   \node (in) [right of=dupe] {};
+   \node (posto1) [left of=o1] {};
+   \node (posto2) [left of=o2] {};
+%   \node (caption) [below of=posto2, shift={(-0.5,0.3)}] {duplication};
+   \draw[rounded corners,thick] (posto1) -- (o1) -- (dupe.left out);
+   \draw[rounded corners,thick] (posto2) -- (o2) -- (dupe.right out);
+   \draw[thick] (in) -- (dupe);
+}
+
+\def\sigflowdupsideways{
+\begin{scope}[rotate=90]
+\sigflowdup
+\end{scope}
+}
+
+\newcommand{\sigflowpiccodup}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, xscale = -1]
+\begin{pgfonlayer}{nodelayer}
+\sigflowdupsideways
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\sigflowcodup{
+   \node[codelta] (dupe){};
+   \node[coordinate] (o1) at (-0.5,-0.65) {};
+   \node[coordinate] (o2) at (0.5,-0.65) {};
+   \node (in) [left of=dupe] {};
+   \node (posto1) [right of=o1] {};
+   \node (posto2) [right of=o2] {};
+%   \node (caption) [above of=posto2, shift={(-0.5,0.3)}] {duplication};
+   \draw[rounded corners,thick] (posto1) -- (o1) -- (dupe.left out);
+   \draw[rounded corners,thick] (posto2) -- (o2) -- (dupe.right out);
+   \draw[thick] (in) -- (dupe);
+}
+
+\def\sigflowcodupsideways{
+\begin{scope}[rotate=90]
+\sigflowcodup
+\end{scope}
+}
+
+\newcommand{\sigflowpicdup}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+\begin{pgfonlayer}{nodelayer}
+\sigflowcodupsideways
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+%%% Can possibly make these look nicer using techniques done to make SigLabelEdge%%%%%
+\def\SigMult{
+\begin{scope}[shift={(0,0)}, xscale=1]
+\sigflowaddsideways
+\end{scope}
+\begin{scope}[shift={(0,1.5)}, xscale=-1]
+\sigflowdupsideways
+\end{scope}
+\begin{scope}[shift={(-1.95,.75)}, scale=.63, rotate=90]
+\sigflowswap
+\end{scope}
+\begin{scope}[rotate=90]
+   \node[coordinate] (a) at (-.501175,1.15) {};
+   \node[coordinate] (b) at (-.501175,2.35) {};
+   \draw[rounded corners,thick] (b) -- (a);
+   \node[coordinate] (c) at (2.0001,1.15) {};
+   \node[coordinate] (d) at (2.0001,2.35) {};
+   \draw[rounded corners,thick] (d) -- (c);
+\end{scope}
+}
+
+\newcommand{\SigMultpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+\begin{pgfonlayer}{nodelayer}
+  \SigMult
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigCoMult{
+\begin{scope}[shift={(0,-1.5)}, xscale=-1]
+\sigflowcoaddsideways
+\end{scope}
+\begin{scope}[shift={(0,0)}, xscale=1]
+\sigflowcodupsideways
+\end{scope}
+\begin{scope}[shift={(1.95,-.75)}, scale=.63, rotate = -90]
+\sigflowswap
+\end{scope}
+\begin{scope}[rotate=-90]
+   \node[coordinate] (a) at (-.5,1.15) {};
+   \node[coordinate] (b) at (-.5,2.35) {};
+   \draw[rounded corners,thick] (b) -- (a);
+   \node[coordinate] (c) at (2,1.15) {};
+   \node[coordinate] (d) at (2,2.35) {};
+   \draw[rounded corners,thick] (d) -- (c);
+\end{scope}
+}
+
+\newcommand{\SigCoMultpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+\begin{pgfonlayer}{nodelayer}
+  \SigCoMult
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigOtherMult{
+\begin{scope}[shift={(0,0)}, xscale=-1]
+\sigflowdupsideways
+\end{scope}
+\begin{scope}[shift={(0,1.5)}, xscale=1]
+\sigflowaddsideways
+\end{scope}
+\begin{scope}[shift={(-1.95,.75)}, scale=.63, rotate=90]
+\sigflowswap
+\end{scope}
+\begin{scope}[rotate=90]
+   \node[coordinate] (a) at (-.501175,1.15) {};
+   \node[coordinate] (b) at (-.501175,2.35) {};
+   \draw[rounded corners,thick] (b) -- (a);
+   \node[coordinate] (c) at (2.0001,1.15) {};
+   \node[coordinate] (d) at (2.0001,2.35) {};
+   \draw[rounded corners,thick] (d) -- (c);
+\end{scope}
+}
+
+\newcommand{\SigOtherMultpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+\begin{pgfonlayer}{nodelayer}
+  \SigOtherMult
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigOtherCoMult{
+\begin{scope}[shift={(0,-1.5)}, xscale=1]
+\sigflowcodupsideways
+\end{scope}
+\begin{scope}[shift={(0,0)}, xscale=-1]
+\sigflowcoaddsideways
+\end{scope}
+\begin{scope}[shift={(1.95,-.75)}, scale=.63, rotate = -90]
+\sigflowswap
+\end{scope}
+\begin{scope}[rotate=-90]
+   \node[coordinate] (a) at (-.5,1.15) {};
+   \node[coordinate] (b) at (-.5,2.35) {};
+   \draw[rounded corners,thick] (b) -- (a);
+   \node[coordinate] (c) at (2,1.15) {};
+   \node[coordinate] (d) at (2,2.35) {};
+   \draw[rounded corners,thick] (d) -- (c);
+\end{scope}
+}
+
+\newcommand{\SigOtherCoMultpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+\begin{pgfonlayer}{nodelayer}
+  \SigOtherCoMult
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\sigflowzero{
+   \node (out1) {};
+   \node [zero] (ins1) [left of=out1, shift={(-.2,0)}] {};
+ %  \node (inscaption) [below of=out1] {};
+   \draw (out1) -- (ins1);
+}
+
+\newcommand{\sigflowpiczero}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\sigflowzero
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\sigflowcozero{
+   \node (out1) {};
+   \node [zero] (ins1) [right of=out1, shift={(.2,0)}] {};
+ %  \node (inscaption) [below of=out1] {};
+   \draw (out1) -- (ins1);
+}
+
+\newcommand{\sigflowpiccozero}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\sigflowcozero
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\sigflowdel{
+   \node (in1) {};
+   \node [bang] (del1) [left of=in1, shift={(-.2,0)}] {};
+ %  \node (delcaption) [below of=del1] {deletion};
+   \draw (in1) -- (del1);
+}
+
+\newcommand{\sigflowpiccodel}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\sigflowdel
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\sigflowcodel{
+   \node (in1) {};
+   \node [bang] (del1) [right of=in1, shift={(.2,0)}] {};
+ %  \node (delcaption) [below of=del1] {deletion};
+   \draw (in1) -- (del1);
+}
+
+\newcommand{\sigflowpicdel}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\sigflowcodel
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigUnit{
+\begin{scope}[shift={(0,0)}, xscale=.3]
+\sigflowzero
+\end{scope}
+\begin{scope}[shift={(0,.5)}, xscale=-.3]
+\sigflowdel
+\end{scope}
+}
+
+\newcommand{\SigUnitpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\SigUnit
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigCoUnit{
+\begin{scope}[shift={(0,0)}, xscale=.5]
+\sigflowcozero
+\end{scope}
+\begin{scope}[shift={(0,.5)}, xscale=-.5]
+\sigflowcodel
+\end{scope}
+}
+
+\newcommand{\SigCoUnitpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\SigCoUnit
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigOtherUnit{
+\begin{scope}[shift={(0,0)}, xscale=-.3]
+\sigflowdel
+\end{scope}
+\begin{scope}[shift={(0,.5)}, xscale=.3]
+\sigflowzero
+\end{scope}
+}
+
+\newcommand{\SigOtherUnitpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\SigOtherUnit
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigOtherCoUnit{
+\begin{scope}[shift={(0,0)}, xscale=-.5]
+\sigflowcodel
+\end{scope}
+\begin{scope}[shift={(0,.5)}, xscale=.5]
+\sigflowcozero
+\end{scope}
+}
+
+\newcommand{\SigOtherCoUnitpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\SigOtherCoUnit
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\sigflowId{
+   \node (in1) {};
+   \node [coordinate] (del1) [right =2 of in1, shift={(.4,0)}] {};
+ %  \node (delcaption) [below of=del1] {identity};
+   \draw (in1) -- (del1);
+}
+
+\def\SigDoubleId{
+\begin{scope}[shift={(0,0)}, xscale=1]
+\sigflowId
+\end{scope}
+\begin{scope}[shift={(0,.5)}, xscale=1]
+\sigflowId
+\end{scope}
+}
+
+\newcommand{\SigDoubleIdpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\SigDoubleId
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigLabel{
+   \node[coordinate] (in) {};
+   \node [multiply] (mult) [right of=in] {$\mathrm{c}$};
+   \node[coordinate] (out) [right of=mult] {};
+   \node (label) [below of=out, shift={(.1,0)}] {};
+   \draw  [thick] (in) -- (mult) -- (out);
+}
+
+\newcommand{\SigLabelpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\SigLabel
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigLabelA{
+   \node[coordinate] (in) {};
+   \node [multiply] (mult) [right of=in] {A};
+   \node[coordinate] (out) [right of=mult] {};
+   \node (label) [below of=out, shift={(.1,0)}] {};
+   \draw (in) -- (mult) -- (out);
+}
+
+\newcommand{\SigLabelpicA}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\SigLabelA
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+\def\SigVsource{
+   \node[coordinate] (in) {};
+   \node [vsource] (mult) [right of=in] {$\mathrm{-V_0}$};
+   \node[coordinate] (out) [right of=mult] {};
+   \node (label) [below of=out, shift={(0,0.1)}] {};
+   \draw  (mult) -- (out);
+}
+
+\newcommand{\SigVsourcepic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\SigVsource
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigAffGen{
+   \node[coordinate] (in) {};
+   \node [vsource] (mult) [right of=in] {$\mathrm{a}$};
+   \node[coordinate] (out) [right of=mult] {};
+   \node (label) [below of=out, shift={(0,0.1)}] {};
+   \draw  (mult) -- (out);
+}
+
+\newcommand{\SigAffGenpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\SigAffGen
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigIsource{
+   \node[coordinate] (in) {};
+   \node [vsource] (mult) [right of=in] {$\mathrm{I_0}$};
+   \node[coordinate] (out) [right of=mult] {};
+   \node (label) [below of=out, shift={(0,0.1)}] {};
+   \draw  (mult) -- (out);
+}
+
+\newcommand{\SigIsourcepic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, node distance=0.85cm]
+	\begin{pgfonlayer}{nodelayer}
+\SigIsource
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\sigflowswap{
+   \node (UpUpLeft) at (-0.4,0.9) {};
+   \node [coordinate] (UpLeft) at (-0.4,0.4) {};
+   \node (mid) at (0,0) {};
+   \node [coordinate] (DownRight) at (0.4,-0.4) {};
+   \node (DownDownRight) at (0.4,-0.9) {};
+   \node [coordinate] (UpRight) at (0.4,0.4) {};
+   \node (UpUpRight) at (0.4,0.9) {};
+   \node [coordinate] (DownLeft) at (-0.4,-0.4) {};
+   \node (DownDownLeft) at (-0.4,-0.9) {};
+   \draw [rounded corners=2mm,thick] (UpUpLeft) -- (UpLeft) -- (mid) --
+   (DownRight) -- (DownDownRight) (UpUpRight) -- (UpRight) -- (DownLeft) -- (DownDownLeft);
+}
+
+\newcommand{\sigflowpicswap}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+	\begin{pgfonlayer}{nodelayer}
+\sigflowswap
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigLabelEdge{
+\begin{scope}[shift={(0,0)}, xscale=-1]
+\sigflowcoaddsideways
+\end{scope}
+\begin{scope}[shift={(4,2)}, xscale=-1]
+\sigflowdupsideways
+\end{scope}
+   \node[bang2] (mult) at (2,1) {$Z$};
+   \draw[rounded corners = 2mm,thick] (posto2.east) -- (posto2.west) -- (mult);
+   \draw[rounded corners = 2mm,thick] (pref.west) -- (pref.east) -- (mult);
+   \draw[rounded corners = 2mm,line width= 1.pt] (preg.west) -- +(3.75,0);
+   \draw[rounded corners = 2mm,line width= 1.2pt] (posto1.east) -- +(-3.75,0);
+}
+
+\newcommand{\SigLabelEdgepic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+	\begin{pgfonlayer}{nodelayer}
+\SigLabelEdge
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigLabelVsource{
+\begin{scope}[shift={(2,0)}, scale=.75]
+\sigflowdel
+\end{scope}
+\begin{scope}[shift={(-2,-1)}, xscale=.5]
+\SigVsource
+\end{scope}
+   \node[coordinate] (ab) at (1,-2) {};
+   \node[coordinate] (ac) at (-1,-2) {};
+   \node[coordinate] (ad) [right of = out] {};
+  \draw[rounded corners = 2mm,thick] (mult) -- (ad.west) -- (ab) -- (ac);
+
+}
+
+\newcommand{\SigLabelVsourcepic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+	\begin{pgfonlayer}{nodelayer}
+\SigLabelVsource
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\SigLabelIsource{
+\begin{scope}[shift={(0,0)}, yscale=.5]
+\SigIsource
+\end{scope}
+\begin{scope}[shift={(0,-1)}, scale=.5]
+\sigflowcodel
+\end{scope}
+}
+
+\newcommand{\SigLabelIsourcepic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+	\begin{pgfonlayer}{nodelayer}
+\SigLabelIsource
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+
+\def\SigLabelImp{
+   \node[coordinate] (in) {};
+   \node [multiply] (mult) [right of=in] {Z};
+   \node[coordinate] (out) [right of=mult] {};
+  % \node (label) [below of=out, shift={(0,0.1)}] {};
+   \draw (in) -- (mult) -- (out);
+}
+
+\newcommand{\SigLabelImppic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+	\begin{pgfonlayer}{nodelayer}
+\SigLabelImp
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+
+\def\BondtoSigMult{   
+\node[plus] (adder) {};
+   \node[coordinate] (f) at (-0.65, -0.5) {};
+   \node[coordinate] (g) at (-0.65, 0.5) {};
+   \node (out) [coordinate] [right of=adder] {};
+   \node (pref) [left of=f] {};
+   \node (preg) [left of=g] {};
+%   \node (caption) [right of=out, shift={(0,0.25)}] {addition};
+   \draw[rounded corners,thick] (pref) -- (f) -- (adder.addend);
+   \draw[rounded corners,thick] (preg) -- (g) -- (adder.summand);
+   \draw[thick] (adder) -- (out);
+
+   \node[coordinate] (fa) [below = .25 of f] {};
+   \node[coordinate] (fa2) [below= .25 of fa] {};
+   \node (postofa) [left of=fa] {};
+   \node (postofa2) [left of=fa2] {};
+   \node [coordinate] (addera) [below =.25 of adder] {};
+   \node [coordinate] (adderb) [below =.25 of addera] {};
+   \node [coordinate] (infa) [right of=addera] {};
+   \node [coordinate] (infb) [right of=adderb] {};
+   \node (outfa) [right = 1.25 of infa] {};
+   \node (outfb) [right = 1.25 of infb] {};
+   \draw[rounded corners,thick] (postofa) -- (fa) -- (addera) -- (infa) -- (outfa);
+   \draw[rounded corners,thick] (postofa2) -- (fa2) -- (adderb) -- (infb) -- (outfb); 
+
+
+   \node [zero] (ins1) [right =.25 of out] {};
+ %  \node (inscaption) [below of=out1] {};
+   \draw[rounded corners,thick] (out) -- (ins1);
+
+\begin{scope}[shift={(0,1.5)}]
+   \node[delta] (dupe){};
+   \node[coordinate] (o2) at (-0.65,-0.5) {};
+   \node[coordinate] (o1) at (-0.65,0.5) {};
+   \node (in) [coordinate] [right of=dupe] {};
+   \node (posto1) [left of=o1] {};
+   \node (posto2) [left of=o2] {};
+%   \node (caption) [below of=posto2, shift={(-0.5,0.3)}] {duplication};
+   \draw[rounded corners,thick] (posto1) -- (o1) -- (dupe.left out);
+   \draw[rounded corners,thick] (posto2) -- (o2) -- (dupe.right out);
+   \draw[thick] (in) -- (dupe);
+   \node[coordinate] (o1a) [above = .25 of o1] {};
+   \node[coordinate] (o2a) [above= .25 of o1a] {};
+   \node (posto1a) [left of=o1a] {};
+   \node (posto2a) [left of=o2a] {};
+   \node [coordinate] (dupea) [above =.25 of dupe] {};
+   \node [coordinate] (dupeb) [above =.25 of dupea] {};
+   \node (ina)  [coordinate] [right of=dupea] {};
+   \node (inb)  [coordinate] [right of=dupeb] {};
+   \node (outa)  [right = 1.25 of ina] {};
+   \node (outb)  [right = 1.25 of inb] {};
+   \draw[rounded corners,thick] (posto1a) -- (o1a) -- (dupea) -- (ina) -- (outa);
+   \draw[rounded corners,thick] (posto2a) -- (o2a) -- (dupeb) -- (inb) -- (outb);
+
+   \node [bang] (del1) [right = .25 of in] {};
+ %  \node (delcaption) [below of=del1] {deletion};
+   \draw[rounded corners,thick] (in) -- (del1);
+
+\end{scope}
+
+   \node[coordinate] (a) at (-1.15,-.501175) {};
+   \node[coordinate] (b) at (-2.35, -.501175) {};
+   \draw[rounded corners,thick] (b) -- (a);
+   \node[coordinate] (a1) [below= .25 of a] {};
+   \node[coordinate] (b1) [below= .25 of b] {};
+   \draw[rounded corners,thick] (b1) -- (a1);
+   \node[coordinate] (a2) [below= .25 of a1]{};
+   \node[coordinate] (b2) [below= .25 of b1] {};
+   \draw[rounded corners,thick] (b2) -- (a2);
+  \node[coordinate] (c) at (-1.15, 2.0001) {};
+   \node[coordinate] (d) at (-2.35, 2.0001) {};
+   \draw[rounded corners,thick] (d) -- (c);
+   \node[coordinate] (c1) [above= .25 of c] {};
+   \node[coordinate] (d1) [above= .25 of d] {};
+   \draw[rounded corners,thick] (d1) -- (c1);
+   \node[coordinate] (c2) [above= .25 of c1]{};
+   \node[coordinate] (d2) [above= .25 of d1] {};
+   \draw[rounded corners,thick] (d2) -- (c2);
+\begin{scope}[shift={(-1.95,.75)}, scale=.63, rotate=90]
+\sigflowswap
+\end{scope}
+}
+
+
+\newcommand{\BondtoSigMultpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+\begin{pgfonlayer}{nodelayer}
+\BondtoSigMult
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+%\newcommand{\BondtoSigMultFlippic}[1]
+%{
+%  \begin{aligned}
+%    \resizebox{#1}{!}{
+%\begin{tikzpicture}[thick, yscale=-1, every node/.style={transform shape}]
+%\begin{pgfonlayer}{nodelayer}
+%\BondtoSigMult
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%    }
+%  \end{aligned}
+%}
+
+
+\newcommand{\BondtoSigCoMultpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, xscale=-1, every node/.style={transform shape}]
+\begin{pgfonlayer}{nodelayer}
+\BondtoSigMult
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+%\newcommand{\BondtoSigFlipCoMultpic}[1]
+%{
+%  \begin{aligned}
+%    \resizebox{#1}{!}{
+%\begin{tikzpicture}[thick, xscale=-1, yscale=-1, every node/.style={transform shape}]
+%\begin{pgfonlayer}{nodelayer}
+%\BondtoSigMult
+%	\end{pgfonlayer}
+%\end{tikzpicture}
+%    }
+%  \end{aligned}
+%}
+
+\def\BondtoSigOtherMult{   
+\node[plus] (adder) {};
+   \node[coordinate] (f) at (-0.65, -0.5) {};
+   \node[coordinate] (g) at (-0.65, 0.5) {};
+   \node (out) [coordinate] [right of=adder] {};
+   \node (pref) [left of=f] {};
+   \node (preg) [coordinate] [left of=g] {};
+%   \node (caption) [right of=out, shift={(0,0.25)}] {addition};
+   \draw[rounded corners,thick] (pref) -- (f) -- (adder.addend);
+   \draw[rounded corners,thick] (preg) -- (g) -- (adder.summand);
+   \draw[thick] (adder) -- (out);
+
+\begin{scope}[shift={(0,1.5)}]
+   \node[delta] (dupe){};
+   \node[coordinate] (o2) at (-0.65,-0.5) {};
+   \node[coordinate] (o1) at (-0.65,0.5) {};
+   \node (in) [coordinate] [right of=dupe] {};
+   \node (posto1) [left of=o1] {};
+   \node (posto2) [coordinate] [left of=o2] {};
+%   \node (caption) [below of=posto2, shift={(-0.5,0.3)}] {duplication};
+   \draw[rounded corners,thick] (posto1) -- (o1) -- (dupe.left out);
+   \draw[rounded corners,thick] (posto2) -- (o2) -- (dupe.right out);
+   \draw[thick] (in) -- (dupe);
+
+\end{scope}
+   \node[coordinate] (a) at (-1.15,-.501175) {};
+   \node[coordinate] (b) at (-2.35, -.501175) {};
+   \draw[rounded corners,thick] (b) -- (a);
+  \node[coordinate] (c) at (-1.15, 2.0001) {};
+   \node[coordinate] (d) at (-2.35, 2.0001) {};
+   \draw[rounded corners,thick] (d) -- (c);
+
+    \draw[overdraw, rounded corners = 2mm,line width= 1.2pt] (posto1.east) -- +(-2.5,0);
+    \draw[overdraw, rounded corners = 2mm,line width= 1.2pt] (preg.east) -- +(-.5,0) -- +(-1,1.25) -- +(-1.75,1.25) -- +(-2.35,1.25);
+
+    \draw[overdraw, rounded corners = 2mm,line width= 1.2pt] (posto2.east) -- +(-1.25,0) -- +(-1.5,-1.75) -- +(-1.75,-2.5) -- +(-2.35,-2.5);
+    \draw[overdraw, rounded corners = 2mm,line width= 1.2pt] (b.east) -- +(-.5,0) -- +(-1,-1.25) -- +(-1.65,-1.25);
+
+\begin{scope}[shift={(0,-3)}]
+\node[plus] (adder) {};
+   \node[coordinate] (f) at (-0.65, -0.5) {};
+   \node[coordinate] (g) at (-0.65, 0.5) {};
+   \node (out) [coordinate] [right of=adder] {};
+   \node (pref) [left of=f] {};
+   \node (preg) [left of=g] {};
+%   \node (caption) [right of=out, shift={(0,0.25)}] {addition};
+   \draw[rounded corners,thick] (pref) -- (f) -- (adder.addend);
+   \draw[rounded corners,thick] (preg) -- (g) -- (adder.summand);
+   \draw[thick] (adder) -- (out);
+
+\begin{scope}[shift={(0,1.5)}]
+   \node[delta] (dupe){};
+   \node[coordinate] (o2) at (-0.65,-0.5) {};
+   \node[coordinate] (o1) at (-0.65,0.5) {};
+   \node (in) [coordinate] [right of=dupe] {};
+   \node (posto1) [left of=o1] {};
+   \node (posto2) [left of=o2] {};
+%   \node (caption) [below of=posto2, shift={(-0.5,0.3)}] {duplication};
+   \draw[rounded corners,thick] (posto1) -- (o1) -- (dupe.left out);
+   \draw[rounded corners,thick] (posto2) -- (o2) -- (dupe.right out);
+   \draw[thick] (in) -- (dupe);
+
+\end{scope}
+   \node[coordinate] (a) at (-1.15,-.501175) {};
+   \node[coordinate] (b) at (-2.35, -.501175) {};
+   \draw[rounded corners,thick] (b) -- (a);
+  \node[coordinate] (c) at (-1.15, 2.0001) {};
+   \node[coordinate] (d) at (-2.35, 2.0001) {};
+   \draw[rounded corners,thick] (d) -- (c);
+
+    \draw[overdraw, rounded corners = 2mm,line width= 1.2pt] (pref.east) -- +(-2.5,0);
+    \draw[overdraw, rounded corners = 2mm,line width= 1.2pt] (posto2.east) -- +(-.5,0) -- +(-1,-1.25) -- +(-1.75,-1.25) -- +(-2.5,-1.25);
+
+    \draw[overdraw, rounded corners = 2mm,line width= 1.2pt] (d.east) -- +(-.5,0) -- +(-1,1.25) -- +(-1.65,1.25);
+    \draw[overdraw, rounded corners = 2mm,line width= 1.2pt] (preg.east) -- +(-1.4,0) -- +(-1.65,1.75) -- +(-1.9,2.5) -- +(-2.50,2.5);
+
+
+
+
+
+\end{scope}
+}
+
+\newcommand{\BondtoSigOtherMultpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick]
+\begin{pgfonlayer}{nodelayer}
+\BondtoSigOtherMult
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\newcommand{\BondtoSigOtherCoMultpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, xscale=-1, every node/.style={transform shape}]
+\begin{pgfonlayer}{nodelayer}
+\BondtoSigOtherMult
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+
+\def\BondtoSigCoUnit{   
+\node[plus] (adder) {};
+   \node[coordinate] (f) at (-0.65, -0.5) {};
+   \node[coordinate] (g) at (-0.65, 0.5) {};
+   \node (out) [coordinate] [right of=adder] {};
+   \node (pref) [left of=f] {};
+   \node (preg) [left of=g] {};
+%   \node (caption) [right of=out, shift={(0,0.25)}] {addition};
+   \draw[rounded corners,thick] (pref) -- (f) -- (adder.addend);
+   \draw[rounded corners,thick] (preg) -- (g) -- (adder.summand);
+   \draw[thick] (adder) -- (out);
+
+   \node [zero] (ins1) [right =.25 of out] {};
+ %  \node (inscaption) [below of=out1] {};
+   \draw[rounded corners,thick] (out) -- (ins1);
+
+\begin{scope}[shift={(0,1.5)}]
+   \node[delta] (dupe){};
+   \node[coordinate] (o2) at (-0.65,-0.5) {};
+   \node[coordinate] (o1) at (-0.65,0.5) {};
+   \node (in) [coordinate] [right of=dupe] {};
+   \node (posto1) [left of=o1] {};
+   \node (posto2) [left of=o2] {};
+%   \node (caption) [below of=posto2, shift={(-0.5,0.3)}] {duplication};
+   \draw[rounded corners,thick] (posto1) -- (o1) -- (dupe.left out);
+   \draw[rounded corners,thick] (posto2) -- (o2) -- (dupe.right out);
+   \draw[thick] (in) -- (dupe);
+
+   \node [bang] (del1) [right = .25 of in] {};
+ %  \node (delcaption) [below of=del1] {deletion};
+   \draw[rounded corners,thick] (in) -- (del1);
+\end{scope}
+
+ \node[coordinate] (a) at (-1.15,-.501175) {};
+   \node[coordinate] (b) at (-2.35, -.501175) {};
+   \draw[rounded corners,thick] (b) -- (a);
+  \node[coordinate] (c) at (-1.15, 2.0001) {};
+   \node[coordinate] (d) at (-2.35, 2.0001) {};
+   \draw[rounded corners,thick] (d) -- (c);
+
+\begin{scope}[shift={(-1.95,.75)}, scale=.63, rotate=90]
+\sigflowswap
+\end{scope}
+
+}
+
+\newcommand{\BondtoSigCoUnitpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}
+\begin{pgfonlayer}{nodelayer}
+\BondtoSigCoUnit
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\newcommand{\BondtoSigUnitpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}[thick, xscale=-1, every node/.style={transform shape}]
+\begin{pgfonlayer}{nodelayer}
+\BondtoSigCoUnit
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+
+\def\BondtoSigOtherUnit{
+\begin{scope}[shift={(0,0)}, xscale=.3]
+\sigflowzero
+\end{scope}
+\begin{scope}[shift={(0,.25)}, xscale=-.3]
+\sigflowdel
+\end{scope}
+\begin{scope}[shift={(0,.5)}, xscale=.3]
+\sigflowzero
+\end{scope}
+\begin{scope}[shift={(0,.75)}, xscale=-.3]
+\sigflowdel
+\end{scope}
+}
+
+\newcommand{\BondtoSigOtherUnitpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}
+\begin{pgfonlayer}{nodelayer}
+\BondtoSigOtherUnit
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\BondtoSigOtherCoUnit{
+\begin{scope}[shift={(0,0)}, xscale=.5]
+\sigflowcozero
+\end{scope}
+\begin{scope}[shift={(0,.25)}, xscale=-.5]
+\sigflowcodel
+\end{scope}
+\begin{scope}[shift={(0,.5)}, xscale=.5]
+\sigflowcozero
+\end{scope}
+\begin{scope}[shift={(0,.75)}, xscale=-.5]
+\sigflowcodel
+\end{scope}
+}
+
+
+\newcommand{\BondtoSigOtherCoUnitpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}
+\begin{pgfonlayer}{nodelayer}
+\BondtoSigOtherCoUnit
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+\def\BondtoCircuitConverter{
+\begin{scope}[shift={(0,-1.5)}, xscale=1]
+\sigflowcodupsideways
+\end{scope}
+\begin{scope}[shift={(0,0)}, xscale=-1]
+\sigflowcoaddsideways
+\end{scope}
+\begin{scope}[shift={(1.95,-.75)}, scale=.63, rotate = -90]
+\sigflowswap
+\end{scope}
+\begin{scope}[rotate=-90]
+   \node[bang2] (a) at (-.5,1.15) {$-1$};
+   \node[coordinate] (b) at (-.5,2.35) {};
+   \draw[rounded corners,thick] (b) -- (a);
+   \node[bang2] (c) at (2,1.15) {$-1$};
+   \node[coordinate] (d) at (2,2.35) {};
+   \draw[rounded corners,thick] (d) -- (c);
+\end{scope}
+}
+
+\newcommand{\BondtoCircuitConverterpic}[1]
+{
+  \begin{aligned}
+    \resizebox{#1}{!}{
+\begin{tikzpicture}
+\begin{pgfonlayer}{nodelayer}
+\BondtoCircuitConverter
+	\end{pgfonlayer}
+\end{tikzpicture}
+    }
+  \end{aligned}
+}
+
+
+\newcommand{\lcircpropexample}[1]
+{
+  \begin{aligned}
+\begin{tikzpicture}[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{
+		\node [style=none] (1) at (1, -1) {};
+		\node [style=none] (3) at (-1, -1) {};
+		\node [style=none] (2) at (1, 0) {};
+		\node [style=none] (4) at (-1, 0) {};
+		\node [style=none] (7) at (1, 1) {};
+		\node [style=none] (8) at (-1, 1) {};
+   		\path (1) edge  (3);
+    		\path (2) edge  (4);
+ 		\path (7) edge  (8);
+		\node [style=none] (a) at (0, -.70) {1};
+		\node [style=none] (b) at (0, .30) {3};
+		\node [style=none] (c) at (0, 1.30) {2};
+}
+      \end{tikzpicture}
+  \end{aligned}
+}
+
+
+\newcommand{\lcircpropexampleother}[1]
+{
+\begin{aligned}
+\begin{tikzpicture}
+[circuit ee IEC, set resistor graphic=var resistor IEC
+      graphic,scale=.5]
+\scalebox{1}{	
+		\node [style=none] (0) at (1, -.5) {};
+		\node  [circle,draw,inner sep=1pt,fill]   (1) at (0.125, -.5) {};
+		\node [style=none] (2) at (-1, 0) {};
+		\node [style=none] (3) at (-1, -1) {};
+		\draw[line width = 1.5pt] (0.center) to (1.center);
+		\draw[line width = 1.5pt] [in=0, out=120, looseness=1.20] (1.center) to (2.center);
+		\draw[line width = 1.5pt] [in=0, out=-120, looseness=1.20] (1.center) to (3.center);
+		\node[style=none] (5) at (0,-1.5) {};
+		\node [style=none] (7) at (1, -2) {};
+		\node [style=none] (8) at (-1, -2) {};
+ 		\path (7) edge  (8);
+		\node [style=none] (a) at (0, -1.70) {.9};
+}
+      \end{tikzpicture}
+\end{aligned}
+}
+
+\tikzset{
+    overdraw/.style={preaction={draw,white,line width=#1}},
+    overdraw/.default=5pt
+}
+
+\tikzset{
+circnode/.style={
+  circle, draw=red, very thin, outer sep=0.025em, minimum size=2em,
+  fill=red, text centered},
+integral/.style={
+  regular polygon, regular polygon sides=3, shape border rotate=180, draw=black, very thick,
+  outer sep=0.025em, inner sep=0, minimum size=2em, fill=blue!5, text centered},
+multiply/.style={
+  regular polygon, regular polygon sides=3, shape border rotate=-90, draw=black,  thick,
+  outer sep=0.025em, inner sep=0, minimum size=2em, fill=blue!5, text centered},
+vsource/.style={
+  regular polygon, regular polygon sides=5, shape border rotate=-90, draw=black, thick,
+  outer sep=0.025em, inner sep=0, minimum size=2em, fill=blue!5, text centered},
+isource/.style={
+  regular polygon, regular polygon sides=5, shape border rotate=0, draw=black, very thick,
+  outer sep=0.025em, inner sep=0, minimum size=2em, fill=blue!5, text centered},
+%semultiply/.style={
+%  regular polygon, regular polygon sides=3, shape border rotate=220, draw=black, very thick,
+%  outer sep=0.025em, inner sep=0, minimum size=2em, fill=blue!5, text centered},
+upmultiply/.style={
+  regular polygon, regular polygon sides=3, draw=black, very thick,
+  outer sep=0.025em, inner sep=0, minimum size=2em, fill=blue!5, text centered},
+zero/.style={
+  circle, draw=black, very thick, minimum size=0.15cm, fill=black,
+  inner sep=0, outer sep=0},
+hole/.style={
+  circle, draw=white, very thick, minimum size=0.25cm, fill=white,
+  inner sep=0, outer sep=0},
+bang/.style={
+  circle, draw=black, very thick, minimum size=0.15cm, fill=green!10,
+  inner sep=0, outer sep=0},
+bang2/.style={
+  circle, draw=black, thick, minimum size=0.5cm, fill=green!10,
+  inner sep=0, outer sep=0},
+delta/.style={
+  regular polygon, regular polygon sides=3, minimum size=0.4cm,  shape border rotate=-90, inner
+  sep=0, outer sep=0.025em, draw=black, very thick, fill=green!10},
+codelta/.style={
+  regular polygon, regular polygon sides=3, shape border rotate=90, minimum size=0.4cm,
+  inner sep=0, outer sep=0.025em, draw=black, very thick, fill=green!10},
+plus/.style={
+  regular polygon, regular polygon sides=3, shape border rotate=-90, minimum size=0.4cm,
+  inner sep = 0, outer sep=0.025em, draw=black, very thick, fill=black},
+coplus/.style={
+  regular polygon, regular polygon sides=3, minimum size=0.4cm,shape border rotate=90,
+  inner sep = 0, outer sep=0.025em, draw=black, very thick, fill=black},
+sqnode/.style={
+  regular polygon, regular polygon sides=4, minimum size=2.6em,
+  draw=black, very thick, inner sep=0.2em, outer sep=0.025em,
+  fill=yellow!10, text centered},
+blackbox/.style={
+  regular polygon, regular polygon sides=4, minimum size=2.6em,
+  draw=black, very thick, inner sep=0.2em, outer sep=0.025em, fill=black},
+bigcirc/.style={
+  circle, draw=black, very thick, text width=1.6em, outer sep=0.025em,
+  minimum height=1.6em, fill=blue!5, text centered}
+ }
