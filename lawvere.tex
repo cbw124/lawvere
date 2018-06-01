@@ -27,6 +27,7 @@
 \newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}
 \newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
 
 \def\rd{\rotatebox[origin=c]{90}{$\dashv$}} %rotate dash right
 \def\ld{\rotatebox[origin=c]{-90}{$\dashv$}} %rotate dash left
@@ -132,7 +133,7 @@ Lawvere theories and \textit{finitary monads} provide complementary representati
 	\end{tikzcd}
 \end{center}
 
-There is the \textit{underlying set} functor $U:\Mod \to \Set$ which sends each model $\mu: \T \to \Set$ to the image of the generating object, $\mu(\iota(1)) = X$ in $\Set$. There is the \textit{free model} functor $F:\Set \to \Mod$ which sends each finite set $n$ to the representable $\T(n,-):\T \to \Set$, and in general a set $X$ to the set of all $n$-ary operations on it: $\{f(x_1,...,x_n)|f\in \T(n,1), x_i\in X\}$ - this is the \textit{filtered colimit} of representables indexed by the poset of finite subsets of $X$ \cite{nlab}, which pertains to conditions of finitude in $\S$3. These form the adjunction:
+There is the \textit{underlying set} functor $U:\Mod \to \Set$ which sends each model $\mu: \T \to \Set$ to the image of the generating object, $\mu(\iota(1)) = X$ in $\Set$. There is the \textit{free model} functor $F:\Set \to \Mod$ which sends each finite set $n$ to the representable $\T(n,-):\T \to \Set$, and in general a set $X$ to the functor which sends $n$ to the set of all $n$-ary operations on $X$: $\{f(x_1,...,x_n)|f\in \T(n,1), x_i\in X\}$ - this is the \textit{filtered colimit} of representables indexed by the poset of finite subsets of $X$ \cite{nlab}, which pertains to conditions of finitude in $\S$3. These form the adjunction:
 
 $$\Mod(F(n),\mu) \cong \mu(n) \cong \Set(n,U(\mu))$$ The left isomorphism is by the Yoneda lemma, and the right isomorphism is by the definition of power in $\Set$. Essentially, these are opposite ways of representing the $n$-ary operations of a given model. This adjunction induces a monad $T$ on $\Set$, which sends each set $X$ to the set of all terms in the theory on $X$ up to equality - the integral symbol is a \textit{coend}, essentially a coproduct quotiented by the equality the theory: $$T(X) = \int^{n\in \NN} \T(n,1) \times X^n$$
 
@@ -172,7 +173,7 @@ and $\C$ is $\V$-powered or copowered if all powers or copowers exist.
 
 These are the two basic forms of enriched limit and colimit, which are not especially intuitive; but they are a direct generalization of a familiar idea in the category of sets. In $\Set$, the power is the ``exponential'' function set and the copower is the product. To generalize this to an action on other $\Set$-categories, note:
 \[\begin{array}{lcr}
-	X \pfk Y = & X^Y & \cong \prod_{y\in Y}X\\
+	X \pfk Y = & Y^X & \cong \prod_{x\in X}Y\\
 	\\
 	X \odot Y = & X \times Y & \cong \coprod_{y\in Y}X
 \end{array}\]
@@ -232,7 +233,7 @@ This induces a \textbf{change of base} functor $\varphi:\V\Cat \to \W\Cat$ \cite
 	\end{array}\]
 \end{minipage}\\~\\
 
-A monoidal functor $F:\V \to \W$ with change of base $\varphi:\V\Cat \to \W\Cat$ is a \textbf{change of semantics} for a $\J$-$\V$ theory $(j,\tau)$ if ($F\circ j$,$\varphi$($\tau$)) is a $F(\J)$-$\W$ theory. This requires $\varphi(j)$ to be full and $\varphi(\tau)$ to be bijective-on-objects and $F(J)$-power preserving.
+A monoidal functor $F:\V \to \W$ with change of base $\varphi:\V\Cat \to \W\Cat$ is a \textbf{change of semantics} for a $\J$-$\V$ theory $(j,\tau)$ if ($F\circ j$,$\varphi$($\tau$)) is a $F(\J)$-$\W$ theory. This requires $F\circ j$ to be full and $\varphi(\tau)$ to be bijective-on-objects and $F(J)$-power preserving.
 
 Note: in the same way that every $n\in \NN^\op$ is a power of $1 \in \Set$, every $J\in \J$ is a power of the monoidal unit $I\in \V$: $$\J(a\odot I,b) \cong \V(I, \J(a,b)) \cong \J(a,I\pfk b)$$ - substituting $a$ for $b$, the unital tensor or `copower' isomorphism on the left maps to the unital `cotensor' or power isomorphism. Since a $\J$-$\V$ theory preserves powers, this implies that every object of $\T$ is a power of the unit.
 
@@ -293,29 +294,66 @@ M^2 \ar[Rightarrow, to=Q, shorten >= 4pt]{r}{r} \ar[swap]{r}{m} & M
 \end{minipage}}
 \end{center}
 
-\begin{minipage}{.2 \textwidth}
-\begin{tikzcd}
-M^4 \ar{rr}{M\times M\times m} \ar[swap,""name=L1]{rd}{M\times m\times M} \ar[swap,""name=L2]{dd}{m\times M\times M}
-& & M^3 \ar[""name=R1]{rd}{M\times m}\\
-\ar[Rightarrow, from=L1, to=R1, shorten <= 42pt, shorten >= 42pt, "M\times a"]
-& M^3 \ar{rr}{M\times m} \ar[""name=R2]{dd}{m\times M} & & M^2 \ar[""name=R3]{dd}{m}\\
-\ar[Rightarrow, swap, from=L2, to=R2, shorten <= 24pt, shorten >= 24pt, "a\times M"]
-\ar[Rightarrow, from=R2, to=R3, shorten <= 40pt, shorten >= 40pt, "a"]
-M^3 \ar[swap]{rd}{m\times M}\\
-& M^2 \ar{rr}{m} & & M
-\end{tikzcd}
-\end{minipage}\qquad
+%\begin{minipage}{.2 \textwidth}
+%\begin{tikzcd}
+%M^4 \ar{rr}{M\times M\times m} \ar[swap,""name=L1]{rd}{M\times m\times M} \ar[swap,""name=L2]{dd}{m\times M\times M}
+%& & M^3 \ar[""name=R1]{rd}{M\times m}\\
+%\ar[Rightarrow, from=L1, to=R1, shorten <= 42pt, shorten >= 42pt, "M\times a"]
+%& M^3 \ar{rr}{M\times m} \ar[""name=R2]{dd}{m\times M} & & M^2 \ar[""name=R3]{dd}{m}\\
+%\ar[Rightarrow, swap, from=L2, to=R2, shorten <= 24pt, shorten >= 24pt, "a\times M"]
+%\ar[Rightarrow, from=R2, to=R3, shorten <= 40pt, shorten >= 40pt, "a"]
+%M^3 \ar[swap]{rd}{m\times M}\\
+%& M^2 \ar{rr}{m} & & M
+%\end{tikzcd}
+%\end{minipage}\qquad
+%
+%\begin{minipage}{.2 \textwidth}
+%\begin{tikzcd}
+%M^4 \ar{rr}{M\times M\times m} \ar[swap,""name=L1]{dd}{m\times M\times M} & & M^3 \ar[swap,""name=R1]{dd}{m\times M} \ar{rd}{M\times m}\\ \ar[Rightarrow, from=L1, to=R1, shorten <= 40pt, shorten >= 40pt, "?"]
+%& & & M^2 \ar[""name=R3]{dd}{m}\\ \ar[Rightarrow, swap, from=R1, to=R3, shorten <= 24pt, shorten >= 24pt, "a"]
+%M^3 \ar{rr}{M\times m} \ar[swap, ""name=L2]{rd}{m\times M} & & M^2 \ar[""name=R2]{rd}{m}\\
+%& M^2 \ar{rr}{m} & & M\\ \ar[Rightarrow, swap, from=L2, to=R2, shorten <= 40pt, shorten >= 40pt, "a"]
+%\end{tikzcd}
+%\end{minipage}
 
-\begin{minipage}{.2 \textwidth}
-\begin{tikzcd}
-M^4 \ar{rr}{M\times M\times m} \ar[swap,""name=L1]{dd}{m\times M\times M} & & M^3 \ar[swap,""name=R1]{dd}{m\times M} \ar{rd}{M\times m}\\ \ar[Rightarrow, from=L1, to=R1, shorten <= 40pt, shorten >= 40pt, "?"]
-& & & M^2 \ar[""name=R3]{dd}{m}\\ \ar[Rightarrow, swap, from=R1, to=R3, shorten <= 24pt, shorten >= 24pt, "a"]
-M^3 \ar{rr}{M\times m} \ar[swap, ""name=L2]{rd}{m\times M} & & M^2 \ar[""name=R2]{rd}{m}\\
-& M^2 \ar{rr}{m} & & M\\ \ar[Rightarrow, swap, from=L2, to=R2, shorten <= 40pt, shorten >= 40pt, "a"]
-\end{tikzcd}
-\end{minipage}
+\newpage
 
+\section{Simplify with $\NN$-arities}
 
+Most of the enriched algebraic theory literature deals with generalized arities; these will be important in time, but for present applications, we would like the benefits of enrichment with the simplicity of natural number arities. Here we provide some lemmas for this simplification.
+
+Let $(\V,\times,I_\V)$ be a cartesian closed category with finite coproducts. Define $\NN_\V$ to be the full subcategory of finite coproducts of the unit object: $$n_\V = \coprod_{n \in \NN} I_\V$$ which is the \textit{copower} of $I_\V$ by a finite set $n \in \NN$, characterized by the universal property $$\V(n_\V,a) = \V(I_\V \odot n,a) \simeq \Set(n,\V(I_\V,a))$$ This is our ``system of arities'', the full monoidal subcategory $\J \hookrightarrow \V$. The point is that instead of thinking about fancy enriched powers, we just want to think about good old products.
+
+We must first establish that $\V$-homs out of these $n_\V$ are equivalent to $\Set$-homs:
+\[\begin{array}{rclcl}
+	\V(a,[n_\V,b]) & \simeq & \V(a\times n_\V,b) & &\\
+	& = & \V(a\times (\coprod_n I_\V),b) & &\\
+	& \simeq & \V(\coprod_n(a\times I_\V),b) & &\\
+	& \simeq & \V(\coprod_n a,b) & &\\
+	& \simeq & \V(a\odot n,b) & &\\
+	& \simeq & \Set(n,\V(a,b)) & &\\
+	& \simeq & \prod_n \V(a,b) & &\\
+	& \simeq & \V(a,\prod_n b) & &\\
+	& \simeq & \V(a,\prod_n \V(I_\V,b)) & &\\
+	& \simeq & \V(a,\V(\coprod_n I_\V,b)) & = & \V(a,\V(n_\V,b))
+\end{array}\]
+
+The following shows that $\NN_\V$-powers in $\V\Cat$ are actually equivalent to the usual $n$-fold products:
+
+\begin{lemma}
+	Let $T$ be a $\V$-category with $\NN_\V$-powers. Then for all $s \in T$, $n_\V \pfk s \simeq \prod_n s$ as objects of the underlying category $T_0$:
+	\[\begin{array}{rclcl}
+		T(a,n_\V \pfk s) & \simeq & [n_\V,T(a,s)] & &\\
+		& \simeq & \V(n_\V,T(a,s)) & &\\
+		& = & \V(I_\V \odot n,T(a,s)) & &\\
+		& \simeq & \Set(n,V(I_\V,T(a,s))) & &\\
+		& \simeq & \Set(n,T_0(a,s)) & \simeq & T_0(a,\prod_ns)
+	\end{array}\]
+\end{lemma}
+
+This is important, because now the functor $F: \V \to \W$ does not need to preserve \textit{powers} of $\V$, but only the \textit{coproducts} which define our system of arities. This makes ``change of semantics'' much easier.
+
+\newpage
 
 \bibliographystyle{amsplain}
 \bibliography{lawvere}
