@@ -1,5 +1,5 @@
 \documentclass[a4paper,UKenglish]{article}
-\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage[letterpaper, margin=1.2in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[utf8]{inputenc}
@@ -38,6 +38,7 @@
 \newcommand{\Grp}{\mathrm{Grp}}
 \newcommand{\Cat}{\mathrm{Cat}}
 \newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Mon}{\mathrm{Mon}}
 \newcommand{\Alg}{\mathrm{Alg}}
 \newcommand{\Pos}{\mathrm{Pos}}
 \newcommand{\FinSet}{\mathrm{FinSet}}
@@ -107,7 +108,7 @@ Operational semantics is modelled and unified by enriched Lawvere theories and c
 
 A motivating example is ``Logic as a distributive law" \cite{ladl}, an algorithm for deriving a spatial-behavioral type system from a formal presentation of a computational calculus. Not only can essential properties such as soundness be proven, but modalities can be ``built-in" to express principles of the system.
 
-This idea impacts more than computation, and though these concepts have been well-known for decades, the potential significance has not been fully realized. With the modern ``proofs as programs" paradigm, this method applies to many subjects throughout mathematics. For example, one can construct the ``theory of pseudomonoids'' to model the rewrites of string diagrams...
+This idea impacts more than computation, and even though these concepts have been well-known for decades, the practical significance has not been fully realized. With the modern ``proofs as programs" paradigm, this method applies to many subjects throughout mathematics. We illustrate this idea with several examples, and consider future potential.
 
 \section{Lawvere Theories}
 The ``theory of monoids'' can be defined without any reference to sets:
@@ -182,13 +183,15 @@ So, categories are canonically $\Set$-powered or copowered by indexed products o
 There are just a few more technicalities. * Given a $\V$-category $\C$, one often considers the Yoneda embedding into the $\V$-presheaf category $[\C^\op, \V]$, and it is important if certain subcategories are representable; generally, some properties of $\C$ depend on a condition of ``finitude.'' \cite{finite} A category is \textbf{locally finitely presentable} if it is the category of models for a \textit{sketch}, which is a generalization of Lawvere theory to finite limits, and an object is finitely presentable or \textbf{finite} if its representable functor is \textit{finitary}, or preserves filtered colimits. A $\V$-category $\C$ is locally finitely presentable if the underlying category $\C_0$ is LFP, $\C$ has finite powers, and $(-)^x: \C_0 \to \C_0$ is finitary. The details are not crucial - all categories to be considered are locally finitely presentable. Denote by $\V_f$ the subcategory of $\V$ of finite objects - in $\Gph$, these are simply graphs with finite vertices and edges.\\
 
 \section{$\J$-$\V$ theories}
-All of these abstract definitions culminate in the central concept: for a symmetric monoidal closed category $(\V,\otimes,I)$, a \textit{$\V$-enriched Lawvere theory} \`a la Power \cite{power} is a finitely-powered $\V$-category $\T$ equipped with a strictly power-preserving bijective-on-objects $\V$-functor $\iota:\V_f^\op \to \T$. A \textit{model} of a $\V$-theory is a finite-power $\V$-functor $\mu:\T \to \V$, and $\V$-natural transformations between them form the $\V$-category of models $[\T,\V]_{fp}$. The monadic adjunction and equivalence of $\S$2 generalize to $\V$-theories, as originally formulated by Power in \cite{power}.
+All of these abstract definitions culminate in the central concept: for a symmetric monoidal closed category $(\V,\otimes,I)$, a \textit{$\V$-enriched Lawvere theory} \`a la Power \cite{power} is a finitely-powered $\V$-category $\T$ equipped with a strictly power-preserving bijective-on-objects $\V$-functor $\iota:\V_f^\op \to \T$. A \textit{model} of a $\V$-theory is a finite-power $\V$-functor $\mu:\T \to \V$, and $\V$-natural transformations between them form the $\V$-category of models $[\T,\V]_{fp}$. The monadic adjunction and equivalence of $\S$2 generalize to $\V$-theories, as originally formulated by Power.
 
-However, this requires $\T$ to have all powers of $\V_f$, i.e. the theory must have arities for every finite object of $\V$. It is certainly useful to include these generalized arities, but this introduces the question of how to \textit{present} such a theory; this is not nearly as straightforward as $n$-ary operations, and to the authors' knowledge a general method of enriched presentation does not yet exist. However, this is not needed for our purposes - we only need \textit{natural number} arities, while still retaining graph-enrichment. How can this be defined?
+However, this requires $\T$ to have all powers of $\V_f$, i.e. the theory must have arities for every finite object of $\V$. It is certainly useful to include these generalized arities, but this introduces the question of how to \textit{present} such a theory; this is not nearly as straightforward as $n$-ary operations, and to the authors' knowledge a general method of enriched presentation does not yet exist. However, this is not needed for our purposes - we only need \textit{natural number} arities, while still retaining \textit{graph}-enrichment.
 
 A very general and useful definition of enriched algebraic theory was introduced by Lucyshyn-Wright \cite{rbb}, which allows for theories to be parameterized by a \textbf{system of arities}, a full subcategory inclusion $j: \J \xhookrightarrow{} \V$ containing the monoidal unit and closed under tensor.
 
-A $\V$-enriched algebraic theory with $j$-arities or \textbf{$\J$-$\V$ theory} is a $\V$-category $\T$ equipped with a $\J$-power preserving bijective-on-objects $\V$-functor $\tau:\J^\op \to \T$. This is essentially a $\V$-category with objects being $\J$-powers of a generating object $S = S^I$, $S^J$ for $J \in \J$. A \textbf{model} of this theory in a $\V$-category $\C$ is a finite-power preserving $\V$-functor $\T \to \C$. Here is an overview of the concepts: 
+A $\V$-enriched algebraic theory with $j$-arities or \textbf{$\J$-$\V$ theory} is a $\V$-category $\T$ equipped with a $\J$-power preserving bijective-on-objects $\V$-functor $\tau:\J^\op \to \T$. This is essentially a $\V$-category with objects being $\J$-powers of a generating object $S = S^I$, $S^J$ for $J \in \J$. A \textbf{model} of this theory in a $\V$-category $\C$ is a finite-power preserving $\V$-functor $\T \to \C$.
+
+Here is an overview of the concepts: 
 
 \begin{center}
 	\begin{tikzcd}
@@ -200,52 +203,13 @@ A $\V$-enriched algebraic theory with $j$-arities or \textbf{$\J$-$\V$ theory} i
 	\end{tikzcd}
 \end{center}
 
-This subsumes existing formulations; for example, Power's definition is the case $\J = \V_f$. A system of arities is \textbf{eleutheric} if left Kan extensions along $j$ exist and are preserved by $\V(K,-)$ for all $K \in Ob(\J)$. This is what is needed to have the essential \textit{monadicity} theorems: Lucyshyn-Wright proved that any $\J$-$\V$ theory for an eleutheric system of arities has a category of models for $\C = \V$ which is monadic over $\V$, and the induced $\V$-monad is ``j-ary'' in that it ``conditionally preserves $\J$-flat colimits, i.e. can be thought of as a monad with $\J$ arities.
+This subsumes existing formulations; for example, Power's definition is the case $\J = \V_f$. A system of arities is \textbf{eleutheric} if left Kan extensions along $j$ exist and are preserved by $\V(K,-)$ for all $K \in Ob(\J)$. This is what is needed to have the essential \textit{monadicity} theorems: Lucyshyn-Wright proved that any $\J$-$\V$ theory for an eleutheric system of arities has a category of models for $\C = \V$ **** which is monadic over $\V$, and the induced $\V$-monad is ``j-ary'' in that it ``conditionally preserves $\J$-flat colimits, i.e. can be thought of as a monad with $\J$ arities.
 
-The usual kinds of arities were all proved to be eleutheric: in particular, finite cardinals. The structure described in the introduction is precisely an $\NN$-$\Gph$-theory.
+The usual kinds of arities were all proved to be eleutheric: in particular, finite cardinals. Hence, $\NN$-$\V$ theories have all of the nice relations with monads as ordinary Lawvere theories - and now they have the rich ``operational'' information of $\V$, and even this $\V$ itself is adaptable.
 
 \section{Change of Base}
 
-We propose a general framework in which one can \textit{transition} seamlessly between different forms of operational semantics. This is effected by a \textbf{monoidal functor} - a functor $$F: (\V,\otimes_\V,I_\V) \to (\W,\otimes_\W,I_\W)$$ which transfers the tensor and unit via the \textit{laxor} and \textit{unitor}
-\[\begin{array}{rl}
-\lambda: & F(a) \otimes_\W F(b) \to F(a\otimes_\V b)\\
-\upsilon: & I_\W \to F(I_\V)
-\end{array}\]
-This induces a \textbf{change of base} functor $\varphi:\V\Cat \to \W\Cat$ \cite{borceux}. Suppose $$\beta \circ \alpha: P \Rightarrow Q \Rightarrow R: \C \to \D \in \V\Cat$$ Then $\varphi$ is defined:\\
-\begin{minipage}{.2 \textwidth}
-	\[\begin{array}{rl}
-	\varphi(\C) \in \W\Cat\\
-	\\
-	\text{objects} & Obj(\C)\\
-	\text{hom-function} & F \circ \C(-,-)\\
-	\text{composition} & F(\circ_{a,b,c}) \circ \lambda\\
-	\text{identity} & F(i_a) \circ \upsilon\\
-	\end{array}\]
-\end{minipage}\qquad \qquad
-\begin{minipage}{.2 \textwidth}
-	\[\begin{array}{rl}
-	\varphi(\V\Cat(\C,\D)) \in \W\\
-	\\
-	\text{objects} & \varphi(G)_{obj} = G, \; \varphi(G)_{hom} = F\circ G\\
-	\text{hom-function} & \varphi(\alpha) = F(\alpha) \circ \upsilon\\
-	\text{composition} & \varphi(\beta \circ \alpha) = \varphi(\beta) \circ \varphi(\alpha)\\
-	\text{identity} & \varphi(1_G) = 1_{\varphi(G)}\\
-	\end{array}\]
-\end{minipage}\\~\\
-
-A monoidal functor $F:\V \to \W$ with change of base $\varphi:\V\Cat \to \W\Cat$ is a \textbf{change of semantics} for a $\J$-$\V$ theory $(j,\tau)$ if ($F\circ j$,$\varphi$($\tau$)) is a $F(\J)$-$\W$ theory. This requires $F\circ j$ to be full and $\varphi(\tau)$ to be bijective-on-objects and $F(J)$-power preserving.
-
-Note: in the same way that every $n\in \NN^\op$ is a power of $1 \in \Set$, every $J\in \J$ is a power of the monoidal unit $I\in \V$: $$\J(a\odot I,b) \cong \V(I, \J(a,b)) \cong \J(a,I\pfk b)$$ - substituting $a$ for $b$, the unital tensor or `copower' isomorphism on the left maps to the unital `cotensor' or power isomorphism. Since a $\J$-$\V$ theory preserves powers, this implies that every object of $\T$ is a power of the unit.
-
-\theoremstyle{theorem}
-\begin{theorem*}
-	If $F$ is full and power-preserving, then $F$ is a change of semantics.
-\end{theorem*}
-\begin{proof}
-	If $F$ is full, then $F\circ j$ is full. By the above note, if $F$ preserves powers, then $F(J) = F([I,J]) = [F(I),F(J)]$, and these determine the action of $\varphi(\tau)$ by $F(J)$-powers of $F(I)$.
-\end{proof}
-
-\section{Semantics}
+We propose a general framework in which one can \textit{transition} seamlessly between different forms of operational semantics: small-step, big-step, full-step, denotational:
 \[
 \begin{tikzcd}[column sep=small]
 \Gph \arrow[bend left,below]{rr}{F_C}
@@ -256,7 +220,101 @@ Note: in the same way that every $n\in \NN^\op$ is a power of $1 \in \Set$, ever
 & \rd &
 \Set \arrow[bend left,above]{ll}{F_P}
 \end{tikzcd}
-\]\\\\
+\]
+This is effected by a \textbf{monoidal functor} - a functor $$F: (\V,\otimes_\V,I_\V) \to (\W,\otimes_\W,I_\W)$$ which transfers the tensor and unit via the \textit{laxor} and \textit{unitor}
+\[\begin{array}{rl}
+\lambda: & F(a) \otimes_\W F(b) \to F(a\otimes_\V b)\\
+\upsilon: & I_\W \to F(I_\V)
+\end{array}\]
+This induces a \textbf{change of base} functor $F^*:\V\Cat \to \W\Cat$ \cite{borceux}. If $f: \C \to \D \in \V\Cat$ if a $\V$-functor, then $F^*(f)_{obj} = f_{obj}$; $F^*(f)_{hom} = F\circ f$, and $F^*(C)$ is defined:
+
+\[\begin{array}{rl}
+\text{objects} & Obj(\C)\\
+\text{hom-function} & F \circ \C(-,-)\\
+\text{composition} & F(\circ_{a,b,c}) \circ \lambda\\
+\text{identity} & F(i_a) \circ \upsilon\\
+\end{array}\]
+
+The change of base operation forms a 2-functor
+\[\begin{array}{ccc}
+\Mon\Cat & \xrightarrow{(-)^*} & 2\Cat\\
+(\V\to\W) & \mapsto & (\V\Cat\to\W\Cat)
+\end{array}\]
+In particular, there is an important correspondence of adjunctions:
+\begin{center}
+	\begin{tikzcd}
+	\Set \arrow[bend left,below]{rr}{-\odot I}
+	& \ld &
+	\arrow[bend left,above]{ll}{\V(I,-)} \V
+	\arrow[maps to]{r}
+	& \Cat \arrow[bend left,below]{rr}{(-\odot I)^*}
+	& \ld &
+	\arrow[bend left,above]{ll}{(\V(I,-))^*} \V\Cat
+	\end{tikzcd}
+\end{center}
+
+Each set $X$ is represented in $\V$ as the $X$-indexed coproduct of the unit object, and conversely, each object $a$ of $\V$ has is represented in $\Set$ by the hom-set from the unit to $a$. This process induces a \textit{change of base}, whereby ordinary $\Set$-categories are converted into $\V$-categories.
+
+This is precisely what is needed: the ``arity'' category $\NN$ sits inside many enriching categories under various guises: as \textit{finite discrete graphs}, \textit{categories}, \textit{posets}, etc. For each $\V$ we can define the arity subcategory $\NN_\V$ to be the full subcategory of finite coproducts (copowers) of the unit object, and this will remain unchanged by the change-of-base above to the $\V$-category $\tilde{\NN}_\V$.
+
+We only need to show that everything is simplified by restricting to this particular $\J$.
+
+\section{Simplify with $\NN$-arities}
+
+Most of the enriched algebraic theory literature deals with generalized arities; these will be important in time, but for present applications, we would like the benefits of enrichment with the simplicity of natural number arities. Here we provide some lemmas for this simplification.
+
+Let $(\V,\times,I_\V)$ be a cartesian closed category with finite coproducts. Denote $\tilde{\V}$ to be $\V$ as a $\V$-category. Define $\NN_\V$ to be the full subcategory of finite coproducts of the unit object: $$n_\V = \coprod_{n \in \NN} I_\V$$ which is the \textit{copower} of $I_\V$ by a finite set $n \in \NN$, characterized by the universal property $$\V(n_\V,a) = \V(I_\V \odot n,a) \simeq \Set(n,\V(I_\V,a))$$ This is our ``system of arities'', the full monoidal subcategory $\J \hookrightarrow \V$. The point is that instead of thinking about fancy enriched powers, we just want to think about good old products.
+
+Note: in the same way that every $n\in \NN^\op$ is a power of $1 \in \Set$, every $J\in \J$ is a power of the monoidal unit $I\in \V$: $$\J(a\odot I,b) \cong \V(I, \J(a,b)) \cong \J(a,I\pfk b)$$ - substituting $a$ for $b$, the unital tensor or `copower' isomorphism on the left maps to the unital `cotensor' or power isomorphism. Since a $\J$-$\V$ theory preserves powers, this implies that every object of $\T$ is a power of the unit.
+
+\begin{lemma} $n_\V$-powers in $\tilde{\V}$ are equivalent to $n$-powers, i.e. $n$-fold products, in $\V$:
+	\[\begin{array}{rclcl}
+	\V(a,[n_\V,b]) & \simeq & \V(a\times n_\V,b) & &\\
+	& = & \V(a\times (\coprod_n I_\V),b) & &\\
+	& \simeq & \V(\coprod_n(a\times I_\V),b) & &\\
+	& \simeq & \V(\coprod_n a,b) & \simeq & V(a,\prod_n b)\\
+	\end{array}\]
+\end{lemma}
+
+Hence, the \textit{full} subcategory $\NN_\V$ has hom-objects which are essentially sets:
+\[\begin{tikzcd}
+\left[n_\V,m_\V\right] \simeq \prod_n (\coprod_m I_\V) \;\; (`` \; \simeq m^n \;")
+\end{tikzcd}\]
+
+In $\V\Cat$, the objects of the theory $T$ are $n_\V$-powers of a generating object $s$. Alas, we cannot simply say that ``$n_\V \pfk s \simeq \prod_n s$'', because the latter does not make sense in the $\V$-category $T$; products are characterized by a $\Set$-enriched universal property. However, we only need that homs into $n_\V \pfk s$ are equivalent to $n$ homs into $s$:
+
+\begin{lemma}
+	Let $T$ be a $\V$-category with $\NN_\V$-powers.
+	\[\begin{array}{rclcl}
+	T(a,n_\V \pfk s) & \simeq & [n_\V,T(a,s)] & &\\
+	& = & [\coprod_n I_\V,T(a,s)] & &\\
+	& \simeq & \prod_n [I_\V,T(a,s)] & \simeq & \prod_n T(a,s)
+	\end{array}\]
+\end{lemma}
+
+If the functor $F:\V \to \W$ induces a change of base $F^*:\V\Cat \to \W\Cat$ which ``preserves $\NN$-$\V$-theories'' - i.e. for every $\NN$-$\V$-theory $\tau$, $F^*(\tau)$ is an $\NN$-$\W$-theory - then $F$ is a \textit{change of semantics}. Since the powers $s^{n_\V}$ are the only objects of $T$, it suffices to determine when the above universal property is preserved. Because the homs of base change are defined $$F^*(T)(a,s^{n_\V}) = F(T(a,s^{n_\V}))$$ then we only need $F$ to preserve finite products:
+
+\[\begin{tikzcd}
+F(T(a,s^{n_\V})) \simeq F(\prod_n T(a,s)) \simeq \prod_n F(T(a,s)) = \prod_n F^*(T)(a,s) \simeq F^*(T)(a,s^{n_\W})
+\end{tikzcd}\]
+
+Then finally, we only need to use $F*(\tau)$ and the isomorphism $N: \NN_\V \simeq \NN_\W$ to construct a $\W$-functor which actually fits the definition of an $\NN-\W$ theory:
+
+\begin{theorem}
+	Let $\V$, $\W$ be cartesian closed categories, and let $F: \V \to \W$ be a cartesian functor which preserves coproducts of the unit object. Then $F$ is a \textbf{change of semantics}; i.e. for every $\NN$-$\V$ theory $\tau: \NN_\V^\op \to T$, the $\W$-functor $F^*(\tau) \circ N$ is an $\NN$-$\W$ theory.
+\end{theorem}
+\begin{proof}
+	ok
+\end{proof}
+
+%An $\NN$-$\V$ theory $\tau: \tilde{\NN_\V^\op} \to T$ is a $\V$-functor which preserves $\NN_\V$-powers, meaning: $$\tau(I_\V^{n_\V}) = \tau(I_\V)^{n_\V}$$ which is precisely analogous to a Lawvere theory $\theta$ preserving $\NN$-powers of $1$: $$\theta(1^n) = \theta(1)^n$$ with $\theta(1)$ being the generating object, e.g. ``$M$'' in the theory of monoids.
+
+Here's the full picture:\\
+\[\begin{tikzcd}
+	& \NN_\V \arrow[hookrightarrow]{d} \arrow["\sim"]{r} & \NN_\W \arrow[hookrightarrow]{d}\\
+	& \V \arrow["F"]{r} & \W\\
+	\tilde{\NN}_\V^\op \arrow["\theta"]{r} & T & F^*(\tilde{\NN}_\V^\op) \arrow["F^*(\theta)"]{r} & F^*(T)\\
+\end{tikzcd}\]
 
 \section{Application}
 Pseudomonoids \cite{pseudo} are important in higher category theory. A monoidal category is ``just a pseudomonoid in $\Cat$!'' The tensor is only associative and unital \textit{up to isomorphism}; these are now reified as 2-morphisms in a $\Cat$-enriched Lawvere theory, and can be understood as invertible rewrites of string diagrams:
@@ -315,43 +373,6 @@ M^2 \ar[Rightarrow, to=Q, shorten >= 4pt]{r}{r} \ar[swap]{r}{m} & M
 %& M^2 \ar{rr}{m} & & M\\ \ar[Rightarrow, swap, from=L2, to=R2, shorten <= 40pt, shorten >= 40pt, "a"]
 %\end{tikzcd}
 %\end{minipage}
-
-\newpage
-
-\section{Simplify with $\NN$-arities}
-
-Most of the enriched algebraic theory literature deals with generalized arities; these will be important in time, but for present applications, we would like the benefits of enrichment with the simplicity of natural number arities. Here we provide some lemmas for this simplification.
-
-Let $(\V,\times,I_\V)$ be a cartesian closed category with finite coproducts. Define $\NN_\V$ to be the full subcategory of finite coproducts of the unit object: $$n_\V = \coprod_{n \in \NN} I_\V$$ which is the \textit{copower} of $I_\V$ by a finite set $n \in \NN$, characterized by the universal property $$\V(n_\V,a) = \V(I_\V \odot n,a) \simeq \Set(n,\V(I_\V,a))$$ This is our ``system of arities'', the full monoidal subcategory $\J \hookrightarrow \V$. The point is that instead of thinking about fancy enriched powers, we just want to think about good old products.
-
-We must first establish that $\V$-homs out of these $n_\V$ are equivalent to $\Set$-homs:
-\[\begin{array}{rclcl}
-	\V(a,[n_\V,b]) & \simeq & \V(a\times n_\V,b) & &\\
-	& = & \V(a\times (\coprod_n I_\V),b) & &\\
-	& \simeq & \V(\coprod_n(a\times I_\V),b) & &\\
-	& \simeq & \V(\coprod_n a,b) & &\\
-	& \simeq & \V(a\odot n,b) & &\\
-	& \simeq & \Set(n,\V(a,b)) & &\\
-	& \simeq & \prod_n \V(a,b) & &\\
-	& \simeq & \V(a,\prod_n b) & &\\
-	& \simeq & \V(a,\prod_n \V(I_\V,b)) & &\\
-	& \simeq & \V(a,\V(\coprod_n I_\V,b)) & = & \V(a,\V(n_\V,b))
-\end{array}\]
-
-The following shows that $\NN_\V$-powers in $\V\Cat$ are actually equivalent to the usual $n$-fold products:
-
-\begin{lemma}
-	Let $T$ be a $\V$-category with $\NN_\V$-powers. Then for all $s \in T$, $n_\V \pfk s \simeq \prod_n s$ as objects of the underlying category $T_0$:
-	\[\begin{array}{rclcl}
-		T(a,n_\V \pfk s) & \simeq & [n_\V,T(a,s)] & &\\
-		& \simeq & \V(n_\V,T(a,s)) & &\\
-		& = & \V(I_\V \odot n,T(a,s)) & &\\
-		& \simeq & \Set(n,V(I_\V,T(a,s))) & &\\
-		& \simeq & \Set(n,T_0(a,s)) & \simeq & T_0(a,\prod_ns)
-	\end{array}\]
-\end{lemma}
-
-This is important, because now the functor $F: \V \to \W$ does not need to preserve \textit{powers} of $\V$, but only the \textit{coproducts} which define our system of arities. This makes ``change of semantics'' much easier.
 
 \newpage
 
