@@ -37,10 +37,14 @@
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Grp}{\mathrm{Grp}}
 \newcommand{\Cat}{\mathrm{Cat}}
-\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Law}{\mathrm{Law}}
+\newcommand{\Mnd}{\mathrm{Mnd}}
+\newcommand{\Top}{\mathrm{Top}}
 \newcommand{\Mon}{\mathrm{Mon}}
 \newcommand{\Alg}{\mathrm{Alg}}
+\newcommand{\CCC}{\mathrm{CCC}}
 \newcommand{\Pos}{\mathrm{Pos}}
+\newcommand{\Mod}{\mathrm{Mod}}
 \newcommand{\FinSet}{\mathrm{FinSet}}
 
 \newcommand{\op}{\mathrm{op}}
@@ -48,11 +52,11 @@
 \newcommand{\pic}{$\pi$-calculus}
 \newcommand{\V}{\mathscr{V}}
 \newcommand{\W}{\mathscr{W}}
-\newcommand{\C}{\mathscr{C}}
 \newcommand{\D}{\mathscr{D}}
-\newcommand{\T}{\mathscr{T}}
+\newcommand{\C}{\mathscr{C}}
 \newcommand{\K}{\mathscr{K}}
 \newcommand{\J}{\mathscr{J}}
+\newcommand{\T}{\mathscr{T}}
 \newcommand{\pfk}{\pitchfork}
 
 \begin{document}
@@ -68,10 +72,10 @@
 %
 %The virtual world is another story. The computer scientist lacks the excuse of the airplane engineer: abstract thought is not burdened by the contingency of the physical world. Formal objects are defined and propositions are proven, once and for all - programs, languages, systems should be such objects. Yet so far, as we begin the connected era, this ideal is far from apparent. We've had bugs since the moth flew into the vacuum tube. Is there some basic limitation? No; only the inadequacy of unprincipled software development.
 
-Formal systems are often defined without intrinsic connection to how they actually \textit{operate} in practice. In everyday computation, the \textit{structure} of the program is separate from the \textit{dynamics} - but this disparity is the only source of error. If these are intertwined as one mathematical object, the system can be proven \textit{correct by construction}. \textbf{Operational semantics} \cite{sos} is an essential tool in language design and verification, which formally specifies program behavior by \textit{labelled transition systems}, or labelled directed graphs:
-\begin{center}\begin{tikzcd}(\lambda x.x+x \; 2) \ar{r}{\beta} & 2+2 \ar{r}{+} & 4\end{tikzcd}\end{center}
+Formal systems are often defined without intrinsic connection to how they actually \textit{operate} in practice. In everyday computation, the \textit{structure} of the program is separate from the \textit{dynamics} - but this disparity is the primary source of error. If these are unified in one mathematical object, the system can be proven \textit{correct by construction}. \textbf{Operational semantics} \cite{sos} is an essential tool in language design and verification, which formally specifies program behavior by \textit{labelled transition systems}, or labelled directed graphs:
+\begin{center}\begin{tikzcd}(\lambda x.x+x \; , \; 2) \ar{r}{\beta} & 2+2 \ar{r}{+} & 4\end{tikzcd}\end{center}
 
-The idea is to \textit{reify} operational semantics via \textbf{enrichment} \cite{enrich}. In the categorical representation of an algebraic theory, the objects are types, and the morphisms are terms; hence to represent the actual \textit{process} of computation, we need the higher-level notion of \textit{rewriting} one term into another - the hom-object or ``thing of morphisms" between two terms should be not a set but a \textit{category}-like structure, where these 2-morphisms represent \textit{rewrites}. For instance, the $SK$-combinator calculus is the ``abstraction-free'' $\lambda$-calculus:
+The idea is to \textit{reify} operational semantics via \textbf{enrichment} \cite{enrich}. In the categorical representation of an algebraic theory, the objects are \textit{types}, and the morphisms are \textit{terms}; hence to represent the actual \textit{process} of computation, we need the higher-level notion of \textit{rewriting} one term into another - the hom-object or ``thing of morphisms" between two terms should be not a set but a \textit{category}-like structure, where these 2-morphisms represent \textit{rewrites}. For instance, the $SK$-combinator calculus is the ``abstraction-free'' $\lambda$-calculus (see $\S$8):
 
 \begin{center}
 	\begin{minipage}{.2 \textwidth}
@@ -93,25 +97,27 @@ A \textbf{Lawvere theory} \cite{lawvere} defines an algebraic structure abstract
 Enriched Lawvere theories for operational semantics has been explored in the past. It was studied in the case of categories by Seely \cite{seely}, posets by Ghani and L\"uth \cite{ghani}, and others, for various related purposes. Here we allow quite general enrichments, to incorporate these approaches in a common framework - but we focus attention on graph-enriched Lawvere theories, which have a clear connection to the original idea of operational semantics:
 
 \[\begin{array}{rl}
-\text{sorts} & \text{: generating object } S\\
-\text{term constructors} & \text{: generating morphisms } S^n \to S\\
+\text{sorts} & \text{: generating object } s\\
+\text{term constructors} & \text{: generating morphisms } s^n \to s\\
 \text{structural congruence} & \text{: commuting diagrams}\\
 \text{\textasteriskcentered \quad rewrite rules} & \text{: generating hom-edges\quad\textasteriskcentered}\\
 \end{array}\]
 
-There are many other useful enriching categories. Better yet, there are functors between them that allow the seamless \textit{transition} between different kinds of operational semantics. There is a \textit{spectrum} of enriching categories which forms a gradient of resolution for the semantics of term calculi. For an enriching category $\V$, an $\NN$-$\V$ theory is a $\V$-enriched Lawvere theory with natural number arities (see $\S$4):\\\\
+There are many other useful enriching categories. Better yet, there are functors between them that allow the seamless \textit{transition} between different kinds of operational semantics. There is a \textit{spectrum} of enriching categories which forms a gradient of resolution for the semantics of term calculi. For an enriching category $\V$, a $\V$-theory is a $\V$-enriched Lawvere theory with natural number arities (see $\S$4):\\\\
 \textbf{Graphs}: $\Gph$-theories represent ``small-step" operational semantics\\ - a hom-graph edge represents a \textit{single} term rewrite.\\
 \textbf{Categories}: $\Cat$-theories represent ``big-step" operational semantics:\\ - identity and composition represent the \textit{reflexive-transitive} closure of the rewrite relation.\\
 \textbf{Posets}: $\Pos$-theories represent ``full-step" operational semantics:\\ - a hom-poset boolean represents the \textit{existence} of a big-step rewrite.\\
 \textbf{Sets}: $\Set$-theories represent denotational semantics (provided the calculus is \textit{confluent}, see \cite{lam}):\\ - a hom-set element represents an \textit{equivalence class} of the symmetric closure of the big-step relation.\\
 
-Operational semantics is modelled and unified by enriched Lawvere theories and canonical functors between the enriching categories. This provides a more systematic categorical representation of computation.
+Operational semantics is unified by enriched Lawvere theories and canonical functors between enriching categories. This provides a more systematic categorical representation of computation.
 
-A motivating example is ``logic as a distributive law" \cite{ladl}, an algorithm for deriving a spatial-behavioral type system from a formal presentation of a computational calculus. Not only can essential properties such as soundness be proven, but modalities can be ``built in" to express principles of the system.
+A motivating example is ``logic as a distributive law" \cite{ladl}, an algorithm for deriving a spatial-behavioral type system from a formal presentation of a computational calculus. Essential properties such as soundness be proven, a powerful query language is generated, and modalities can be ``built in" to express principles of the system.
 
-This idea impacts more than computation, and even though these concepts have been well-known for decades, the practical significance has not been fully realized. With the modern ``proofs as programs" paradigm, this method applies to many subjects throughout mathematics. We demonstrate this idea with several examples, and consider future potential.
+This idea impacts more than computation, and even though these concepts have been well-known for decades, the practical significance has not been fully realized. With the modern paradigm of ``programs $\simeq$ proofs'', this method applies to many subjects throughout mathematics. We demonstrate this idea with several examples, and consider future potential.
 
 \section{Lawvere Theories}
+* blurb about theories vs monads and their importance to computer science *
+
 The ``theory of monoids'' can be defined without any reference to sets:
 \[\begin{array}{rl}
 \text{an object} & M\\
@@ -121,9 +127,9 @@ The ``theory of monoids'' can be defined without any reference to sets:
 \text{and unitality} & e \circ M = M = M \circ e\\
 \end{array}\]
 
-\textit{Lawvere theories} formalize this idea. They were originally called \textit{finite product} theories: a skeleton $\NN$ of the the category of finite sets $\FinSet$ is the free category with finite coproducts on $1$ - every finite set is equal to the disjoint union of copies of $\{*\}$, and conversely $\NN^\op$ is the free category with finite \textit{products} on $1$; so, a category with finite products $\T$ equipped with a strictly product-preserving bijective-on-objects functor $\iota:\NN^\op \to \T$ is essentially a category generated by one object $\iota(1) = M$ and $n$-ary operations $M^n \to M$, as well as the projection and diagonal morphisms of finite products.
+\textit{Lawvere theories} formalize this idea. They were originally called \textit{finite product} theories: a skeleton $\NN$ of the category of finite sets $\FinSet$ is the free category with finite coproducts on $1$ - every finite set is equal to the disjoint union of copies of $\{*\}$; conversely, $\NN^\op$ is the free category with finite \textit{products} on $1$. So, a category with finite products $\T$ equipped with a strictly product-preserving bijective-on-objects functor $\iota:\NN^\op \to \T$ is essentially a category generated by one object $\iota(1) = M$ and $n$-ary operations $M^n \to M$, as well as the projection and diagonal morphisms of finite products. Lawvere theories form a category $\Law$, with finite-product functors $f: \T\to \T'$ such that $f\iota = \iota'$.
 
-The abstraction of this definition is powerful: the syntax encapsulates the algebraic theory, \textit{independent} of semantics, and then one is free to realize $M$ as almost any mathematical object. For another category with finite products $\C$, a \textbf{model} of the Lawvere theory in $\C$ is a product-preserving functor $\mu: \T \to \C$. By the ``free'' property above, this functor is determined by $\mu(\iota(1)) = \mu(M) = X \in \C$. The models of $\T$ in $\C$ form a category $[\T,\C]_{fp}$, in which the morphisms are natural transformations. The general theory can be thereby modelled in many useful ways. For example, ordinary groups are models $\T_\Grp \to \Set$, but the theory can also be modelled in the category of topological spaces to form topological groups.
+The abstraction of this definition is powerful: the syntax encapsulates the algebraic theory, \textit{independent} of semantics, and then one is free to realize $M$ in almost any mathematical object. For another category with finite products $\C$, a \textbf{model} of the Lawvere theory in $\C$ is a product-preserving functor $\mu: \T \to \C$. By the ``free'' property above, this functor is determined by $\mu(\iota(1)) = \mu(M) = X \in \C$. The models of $\T$ in $\C$ form a category $[\T,\C]_{fp}$, in which the morphisms are natural transformations. The general theory can be thereby modelled in many useful ways. For example, ordinary groups are models $\T_\Grp \to \Set$, while functors $\T_\Grp \to \Top$ are topological groups.
 
 Lawvere theories and \textit{finitary monads} provide complementary representations of algebraic structures and computation, as discussed by Hyland and Power in \cite{ltam}, and they were proven to be equivalent by Linton in \cite{linton}. Let $\iota: \NN^\op \to \T$ be a Lawvere theory and $\Mod = [\T,\Set]_{fp}$ be the category of models. There is an adjunction:
 
@@ -141,7 +147,7 @@ This adjunction induces a monad $T$ on $\Set$, which sends each set $X$ to the s
 
 Conversely, for a monad $T$ on $\Set$, its \textit{Kleisli category} is the category of all \textit{free algebras} of the monad. There is a ``comparison'' functor $k: \Set \to Kl(T)$ which is the identity on objects and preserves products, so restricting the domain of $k$ to $\NN$ forms the canonical Lawvere theory corresponding to the monad. This restriction is what limits the equivalence to \textit{finitary} monads. There is a good explanation of all this in Milewski's categorical computation blog \cite{milew}. This generalizes to arbitrary \textit{locally finitely presentable} modelling categories $\C$, which is discussed in $\S$3.
 
-The correspondence of Lawvere theories and finitary monads forms an equivalence of categories, as well as the categories of models and algebras for every corresponding pair $(\T, T)$: $$\mathrm{Law} \cong \mathrm{Mnd}_f$$ $$\Mod(\T) \cong \Alg(T)$$ One motivation for monads is to define \textit{distributive laws}, as utilized in \cite{ladl} for proofs of sound computational interpretations. The aforementioned references suffice; we do not need further details. 
+The correspondence of Lawvere theories and finitary monads forms an equivalence of categories, as well as the categories of models and algebras for every corresponding pair $(\T, T)$: $$\mathrm{Law} \cong \mathrm{Mnd}_f$$ $$\Mod(\T) \cong \Alg(T)$$ The aforementioned references suffice; we do not need further details. 
 
 \section{Enrichment}
 We generalize \textit{sets} of morphisms to \textit{objects} of morphisms, to endow formal systems with operational information. Let $(\V,\otimes,I)$ be a monoidal category \cite{maclane}, the ``enriching'' category.
@@ -186,7 +192,7 @@ These are the two basic forms of enriched limit and colimit, which are not espec
 	\\
 	X \odot Y = & X \times Y & \cong \coprod_{y\in Y}X
 \end{array}\]
-So, categories are canonically $\Set$-powered or copowered by indexed products or coproducts of copies of an object, provided that these exist. So in the definition of Lawvere theory, even though it seems to be all about products, it is actually about \textit{powers}, because these constitute the \textit{arities} of the operations. This is precisely what is generalized in the enriched form.
+So, categories are canonically $\Set$-powered or copowered by indexed products or coproducts of copies of an object, provided that these exist. Even though the definition of Lawvere theory seems to be all about products, it is actually about \textit{powers}, because these constitute the \textit{arities} of the operations. This is precisely what is generalized in the enriched form.
 
 (We will use exponential notation $x\pfk b = b^x$, and denote the unit $I$ by 1, because the enriching categories under consideration are cartesian.)
 
@@ -195,7 +201,7 @@ There are just a few more technicalities. Given a $\V$-category $\C$, one often 
 \section{Enriched Lawvere theories}
 All of these abstract definitions culminate in the central concept: for a symmetric monoidal closed category $(\V,\otimes,I)$, a \textit{$\V$-enriched Lawvere theory} \`a la Power \cite{power} is a finitely-powered $\V$-category $\T$ equipped with a strictly power-preserving bijective-on-objects $\V$-functor $\iota:\V_f^\op \to \T$. A \textit{model} of a $\V$-theory is a finite-power $\V$-functor $\mu:\T \to \V$, and $\V$-natural transformations between them form the $\V$-category of models $[\T,\V]_{fp}$. The monadic adjunction and equivalence of $\S$2 generalize to $\V$-theories, as originally formulated by Power.
 
-However, this requires $\T$ to have \textit{all} powers of $\V_f$, i.e. the theory must have arities for every finite object of $\V$. It is certainly useful to include these generalized arities, but this introduces the question of how to \textit{present} such a theory; this is not nearly as straightforward as $n$-ary operations, and to the authors' knowledge a general method of enriched presentation does not yet exist. However, this is not needed for our purposes - we only need \textit{natural number} arities, while still retaining \textit{graph}-enrichment.
+However, this requires $\T$ to have \textit{all} powers of $\V_f$, i.e. the theory must have arities for every finite object of $\V$. It is certainly useful to include these generalized arities, but this introduces the question of how to \textit{present} such a theory; this is not nearly as straightforward as $n$-ary operations, and to the authors' knowledge a general method of enriched presentation does not yet exist. However, this is not needed for our purposes - we only need \textit{natural number} arities, while still retaining enrichment.
 
 A very general and useful definition of enriched algebraic theory was introduced by Lucyshyn-Wright \cite{rbb}, which allows for theories to be parameterized by a \textbf{system of arities}, a full subcategory inclusion $j: \J \xhookrightarrow{} \V$ containing the monoidal unit and closed under tensor.
 
@@ -204,6 +210,8 @@ A very general and useful definition of enriched algebraic theory was introduced
 \end{definition}
 
 A $\J$-$\V$ theory is essentially a $\V$-category with objects being $\J$-powers $s^J$ of a generating object $s$, for $J \in \J$ - note that $s$ itself is $s^1$. In the same way that every $n\in \NN^\op$ is a power of $1 \in \Set$, every $J\in \tilde{\J}$ is a power of the monoidal unit $1\in \V$ (using equation \ref{eq:co-power}): $$\tilde{\J}(J\odot 1,J) \cong \V(1, \tilde{\J}(J,J)) \cong \tilde{\J}(J,J^1)$$ This is just the direct generalization of the usual isomorphisms $J \times 1 \simeq J \simeq J^1$. Since a $\tau$ preserves $\J$-powers, this implies that every object of $\T$ is a power of $s = \tau(1)$.
+
+Of course, these form categories: $\J$-$\V$ theories and $\J$-power preserving $\V$-functors $f: \T \to \T'$ such that $f\tau = \tau'$ give the category $\V\Law$; and for every theory $\T$ and every $\V$-category with $\J$-powers, there is the category $\Mod(\T,\C)$ of functors and $\V$-natural transformations between them. (Note: if $\V$ is a \textit{cosmos}, i.e. complete and cocomplete, then $\V\Cat$ has enriched functor categories - hence $\V\Law$ and $\Mod(\T,\C)$ are actually $\V$-categories. This is potentially useful, and the ``operational $\V$'s of this paper are indeed cosmoi.)
 
 Here is an overview of the concepts: 
 
@@ -215,9 +223,9 @@ j: & \J & \hookrightarrow & \V & \text{arities}\\
 & & & \C & \text{semantics}\\
 \end{array}\]
 
-This subsumes existing formulations; for example, Power's definition is the case $\J = \V_f$. A system of arities is \textbf{eleutheric} if left Kan extensions along $j$ exist and are preserved by $\V(K,-)$ for all $K \in Ob(\J)$. This is what is needed to have the essential \textit{monadicity} theorems: Lucyshyn-Wright proved that any $\J$-$\V$ theory for an eleutheric system of arities has a category of models for $\C = \V$ **** which is monadic over $\V$, and the induced $\V$-monad is ``j-ary'' in that it ``conditionally preserves $\J$-flat colimits'', i.e. can be thought of as a monad with $\J$ arities.
+This subsumes existing formulations; for example, Power's definition is the case $\J = \V_f$. A system of arities is \textbf{eleutheric} if left Kan extensions along $j$ exist and are preserved by $\V(K,-)$ for all $K \in Ob(\J)$. This is what is needed to have the essential \textit{monadicity} theorems: Lucyshyn-Wright proved that any $\J$-$\V$ theory for an eleutheric system of arities has a category of models for $\C = \V$ which is \textit{monadic} over $\V$, and the induced $\V$-monad is ``j-ary'' in that it ``conditionally preserves $\J$-flat colimits'', i.e. can be thought of as a monad with $\J$ arities.
 
-The usual kinds of arities were all proved to be eleutheric: in particular, finite cardinals. Hence, $\NN$-$\V$ theories have all of the nice relations with monads as ordinary Lawvere theories - and now they have the rich ``operational'' information of $\V$, and even this $\V$ itself is adaptable.
+The usual kinds of arities were all proved to be eleutheric: in particular, finite cardinals. Hence, $\NN$-$\V$ theories have all of the nice relations with monads as ordinary Lawvere theories - now they have the rich ``operational'' information of $\V$, and even this $\V$ itself is adaptable.
 
 \section{Change of Base}
 
@@ -238,6 +246,8 @@ This is effected by a \textbf{monoidal functor} - a functor $$(F,\lambda,\upsilo
 \lambda: & F(a) \otimes_\W F(b) \to F(a\otimes_\V b)\\
 \upsilon: & I_\W \to F(I_\V)
 \end{array}\]
+such that $\lambda$ is natural in $a,b$ and associative, and unital relative to $\upsilon$.
+
 This induces a \textbf{change of base} functor $F_*:\V\Cat \to \W\Cat$ \cite{borceux}. If $f: \C \to \D \in \V\Cat$ is a $\V$-functor, then $F_*(f)_{obj} = f_{obj}$ and $F_*(f)_{hom} = F\circ f_{hom}$, and $F_*(\C)$ is defined:
 
 \[\begin{array}{rl}
@@ -275,10 +285,12 @@ We only need to show that everything is simplified by restricting to this partic
 
 Most of the enriched algebraic theory literature deals with generalized arities; these will be important in time, but for present applications, we would like the benefits of enrichment with the simplicity of natural number arities. Here we provide some lemmas for this simplification.
 
-Let $(\V,\times,I_\V)$ be a cartesian closed category with finite coproducts. Define $\NN_\V$ to be the full subcategory of finite coproducts of the unit object: $$n_\V = \coprod_{n \in \NN} I_\V$$ which is the \textit{copower} of $I_\V$ by a finite set $n \in \NN$, characterized by the universal property $$\V(n_\V,a) = \V(I_\V \odot n,a) \simeq \Set(n,\V(I_\V,a))$$ This is our ``system of arities'', the full monoidal subcategory $\J \hookrightarrow \V$. The point is that instead of thinking about fancy enriched powers, we just want to think about good old products.
+Let $(\V,\times,I_\V)$ be a cartesian closed category with finite coproducts. Define $\NN_\V$ to be the full subcategory of finite coproducts of the unit object: $$n_\V = \coprod_{n \in \NN} I_\V$$ which is the \textit{copower} of $I_\V$ by a finite set $n \in \NN$, characterized by the universal property $$\V(n_\V,a) = \V(I_\V \odot n,a) \simeq \Set(n,\V(I_\V,a))$$ This is our ``system of arities'', the full monoidal subcategory $\J \hookrightarrow \V$. We will call $\NN$-$\V$ theories \textbf{$\V$-theories} for simplicity.
+
+The point is that instead of thinking about fancy enriched powers, we just want to think about good old products:
 
 \begin{lemma}
-	Let $V$ be a cartesian closed category, with subcategory $\NN_\V$ as above. Then $n_\V$-powers in $\tilde{\V}$ are isomorphic to $n$-powers, i.e. $n$-fold products, in $\V$.
+	Let $V$ and $\NN_\V$ be as above. Then $n_\V$-powers in $\tilde{\V}$ are isomorphic to $n$-powers, i.e. $n$-fold products, in $\V$.
 \end{lemma}
 \begin{proof}
 	\[\begin{array}{rcll}
@@ -293,7 +305,7 @@ Note that each of these isomorphisms is \textit{natural} in $a$; hence by the Yo
 \end{proof}
 
 
-Hence, the \textit{full} sub-$\V$-category $\tilde{\NN}_\V$ has hom-objects which are essentially sets:
+So, the \textit{full} sub-$\V$-category $\tilde{\NN}_\V$ has hom-objects which are essentially sets:
 \[\begin{tikzcd}
 \left[n_\V,m_\V\right] \simeq \prod_n (\coprod_m I_\V) \;\; (`` \; \simeq m^n \;")
 \end{tikzcd}\]
@@ -309,21 +321,21 @@ In $\V\Cat$, the objects of the theory $\T$ are $n_\V$-powers of a generating ob
 	\end{array}\]
 \end{lemma}
 
-If the functor $F:\V \to \W$ induces a change of base $F_*:\V\Cat \to \W\Cat$ which ``preserves $\NN$-$\V$-theories'' - i.e. every $\NN$-$\V$-theory $\tau_\V$ corresponds to an $\NN$-$\W$-theory $\tau_\W$ - then $F$ is a \textit{change of semantics}. Since the powers $s^{n_\V}$ are the only objects of $\T$, it suffices to determine when the above universal property is preserved. Because the homs of base change are defined $$F_*(\T)(a,s^{n_\V}) = F(\T(a,s^{n_\V}))$$ we only need $F$ to preserve finite products:
+If the functor $F:\V \to \W$ induces a change of base $F_*:\V\Cat \to \W\Cat$ which preserves $\V$-theories - i.e. every $\V$-theory $\tau_\V$ corresponds to an $\W$-theory $\tau_\W$ - then $F$ is a \textit{change of semantics}. Since the powers $s^{n_\V}$ are the only objects of $\T$, it suffices to determine when the above universal property is preserved. Because the homs of base change are defined $$F_*(\T)(a,s^{n_\V}) = F(\T(a,s^{n_\V}))$$ we only need $F$ to preserve finite products:
 
 \begin{lemma}
-	Let $F: \V \to \W$ be a product-preserving functor, and let $\NN_\V$, $\NN_\W$ be defined as above. If $f: \C \to \D$ is a $\V$-functor which preserves $\NN_\V$-powers, then $F_*(f):F_*(\C)\to F_*(\D)$ is a $\W$-functor which preserves $\NN_\W$-powers.	
+	Let $F: \V \to \W$ be a product-preserving functor, and let $\NN_\V$, $\NN_\W$ be defined as above. If $f: \C \to \D$ is a $\V$-functor which preserves $\NN_\V$-powers, then $F_*(f):F_*(\C)\to F_*(\D)$ is a $\W$-functor which preserves $\NN_\W$-powers. *****
 \end{lemma}
 \begin{proof}
 	\[\begin{tikzcd}
-	F_*(\D)(a,s^{n_\V}) = F(\D(a,s^{n_\V})) \simeq F(\prod_n \D(a,s)) \simeq \prod_n F(\D(a,s)) = \prod_n F_*(\D)(a,s) \simeq F_*(\D)(a,s^{n_\W})
+	F_*(f)(\D(a,s^{n_\V})) = F(f(\D(a,s^{n_\V}))) \simeq F(f(\prod_n \D(a,s))) \simeq \prod_n F(\D(a,s)) = \prod_n F_*(\D)(a,s) \simeq F_*(\D)(a,s^{n_\W})
 	\end{tikzcd}\]
 \end{proof}
 
 Then finally, we simply use $F_*(\tau)$ and the isomorphism $N: \NN_\V \simeq \NN_\W$ to construct a $\W$-functor which precisely fits the definition of an $\NN$-$\W$ theory:
 
 \begin{theorem}
-	Let $\V$, $\W$ be cartesian closed categories, and let $F: \V \to \W$ be a product-preserving functor, and denote by $\tilde{N}: \tilde{\NN}_\W^\op \to F_*(\tilde{\NN}_\V^\op)$ the isomorphism which sends $n_\W \mapsto n_\V$ and is the identity on morphisms. Then $F$ is a \textbf{change of semantics}; i.e. for every $\NN$-$\V$ theory $\tau_\V: \NN_\V^\op \to \T$, the $\W$-functor $\tau_\W := F_*(\tau_\V) \circ \tilde{N}: \NN_\W^\op \to F_*(\T)$ is an $\NN$-$\W$ theory. Moreover, $F$ preserves \textit{models}, i.e. for every $\NN$-$\V$-power preserving $\mu:\T \to \C$, $F_*\mu$ is $\NN_\W$-power preserving.
+	Let $\V$, $\W$ be cartesian closed categories with finite coproducts; let $F: \V \to \W$ be a product-preserving functor, and denote by $\tilde{N}: \tilde{\NN}_\W^\op \to F_*(\tilde{\NN}_\V^\op)$ the isomorphism which sends $n_\W \mapsto n_\V$ and is the identity on morphisms. Then $F$ is a \textbf{change of semantics}; i.e. for every $\NN$-$\V$ theory $\tau_\V: \NN_\V^\op \to \T$, the $\W$-functor $\tau_\W := F_*(\tau_\V) \circ \tilde{N}: \NN_\W^\op \to F_*(\T)$ is an $\NN$-$\W$ theory. Moreover, $F$ preserves \textit{models}, i.e. for every $\NN$-$\V$-power preserving $\mu:\T \to \C$, $F_*\mu$ is $\NN_\W$-power preserving.
 \end{theorem}
 \begin{proof}
 	The $\W$-functor $\tau_\W$ is clearly bijective-on-objects, because $\tau$ and $\tilde{N}$ are. It preserves $\NN_\W$-powers by the previous lemma and:
@@ -338,17 +350,29 @@ Then finally, we simply use $F_*(\tau)$ and the isomorphism $N: \NN_\V \simeq \N
 This preservation is \textit{strict} because $F_*(\T)$ has the same objects as $\T$, so this isomorphism implies that $\tau_\W(I_\W^{n_\W}) = \tau_\W(I_\W)^{n_\W}$. The preservation of models follows from the previous lemma.
 \end{proof}
 
-Hence, any product-preserving functor between cartesian closed categories constitutes a ``change of semantics'' - this is a simple, ubiquitous condition, which provides for a method of transitioning formal systems between various \textit{modus operandi}. Here is an overview of the concepts:
+Hence, any product-preserving functor between cartesian closed categories constitutes a ``change of semantics'' - this is a simple, ubiquitous condition, which provides for a method of transitioning formal systems between various \textit{modus operandi}. %Here is an overview of the concepts:
 
 %An $\NN$-$\V$ theory $\tau: \tilde{\NN_\V^\op} \to T$ is a $\V$-functor which preserves $\NN_\V$-powers, meaning: $$\tau(I_\V^{n_\V}) = \tau(I_\V)^{n_\V}$$ which is precisely analogous to a Lawvere theory $\theta$ preserving $\NN$-powers of $1$: $$\theta(1^n) = \theta(1)^n$$ with $\theta(1)$ being the generating object, e.g. ``$M$'' in the theory of monoids.
 
-\[\begin{tikzcd}
-	& \NN_\V \arrow[hookrightarrow]{d} & \NN_\W \arrow[hookrightarrow]{d}\\
-	\V\Cat & \V \arrow["F"]{r} & \W & \W\Cat\\
-	\tilde{\NN}_\V^\op \arrow["\tau_\V"]{r} & T \arrow["\mu"]{d} & F_*(\tilde{\NN}_\V^\op) \arrow["F_*(\tau_\V)"]{r} & F_*(\T) \arrow["F_*(\mu)"]{d}\\
-	& \C & \tilde{\NN}_\W^\op \arrow["\tilde{N}"]{u} \arrow[swap,dotted,"\tau_\W"]{ru} & F_*(\C)\\
-	\tau_\V(I_\V^{n_\V}) = \tau_\V(I_\V)^{n_\V} & \mu(s^{n_\V}) \simeq \mu(s)^{n_\V} & \tau_\W(I_\W^{n_\W}) = \tau_\W(I_\W)^{n_\W} & F_*(\mu)(s^{n_\W}) \simeq F_*(\mu)(s)^{n_\W}
-\end{tikzcd}\]
+%\[\begin{tikzcd}
+%	& \NN_\V \arrow[hookrightarrow]{d} & \NN_\W \arrow[hookrightarrow]{d}\\
+%	\V\Cat & \V \arrow["F"]{r} & \W & \W\Cat\\
+%	\tilde{\NN}_\V^\op \arrow["\tau_\V"]{r} & T \arrow["\mu"]{d} & F_*(\tilde{\NN}_\V^\op) \arrow["F_*(\tau_\V)"]{r} & F_*(\T) \arrow["F_*(\mu)"]{d}\\
+%	& \C & \tilde{\NN}_\W^\op \arrow["\tilde{N}"]{u} \arrow[swap,dotted,"\tau_\W"]{ru} & F_*(\C)\\
+%	\tau_\V(I_\V^{n_\V}) = \tau_\V(I_\V)^{n_\V} & \mu(s^{n_\V}) \simeq \mu(s)^{n_\V} & \tau_\W(I_\W^{n_\W}) = \tau_\W(I_\W)^{n_\W} & F_*(\mu)(s^{n_\W}) \simeq F_*(\mu)(s)^{n_\W}
+%\end{tikzcd}\]
+
+\section{Putting It All Together}
+
+In addition to change-of-base, there are two other natural and useful transitions for these theories. Let $\V\mathrm{Law}$ be the category of $\V$-theories, and let $f:\T\to \T'$ be a morphism of theories; this induces a ``change-of-theory'' functor between the respective categories of models $$f^*:\V\Mod(\T',\C)\to \V\Mod(\T,\C)$$ given by precomposition by $f$. Similarly, given an $\NN$-power preserving functor $g: \C \to \C'$, this induces a ``change of model'' functor $$g_*:\V\Mod(\T,\C) \to \V\Mod(\T,\C')$$ given by postcomposition by $g$.
+
+All of this can be packaged up nicely using the \textbf{Grothendieck construction}: given a (pseudo)functor $F: \D \to \Cat$, there is a \textit{fibration} $\tilde{F}: \int F \to \D$ which encapsulates all of the categories in the image of $F$ - the category $\int F$ consists of pairs $(d,x) : d\in \D, x\in F(d)$ and morphisms $(f:d\to d',a:F(f)(x)\to x')$. (Although we noted after Definition 4.1 that $\V\Law$ and $\Mod(\T,\C)$ are $\V$-categories when $\V$ is nice, we will focus on the nonenriched case for simplicity and generality.)
+
+This idea allows us to bring together \textit{all} of the different enrichments, theories, and models into \textit{one} big category. For every enriching category $\V$, let $\V\Cat_{fp}$ be the subcategory of $\V\Cat$ of $\V$-categories with finite powers and finite-power preserving functors; then there is a functor $$\V\Mod: \V\Law^\op \times \V\Cat_{fp} \to \Cat$$ which sends $(\T,\C) \mapsto \V\Mod(\T,\C)$. Functoriality characterizes the contravariant change-of-theory and the covariant change-of-model above. Utilizing the construction, there is a category \[\int \V\Mod\] with objects and morphisms $$((f,g),\alpha): ((\T,\C),\mu) \to ((\T',\C'),\mu')$$ being $\V$-functors $f:\T\to \T'$, $g:\C\to \C'$, and $\V$-natural transformation $\alpha:\V\Mod(f,g)(\mu)\to \mu'$.
+
+Moreover, the assignment $\V \mapsto \int \V\Mod$ is itself a functor from cartesian closed categories to categories: $$\mathrm{th}: \CCC \to \Cat$$ Given $F:\V\to \W$, base change $F_*: \V\Cat \to \W\Cat$ is a 2-functor, thereby inducing the functor $\bar{F}:\V\Mod\to \W\Mod$ which sends a morphism $((f,g),\alpha)$ to $((F_*(f),F_*(g)),F_*(\alpha))$. Thus, we can utilize the construction \textit{again} to encompass even the enrichment: $$\mathrm{Thy} := \int \mathrm{th}$$ with objects and morphisms $$(F,((f,g),\alpha)): (\V,((\T,\C),\mu)) \to (\W,((\T',\C'),\mu'))$$ being product-preserving functor $F: \V \to \W$ (hence a change of semantics), $\W$-functors 
+
+This category assimilates a whole lot of useful information. Most importantly, there are morphisms between objects of ``different kinds'', something which we consider often but is normally not possible in category theory. For example, let $\V$ be $\Set$, let $\mathbb{Z}$ be the ring of integers and let $\mathbb{R}$ be the topological group of real numbers. These are the objects $((\T_{\mathrm{Ring}},\Set),\mathbb{Z})$ and $((\T_\Grp,\Top),\mathbb{R})$.
 
 \section{Applications}
 
