@@ -370,7 +370,7 @@ All of this can be packaged up nicely using the \textbf{Grothendieck constructio
 
 This idea allows us to bring together \textit{all} of the different enrichments, theories, and models into \textit{one} big category. For every enriching category $\V$, let $\V\Cat_{fp}$ be the subcategory of $\V\Cat$ of $\V$-categories with finite powers and finite-power preserving functors; then there is a functor $$\V\Mod: \V\Law^\op \times \V\Cat_{fp} \to \Cat$$ which sends $(\T,\C) \mapsto \V\Mod(\T,\C)$. Functoriality characterizes the contravariant change-of-theory and the covariant change-of-model above. Utilizing the construction, there is a category \[\int \V\Mod\] with objects and morphisms $$((f,g),\alpha): ((\T,\C),\mu) \to ((\T',\C'),\mu')$$ being $\V$-functors $f:\T\to \T'$, $g:\C\to \C'$, and $\V$-natural transformation $\alpha:\V\Mod(f,g)(\mu)\to \mu'$.
 
-Moreover, the assignment $\V \mapsto \int \V\Mod$ is itself a functor from cartesian closed categories to categories: $$\mathrm{th}: \CCC \to \Cat$$ Given $F:\V\to \W$, base change $F_*: \V\Cat \to \W\Cat$ is a 2-functor, thereby inducing the functor $\bar{F}:\V\Mod\to \W\Mod$ which sends a morphism $((f,g),\alpha)$ to $((F_*(f),F_*(g)),F_*(\alpha))$. Thus, we can utilize the construction \textit{again} to encompass even the enrichment: $$\mathrm{Thy} := \int \mathrm{th}$$ with objects and morphisms $$(F,((f,g),\alpha)): (\V,((\T,\C),\mu)) \to (\W,((\T',\C'),\mu'))$$ being product-preserving functor $F: \V \to \W$ (hence a change of semantics), $\W$-functors 
+Moreover, the assignment $\V \mapsto \int \V\Mod$ is itself a functor from cartesian closed categories to categories: $$\mathrm{th}: \CCC \to \Cat$$ Given $F:\V\to \W$, base change $F_*: \V\Cat \to \W\Cat$ is a 2-functor, thereby inducing the functor $\bar{F}:\V\Mod\to \W\Mod$ which sends a morphism $((f,g),\alpha)$ to $((F_*(f),F_*(g)),F_*(\alpha))$. Thus, we can utilize the construction \textit{again} to encompass even the enrichment: there is a category $$\mathrm{Thy} := \int \mathrm{th}$$ with objects and morphisms $$(F,((f,g),\alpha)): (\V,((\T,\C),\mu)) \to (\W,((\T',\C'),\mu'))$$ being a product-preserving functor $F: \V \to \W$ (hence a change of semantics), $\W$-functors 
 
 This category assimilates a whole lot of useful information. Most importantly, there are morphisms between objects of ``different kinds'', something which we consider often but is normally not possible in category theory. For example, let $\V$ be $\Set$, let $\mathbb{Z}$ be the ring of integers and let $\mathbb{R}$ be the topological group of real numbers. These are the objects $((\T_{\mathrm{Ring}},\Set),\mathbb{Z})$ and $((\T_\Grp,\Top),\mathbb{R})$.
 
@@ -408,7 +408,17 @@ z&: t \xrightarrow{t} t
 
 (Exposition of model, example of computation)
 
-(Change of base encapsulates the change of semantics reviewed in every term calculi paper)
+(Change of base encapsulates the change of semantics reviewed in every term calculi paper)\\
+
+We can equip term calculi with \textit{reduction contexts}, which determine when rewrites are valid, thus giving the language a certain \textbf{evaluation strategy}. For example, the \textit{weak head normal form} is given by only allowing rewrites on the left-hand side of the term. We can do this for $\Th(SKI)$ by adding a \textbf{reduction context marker}, an endomorphism $$R: t \to t$$ and a structural congruence rule which pushes the marker to the left-hand side of an application, $$R(x\; y) = (Rx\; y)$$ and modify the rewrite rules to be valid only when the marker is present: 
+\[\begin{array}{rl}
+\sigma & :(((RS\; x)\; y)\; z) \Rightarrow ((Rx\; z)\; (y\; z))\\
+\kappa & :((RK\; y)\; z) \Rightarrow Ry\\
+\iota & :(RI\; z) \Rightarrow Rz\\
+\end{array}
+\]
+
+The $SKI$-calculus is thereby equipped with ``lazy evaluation'', an essential paradigm in modern programming. (include proofs from ROSwELT about weak head normal form?) This represents a broad potential application of equipping theories with computational methods, such as evaluation strategies. Moreover, these equipments can be modified as needed: using \textit{change-of-theory}, we can utilize a $\Gph$-functor $$f: \Th(SKI) \to \Th(SKI+R)$$ which sends $S,K,I$ to $RS,RK,RI$, and $\sigma, \kappa, \iota$ to the corresponding rewrites. This essentially interprets ordinary $SKI$ as having every subterm be a reduction context; we then need only to add a structural congruence rule to $\Th(SKI+R)$ to eliminate redundant markers in the right-hand side of applications: $$(x\; Ry) = (x\; y)$$ Then $f$ is a $\Gph$-functor which sends rewrites to rewrites correctly, thus inducing the change of theory $$f^*: \Mod(\Th(SKI+R),\C) \to \Mod(\Th(SKI),\C)$$ for all semantic categories $\C$, which forgets the reduction contexts.
 
 \subsection{String Diagrams}
 
