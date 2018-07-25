@@ -346,13 +346,13 @@ Hence, any functor between cartesian closed categories which preserves finite pr
 
 \section{Putting It All Together}
 
-In addition to change-of-base, there are two other natural and useful transitions for these theories. Let $\V\mathrm{Law}$ be the category of $\V$-theories, and let $f:\T\to \T'$ be a morphism of theories; this induces a ``change-of-theory'' functor between the respective categories of models $$f^*:\V\Mod(\T',\C)\to \V\Mod(\T,\C)$$ defined as precomposition by $f$. Similarly, given $g: \C \to \C'$ a morphism of models, this induces a ``change-of-model'' functor $$g_*:\V\Mod(\T,\C) \to \V\Mod(\T,\C')$$ defined as postcomposition by $g$.
+In addition to change-of-base, there are two other natural and useful transitions for these theories. Let $\V\mathrm{Law}$ be the category of $\V$-theories, and let $f:\T\to \T'$ be a morphism of theories; this induces a ``change-of-theory'' functor between the respective categories of models $$f^*:\V\Mod(\T',\C)\to \V\Mod(\T,\C)$$ defined as precomposition by $f$. Similarly, given a finite-product functor $g: \C \to \C'$, this induces a ``change-of-model'' functor $$g_*:\V\Mod(\T,\C) \to \V\Mod(\T,\C')$$ defined as postcomposition by $g$.
 
 All of this can be packed up nicely using the \textbf{Grothendieck construction}: given a (pseudo)functor $F: \D \to \Cat$, there is a \textit{fibration} $\bar{F}: \int F \to \D$ which encapsulates all of the categories in the image of $F$ - the category $\int F$ consists of
 \[\begin{array}{rl}
-\text{objects} & (d,x) : d\in \D, \; x\in F(\D)\\
+\text{objects} & (d,x) : d\in \D, \; x\in F(d)\\
 \text{morphisms} & (f:d\to d',a:F(f)(x)\to x')\\
-\text{composition} & (f,a) \circ (f',a') = (f \circ f', a \circ F(f)(a')\\
+\text{composition} & (f,a) \circ (f',a') = (f \circ f', a \circ F(f)(a'))\\
 \end{array}
 \]
 
@@ -369,9 +369,9 @@ Utilizing the construction, there is a category \textbf{$\int \V\Mod$} with obje
 	Given $F:\V\to \W$, base change $F_*: \V\Cat \to \W\Cat$ is a 2-functor, thereby inducing the functor $F_*^*:\V\Mod\to \W\Mod$ which sends a morphism $((f,g),\alpha)$ to $((F_*(f),F_*(g)),F_*(\alpha))$. Checking functoriality is left to the reader.
 \end{proof}
 
-Thus, we can use the construction \textit{again}:
+Thus, we can use the construction \textit{again} to encapsulate even the enrichment:
 \begin{theorem}
-	There is a category $\mathrm{Thy} := \int \mathrm{thy}$ with objects and morphisms $$(F,((f,g),\alpha)): (\V,((\T,\C),\mu)) \to (\W,((\T',\C'),\mu'))$$ being a change-of-semantics $F$ and a functor $(f,g,\alpha): F_*^*((\T,\C),\mu) \to ((\T',\C'),\mu')$ in $\W\Mod$.
+	There is a category $\mathrm{Thy} := \int \mathrm{thy}$ with objects and morphisms $$(F,((f,g),\alpha)): (\V,((\T,\C),\mu)) \to (\W,((\T',\C'),\mu'))$$ being a change-of-semantics $F$ and a morphism $(f,g,\alpha): F_*^*(((\T,\C),\mu)) \to ((\T',\C'),\mu')$ in $\W\Mod$.
 \end{theorem}
 
 This category assimilates a whole lot of useful information. Most importantly, there are morphisms between objects of ``different kinds'', something which we consider often but is normally not possible in category theory. For example, let $\V$ be $\Set$, let $\mathbb{Z}$ be the ring of integers and let $\mathbb{R}$ be the topological group of real numbers. These are the objects $((\T_{\mathrm{Ring}},\Set),\mathbb{Z})$ and $((\T_\Grp,\Top),\mathbb{R})$.
@@ -379,7 +379,7 @@ This category assimilates a whole lot of useful information. Most importantly, t
 \section{Applications}
 
 \subsection{Combinatory Calculi}
-The $\lambda$-calculus is the elegant formal language which is the foundation of functional computation, the model of intuitionistic logic, and the internal logic of cartesian closed categories - this is the Curry-Howard-Lambek correspondence \cite{rosetta}. Despite its simplicity, there are subtle complications regarding \textit{substitution}, or evaluation of functions. * If $f(x) = x(y)$, the $x$ is \textit{bound} by whatever is ``plugged in'', while $y$ is \textit{free}, meaning it can refer to some other constant or function. But if $f(y)$ is to be evaluated, one must \textit{rename} the reference to another variable $z$, otherwise it will be ``captured'' as $y(y)$. *
+The $\lambda$-calculus is an elegant formal language which is the foundation of functional computation, the model of intuitionistic logic, and the internal logic of cartesian closed categories - this is the Curry-Howard-Lambek correspondence \cite{rosetta}. Despite its simplicity, there are subtle complications regarding \textit{substitution}, or evaluation of functions. * If $f(x) = x(y)$, the $x$ is \textit{bound} by whatever is ``plugged in'', while $y$ is \textit{free}, meaning it can refer to some other constant or function. But if $f(y)$ is to be evaluated, one must \textit{rename} the reference to another variable $z$, otherwise it will be ``captured'' as $y(y)$. *
 
 This problem was noticed early in the history of mathematical foundations, even before the $\lambda$-calculus, and so Moses Sch\"onfinkel invented \textit{combinatory logic} \cite{combs} - a basic form of logic without the red tape of \textit{variable binding}, hence without functions. The $SKI$-calculus is the \textit{variable-free} representation of the $\lambda$-calculus; $\lambda$-terms are translated via \textit{abstraction elimination} into strings of combinators and applications. This is an important method for programming languages to minimize the subtleties of variables.
 
@@ -400,9 +400,9 @@ The key insight here is that Lawvere theories are by definition free of variable
 
 These denote rewrites for arbitrary subterms $x, y, z$ without any variable binding involved, by using the cartesian monoidal structure of the category. They are simply edges with vertices:
 \[\begin{array}{rl}
-(((S\; x)\; y)\; z)&: t^3 \xrightarrow{l^{-1} \times t^2} 1\times t^3 \xrightarrow{S \times t^3} t^4 \xrightarrow{(-\;-)\times t^2} t^3 \xrightarrow{(-\;-) \times t} t^2 \xrightarrow{(-\;-)} t\\
+(((S\; x)\; y)\; z)&: t^3 \xrightarrow{l^{-1} \times t^3} 1\times t^3 \xrightarrow{S \times t^3} t^4 \xrightarrow{(-\;-)\times t^2} t^3 \xrightarrow{(-\;-) \times t} t^2 \xrightarrow{(-\;-)} t\\
 ((x\; z)\; (y\; z))&: t^3 \xrightarrow{t^2 \times \Delta} t^4 \xrightarrow{t \times \tau \times t} t^4 \xrightarrow{(-\;-) \times (-\;-)} t^2 \xrightarrow{(-\;-)} t\\\\
-((K\; y)\; z)&: t^2 \xrightarrow{l^{-1} \times t} 1\times t^2 \xrightarrow{K \times t^2} t^3 \xrightarrow{(-\;-)\times t} t^2 \xrightarrow{(-\;-)} t\\
+((K\; y)\; z)&: t^2 \xrightarrow{l^{-1} \times t^2} 1\times t^2 \xrightarrow{K \times t^2} t^3 \xrightarrow{(-\;-)\times t} t^2 \xrightarrow{(-\;-)} t\\
 y&: t^2 \xrightarrow{t \times !} t \times 1 \xrightarrow{r} t\\\\
 (I\; z)&: t \xrightarrow{l^{-1}} 1\times t \xrightarrow{I \times t} t^2 \xrightarrow{(-\;-)} t\\
 z&: t \xrightarrow{t} t
