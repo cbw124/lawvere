@@ -167,7 +167,7 @@ such that composition is associative and unital.
 A \textbf{$\V$-functor} $F:\C \to \D$ is:
 \[\begin{array}{rl}
 \text{a function} & F_0: Obj(\C) \to Obj(\D)\\
-\text{hom-functions} & F_{ab}: \C(a,b) \to \D(Fa,Fb) \quad \forall a,b \in \C\\
+\text{hom-morphisms} & F_{ab}: \C(a,b) \to \D(Fa,Fb) \quad \forall a,b \in \C\\
 \end{array}\]
 such that $F$ is compatible with composition and identity.
 
@@ -339,7 +339,7 @@ Finally, we use $F_*(\tau)$ and the isomorphism $N: \NN_\V \simeq \NN_\W$ - deno
 	Let $\V$, $\W$ be cartesian closed categories with finite coproducts, and let $F: \V \to \W$ preserve finite products. Then $F$ is a \textbf{change of semantics}; i.e. for every $\V$-theory $\tau_\V: \NN_\V^\op \to \T$, the $\W$-functor $$\tau_\W := F_*(\tau_\V) \circ \tilde{N}: \NN_\W^\op \to F_*(\T)$$ is a $\W$-theory. Moreover, $F$ preserves \textit{models}, i.e. for every $\NN_\V$-power preserving $\mu:\T \to \C$, the $\W$-functor $F_*(\mu)$ preserves $\NN_\W$-powers.
 \end{theorem}
 \begin{proof}
-	The $\W$-functor $\tau_\W$ is clearly bijective-on-objects, because $\tau$ and $\tilde{N}$ are, and it preserves $\NN_\W$-powers because $\tilde{N}$ clearly does, and $F_*(\tau_\V)$ does by the previous lemma. This preservation is \textit{strict} because $F_*(\T)$ has the same objects as $\T$, so the isomorphism implies that $\tau_\W(I_\W^{n_\W}) = \tau_\W(I_\W)^{n_\W}$. The preservation of models follows from the previous lemma.
+	The $\W$-functor $\tau_\W$ is bijective-on-objects because $\tau_\V$ and $\tilde{N}$ are; and it preserves $\NN_\W$-powers because $\tilde{N}$ does and $F_*(\tau_\V)$ does by the previous lemma. This preservation is \textit{strict} because $F_*(\T)$ has the same objects as $\T$, so the isomorphism implies that $\tau_\W(I_\W^{n_\W}) = \tau_\W(I_\W)^{n_\W}$. The preservation of models follows from the previous lemma.
 \end{proof}
 
 Hence, any functor between cartesian closed categories which preserves finite products constitutes a ``change of semantics'' - this is a simple, ubiquitous condition, which provides for a method of transitioning formal systems between various \textit{modus operandi}. Before exploring applications, we introduce two more useful kinds of transitions, and demonstrate how this can all be encapsulated in one elegant categorical idea.
@@ -378,10 +378,16 @@ This category assimilates a whole lot of useful information. Most importantly, t
 
 \section{Applications}
 
-\subsection{Combinatory Calculi}
-The $\lambda$-calculus is an elegant formal language which is the foundation of functional computation, the model of intuitionistic logic, and the internal logic of cartesian closed categories - this is the Curry-Howard-Lambek correspondence \cite{rosetta}. Despite its simplicity, there are subtle complications regarding \textit{substitution}, or evaluation of functions. * If $f(x) = x(y)$, the $x$ is \textit{bound} by whatever is ``plugged in'', while $y$ is \textit{free}, meaning it can refer to some other constant or function. But if $f(y)$ is to be evaluated, one must \textit{rename} the reference to another variable $z$, otherwise it will be ``captured'' as $y(y)$. *
+In theoretical computer science literature, enriched algebraic theories have primarily been studied in the context of \textit{computational effects}. It is the original insight of Mike Stay and Greg Meredith \cite{ladl} that Lawvere theories can actually be utilized for the design of \textbf{programming languages}. This idea comes from caring about a relatively old and neglected subject - \textit{combinatory logic}.
 
-This problem was noticed early in the history of mathematical foundations, even before the $\lambda$-calculus, and so Moses Sch\"onfinkel invented \textit{combinatory logic} \cite{combs} - a basic form of logic without the red tape of \textit{variable binding}, hence without functions. The $SKI$-calculus is the \textit{variable-free} representation of the $\lambda$-calculus; $\lambda$-terms are translated via \textit{abstraction elimination} into strings of combinators and applications. This is an important method for programming languages to minimize the subtleties of variables.
+\subsection{The $SKI$-combinator calculus}
+The $\lambda$-calculus is an elegant formal language which is the foundation of functional computation, the model of intuitionistic logic, and the internal logic of cartesian closed categories - this is the Curry-Howard-Lambek correspondence \cite{rosetta}.
+
+Terms are constructed recursively by \textit{variables}, \textit{application}, and \textit{abstraction}, and the basic rewrite is \textit{beta reduction}: $$M,N := x \;\; | \;\; (M\; N) \;\; | \;\; \lambda x.M$$ $$(\lambda x.M\; N) \Rightarrow M[N/x]$$
+
+Despite its simplicity, there are subtle complications regarding \textit{substitution}, or evaluation of functions. Consider the term $M = \lambda x.(\lambda y.(xy))$: if this is applied to the variable $y$, then $(M\; y) \Rightarrow \lambda y.(y\; y)$ - but this is not intended, because the $y$ in $M$ is just a placeholder, it is ``bound'' by whatever will be plugged in, while the $y$ being substituted is ``free'', meaning it can refer to some other value or function in the program. Hence whenever a free variable is to be substituted for a bound variable, we need to \textit{rename} the bound to prevent ``variable capture'' (e.g. $(M y) \Rightarrow \lambda z.(y\; z)$).
+
+This problem was noticed early in the history of mathematical foundations, even before the $\lambda$-calculus, and so Moses Sch\"onfinkel invented \textit{combinatory logic} \cite{combs} - a basic form of logic without the red tape of \textit{variable binding}, hence without functions in the usual sense. The $SKI$-calculus is the \textit{variable-free} representation of the $\lambda$-calculus; $\lambda$-terms are translated via \textit{abstraction elimination} into strings of combinators and applications. This is an important method for programming languages to minimize the subtleties of variables. * By contrast, there is a deep mathematical theory called ``nominal logic'' built entirely around just how to manage variables in a formal system \cite{nom}. *
 
 The key insight here is that Lawvere theories are by definition free of variables. When representing a computational calculus as an $\NN$-$\Gph$ theory, the general rewrite rules are simply edges in the hom-graphs $t^n \to t$, with the object $t$ serving in place of the variable. Below is the theory of the $SKI$-combinator calculus:
 
@@ -397,8 +403,7 @@ The key insight here is that Lawvere theories are by definition free of variable
 & \kappa & :((K\; y)\; z) \Rightarrow y\\
 & \iota & :(I\; z) \Rightarrow z\\
 \end{array}\]
-
-These denote rewrites for arbitrary subterms $x, y, z$ without any variable binding involved, by using the cartesian monoidal structure of the category. They are simply edges with vertices:
+These denote rewrites for arbitrary subterms $x, y, z$ without any variable binding involved, by using the \textit{cartesian structure} of the category. They are simply edges with vertices:
 \[\begin{array}{rl}
 (((S\; x)\; y)\; z)&: t^3 \xrightarrow{l^{-1} \times t^3} 1\times t^3 \xrightarrow{S \times t^3} t^4 \xrightarrow{(-\;-)\times t^2} t^3 \xrightarrow{(-\;-) \times t} t^2 \xrightarrow{(-\;-)} t\\
 ((x\; z)\; (y\; z))&: t^3 \xrightarrow{t^2 \times \Delta} t^4 \xrightarrow{t \times \tau \times t} t^4 \xrightarrow{(-\;-) \times (-\;-)} t^2 \xrightarrow{(-\;-)} t\\\\
@@ -407,6 +412,38 @@ y&: t^2 \xrightarrow{t \times !} t \times 1 \xrightarrow{r} t\\\\
 (I\; z)&: t \xrightarrow{l^{-1}} 1\times t \xrightarrow{I \times t} t^2 \xrightarrow{(-\;-)} t\\
 z&: t \xrightarrow{t} t
 \end{array}\]
+
+These implicitly universally quantified rules are applied by \textit{precomposing} with the terms to be ``plugged in'': using that a morphism $1 \to t^n$ is equivalent to $n$ morphisms $1 \to t$, terms are constructed from constants, then the abstract rewrite rules evaluate on concrete terms:
+\[
+\begin{tikzcd}
+	((KS)I): \arrow[Rightarrow,d,swap,"\kappa \circ (S\times I)"] & 1 \arrow[r,"S\times I"] & t^2 \arrow[r,"((K\; y)\; z)"] & t\\
+	S: & 1 \arrow[r,"S\times I"] & t^2 \arrow[r,"y"] & t
+\end{tikzcd}
+\]
+(Morphisms $1\to t$ are the \textit{closed} terms, meaning they have no free variables; in general morphisms $t^n\to t$ are terms with $n$ free variables, and this reasoning applies in the same way.)\\
+
+A model of this theory is a power-preserving $\Gph$-functor $\mu: \Th(SKI) \to \Gph$. This gives a graph $\mu(t)$ of all terms and rewrites in the $SKI$-calculus, which is generated as follows:
+\[
+\begin{tikzcd}
+1 \simeq \mu(1) \arrow[r,"\mu(S)"] & \mu(t) & \mu(t^2) \arrow[l,swap,"\mu(\left(-\;-\right))"] \simeq \mu(t)^2
+\end{tikzcd}
+\]
+The images of the nullary operations $S,K,I$ are distinguished vertices of the graph $\mu(t)$, because $\mu$ preserves the terminal object which ``points out'' vertices. The image of the binary operation $(-\; -)$ gives for every pair of vertices $(u,v) \in \mu(t)^2$, through the isomorphism $\mu(t)^2 \simeq \mu(t^2)$, a vertex $(u\; v)$ in $\mu(t)$ which is their application; in this way all possible terms are generated: $$((((S\; (K\; (I\; I)))\; S) \dots$$
+
+The rewrites are transferred by the \textit{enrichment} of the functor: rather than functions between hom-sets like a normal functor, the morphism component of $\mu$ consists of graph homomorphisms between hom-graphs. In particular, $$\mu_{1,t}: \Th(SKI)(1,t)\to \Gph(1,\mu(t))$$ maps the ``syntactic'' graph of all closed terms and rewrites coherently into the ``semantic'' graph - meaning rewrites in the theory $a\Rightarrow b$ are sent to rewrites in the model $\mu(a) \Rightarrow \mu(b)$ (graph homomorphisms are just functors without composition).
+
+* graph transformation *
+
+At this point it might almost seem redundant; didn't the theory already have all this information? The simple difference between the syntax and semantics is that $\mu(t)$ \textit{is a graph}, and the morphisms $\mu(S), \mu(K), \mu(I), \mu((-\; -))$ and all other terms $t^n\to t$ are \textit{graph homomorphisms}. For closed terms, this means that a hom-edge $\alpha\in \Gph(1,\mu(t))$ corresponds to an edge in $\mu(t)$, and similarly for terms with free variables. For application, this means that pairs of rewrites $(a\to b, c\to d)$ are sent to rewrites $(a\; b) \to (c\; d)$.
+
+This process is intuitive, but how do we actually define the functor to pick out a specific graph? There are many models of $\Th(SKI)$, but in particular we care about the canonical \textit{free} model, which means that $\mu(t)$ is simply the graph of all closed terms and rewrites in the $SKI$-calculus. This utilizes the adjunction discussed in $\S2$:
+\[
+\begin{tikzcd}
+\Gph \arrow[bend left=10,below]{rr}{F}
+& \ld &
+\arrow[bend left=10,above]{ll}{U} \left[\Th(SKI),\Gph\right]_{fp}
+\end{tikzcd}
+\]
 
 (Exposition of model, example of computation)
 
@@ -422,42 +459,42 @@ We can equip term calculi with \textit{reduction contexts}, which determine when
 
 The $SKI$-calculus is thereby equipped with ``lazy evaluation'', an essential paradigm in modern programming. (include proofs from ROSwELT about weak head normal form?) This represents a broad potential application of equipping theories with computational methods, such as evaluation strategies. Moreover, these equipments can be modified as needed: using \textit{change-of-theory}, we can utilize a $\Gph$-functor $$f: \Th(SKI) \to \Th(SKI+R)$$ which sends $S,K,I$ to $RS,RK,RI$, and $\sigma, \kappa, \iota$ to the corresponding rewrites. This essentially interprets ordinary $SKI$ as having every subterm be a reduction context; we then need only to add a structural congruence rule to $\Th(SKI+R)$ to eliminate redundant markers in the right-hand side of applications: $$(x\; Ry) = (x\; y)$$ Then $f$ is a $\Gph$-functor which sends rewrites to rewrites correctly, thus inducing the change of theory $$f^*: \Mod(\Th(SKI+R),\C) \to \Mod(\Th(SKI),\C)$$ for all semantic categories $\C$, which forgets the reduction contexts.
 
-\subsection{String Diagrams}
-
-Pseudomonoids \cite{pseudo} are important in higher category theory. A monoidal category is ``just a pseudomonoid in $\Cat$!'' The tensor is only associative and unital \textit{up to isomorphism}; these are now reified as 2-morphisms in a $\Cat$-enriched Lawvere theory, and can be understood as invertible rewrites of string diagrams:
-
-\begin{center}
-\ovalbox{\text{Th(PsMon)}}\\~\\
-\begin{tikzcd}
-M^2 \ar{r}{m} & M & \ar[swap]{l}{e} 1\\
-\end{tikzcd}\\
-\ovalbox{\begin{minipage}{.2 \textwidth}
-\xymatrix{\assocl{.15 \textwidth}}
-\end{minipage}}\qquad
-\begin{minipage}{.2 \textwidth}
-\begin{tikzcd}
-M^3 \ar{r}{M\times m} \ar[swap,""name=L]{d}{m\times M} & M^2 \ar[""name=R]{d}{m}\\
-M^2 \ar[swap]{r}{m} & M\\
-\ar[Rightarrow, from=L, to=R, shorten <= 16pt, shorten >= 16pt]{a}{a}
-\end{tikzcd}
-\end{minipage}\qquad
-\ovalbox{\begin{minipage}{.2 \textwidth}
-\xymatrix{\assocr{.15 \textwidth}}
-\end{minipage}}\\
-
-\ovalbox{\begin{minipage}{.2 \textwidth}
-\xymatrix{\unitl{.15 \textwidth}}
-\end{minipage}}\qquad
-\begin{minipage}{.2 \textwidth}
-\begin{tikzcd}
-M \ar{r}{e\times M} \ar[equal,""name=Q]{rd} \ar[swap]{d}{M\times e} & M^2 \ar[Rightarrow, to=Q]{l}{l} \ar{d}{m}\\
-M^2 \ar[Rightarrow, to=Q, shorten >= 4pt]{r}{r} \ar[swap]{r}{m} & M
-\end{tikzcd}
-\end{minipage}\qquad
-\ovalbox{\begin{minipage}{.2 \textwidth}
-\xymatrix{\unitr{.15 \textwidth}}
-\end{minipage}}
-\end{center}
+%\subsection{String Diagrams}
+%
+%Pseudomonoids \cite{pseudo} are important in higher category theory. A monoidal category is ``just a pseudomonoid in $\Cat$!'' The tensor is only associative and unital \textit{up to isomorphism}; these are now reified as 2-morphisms in a $\Cat$-enriched Lawvere theory, and can be understood as invertible rewrites of string diagrams:
+%
+%\begin{center}
+%\ovalbox{\text{Th(PsMon)}}\\~\\
+%\begin{tikzcd}
+%M^2 \ar{r}{m} & M & \ar[swap]{l}{e} 1\\
+%\end{tikzcd}\\
+%\ovalbox{\begin{minipage}{.2 \textwidth}
+%\xymatrix{\assocl{.15 \textwidth}}
+%\end{minipage}}\qquad
+%\begin{minipage}{.2 \textwidth}
+%\begin{tikzcd}
+%M^3 \ar{r}{M\times m} \ar[swap,""name=L]{d}{m\times M} & M^2 \ar[""name=R]{d}{m}\\
+%M^2 \ar[swap]{r}{m} & M\\
+%\ar[Rightarrow, from=L, to=R, shorten <= 16pt, shorten >= 16pt]{a}{a}
+%\end{tikzcd}
+%\end{minipage}\qquad
+%\ovalbox{\begin{minipage}{.2 \textwidth}
+%\xymatrix{\assocr{.15 \textwidth}}
+%\end{minipage}}\\
+%
+%\ovalbox{\begin{minipage}{.2 \textwidth}
+%\xymatrix{\unitl{.15 \textwidth}}
+%\end{minipage}}\qquad
+%\begin{minipage}{.2 \textwidth}
+%\begin{tikzcd}
+%M \ar{r}{e\times M} \ar[equal,""name=Q]{rd} \ar[swap]{d}{M\times e} & M^2 \ar[Rightarrow, to=Q]{l}{l} \ar{d}{m}\\
+%M^2 \ar[Rightarrow, to=Q, shorten >= 4pt]{r}{r} \ar[swap]{r}{m} & M
+%\end{tikzcd}
+%\end{minipage}\qquad
+%\ovalbox{\begin{minipage}{.2 \textwidth}
+%\xymatrix{\unitr{.15 \textwidth}}
+%\end{minipage}}
+%\end{center}
 
 %\begin{minipage}{.2 \textwidth}
 %\begin{tikzcd}
