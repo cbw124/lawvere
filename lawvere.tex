@@ -428,13 +428,27 @@ A model of this theory is a power-preserving $\Gph$-functor $\mu: \Th(SKI) \to \
 1 \simeq \mu(1) \arrow[r,"\mu(S)"] & \mu(t) & \mu(t^2) \arrow[l,swap,"\mu(\left(-\;-\right))"] \simeq \mu(t)^2
 \end{tikzcd}
 \]
-The images of the nullary operations $S,K,I$ are distinguished vertices of the graph $\mu(t)$, because $\mu$ preserves the terminal object which ``points out'' vertices. The image of the binary operation $(-\; -)$ gives for every pair of vertices $(u,v) \in \mu(t)^2$, through the isomorphism $\mu(t)^2 \simeq \mu(t^2)$, a vertex $(u\; v)$ in $\mu(t)$ which is their application; in this way all possible terms are generated: $$((((S\; (K\; (I\; I)))\; S) \dots$$
+The images of the nullary operations $S,K,I$ are distinguished vertices of the graph $\mu(t)$, because $\mu$ preserves the terminal object which ``points out'' vertices. The image of the binary operation $(-\; -)$ gives for every pair of vertices $(u,v) \in \mu(t)^2$, through the isomorphism $\mu(t)^2 \simeq \mu(t^2)$, a vertex $(u\; v)$ in $\mu(t)$ which is their application.
 
-The rewrites are transferred by the \textit{enrichment} of the functor: rather than functions between hom-sets like a normal functor, the morphism component of $\mu$ consists of graph homomorphisms between hom-graphs. In particular, $$\mu_{1,t}: \Th(SKI)(1,t)\to \Gph(1,\mu(t))$$ maps the ``syntactic'' graph of all closed terms and rewrites coherently into the ``semantic'' graph - meaning rewrites in the theory $a\Rightarrow b$ are sent to rewrites in the model $\mu(a) \Rightarrow \mu(b)$ (graph homomorphisms are just functors without composition).
+In this way all possible terms are generated (we write $\mu(S),\mu(K),\mu(I)$ as $S,K,I$ for sanity): $$((((S\; (K\; (I\; I)))\; S) \dots$$
 
-* graph transformation *
+The rewrites are transferred by the \textit{enrichment} of the functor: rather than functions between hom-sets, the morphism component of $\mu$ consists of graph homomorphisms between hom-graphs. So, $$\mu_{1,t}: \Th(SKI)(1,t)\to \Gph(1,\mu(t))$$ maps the ``syntactic'' graph of all closed terms and rewrites coherently into the ``semantic'' graph - meaning a rewrite in the theory $a\Rightarrow b$ is sent to a rewrite in the model $\mu(a) \Rightarrow \mu(b)$, like a functor without composition.
 
-At this point it might almost seem redundant; didn't the theory already have all this information? The simple difference between the syntax and semantics is that $\mu(t)$ \textit{is a graph}, and the morphisms $\mu(S), \mu(K), \mu(I), \mu((-\; -))$ and all other terms $t^n\to t$ are \textit{graph homomorphisms}. For closed terms, this means that a hom-edge $\alpha\in \Gph(1,\mu(t))$ corresponds to an edge in $\mu(t)$, and similarly for terms with free variables. For application, this means that pairs of rewrites $(a\to b, c\to d)$ are sent to rewrites $(a\; b) \to (c\; d)$.
+These rewrites in the image of $\mu$ are \textit{graph transformations}, like natural transformation without naturality, and this is how the model realizes the $\Gph$-theory as an actual graph of terms and rewrites: in the same way that a transformation between two constant functors $a\Rightarrow b: 1\to \C$ is just a morphism $a(1)\to b(1)$ in $\C$, a rewrite of closed terms $a\Rightarrow b: 1\to \mu(t)$ corresponds to an edge in $\mu(t)$:
+\[
+\begin{tikzcd}
+	\mu((\mu(I)\; \mu(S))) \;\; \bullet \arrow[r,"\mu(\iota)"] & \bullet \;\; \mu(S)
+\end{tikzcd}
+\]
+
+Finally, the fact that $\mu((-\;-))$ is not just a function but a graph homomorphism means that pairs of edges (rewrites) $(a\to b, c\to d)$ are sent to rewrites $(a\; b) \to (c\; d)$. This brings the full complexity of the theory: given a large term (program), there are many different ways it can be computed - and some are better than others:
+\[\begin{tikzcd}
+	((K\; S)\; (((S\; K)\; I)\; (I\; K))) \arrow[r,"\sigma"] \arrow[dddd,swap,"\kappa"] & ((K\; S)\; ((K\;(I\; K))\; (I\; (I\; K)))) \arrow[d,"\iota"]\\
+	& ((K\; S)\; ((K\; K)\; (I\; (I\; K)))) \arrow[d,"\iota"]\\
+	& ((K\; S)\; ((K\; K)\; (I\; K))) \arrow[d,"\iota"]\\
+	& ((K\; S)\; ((K\; K)\; K)) \arrow[d,"\kappa"]\\
+	S & ((K\; S)\; K)\arrow[l,"\kappa"]\\
+\end{tikzcd}\]\\
 
 This process is intuitive, but how do we actually define the functor to pick out a specific graph? There are many models of $\Th(SKI)$, but in particular we care about the canonical \textit{free} model, which means that $\mu(t)$ is simply the graph of all closed terms and rewrites in the $SKI$-calculus. This utilizes the adjunction discussed in $\S2$:
 \[
@@ -445,9 +459,9 @@ This process is intuitive, but how do we actually define the functor to pick out
 \end{tikzcd}
 \]
 
-(Exposition of model, example of computation)
+Given a graph $G$, the ``free model'' on $G$ generates the $SKI$-calculus with the vertices of $G$ as free variables, and the edges of $G$ as rewrites of one variable into another.\\
 
-(Change of base encapsulates the change of semantics reviewed in every term calculi paper)\\
+This model represents the ``small-step'' operational semantics of the $SKI$-calculus; each edge corresponds to a single rewrite... If $F: \Gph \to \Cat$ is the \textit{free category} functor, this induces the \textit{reflexive-transitive closure} of the rewrite relation.\\
 
 We can equip term calculi with \textit{reduction contexts}, which determine when rewrites are valid, thus giving the language a certain \textbf{evaluation strategy}. For example, the \textit{weak head normal form} is given by only allowing rewrites on the left-hand side of the term. We can do this for $\Th(SKI)$ by adding a \textbf{reduction context marker}, an endomorphism $$R: t \to t$$ and a structural congruence rule which pushes the marker to the left-hand side of an application, $$R(x\; y) = (Rx\; y)$$ and modify the rewrite rules to be valid only when the marker is present: 
 \[\begin{array}{rl}
