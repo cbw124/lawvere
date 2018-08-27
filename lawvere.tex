@@ -50,7 +50,10 @@
 
 \newcommand{\FC}{\mathrm{FC}}
 \newcommand{\FP}{\mathrm{FP}}
-\newcommand{\US}{\mathrm{US}}
+\newcommand{\FS}{\mathrm{FS}}
+\newcommand{\UC}{\mathrm{UC}}
+\newcommand{\UP}{\mathrm{UP}}
+\newcommand{\UG}{\mathrm{UG}}
 
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\NN}{\mathrm{N}}
@@ -211,7 +214,7 @@ A $\V$-enriched algebraic theory with $j$-arities or \textbf{$\J$-$\V$ theory} $
 
 A $\J$-$\V$ theory is essentially a $\V$-category with objects being $\J$-powers $t^J$ of a generating object $t$, for $J \in \J$ - note that $t$ itself is $t^I$. In the same way that every $n\in \NN^\op$ is a power of $1 \in \Set$, every $J\in \tilde{\J}$ is a power of the monoidal unit $I\in \V$ (using equation \ref{eq:co-power}): $$\tilde{\J}(J\odot I,J) \cong [I, \tilde{\J}(J,J)] \cong \tilde{\J}(J,J^I)$$ This is just the direct generalization of the usual isomorphisms $J \times I \simeq J \simeq J^I$. Since a $\tau$ preserves $\J$-powers, this implies that every object of $\T$ is a power of $t = \tau(I)$.
 
-Of course, these form categories: $\J$-$\V$ theories and $\J$-power preserving $\V$-functors $f: \T \to \T'$ such that $f\tau = \tau'$ give the category $\V\Law$; and for every theory $\T$ and every $\V$-category $\C$ with $\J$-powers, there is the category $\Mod(\T,\C)$ of $\V$-functors and $\V$-natural transformations between them. (Note: if $\V$ is a \textit{cosmos}, i.e. complete and cocomplete, then $\V\Cat$ has \textit{enriched functor categories} - hence $\V\Law$ and $\Mod(\T,\C)$ are actually $\V$-categories. This is potentially useful, and the ``operational'' $\V$'s of this paper are indeed cosmoi.)
+Of course, these form categories: $\J$-$\V$ theories and $\J$-power preserving $\V$-functors $f: \T \to \T'$ such that $f\tau = \tau'$ give the category $\V\Law$; and for every theory $\T$ and every $\V$-category $\C$ with $\J$-powers, there is the category $\Mod(\T,\C)$ of $\V$-functors and $\V$-natural transformations between them. (Note: if $\V$ is a \textit{cosmos}, i.e. complete and cocomplete, then $\V\Cat$ has \textit{enriched functor categories} - hence $\V\Law$ and $\Mod(\T,\C)$ are actually $\V$-categories. This is potentially very useful, and the ``operational'' $\V$'s of this paper are indeed cosmoi.)
 
 Here is an overview of the concepts: 
 
@@ -231,13 +234,13 @@ The usual kinds of arities are eleutheric: in particular, finite cardinals. Henc
 
 We propose a general framework in which one can \textit{transition} seamlessly between different forms of operational semantics: small-step, big-step, full-step, denotational:
 \[\begin{tikzcd}[column sep=small]
-\Gph \arrow[bend left,below]{rr}{F_C}
+\Gph \arrow[bend left,below]{rr}{\FC}
 & \ld &
-\arrow[bend left,above]{ll}{U_G} \Cat \arrow[bend left,below]{rr}{F_P}
+\arrow[bend left,above]{ll}{\UG} \Cat \arrow[bend left,below]{rr}{\FP}
 & \ld &
-\arrow[bend left,above]{ll}{U_C} \Pos \arrow[bend left,below]{rr}{U_S}
-& \rd &
-\Set \arrow[bend left,above]{ll}{F_P}
+\arrow[bend left,above]{ll}{\UC} \Pos \arrow[bend left,below]{rr}{\FS}
+& \ld &
+\Set \arrow[bend left,above]{ll}{\UP}
 \end{tikzcd}\]
 This is effected by a \textbf{monoidal functor} - a functor $$(F,\lambda,\upsilon): (\V,\otimes_\V,I_\V) \to (\W,\otimes_\W,I_\W)$$ which transfers the tensor and unit via the \textit{laxor} and \textit{unitor}
 \[\begin{array}{rl}
@@ -366,11 +369,12 @@ Thus, we can use the construction \textit{again} to encapsulate even the enrichm
 	There is a category $\mathrm{Thy} := \int \mathrm{thy}$ with objects and morphisms $$(F,((f,g),\alpha)): (\V,((\T,\C),\mu)) \to (\W,((\T',\C'),\mu'))$$ being a change-of-semantics $F$ and a morphism $(f,g,\alpha): F_*^*(((\T,\C),\mu)) \to ((\T',\C'),\mu')$ in $\W\Mod$.
 \end{theorem}
 
-This category assimilates a whole lot of useful information. Most importantly, there are morphisms between objects of ``different kinds'', something which we consider often but is normally not possible in category theory. For example, let $\V$ be $\Set$, let $\mathbb{Z}$ be the ring of integers and let $\mathbb{R}$ be the topological group of real numbers. These are the objects $((\T_{\mathrm{Ring}},\Set),\mathbb{Z})$ and $((\T_\Grp,\Top),\mathbb{R})$.
+This category assimilates a whole lot of useful information. Most importantly, there are morphisms between objects of ``different kinds'' - something which we consider often but is normally not possible in category theory. For example, in $\mathrm{Thy}$ there is a morphism $$(\Set, ((u_{\Grp}, \mathrm{Disc}), e^x)): (\Set,((\T_{\mathrm{Ring}},\Set),(\mathbb{Z},\times,+,1))) \to (\Set,((\T_\Grp,\Top),(\mathbb{R},\times)))$$
+There are many unexplored questions about the large, heterogeneous categories which arise from the Grothendieck construction, regarding what unusual structure may be gained, such as limits and colimits with objects of different types, or identifying ``processes'' in which the kinds of objects change in an essential way. This is just a remark; for our purposes we need only recognize that enriched Lawvere theories can be assimilated into one category, which provides a unified context for change-of-base, change-of-theory, and change-of-modelling.
 
 \section{Applications}
 
-In theoretical computer science literature, enriched algebraic theories have primarily been studied in the context of \textit{computational effects}. It is an original insight of Mike Stay and Greg Meredith \cite{ladl} that Lawvere theories can actually be utilized for the design of \textbf{programming languages}. This idea comes from caring about a relatively old and neglected subject - \textit{combinatory logic}.
+In theoretical computer science literature, enriched algebraic theories have primarily been studied in the context of \textit{computational effects}. Mike Stay and Greg Meredith have recognized that Lawvere theories can actually be utilized for the design of \textit{programming languages} \cite{ladl}. This idea comes from caring about a relatively old and neglected subject - \textit{combinatory logic}.
 
 \subsection{The $SKI$-combinator calculus}
 The $\lambda$-calculus is an elegant formal language which is the foundation of functional computation, the model of intuitionistic logic, and the internal logic of cartesian closed categories - this is the Curry-Howard-Lambek correspondence \cite{rosetta}.
@@ -381,7 +385,7 @@ Despite its simplicity, there are subtle complications regarding \textit{substit
 
 This problem was noticed early in the history of mathematical foundations, even before the $\lambda$-calculus, and so Moses Sch\"onfinkel invented \textbf{combinatory logic} \cite{combs} - a basic form of logic without the red tape of variable binding, hence without functions in the usual sense. The $SKI$-calculus is the \textit{variable-free} representation of the $\lambda$-calculus; $\lambda$-terms are translated via \textit{abstraction elimination} into strings of combinators and applications. This is an important method for programming languages to minimize the subtleties of variables.
 
-The key insight here is that Lawvere theories are \textit{by definition} free of variables, and it is precisely through abstraction elimination a programming language can be made an algebraic object. When representing a computational calculus as an $\NN$-$\Gph$ theory, the general rewrite rules are simply edges in the hom-graphs $t^n \to t$, with the object $t$ serving in place of the variable. Below is the theory of the $SKI$-combinator calculus:
+The key insight here is that Lawvere theories are \textit{by definition} free of variables, and it is precisely through abstraction elimination that a programming language can be made an algebraic object. When representing a computational calculus as an $\Gph$-theory, the general rewrite rules are simply edges in the hom-graphs $t^n \to t$, with the object $t$ serving in place of the variable. Below is the theory of the $SKI$-combinator calculus:
 
 \[\begin{array}{rcl}
 & \ovalbox{Th(\textit{SKI})} &\\\\
@@ -452,7 +456,7 @@ So the canonical model of closed terms and rewrites is simply the $\V$-functor $
 Here we reap the benefits of the abstract construction - the graph $\mu_{SKI}^\Gph(t)$ is the \textit{transition system} which represents the \textbf{small-step operational semantics} of the $SKI$-calculus: $$(\mu(a) \to \mu(b) \in \mu_{SKI}^\Gph(t)) \iff (a \Rightarrow b \in \Th(SKI)(1,t))$$
 
 \subsection{Change-of-base}
-Now we can succinctly characterize the transformation from small-step to \textbf{big step}, which is found throughout the operational semantics literature. The \textit{free category} functor $\FC: \Gph \to \Cat$ gives for every graph $G$ the category $\FC(G)$ whose objects are the vertices of $G$, and whose morphisms are freely generated by the edges of $G$, i.e. sequences 
+Now we can succinctly characterize the transformation from small-step to \textbf{big-step}, which is found throughout the operational semantics literature. The \textit{free category} functor $\FC: \Gph \to \Cat$ gives for every graph $G$ the category $\FC(G)$ whose objects are the vertices of $G$, and whose morphisms are freely generated by the edges of $G$, i.e. sequences 
 \[\begin{array}{rl}
 \text{objects} & \text{vertices of } G\\
 \text{morphisms} & \text{finite sequences of vertices and edges } (v_1,e_1,v_2,e_2,...,v_n)\\
@@ -463,23 +467,52 @@ This functor preserves products, because the definition of graphical product and
 
 Thus $\FC$ is the change-of-semantics which induces the \textit{transitive closure} of the rewrite relation, hence $$\mu_{SKI}^\Cat := \FC_*(\mu_{SKI}^\Gph)$$ is the \textit{category} which represents the big-step operational semantics of the $SKI$-calculus.
 
-The same reasoning applies to the \textit{free poset} functor $\FP: \Cat \to \Pos$; it is a change-of-semantics because the product of posets is defined in the same way. This induces the lesser-known \textbf{full-step semantics}, which collapses hom-sets to subsingletons, simply asserting the existence of a rewrite sequence between terms, without distinguishing between different paths.
+The same reasoning applies to the \textit{free poset} functor $\FP: \Cat \to \Pos$; it is a change-of-semantics because the product of posets is defined in the same way. This induces the lesser-known \textbf{full-step semantics}, which collapses hom-sets to subsingletons, simply asserting the existence of a rewrite sequence between terms, without distinguishing between different paths. Since there was no real algebraic information in the free category, this is simply adding the property that all the distinct paths between two terms are equal, while retaining transitivity.
 
-Finally, we can pass to the purely abstract realm where all computation is already completed - the \textit{underlying set} functor $\US: \Pos \to \Set$ collapses every connected component of the full-step poset to a point, equating every formal expression to its final value. Assuming that the language is \textit{terminating}, meaning every term has a finite sequence of possible rewrites, and \textit{confluent}, meaning every pair of paths which branch from a term eventually rejoin, then this functor gives the \textbf{denotational semantics} of the language.
+Finally, we can pass to the purely abstract realm where all computation is already complete - the \textit{free set} functor $\FS: \Pos \to \Set$ collapses every connected component of the full-step poset to a point, equating every formal expression to its final value (this preserves products because the components of a product is a product of the components). Assuming that the language is \textit{terminating}, meaning every term has a finite sequence of possible rewrites, and \textit{confluent}, meaning every pair of paths which branch from a term eventually rejoin, then this functor gives the \textbf{denotational semantics} of the language.
 
-Thus from this simple sequence of functors, we can compute the spectrum of semantics for the $SKI$-calculus. For example,
+So, from this simple sequence of functors, we can compute the spectrum of semantics for the $SKI$-calculus. For example, we have the following computation:
+\[\begin{tikzcd}
+a	
+\end{tikzcd}\]
 
+Of course, most interesting languages are not always terminating, confluent, nor deterministic; the ``spectrum'' being presented here is simple an initial proof-of-concept. There is a great amount of potential research here, with more complex functors, and hopefully deep relationships between this approach and the more conventional \textit{algebra of endofunctor} approach in operational semantics.
 
 \subsection{Change-of-theory: reduction contexts}
-We can equip term calculi with \textit{reduction contexts}, which determine when rewrites are valid, thus giving the language a certain \textbf{evaluation strategy}. For example, the \textit{weak head normal form} is given by only allowing rewrites on the left-hand side of the term. We can do this for $\Th(SKI)$ by adding a reduction context \textit{marker}, an endomorphism $$R: t \to t$$ and a structural congruence rule which pushes the marker to the left-hand side of an application, $$R(x\; y) = (Rx\; y)$$ and modify the rewrite rules to be valid only when the marker is present: 
-\[\begin{array}{rl}
-\sigma & :(((RS\; x)\; y)\; z) \Rightarrow ((Rx\; z)\; (y\; z))\\
-\kappa & :((RK\; y)\; z) \Rightarrow Ry\\
-\iota & :(RI\; z) \Rightarrow Rz\\
-\end{array}
-\]
+We can equip term calculi with \textit{reduction contexts}, which determine when rewrites are valid, thus giving the language a certain \textbf{evaluation strategy}. For example, the \textit{weak head normal form} is given by only allowing rewrites on the left-hand side of the term.
 
-The $SKI$-calculus is thereby equipped with ``lazy evaluation'', an essential paradigm in modern programming. (include proofs from ROSwELT about weak head normal form?) This represents a broad potential application of equipping theories with computational methods, such as evaluation strategies. Moreover, these equipments can be modified as needed: using \textit{change-of-theory}, we can utilize a $\Gph$-functor $$f: \Th(SKI) \to \Th(SKI+R)$$ which sends $S,K,I$ to $RS,RK,RI$, and $\sigma, \kappa, \iota$ to the corresponding rewrites. This essentially interprets ordinary $SKI$ as having every subterm be a reduction context; we then need only to add a structural congruence rule to $\Th(SKI+R)$ to eliminate redundant markers in the right-hand side of applications: $$(x\; Ry) = (x\; y)$$ Then $f$ is a $\Gph$-functor which sends rewrites to rewrites correctly, thus inducing the change of theory $$f^*: \Mod(\Th(SKI+R),\C) \to \Mod(\Th(SKI),\C)$$ for all semantic categories $\C$, which forgets the reduction contexts.
+We can do this for $\Th(SKI)$ by adding a reduction context \textit{marker} as a unary operation and a \textit{structural congruence rule} which pushes the marker to the left-hand side of an application; lastly we modify the rewrite rules to be valid only when the marker is present: 
+\[\begin{array}{rcl}
+& \ovalbox{Th(\textit{SKI}+R)} &\\\\
+\text{Sorts} & t &\\\\
+\text{Term Constructors} & S,K,I & :1 \to t\\
+& (-\; -) & : t^2 \to t\\\\
+\text{Structural Congruence} & R(x\; y) = (Rx\; y) &\\\\
+\mathrm{Rewrites} & \sigma_r & :(((RS\; x)\; y)\; z) \Rightarrow ((Rx\; z)\; (y\; z))\\
+& \kappa_r & :((RK\; y)\; z) \Rightarrow Ry\\
+& \iota_r & :(RI\; z) \Rightarrow Rz\\
+\end{array}\]
+
+The $SKI$-calculus is thereby equipped with ``lazy evaluation'', an essential paradigm in modern programming. (include proofs from ROSwELT about weak head normal form?) This represents a broad potential application of equipping theories with computational methods, such as evaluation strategies.
+
+Moreover, these equipments can be added or removed as needed: using \textit{change-of-theory}, we can utilize a ``free reduction'' $\Gph$-functor $f_R:\Th(SKI)\to \Th(SKI+R)$:
+\[\begin{array}{rrcl}
+\text{objects} & t^n & \mapsto & t^n\\
+\text{hom-vertices} & S,K,I & \mapsto & S,K,I\\
+& (-\; -) & \mapsto & R(-\; -)\\
+\text{hom-edges} & \sigma, \kappa, \iota & \mapsto & \sigma_r, \kappa_r, \iota_r\\
+\end{array}\]
+This essentially interprets ordinary $SKI$ as having every subterm be a reduction context. This is a $\Gph$-functor because its hom component consists of graph-homomorphisms: $$f_{n,m}: \Th(SKI)(t^n,t^m) \to \Th(SKI+R)(t^n,t^m)$$ which simply send each application to its postcomposition with $R$, and each rewrite to its ``marked'' correspondent; and this is all coherent - for example, even though $(((S\; x)\; y)\; z) \mapsto R(R(R(S\; x)\; y)\; z)$, the extra markers are ignored by $\sigma_r$, because they are now just a part of the lefthand terms.
+
+So, by precomposition this induces the change of theory on categories of models: $$f_R^*: \Mod(\Th(SKI+R),\C) \to \Mod(\Th(SKI),\C)$$ for all semantic categories $\C$, which forgets the reduction contexts.
+
+Similarly, there is a $\Gph$-functor $u_R: \Th(SKI+R)\to \Th(SKI)$ which \textit{forgets} reduction contexts, by sending $\sigma_r,\kappa_r,\iota_r \mapsto\sigma, \kappa,\iota$ and $R \mapsto id_t$ - this latter is the only way that the marked reductions can be mapped coherently to the unmarked. However, this means that $u_R^*$ does not give the desired change-of-theory of ``freely adjoining contexts'', because collapsing $R$ to the identity eliminates the significance of the marker.
+
+This illustrates a key aspect of categorical universal algebra: because change-of-theory is given by precomposition and is thus contravariant, \textit{properties} such as equations can be added or removed, but \textit{structure} can only be \textit{removed}. This is a necessary limitation, at least in the present setup, but there are ways of working around it. Of course, these abstract theories are not floating in isolation but are \textit{implemented} in code. One can simply use a ``maximal theory'' with all pertinent structure, then selectively forget as needed.
+
+\section{Conclusion}
+
+We conclude.
 
 \newpage
 
