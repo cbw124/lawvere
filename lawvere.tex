@@ -112,13 +112,17 @@ There are many other useful enriching categories. Better yet, there are functors
 \textbf{Sets}: $\Set$-theories represent denotational semantics (provided the calculus is \textit{confluent}, see \cite{lam}):\\ - a hom-set element represents an \textit{equivalence class} of the symmetric closure of the big-step relation.\\\\
 (We will use \textit{reflexive} graphs, meaning every vertex has a distinguished self-loop; this is not the convention, but it is needed for the ``free category'' functor to be a change-of-semantics ($\S$6). Also, these can be made \textit{labelled} transition systems by a simple augmentation of this theory; we left this implicit for simplicity.)\\
 
-Operational semantics is unified by enriched Lawvere theories and canonical functors between enriching categories. This provides a more systematic categorical representation of computation.
+Operational semantics is unified by enriched Lawvere theories and canonical functors between enriching categories. This provides a more systematic categorical representation of computation.\\
 
-A motivating example is ``logic as a distributive law" \cite{ladl}, an algorithm for deriving a spatial-behavioral type system from a formal presentation of a computational calculus. Essential properties such as soundness be proven, a powerful query language is generated, and modalities can be ``built in" to express principles of the system.
+A motivating example is ``logic as a distributive law" \cite{ladl}, an algorithm for deriving a spatial-behavioral type system from a formal presentation of a computational calculus. Essential properties such as soundness are made provable, a powerful query language is generated, and modalities can be ``built in" to express principles of the system.\\
 
-This idea impacts more than computation, and even though these concepts have been well-known for decades, the practical significance has not been fully realized. With the modern paradigm of ``programs $\simeq$ proofs'', this method applies to many subjects throughout mathematics. We demonstrate this idea with several examples, and consider future potential.\\
+In section $\S2$, we review Lawvere theories as a more explicit, but equivalent, presentation of finitary \textit{monads}. In $\S3$, we establish the basics of \textit{enrichment}, and understand the arities of a theory as an action of the enriching category on the enriched category. In $\S4$ we give the central definition of $\V$\textit{-theory}, from Lucyshyn-Wright \cite{rbb}, which allows us to parameterize our theory by a monoidal subcategory of arities.
 
-We gratefully acknowledge the support of Pyrofex Incorporated.
+In $\S5$ we discuss how functors between enriching categories induce \textit{change-of-base} 2-functors between their categories of enriched categories, and in $\S6$ we show that product-preserving functors induce \textit{change-of-semantics}, i.e. preserve theories and models. In $\S7$ we make a somewhat tangential remark of future interest, that theories of all different enrichments and models can be assimilated into one category using the iterated \textit{Grothendieck construction}.
+
+Finally in $\S8$ we bring it all together by demonstrating these concepts with the $SKI$\textit{-combinator calculus}, introducing the idea of developing actual \textit{programming languages} with enriched Lawvere theories.\\
+
+We gratefully acknowledge the support of Pyrofex Incorporated.\newpage
 
 \section{Lawvere Theories}
 Computer science loves monads, but they are widely regarded as somewhat mysterious. They are almost too elegant; it is difficult to ``grok'' how they work before working with them significantly. This is fairly ironic, because most are actually equivalent to something much more straightforward: Lawvere theories.
@@ -361,7 +365,7 @@ Finally, we use $F_*(\tau)$ and the isomorphism $N: \NN_\V \simeq \NN_\W$ - deno
 
 Hence, any functor between cartesian closed categories which preserves finite products constitutes a ``change of semantics'' - this is a simple, ubiquitous condition, which provides for a method of transitioning formal systems between various \textit{modus operandi}. Before exploring applications, we introduce two more useful kinds of transitions, and demonstrate how this can all be encapsulated in one elegant categorical idea.
 
-\section{Putting It All Together}
+\section{The category Thy}
 
 In addition to change-of-base, there are two other natural and useful transitions for these theories. Let $\V\mathrm{Law}$ be the category of $\V$-theories, and let $f:\T\to \T'$ be a morphism of theories; this induces a ``change-of-theory'' functor between the respective categories of models $$f^*:\V\Mod(\T',\C)\to \V\Mod(\T,\C)$$ defined as precomposition by $f$. Similarly, given a finite-product functor $g: \C \to \C'$, this induces a ``change-of-model'' functor $$g_*:\V\Mod(\T,\C) \to \V\Mod(\T,\C')$$ defined as postcomposition by $g$.
 
@@ -490,12 +494,14 @@ Finally, we can pass to the purely abstract realm where all computation is alrea
 
 So, from this simple sequence of functors, we can compute the spectrum of semantics for the $SKI$-calculus. For example, we have the following computation:
 \[\begin{tikzcd}
-&	(((S\; K)\; (I\; K))\; S) \arrow[rd] \arrow[ld] &\\
-(((S\; K)\; K)\; S) \arrow[d] & & ((K\; S)\; ((I\; K)\; S)) \arrow[lld] \arrow[d]\\
-((K\; S)\; (K\; S)) \arrow[rr] & & S
+&	(((S\; K)\; (I\; K))\; S) \arrow[rd,"\sigma"] \arrow[ld,swap,"\iota"] \arrow[ddl,dotted,bend left=10,"\sigma\iota"] \arrow[ddl,dotted,bend right=10,"\iota\sigma"] \arrow[ddr,dotted,swap,bend left=10,"\kappa\sigma"] \arrow[ddr,dotted,bend right=10,swap,"\kappa\sigma\iota"] \arrow[ddr,dotted,swap,bend right=25,"\kappa\iota\sigma"] &\\
+(((S\; K)\; K)\; S) \arrow[d,swap,"\sigma"] & & ((K\; S)\; ((I\; K)\; S)) \arrow[lld,swap,"\iota"] \arrow[d,"\kappa"]\\
+((K\; S)\; (K\; S)) \arrow[rr,swap,"\kappa"] & & S
 \end{tikzcd}\]
 
-Of course, most interesting languages are not always terminating, confluent, nor deterministic; the ``spectrum'' being presented here is simple an initial proof-of-concept. There is a great amount of potential research here, with more complex functors, and hopefully deep relationships between this approach and the more conventional \textit{algebra of endofunctor} approach in operational semantics.
+The solid arrows are the one-step rewrites of the initial $\Gph$-theory; applying $\FC_*$ gives the dotted composites, and $\FP_*$ asserts that all composites between any two objects are equal. Finally, $\FS_*$ collapses the whole diagram to $S$, and the calculation is complete. This is a simple demonstration of the basic stages of computation: small-step, big-step, full-step, and denotational semantics.
+
+Of course, most interesting languages are not always terminating, confluent, nor deterministic; the ``spectrum'' being presented here is simple an initial proof-of-concept. We expect that there are more interesting change-of-base functors which handle these subtleties - they have probably already been studied in other contexts.
 
 \subsection{Change-of-theory: reduction contexts}
 We can equip term calculi with \textit{reduction contexts}, which determine when rewrites are valid, thus giving the language a certain \textbf{evaluation strategy}. For example, the \textit{weak head normal form} is given by only allowing rewrites on the left-hand side of the term.
@@ -513,7 +519,7 @@ We can do this for $\Th(SKI)$ by adding a reduction context \textit{marker} as a
 & \iota_r & :(RI\; z) \Rightarrow Rz\\
 \end{array}\]
 
-The $SKI$-calculus is thereby equipped with ``lazy evaluation'', an essential paradigm in modern programming. (include proofs from ROSwELT about weak head normal form?) This represents a broad potential application of equipping theories with computational methods, such as evaluation strategies.
+The $SKI$-calculus is thereby equipped with ``lazy evaluation'', an essential paradigm in modern programming. This represents a broad potential application of equipping theories with computational methods, such as evaluation strategies.
 
 Moreover, these equipments can be added or removed as needed: using \textit{change-of-theory}, we can utilize a ``free reduction'' $\Gph$-functor $f_R:\Th(SKI)\to \Th(SKI+R)$:
 \[\begin{array}{rrcl}
@@ -532,7 +538,11 @@ This illustrates a key aspect of categorical universal algebra: because change-o
 
 \section{Conclusion}
 
-We conclude.
+We have established the basics of how enriched Lawvere theories provide a framework for unifying the syntax and semantics, the structure and behavior, the design and study of formal languages. Enriching theories in category-like structures reifies the operational semantics by representing rewrites between terms; and product-preserving functors between enriching categories induce change-of-semantics functors between categories of models - this simplified condition is obtained by using only cardinal arities.
+
+This base-change, along with change-of-theory and change-of-modelling, can be assimilated into one category using an iterated Grothendieck construction $\mathrm{Thy}$, which consists of all enriched Lawvere theories. Finally, enriched theories can be used not only for computational effects but the actual design of concrete programming languages, through the use of combinators.
+
+For future work,
 
 \newpage
 
