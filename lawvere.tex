@@ -156,7 +156,7 @@ generates morphisms representing \textit{big-step} rewrites.
 \item
 \textbf{Posets}: $\Pos$-theories represent ``full-step" operational semantics:\\ --- a hom-poset boolean represents the \textit{existence} of a big-step rewrite.
 \item
-\textbf{Sets}: $\Set$-theories represent denotational semantics (provided the calculus is confluent, see \cite{lam}):\\ --- a hom-set element represents an \textit{equivalence class} of the symmetric closure of the big-step relation.
+\textbf{Sets}: $\Set$-theories represent denotational semantics (provided the calculus is confluent, \cite{lam}):\\ --- a hom-set element represents an \textit{equivalence class} of the symmetric closure of the big-step relation.
 \end{itemize}
 Here we take $\Gph$ to be the category of reflexive graphs, $\Set^R$ where $R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.  Thus, every vertex has a distinguished self-loop, which is needed for the ``free category'' functor to be a valid change-of-semantics ($\S$6).   We could also handle labelled transition systems by a simple augmentation of this theory, but for simplicity we do not consider these.
 
@@ -229,22 +229,29 @@ For completeness, it is worthwhile to explicate the \textit{presentation} of a L
 From the presentation above, this generates a category the objects of which are powers of $t$, and the morphisms of which are composites of products of the morphisms in $\Th(\Mon)$, projections, deletions, symmetries and diagonals which constitute the cartesian structure of $\mathrm{FC}_{fp}(\Th(\Mon))$. A detailed account of this idea for any class of limits, called ``sketches'', is given in \cite{sketch}.
 
 Lawvere theories and \textit{finitary monads} provide complementary representations of algebraic structures and computation, as discussed by Hyland and Power in \cite{ltam}, and they were proven to be equivalent by Linton in \cite{linton}. For every Lawvere theory $\T$, there is an adjunction:
-
 \[\begin{tikzcd}
 	\Set \arrow[bend left=10,below]{rr}{F}
 	& \ld &
 	\arrow[bend left=10,above]{ll}{U} \Mod(\T,\Set)
 \end{tikzcd}\]
-
-There is the underlying set functor $$U\maps \Mod(\T,\Set) \to \Set$$ which sends each model $\mu$ to the image of the generating object, $\mu(\tau(1)) = X$ in $\Set$. There is the free model functor $$F\maps\Set \to \Mod(\T,\Set)$$ which sends each finite set $n$ to the representable functor $\T(|n|,-)\maps\T \to \Set$, and in general a set $X$ to the functor which sends $t^n \in \T$ to the set of all $n$-ary operations on $X$: $\{f(x_1,...,x_n)|f\in \T(n,1), x_i\in X\}$ --- this is the filtered colimit of representables indexed by the poset of finite subsets of $X$ \cite{nlab}(see $\S$3 and $\S$4). These form the adjunction: $$\Mod(F(n),\mu) = \Mod(\T(|n|,-),\mu) \cong \mu(n) \cong \mu(1)^n = \Set(n,U(\mu))$$ The left isomorphism is by the Yoneda lemma, and the right isomorphism is by the product-preservation of $\mu$. Essentially, these are opposite ways of representing the $n$-ary operations of a model.
+The underlying set functor 
+\[  U\maps \Mod(\T,\Set) \to \Set \]
+sends each model $\mu$ to the image of the generating object in $\Set$, $X = \mu(\tau(1))$. 
+Its left adjoint, the free model functor 
+\[       F\maps\Set \to \Mod(\T,\Set), \]
+sends each finite set $n$ to the representable functor $\T(|n|,-)\maps\T \to \Set$, and in general any set $X$ to the functor that maps $t^n \in \T$ to the set of all $n$-ary operations on $X$: $\{f(x_1,...,x_n)|f\in \T(n,1), x_i\in X\}$.  These give an adjunction
+\[   \Mod(F(n),\mu) = \Mod(\T(|n|,-),\mu) \cong \mu(n) \cong \mu(1)^n = \Set(n,U(\mu))\] 
+where the left isomorphism arises from the Yoneda lemma, and the right isomorphism from the product preservation of $\mu$. 
 
 This adjunction induces a monad $T$ on $\Set$:
 \begin{equation}
-T(X) = \int^{n\in \NN} X^n \times \T(n,1)
+T(X) = \int^{n\in \NN} X^n \times \T(n,1).
 \end{equation}
-the integral symbol is a ``coend'', essentially a coproduct quotiented by the equations of the theory and the equations induced by the cartesian structure of the category; hence $T$ sends each set $X$ to the set of all terms in the theory on $X$ up to equality.
+The integral here is a coend, essentially a coproduct quotiented by the equations of the theory and the equations induced by the cartesian structure of the category.  
 
-Conversely, for a monad $T$ on $\Set$, its Kleisli category $\Kl(T)$ is the category of all free algebras of the monad, which has all coproducts. There is a ``comparison'' functor $k\maps \Set \to \Kl(T)$ which is the identity on objects and preserves coproducts (because it is a right adjoint); so, $$k^{\op}\maps \Set^{\op} \to \Kl(T)^{\op}$$ is a cartesian functor, and restricting its domain to $\NN^{\op}$ forms the canonical Lawvere theory corresponding to the monad. This restriction is what limits the equivalence to finitary monads ($\S$3). There is a good explanation of all this in Milewski's ``Category Theory for Programmers'' \cite{milew}, as well as \cite{ltdistlaw}.
+Conversely, for a monad $T$ on $\Set$, its Kleisli category $\Kl(T)$ is the category of all free algebras of the monad, which has all coproducts. There is a ``comparison'' functor $k\maps \Set \to \Kl(T)$ which is the identity on objects and preserves coproducts (because it is a right adjoint).  Thus,
+\[ k^{\op}\maps \Set^{\op} \to \Kl(T)^{\op} \]
+is a cartesian functor, and restricting its domain to $\NN^{\op}$ forms the canonical Lawvere theory corresponding to the monad. This restriction is what limits the equivalence to finitary monads ($\S$3).  For more details see \cite{sketch,lawvere,milew}.
 
 The correspondence of Lawvere theories and finitary monads forms an equivalence between the category of Lawvere theories and the category of finitary monads on $\Set$, as well as the categories of models and algebras for every corresponding pair $(\T, T)$:
 \[\begin{array}{rcl}
@@ -389,7 +396,7 @@ T(V) = \int^{n_\V\in \NN_\V} V^{n_\V} \times \T(t^{n_\V},t)
 \end{equation}
 
 \begin{example*}
-	Let $\V = \Cat$ and $\T = \Th(\mathrm{PsMon})$ be the $\Cat$-theory of pseudomonoids. Now rather than associativty and unitality \textit{equations}, these have 2-isomorphisms called the \textbf{associator} and \textbf{unitors} which rewrite in the direction of a ``normal form''. To equate the multiple possible rewrite sequences, we need 2-dimensional coherence conditions. Here is the presentation of the 2-theory:
+	Let $\V = \Cat$ and $\T = \Th(\mathrm{PsMon})$ be the $\Cat$-theory of pseudomonoids \cite{pseudo}. Now rather than associativty and unitality \textit{equations}, these have 2-isomorphisms called the \textbf{associator} and \textbf{unitors} which rewrite in the direction of a ``normal form''. To equate the multiple possible rewrite sequences, we need 2-dimensional coherence conditions. Here is the presentation of the 2-theory:
 	
 	$$\textbf{Th(PsMon)}$$
 	\[\begin{array}{rll}
@@ -548,14 +555,14 @@ Before exploring applications, we introduce two more useful kinds of translation
 
 In addition to change-of-base, there are two other natural and useful translations for these theories. Let $\V\mathrm{Law}$ be the category of $\V$-theories, and let $f\maps\T\to \T'$ be a morphism of theories; this induces a ``change-of-theory'' functor between the respective categories of models $$f^*\maps\V\Mod(\T',\C)\to \V\Mod(\T,\C)$$ defined as precomposition with $f$. Similarly, given a cartesian functor $g\maps \C \to \C'$, this induces a ``change-of-model'' functor $$g_*\maps\V\Mod(\T,\C) \to \V\Mod(\T,\C')$$ defined as postcomposition with $g$.
 
-These translations, as well as change-of-base, can all be packed up nicely using the \textbf{Grothendieck construction}: given a (pseudo)functor $F\maps \D \to \Cat$, there is a functor $\bar{F}\maps \int F \to \D$ which encapsulates all of the categories in the image of $F$ (this functor is a \textit{fibration}, the categorification of indexing) \cite{groth}: the category $\int F$ consists of
+These translations, as well as change-of-base, can all be packed up nicely using the \textbf{Grothendieck construction}: given a (pseudo)functor $F\maps \D \to \Cat$, there is a functor $\bar{F}\maps \int F \to \D$ that encapsulates all of the categories in the image of $F$: the category $\int F$ consists of
 \[\begin{array}{rl}
 \text{objects} & (d,x) : d\in \D, \; x\in F(d)\\
 \text{morphisms} & (f\maps d\to d',a\maps F(f)(x)\to x')\\
 \text{composition} & (f,a) \circ (f',a') = (f \circ f', a \circ F(f)(a')).
 \end{array}\]
 
-(We noted in $\S$4 that $\V\Law$ and $\Mod(\T,\C)$ are $\V$-categories when $\V$ is a cosmos: this and other conditions imply we can use the \textit{enriched} Grothendieck construction \cite{engroth}; but we will focus on the $\Set$-enriched case for simplicity.)
+ For more details see \cite{borceux,jacobs}.  We noted in $\S$4 that $\V\Law$ and $\Mod(\T,\C)$ are $\V$-categories when $\V$ is a cosmos: this and other conditions imply we can use the \textit{enriched} Grothendieck construction \cite{engroth}; but we will focus on the $\Set$-enriched case for simplicity. 
 
 This idea allows us to bring together all of the different enrichments, theories, and models into one big category. For every enriching category $\V$, let $\V\Cat_{np}$ be the subcategory of $\V\Cat$ of $\V$-categories with $\NN$-powers and $\NN$-power preserving functors; then there is a functor $$\V\Mod\maps \V\Law^\op \times \V\Cat_{np} \to \Cat$$ which sends $(\T,\C)$ to $\V\Mod(\T,\C)$. The (bi)functoriality of $\V\Mod$ gives the contravariant change-of-theory and the covariant change-of-model above.
 
@@ -578,10 +585,11 @@ There are many unexplored questions about the large, heterogeneous categories wh
 
 \section{Applications}
 
-In theoretical computer science literature, enriched algebraic theories have primarily been studied in the context of ``computational effects''. Mike Stay and Greg Meredith have recognized that Lawvere theories can actually be utilized for the design of \textit{programming languages} \cite{ladl}. This idea comes from caring about an important but underappreciated subject in foundations --- combinatory logic.
+In theoretical computer science literature, enriched algebraic theories have primarily been studied in the context of ``computational effects''. Mike Stay and Greg Meredith have recognized that Lawvere theories can actually be utilized for the design of \textit{programming languages} \cite{ladl}. This idea comes from an important but underappreciated subject in foundations --- combinatory logic.
 
 \subsection{The $SKI$-combinator calculus}
-The $\lambda$-calculus is an elegant formal language which is the foundation of functional computation, the model of intuitionistic logic, and the internal logic of cartesian closed categories: this is the Curry-Howard-Lambek correspondence \cite{rosetta}.
+
+The $\lambda$-calculus is an elegant formal language which is the foundation of functional computation, the model of intuitionistic logic, and the internal logic of cartesian closed categories: this is the Curry--Howard--Lambek correspondence \cite{rosetta}.
 
 Terms are constructed recursively by \textit{variables}, \textit{application}, and \textit{abstraction}, and the basic rewrite is \textit{beta reduction}: $$M,N := x \;\; | \;\; (M\; N) \;\; | \;\; \lambda x.M$$ $$(\lambda x.M\; N) \Rightarrow M[N/x]$$
 
@@ -757,25 +765,77 @@ This base-change, along with change-of-theory and change-of-modelling, can be as
 
 \bibitem{finite} J.\ Ad\'{a}mek and J.\ Rosick\'{y}, \textsl{Locally Presentable and Accessible Categories}, Cambridge U.\ Press, Cambridge, 1994.
 
+\bibitem{rosetta} J.\ Baez and M.\ Stay, Physics, topology, logic and computation: a Rosetta Stone, in \textsl{New Structures for Physics}, ed.\ B.\ Coecke, Springer, Berlin, 2011, pp.\ 95--172.  Available as \href{https://arxiv.org/abs/0903.0340}{arXiv:0903.0340}.
+	
+\bibitem{sketch} M.\ Barr and C.\ Wells, \textsl{Toposes, Triples and Theories}, reprinted in \textsl{Repr.\ Theory Appl.\ Categ.} \textbf{12} (2005).   Available at \href{http://www.tac.mta.ca/tac/reprints/articles/12/tr12abs.html}{http://www.tac.mta.ca/tac/reprints/articles/12/tr12abs.html}.
+
+\bibitem{engroth} J.\ Beardsley and L.\ Z.\ Wong, The enriched Grothendieck construction.  Available as \href{https://arxiv.org/abs/1804.03829}{arXiv:1804.03829}.
+	
+\bibitem{mndarty} C.\ Berger, P.-A.\ Melli\`es and M.\ Weber, Monads with arities and their associated theories, \textsl{J.\ Pure Appl.\ Algebra}, \textbf{216} (2012), 2029--2048.  Available as \href{https://arxiv.org/abs/1101.3064}{arXiv:1101.3064}.
+
+\bibitem{borceux} F.\ Borceux, \textsl{Handbook of Categorical Algebra}, vol.\ 2, Cambridge U.\ Press, Cambridge, 1994.
+
 %\bibitem{ltdistlaw} E.\ Cheng, Distributive laws for Lawvere theories, \href{https://arxiv.org/abs/1112.3076}{arXiv:1112.3076}.
 
-\bibitem{enrich} G.\ M.\ Kelly, \textsl{Basic Concepts of Enriched Category Theory},
-Cambridge U.\ Press, Cambridge, 1982.   Reprinted in \textsl{Repr.\ Theory Appl.\ Categ.} \textbf{10} (2005), 1--136.  Available at \href{http://www.tac.mta.ca/tac/reprints/articles/10/tr10abs.html}{http://www.tac.mta.ca/tac/reprints/} \break \href{http://www.tac.mta.ca/tac/reprints/articles/10/tr10abs.html}{articles/10/tr10abs.html}.
+\bibitem{ltam} M.\ Hyland and J.\ Power, The category theoretic understanding of 
+universal algebra: Lawvere theories and monads, in \textsl{Electron.\ Notes Theor.\ Comput.\ 
+Sci.} \textbf{172} (2007), 437--458.
+
+\bibitem{jacobs} B.\ Jacobs, \textsl{Categorical Logic and Type Theory}, Elsevier, Amderstam, 1999.
+	
+\bibitem{enrich} G.\ M.\ Kelly, \textsl{Basic Concepts of Enriched Category Theory}, reprinted in
+\textsl{Repr.\ Theory Appl.\ Categ.} \textbf{10} (2005), 1--136.  Available at \href{http://www.tac.mta.ca/tac/reprints/articles/10/tr10abs.html}{http://www.tac.mta.ca/tac/reprints/articles/10/tr10abs.html}.
 
 \bibitem{powsketch} Y.\ Kinoshita, J.\ Power and M.\ Takeyama, Sketches,
 \textsl{J.\ Pure Appl.\ Algebra} \textbf{143} (1999), 275--291.
 
+\bibitem{pseudo} B.\ Day and R.\ Street, Monoidal categories and Hopf algebroids,
+\textsl{Adv.\ Math.} \textbf{127} (1997), 99--157.
+
+\bibitem{lawvere} F.\ W.\ Lawvere, Functorial semantics of algebraic theories, reprinted in
+\textsl{Repr.\ Theory Appl.\ Categ.} \textbf{5} (2004), 1--121.  Available at \href{http://tac.mta.ca/tac/reprints/articles/5/tr5abs.html}{http://tac.mta.ca/tac/reprints/articles/5/tr5abs.html}.
+
+\bibitem{linton} F.\ E.\ J.\ Linton, Some aspects of equational theories, in 
+\textsl{Proceedings of the Conference on Categorical Algebra}, eds.\ S.\ Eilenberg et al.,
+Springer, Berlin, 1965.
+
+\bibitem{rbb} R.\ B.\ B.\ Lucyshyn-Wright, Enriched algebraic theories and monads for a system of
+arities, \textsl{Theory Appl. Categ.} \textbf{31} (2016), 101--137.  Available at \href{http://www.tac.mta.ca/tac/volumes/31/5/31-05abs.html}{http://www.tac.mta.ca/tac/volumes/31/5/31-05abs.html}.
+	
+\bibitem{ghani} C.\ L\"{u}th and N.\ Ghani, Monads and modular term rewriting,
+\textsl{Category Theory and Computer Science ({S}anta {M}argherita Ligure, 1997)}, Springer,
+Berlin, 1997, pp.\ 69--86.  Available at \href{http://www.informatik.uni-bremen.de/~cxl/papers/ctcs97l.pdf}{http://www.informatik.uni-bremen.de/\~cxl/papers/ctcs97l.pdf}.
+
+\bibitem{maclane} S.\ Mac Lane, \textsl{Categories for the Working Mathematician}, Springer,
+Berlin, 1998.  
+    
 \bibitem{refl} L.\ G.\ Meredith and M.\ Radestock, A reflective higher-order calculus,
 \textsl{Electronic Notes in Theoretical Computer Science} \textbf{141} (2005), 49--67.
-	
-\bibitem{tmam} R.\ Smullyan, \textsl{To Mock a Mockingbird: And Other Logic Puzzles},
-Oxford U.\ Press, Oxford, 2000.
+
+\bibitem{milew} B.\ Milewski, \textsl{Category Theory for Programmers}, Chap.\ 14: Lawvere theories, 2017.   Available at \href{https://bartoszmilewski.com/2017/08/26/lawvere-theories/}{https://bartoszmilewski.com/2017/08/26/lawvere-theories/}.
+
+\bibitem{milner} R.\ Milner, The polyadic {$\pi$}-calculus: a tutorial, in \textsl{Logic and Algebra of Specification}, Springer, Berlin, 1993, 203--246.
+
+\bibitem{sos} G.\ D.\ Plotkin, A structural approach to operational semantics, \textsl{J.\ Log.\ Algebr\ Program.} \textbf{60/61} (2004) 17--139.  Available at \href{http://homepages.inf.ed.ac.uk/gdp/publications/sos_jlap.pdf}{http://homepages.inf.ed.ac.uk/gdp/publications/sos\_jlap.pdf}.
+
+\bibitem{power} J.\ Power, Enriched Lawvere theories, \textsl{Theory Appl.\ Categ.} \textbf{6}(1999), 83--93.
+
+\bibitem{combs} M.\ Sch\"{o}nfinkel, \"Uber die Bausteine der mathematischen Logik, 
+ \textsl{Mathematische Annalen} \textbf{92} (1924), 305--316.  Available at \href{http://www.digizeitschriften.de/dms/img/?PID=GDZPPN002270110}{http://www.digizeitschriften.de/dms/img/?PID=GDZPPN002270110}.
+ 
+\bibitem{seely} R.\ A.\ G.\ Seely, Modelling computations: a 2-categorical framework, in
+\textsl{Proceedings of the Second Annual IEEE Symposium on Logic in Computer Science (LICS 1987)}, IEEE Computer Society Press, Ithaca, New York, pp.\ 22--25.
+ 
+ \bibitem{lam} P.\ Selinger, Lecture notes on the lambda calculus.  Available as 
+ \href{https://arxiv.org/abs/0804.3434}{arXiv:0804.3434}.
+
+\bibitem{tmam} R.\ Smullyan, \textsl{To Mock a Mockingbird: and Other Logic Puzzles Including an Amazing Adventure in Combinatory Logic}, Oxford U.\ Press, Oxford, 2000.
 	
 \bibitem{roswelt} M.\ Stay and L.\ G.\ Meredith, Representing operational semantics 
 with enriched Lawvere theories.  Available as
 \href{https://arxiv.org/abs/1704.03080}{arXiv:1704.03080}.
 
-
+\bibitem{ladl} M.\ Stay and L.\ G.\ Meredith, Logic as a distributive law.  Available as \href{https://arxiv.org/abs/1610.02247}{arXiv:1610.02247}.
 
 \end{thebibliography}
 
