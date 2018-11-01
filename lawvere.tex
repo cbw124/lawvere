@@ -156,9 +156,10 @@ generates morphisms representing \textit{big-step} rewrites.
 \item
 \textbf{Posets}: $\Pos$-theories represent ``full-step" operational semantics:\\ --- a hom-poset boolean represents the \textit{existence} of a big-step rewrite.
 \item
-\textbf{Sets}: $\Set$-theories represent denotational semantics (provided the calculus is confluent, \cite{lam}):\\ --- a hom-set element represents an \textit{equivalence class} of the symmetric closure of the big-step relation.
+\textbf{Sets}: $\Set$-theories represent denotational semantics \\ --- a hom-set element represents an \textit{equivalence class} of the symmetric closure of the big-step relation.
+% say somewhere else the caveat about confluence, with reference to \cite{lam}.  What's the precise reason we should require confluence here?
 \end{itemize}
-Here we take $\Gph$ to be the category of reflexive graphs, $\Set^R$ where $R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.  Thus, every vertex has a distinguished self-loop, which is needed for the ``free category'' functor to be a valid change-of-semantics ($\S$6).   We could also handle labelled transition systems by a simple augmentation of this theory, but for simplicity we do not consider these.
+Here we take $\Gph$ to be the category of reflexive graphs, $\Set^R$, where $R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.  Thus, every vertex has a distinguished self-loop, which is needed for the ``free category'' functor to be a valid change-of-semantics ($\S$6).   We could also handle labelled transition systems by a simple augmentation of this theory, but for simplicity we do not consider these.
 
 %A motivating example is ``logic as a distributive law" \cite{ladl}, an algorithm for deriving a spatial-behavioral type system from a formal presentation of a computational calculus. Essential properties such as soundness are made provable, a powerful query language is generated, and modalities can be ``built in" to express principles of the system.
 
@@ -168,9 +169,9 @@ In $\S5$ we discuss how functors between enriching categories induce change-of-b
 
 Finally in $\S8$ we bring all the strands together by demonstrating these concepts with the $SKI$-combinator calculus, introducing the idea of developing actual programming languages with enriched Lawvere theories.
 
-\subsubsection*{Acknowledgements}
+\subsection*{Acknowledgements}
 
-This paper builds upon the ideas of Mike Stay and Greg Meredith presented in ``Representing operational semantics with enriched Lawvere theories''  \cite{roswelt}.  We appreciate their offer to let us develop this work further for use in the innovative distributed computing system RChain, and gratefully acknowledge the support of Pyrofex Incorporated. \newpage
+This paper builds upon the ideas of Mike Stay and Greg Meredith presented in ``Representing operational semantics with enriched Lawvere theories''  \cite{roswelt}.  We appreciate their offer to let us develop this work further for use in the innovative distributed computing system RChain, and gratefully acknowledge the support of Pyrofex Incorporated. 
 
 \section{Lawvere Theories}
 Computer science loves monads, but they are widely regarded as somewhat mysterious. They are almost too elegant; it is difficult to ``grok'' how they work before working with them extensively. This is ironic, because most are equivalent to something more intuitive: Lawvere theories.
