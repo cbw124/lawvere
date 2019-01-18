@@ -91,7 +91,7 @@ urlcolor=myurlcolor}
 \newcommand{\UG}{\mathrm{UG}}
 
 \newcommand{\op}{\mathrm{op}}
-\newcommand{\Obj}{\mathrm{Obj}}
+\newcommand{\Obj}{\mathrm{Ob}}
 
 \newcommand{\pic}{$\pi$-calculus}
 
@@ -296,52 +296,57 @@ When $T$ is finitary, the monad arising from this Lawvere theory is naturally is
 This correspondence sets up an equivalence between the category $\Law$ of Lawvere theories and the category of finitary monads on $\Set$.  There is also an equivalence of between the category $\Mod(\T)$ of models of any given Lawvere theory and the category of algebra of the corresponding finitary monad $T$.  Furthermore, all this generalizes with $\Set$ replaced by any ``locally finitely presentable'' category \cite{adamekrosicky}.   
 
 \section{Enrichment}
-We want to generalize hom-sets to hom-\textit{objects}, to equip theories of formal languages with higher-dimensional rewrites.
 
-Let $(\V,\otimes,I)$ be a monoidal category \cite{maclane}, the ``enriching'' category.
-
-A \textbf{$\V$-category} or $\V$-enriched category $\C$ is:
+To allow more general semantics, we now turn to Lawvere theories that have hom-\emph{objects} rather than mere hom-\emph{sets}.  To do this we use enriched category theory \cite{kelly}, where we replace sets with objects of a monoidal category  $(\V,\otimes,I)$, the ``enriching'' category.   A \textbf{$\V$-category} or $\V$-enriched category $\C$ is:
 \[\begin{array}{rl}
 \text{a collection of objects} & \Obj(\C)\\
 \text{a hom-object function} & \C(-,-)\maps \Obj(\C) \times \Obj(\C) \to \Obj(\V)\\
-\text{composition morphisms} & \circ_{a,b,c}\maps\C(b,c) \otimes \C(a,b) \to \C(a,c) \quad \forall a,b,c \in Obj(\C)\\
-\text{identity elements} & i_a\maps I\to\C(a,a) \quad \forall a \in \Obj(\C)\\
+\text{composition morphisms} & \circ_{a,b,c}\maps\C(b,c) \otimes \C(a,b) \to \C(a,c) \quad \forall a,b,c \in \Obj(\C)\\
+\text{identity-assigning morphisms} & i_a\maps I\to\C(a,a) \quad \forall a \in \Obj(\C)\\
 \end{array}\]
-such that composition is associative and unital.
-
-A \textbf{$\V$-functor} $F\maps\C \to \D$ is:
+such that composition is associative and unital.  A \textbf{$\V$-functor} $F\maps\C \to \D$ is:
 \[\begin{array}{rl}
 \text{a function} & F_0\maps \Obj(\C) \to \Obj(\D)\\
-\text{hom-morphisms} & F_{ab}\maps \C(a,b) \to \D(F_0(a),F_0(b)) \quad \forall a,b \in \C\\
+\text{a collection of morphisms} & F_{ab}\maps \C(a,b) \to \D(F_0(a),F_0(b)) \quad \forall a,b \in \C\\
 \end{array}\]
-such that $F$ is compatible with composition and identity.
-
-A \textbf{$\V$-natural transformation} $\alpha\maps F \Rightarrow G$ is:
+such that $F$ is compatible with composition and identity.  A \textbf{$\V$-natural transformation} $\alpha\maps F \Rightarrow G$ is:
 \[\begin{array}{rl}
 \text{a family} & \alpha_a\maps I \to \D(F_0(a),G_0(a)) \quad \forall a \in \Obj(\C)\\
 \end{array}\]
-such that $\alpha$ is ``natural'' in $a$. Hence there is a 2-category \textbf{$\V\Cat$} of $\V$-categories, $\V$-functors, and $\V$-natural transformations. See \cite{enrich} for reference.
+such that $\alpha$ is ``natural'' in $a$.   There a 2-category \textbf{$\V\Cat$} of $\V$-categories, $\V$-functors, and $\V$-natural transformations. 
 
-Let $\V$ be a \textit{closed symmetric monoidal category}, providing
+To go further, let $\V$ be a closed symmetric monoidal category, providing
 \[\begin{array}{rl}
-\text{internal hom} & [-,-]\maps\V^\op\otimes \V \to \V\\
-\text{symmetry braiding} & \tau_{a,b}\maps a\otimes b\cong b\otimes a \quad \forall a,b \in \Obj(\C)\\
-\text{tensor-hom adjunction} & \V(a\otimes b,c) \cong \V(a,[b,c]) \quad \forall a,b,c \in \Obj(\V)\\
+\text{internal hom} & [-,-]\maps\V^\op \times \V \to \V\\
+\text{tensor-hom adjunction} & \V(u\otimes v,w) \cong \V(u,[v,w]) \quad \forall u,v,w \in \Obj(\V)\\
+\text{braiding natural isomorphism} & \tau_{u,v}\maps u \otimes v \cong v \otimes 2 \quad \forall u,v \in \Obj(\V)\\
 \end{array}\]
-Then $\V$ is itself a $\V$-category, denoted $\tilde{\V}$, with internal hom as the hom-object function. The tensor-hom adjunction is called ``currying'' in computer science; the counit is evaluation.
+obeying the hexagon and triangle equations and the symmetry axiom $\tau_{w,v} \circ \tau_{v,w} = 1_{v \otimes w}$ \cite{maclane}.   Then $\V$ is itself a $\V$-category, denoted $\tilde{\V}$, with the hom-object function providing the internal hom. The tensor-hom adjunction is called ``currying'' in computer science; the counit is ``evaluation''.
 
-These adjoints generalize to \textit{actions} of $\V$ on a $\V$-category $\C$: \textbf{power} and \textbf{copower} are $\V$-functors:
+The tensor product $\otimes \maps \V \times \V \to \V$ generalizes to the 
+concept of a \textbf{$\V$-tensored} $\V$-category $\C$, which is one equipped with a $\V$-functor
 \[\begin{array}{rl}
-	\odot \maps & \V \otimes \C \to \C\\
+	\odot \maps & \V \otimes \C \to \C
+\end{array}\]
+and a natural isomorphism
+\begin{equation}\label{eq:tensored}
+	\C(v\odot a,b) \cong \left[v, \C(a,b)\right].
+\end{equation}
+In the case $\V = \Set$, a $\V$-category is just a category, and it is $\V$-tensored if
+it has coproducts, in which case we can define
+\[       v \odot a = \sum_{i \in v} a . \]
+ 
+Similarly, the internal hom $[-,-] \maps \V^\op \times \V $
+
+\begin{equation}\label{eq:co-power}
+	 \left[x, \C(a,b)\right] \cong \C(a,x\pfk b) .
+\end{equation}
+\[\begin{array}{rl}
 	\pfk \maps & \V^{\op} \otimes \C \to \C
 \end{array}\]
-such that for $x \in \Obj(\V)$ and $a,b \in \Obj(\C)$, there is the adjunction (provided the objects exist):
-\begin{equation}\label{eq:co-power}
-	\C(a\odot x,b) \cong \left[x, \C(a,b)\right] \cong \C(a,x\pfk b)
-\end{equation}
-and $\C$ is \textit{$\V$-powered} or \textit{copowered} if all powers or copowers exist.
 
-These are the two basic forms of \textit{enriched limit} and \textit{colimit}, which are not especially intuitive, but they are direct generalizations of familiar ideas in the category of sets. In $\Set$, the power is the ``exponential'' function set and the copower is the product. To generalize this to an action on other $\Set$-categories, note that:
+
+These are the two basic forms of \emph{enriched limit} and \emph{colimit}, which are not especially intuitive, but they are direct generalizations of familiar ideas in the category of sets. In $\Set$, the power is the ``exponential'' function set and the copower is the product. To generalize this to an action on other $\Set$-categories, note that:
 \[\begin{array}{lcr}
 	X \pfk Y = & Y^X & \cong \prod_{x\in X}Y\\
 	\\
@@ -820,7 +825,7 @@ Sci.} \textbf{172} (2007), 437--458.
 
 \bibitem{jacobs} B.\ Jacobs, \textsl{Categorical Logic and Type Theory}, Elsevier, Amderstam, 1999.
 	
-\bibitem{enrich} G.\ M.\ Kelly, \textsl{Basic Concepts of Enriched Category Theory}, reprinted in
+\bibitem{kelly} G.\ M.\ Kelly, \textsl{Basic Concepts of Enriched Category Theory}, reprinted in
 \textsl{Repr.\ Theory Appl.\ Categ.} \textbf{10} (2005), 1--136.  Available at \href{http://www.tac.mta.ca/tac/reprints/articles/10/tr10abs.html}{http://www.tac.mta.ca/tac/reprints/articles/10/tr10abs.html}.
 
 \bibitem{powsketch} Y.\ Kinoshita, J.\ Power and M.\ Takeyama, Sketches,
@@ -836,15 +841,13 @@ Sci.} \textbf{172} (2007), 437--458.
 \textsl{Proceedings of the Conference on Categorical Algebra}, eds.\ S.\ Eilenberg et al.,
 Springer, Berlin, 1965.
 
-\bibitem{rbb} R.\ B.\ B.\ Lucyshyn-Wright, Enriched algebraic theories and monads for a system of
-arities, \textsl{Theory Appl. Categ.} \textbf{31} (2016), 101--137.  Available at \href{http://www.tac.mta.ca/tac/volumes/31/5/31-05abs.html}{http://www.tac.mta.ca/tac/volumes/31/5/31-05abs.html}.
+\bibitem{rbb} R.\ B.\ B.\ Lucyshyn-Wright, Enriched algebraic theories and monads for a system of arities, \textsl{Theory Appl. Categ.} \textbf{31} (2016), 101--137.  Available at \href{http://www.tac.mta.ca/tac/volumes/31/5/31-05abs.html}{http://www.tac.mta.ca/tac/volumes/31/5/31-05abs.html}.
 	
 \bibitem{ghani} C.\ L\"{u}th and N.\ Ghani, Monads and modular term rewriting,
-\textsl{Category Theory and Computer Science ({S}anta {M}argherita Ligure, 1997)}, Springer,
-Berlin, 1997, pp.\ 69--86.  Available at \href{http://www.informatik.uni-bremen.de/~cxl/papers/ctcs97l.pdf}{http://www.informatik.uni-bremen.de/\~cxl/papers/ctcs97l.pdf}.
+\textsl{Category Theory and Computer Science ({S}anta {M}argherita Ligure, 1997)}, Springer, Berlin, 1997, pp.\ 69--86.  Available at \href{http://www.informatik.uni-bremen.de/~cxl/papers/ctcs97l.pdf}{http://www.informatik.uni-bremen.de/\~cxl/papers/ctcs97l.pdf}.
 
-\bibitem{maclane} S.\ Mac Lane, \textsl{Categories for the Working Mathematician}, Springer,
-Berlin, 1998.  
+\bibitem{maclane} S.\ Mac Lane, \textsl{Categories for the Working Mathematician}, Springer, Berlin, 1998.  
+
     
 \bibitem{refl} L.\ G.\ Meredith and M.\ Radestock, A reflective higher-order calculus,
 \textsl{Electronic Notes in Theoretical Computer Science} \textbf{141} (2005), 49--67.
