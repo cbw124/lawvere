@@ -130,10 +130,7 @@ for Operational Semantics}
 \end{center} 
 
 \begin{abstract} 
-Enriched Lawvere theories are a generalization of Lawvere theories that allow us
-to describe operational semantics for formal systems.  For example, a 
-graph-enriched Lawvere theory describes structures that have a \emph{graph} of operations of each arity, where the vertices are operations and the edges are rewrites going between operations.
-  
+Enriched Lawvere theories are a generalization of Lawvere theories that allow there to be not merely a \emph{set} of operations of each given arity, but a \emph{graph}, or an object of some other category. Enriched theories can be used to equip systems with operational semantics, and maps between enriching categories can serve to translate between different forms of operational and denotational semantics. We use a definition of Lucyshyn-Wright which allows for theories to be parameterized by a monoidal subcategory of arities, and show that presentation of enriched Lawvere theories is simplified by restricting to natural number arities. We illustrate these ideas with the $SKI$ combinator calculus, a variable-free version of the lambda calculus, presented as a graph-enriched theory.  
 \end{abstract}
 
 \section{Introduction}
@@ -319,46 +316,45 @@ To go further, let $\V$ be a closed symmetric monoidal category, providing
 \[\begin{array}{rl}
 \text{internal hom} & [-,-]\maps\V^\op \times \V \to \V\\
 \text{tensor-hom adjunction} & \V(u\otimes v,w) \cong \V(u,[v,w]) \quad \forall u,v,w \in \Obj(\V)\\
-\text{braiding natural isomorphism} & \tau_{u,v}\maps u \otimes v \cong v \otimes 2 \quad \forall u,v \in \Obj(\V)\\
+\text{braiding natural isomorphism} & \tau_{u,v}\maps u \otimes v \cong v \otimes u \quad \forall u,v \in \Obj(\V)\\
 \end{array}\]
-obeying the hexagon and triangle equations and the symmetry axiom $\tau_{w,v} \circ \tau_{v,w} = 1_{v \otimes w}$ \cite{maclane}.   Then $\V$ is itself a $\V$-category, denoted $\tilde{\V}$, with the hom-object function providing the internal hom. The tensor-hom adjunction is called ``currying'' in computer science; the counit is ``evaluation''.
+obeying the hexagon and triangle equations and the symmetry axiom saying $\tau_{u,v}$ is the inverse of $\tau_{v,u}$ \cite{maclane}.   Then we can construct new $\V$-categories from old by taking tensor products and opposites.   Moreover $\V$ is itself a $\V$-category, denoted $\tilde{\V}$, with the hom-object function providing the internal hom. The tensor-hom adjunction is called ``currying'' in computer science; the counit is ``evaluation''.  
 
 The tensor product $\otimes \maps \V \times \V \to \V$ generalizes to the 
-concept of a \textbf{$\V$-tensored} $\V$-category $\C$, which is one equipped with a $\V$-functor
-\[\begin{array}{rl}
-	\odot \maps & \V \otimes \C \to \C
-\end{array}\]
+concept of a \textbf{$\V$-tensored} $\V$-category $\C$, which is one equipped with a 
+$\V$-functor
+\[
+	\odot \maps \tilde{\V} \otimes \C \to \C
+\]
 and a natural isomorphism
-\begin{equation}\label{eq:tensored}
+\begin{equation}\label{eq:co-power}
 	\C(v\odot a,b) \cong \left[v, \C(a,b)\right].
 \end{equation}
 In the case $\V = \Set$, a $\V$-category is just a category, and it is $\V$-tensored if
 it has coproducts, in which case we can define
 \[       v \odot a = \sum_{i \in v} a . \]
  
-Similarly, the internal hom $[-,-] \maps \V^\op \times \V $
-
-\begin{equation}\label{eq:co-power}
+Similarly, the internal hom $[-,-] \maps \V^\op \times \V \to \V $ generalizes to the 
+concept of a \textbf{$\V$-powered} $\V$-category $\C$, which is one equipped
+with a $\V$-functor 
+\[
+\pfk \maps \tilde{\V}^\op \otimes \C \to \C 
+\]
+and a natural isomorphism
+\begin{equation}\label{eq:power}
 	 \left[x, \C(a,b)\right] \cong \C(a,x\pfk b) .
 \end{equation}
-\[\begin{array}{rl}
-	\pfk \maps & \V^{\op} \otimes \C \to \C
-\end{array}\]
+In the case $\V = \Set$ a $\V$-category is $\V$-powered if it has products,
+in which case we can define
+\[          v \pfk a = \prod_{i \in v} a .\]
+So, categories are canonically $\Set$-powered or copowered by indexed products or coproducts of copies of an object, provided that these exist.  In what follows we exponential notation $b^n := n\pfk b$ for $\V$-powers, and denote the unit $I$ by $1$, because the enriching categories under consideration are cartesian, and we only need to power by ``natural numbers''.  Similarly, we will use $n \cdot b$ to denote the $n$-fold coproduct of $b$.
 
+There are just a few more technicalities. Given a $\V$-category $\C$, one often considers the Yoneda embedding into the $\V$-presheaf category $[\C^\op, \V]$, and it is important to know whether certain subcategories are representable; generally, some properties of $\C$ depend on finiteness condition. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits
+theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.
 
-These are the two basic forms of \emph{enriched limit} and \emph{colimit}, which are not especially intuitive, but they are direct generalizations of familiar ideas in the category of sets. In $\Set$, the power is the ``exponential'' function set and the copower is the product. To generalize this to an action on other $\Set$-categories, note that:
-\[\begin{array}{lcr}
-	X \pfk Y = & Y^X & \cong \prod_{x\in X}Y\\
-	\\
-	X \odot Y = & X \times Y & \cong \sum_{y\in Y}X
-\end{array}\]
-So, categories are canonically $\Set$-powered or copowered by indexed products or coproducts of copies of an object, provided that these exist. (We will use exponential notation $b^n := n\pfk b$, and denote the unit $I$ by 1, because the enriching categories under consideration are cartesian, and we will only power by ``natural numbers''. Similarly, we will use $n \cdot -$ to denote the $n$-fold coproduct.)
+A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial: all categories to be considered are locally finitely presentable. Denote by $\V_f$ the subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
 
-There are just a few more technicalities. Given a $\V$-category $\C$, one often considers the Yoneda embedding into the $\V$-presheaf category $[\C^\op, \V]$, and it is important to know whether certain subcategories are representable; generally, some properties of $\C$ depend on a condition of ``finitude'' \cite{finite}. A category is \textbf{locally finitely presentable} if it is the category of models for a ``sketch'', a theory with not only products but general limits, and an object is ``finite'' if its representable functor is \textbf{finitary}, or preserves filtered colimits.
-
-A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$. The details are not crucial: all categories to be considered are locally finitely presentable. Denote by $\V_f$ the subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.\\
-
-Even though the definition of Lawvere theory seems to be all about products, it is actually about \textit{powers}, because these constitute the \textit{arities} of the operations. These become greatly generalized in the enriched case, because whereas the only finite objects in $\Set$ are \textit{finite sets}, there are more complex finite objects in any other enriching $\V$. However in the next section, we will discuss the difficulties of this generality.
+Even though the definition of Lawvere theory seems to be all about products, it is actually about \textit{powers}, because these constitute the arities of the operations. These are greatly generalized in the enriched case, because whereas the only finite objects in $\Set$ are \textit{finite sets}, there are more complex finite objects in any other enriching $\V$.  In the next section we discuss some difficulties of this generality and how to circumvent them.
 
 \section{Enriched Lawvere theories}
 Power introduced the notion of enriched Lawvere theory about twenty years ago, ``in seeking a general account of what have been called notions of computation'', while studying 2-monads on $\Cat$ \cite{power}. The original definition is as follows: for a symmetric monoidal closed category $(\V,\otimes,I)$, a \textit{$\V$-enriched Lawvere theory} is a finitely-powered $\V$-category $\T$, equipped with a strictly power-preserving identity-on-objects $\V$-functor $$\tau\maps\V_f^\op \to \T$$ A \textit{model} of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ which preserves powers by objects of $\V_f$, and models form the $\V$-category $[\T,\V]_{fp}$ with morphisms being $\V$-natural transformations. The monadic adjunction and equivalence of $\S$2 generalize to these theories.
@@ -377,13 +373,13 @@ For this paper, however, we only need \textit{natural number} arities, while sti
 A \textbf{model} of $\T$ in a $\V$-category $\C$ is a $\J$-power preserving $\V$-functor 
 \[  \mu \maps \T \to \C.\]
 
-In the same way that the objects of a Lawvere theory are $\NN$-powers of a generating object, the objects of a $\J$-$\V$ theory are $\J$-powers $t^J$ of a generating object $t$, for each $J \in \J$. (Note that $t$ itself is $t^I$.)  Just as every $n\in \NN^\op$ is a power of $1 \in \Set$, every $J\in \tilde{\J}^{\op}$ is a power of the monoidal unit $I\in \V$, i.e. using equation \ref{eq:co-power} for $\tilde{\J}^{\op}$, $(\star \mapsto 1_J) \in [I,\tilde{\J}^{\op}(J,J)]$ is sent to the canonical isomorphism:
+In the same way that the objects of a Lawvere theory are $\NN$-powers of a generating object, the objects of a $\J$-$\V$ theory are $\J$-powers $t^J$ of a generating object $t$, for each $J \in \J$. (Note that $t$ itself is $t^I$.)  Just as every $n\in \NN^\op$ is a power of $1$, every $J\in \tilde{\J}^{\op}$ is a power of the monoidal unit $I\in \V$, i.e. using Eq. (\ref{eq:co-power}) for $\tilde{\J}^{\op}$, $(\star \mapsto 1_J) \in [I,\tilde{\J}^{\op}(J,J)]$ is sent to the canonical isomorphism:
 \begin{equation}
 J \cong I^J.
 \end{equation}
 This is just the opposite of the usual isomorphism $J \cong J^I$. Then, since $\tau$ preserves $\J$-powers, this implies that every object of $\T$ is a power of $t = \tau(I)$.
 
-There is a category $\V\Law$ whose objects are $\J$-$\V$ theories and whose morphisms are $\J$-power preserving $\V$-functors $f\maps \T \to \T'$ such that $f\tau = \tau'$. For every $\J$-$\V$ theory $\T$ and every $\V$-category $\C$ with $\J$-powers, we define the category of models $\Mod(\T,\C)$ to consist of $\J$-power preserving $\V$-functors $\T\to \C$ and $\V$-natural transformations. If  $\V$ is a \textbf{cosmos}, i.e. complete and cocomplete, then the functor categories of $\V\Cat$ are also $\V$-categories, including $\V\Law$ and $\Mod(\T,\C)$. This is potentially very useful, and the ``operational'' $\V$'s of this paper are indeed cosmoi.
+There is a category $\V\Law$ whose objects are $\J$-$\V$ theories and whose morphisms are $\J$-power preserving $\V$-functors $f\maps \T \to \T'$ such that $f\tau = \tau'$. For every $\J$-$\V$ theory $\T$ and every $\V$-category $\C$ with $\J$-powers, we define the category of models $\Mod(\T,\C)$ to consist of $\J$-power preserving $\V$-functors $\T\to \C$ and $\V$-natural transformations. If  $\V$ is a \textbf{cosmos}, i.e.\ complete and cocomplete, then the functor categories of $\V\Cat$ are also $\V$-categories, including $\V\Law$ and $\Mod(\T,\C)$. This is potentially very useful, and the enriching categories $\V = \Gph, \Cat, \Pos, \Set$ that are the focus of this paper are indeed cosmoi.
 
 Here is an overview of the concepts: 
 
