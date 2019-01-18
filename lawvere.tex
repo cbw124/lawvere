@@ -320,34 +320,44 @@ To go further, let $\V$ be a closed symmetric monoidal category, providing
 \end{array}\]
 obeying the hexagon and triangle equations and the symmetry axiom saying $\tau_{u,v}$ is the inverse of $\tau_{v,u}$ \cite{maclane}.   Then we can construct new $\V$-categories from old by taking tensor products and opposites.   Moreover $\V$ is itself a $\V$-category, denoted $\tilde{\V}$, with the hom-object function providing the internal hom. The tensor-hom adjunction is called ``currying'' in computer science; the counit is ``evaluation''.  
 
-The tensor product $\otimes \maps \V \times \V \to \V$ generalizes to the 
-concept of a \textbf{$\V$-tensored} $\V$-category $\C$, which is one equipped with a 
-$\V$-functor
-\[
-	\odot \maps \tilde{\V} \otimes \C \to \C
-\]
-and a natural isomorphism
-\begin{equation}\label{eq:co-power}
+Generalizing how the closed symmetric monoidal category $\V$ has a tensor product and internal hom, a $\V$-category can be ``$\V$-tensored'' and ``$\V$-powered''.   
+Suppose $\C$ is any $\V$-category.  Given $a \in \C$ and $v \in \V$, we say an object 
+$v \odot a \in \C$ is a \define{tensor product} of $a$ by $v$ if it is equipped with a $\V$-natural isomorphism
+\begin{equation}\label{eq:tensor}
 	\C(v\odot a,b) \cong \left[v, \C(a,b)\right].
 \end{equation}
-In the case $\V = \Set$, a $\V$-category is just a category, and it is $\V$-tensored if
-it has coproducts, in which case we can define
+In the special case $\V = \Set$ this forces $v \cdot a$ to be the $v$-fold coproduct 
+of copies of $a$:
 \[       v \odot a = \sum_{i \in v} a . \]
- 
-Similarly, the internal hom $[-,-] \maps \V^\op \times \V \to \V $ generalizes to the 
-concept of a \textbf{$\V$-powered} $\V$-category $\C$, which is one equipped
-with a $\V$-functor 
+In general, if we can choose a tensor product $v \odot a$ for all $v \in \V$, $a \in C$
+we say $\C$ is \textbf{$\V$-tensored}, and we obtain a $\V$-functor
 \[
-\pfk \maps \tilde{\V}^\op \otimes \C \to \C 
+	\odot \maps \tilde{\V} \otimes \C \to \C.
 \]
-and a natural isomorphism
+For example, $\tilde{\V}$ is always $\V$-tensored via the tensor product
+$ \otimes \maps \tilde{\V} \otimes \tilde{\V} \to \tilde{\V} $.
+
+Similarly, given $b \in \C$ and $v \in \V$, we say an object $v \pfk b \in \C$ is a \define{power} of $b$ by $v$ if it is equipped with a $\V$-natural isomorphism
 \begin{equation}\label{eq:power}
-	 \left[x, \C(a,b)\right] \cong \C(a,x\pfk b) .
+		 \left[v, \C(a,b)\right] \cong \C(a,v\pfk b) .
 \end{equation}
-In the case $\V = \Set$ a $\V$-category is $\V$-powered if it has products,
-in which case we can define
-\[          v \pfk a = \prod_{i \in v} a .\]
-So, categories are canonically $\Set$-powered or copowered by indexed products or coproducts of copies of an object, provided that these exist.  In what follows we exponential notation $b^n := n\pfk b$ for $\V$-powers, and denote the unit $I$ by $1$, because the enriching categories under consideration are cartesian, and we only need to power by ``natural numbers''.  Similarly, we will use $n \cdot b$ to denote the $n$-fold coproduct of $b$.
+In the special case $\V = \Set$  this forces $v \pfk a$ to be the $v$-fold product 
+of copies of $b$:
+\[          v \pfk b = \prod_{i \in v} b . \]
+In general, if we can choose a power $v \odot b$ for all $v \in \V$, $b \in C$
+we say $\C$ is \textbf{$\V$-powered}, and we obtain a $\V$-functor
+\[
+\pfk \maps \tilde{\V}^\op \otimes \C \to \C .
+\]
+For example, $\tilde{\V}$ is always $\V$-powered via the internal hom
+$[-,-] \maps \V^\op \times \V \to \V $.
+
+In the nicest situation, where $\C$ is both $\V$-tensored and $\V$-powered, we 
+have natural isomorphisms
+\begin{equation}\label{eq:co-power}
+	\C(v\odot a,b) \cong \left[v, \C(a,b)\right] \cong \C(a,v \pfk b).
+\end{equation}
+When $\V = \Set$ this occurs if $\C$ has all products and coproducts.    In what follows we use exponential notation $b^v := v\pfk b$ for $\V$-powers, and denote the unit $I$ by $1$, because the enriching categories under consideration are cartesian.  We should note that tensors are sometimes called ``copowers'', and powers are sometimes called ``cotensors''.
 
 There are just a few more technicalities. Given a $\V$-category $\C$, one often considers the Yoneda embedding into the $\V$-presheaf category $[\C^\op, \V]$, and it is important to know whether certain subcategories are representable; generally, some properties of $\C$ depend on finiteness condition. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits
 theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.
