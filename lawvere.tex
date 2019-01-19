@@ -318,14 +318,15 @@ To go further, let $\V$ be a closed symmetric monoidal category, providing
 \text{tensor-hom adjunction} & \V(u\otimes v,w) \cong \V(u,[v,w]) \quad \forall u,v,w \in \Obj(\V)\\
 \text{braiding natural isomorphism} & \tau_{u,v}\maps u \otimes v \cong v \otimes u \quad \forall u,v \in \Obj(\V)\\
 \end{array}\]
-obeying the hexagon and triangle equations and the symmetry axiom saying $\tau_{u,v}$ is the inverse of $\tau_{v,u}$ \cite{maclane}.   Then we can construct new $\V$-categories from old by taking tensor products and opposites.   Moreover $\V$ is itself a $\V$-category, denoted $\tilde{\V}$, with the hom-object function providing the internal hom. The tensor-hom adjunction is called ``currying'' in computer science; the counit is ``evaluation''.  
+obeying the hexagon and triangle equations and the symmetry axiom saying $\tau_{u,v}$ is the inverse of $\tau_{v,u}$ \cite{maclane}.   Then we can construct new $\V$-categories from old by taking tensor products and opposites in an obvious way.   Moreover $\V$ is itself a $\V$-category, denoted $\tilde{\V}$, with the hom-object function providing the internal hom.  The tensor-hom adjunction is called ``currying'' in computer science; the counit is ``evaluation''.  
 
 Generalizing how the closed symmetric monoidal category $\V$ has a tensor product and internal hom, a $\V$-category can be ``$\V$-tensored'' and ``$\V$-powered''.   
 Suppose $\C$ is any $\V$-category.  Given $a \in \C$ and $v \in \V$, we say an object 
-$v \odot a \in \C$ is a \define{tensor product} of $a$ by $v$ if it is equipped with a $\V$-natural isomorphism
+$v \odot a \in \C$ is a \define{tensor product} of $a$ by $v$ if it is equipped with isomorphisms
 \begin{equation}\label{eq:tensor}
-	\C(v\odot a,b) \cong \left[v, \C(a,b)\right].
+	\C(v\odot a,b) \cong \left[v, \C(a,b)\right]
 \end{equation}
+$\V$-natural in $b$.
 In the special case $\V = \Set$ this forces $v \cdot a$ to be the $v$-fold coproduct 
 of copies of $a$:
 \[       v \odot a = \sum_{i \in v} a . \]
@@ -337,12 +338,11 @@ we say $\C$ is \textbf{$\V$-tensored}, and we obtain a $\V$-functor
 For example, $\tilde{\V}$ is always $\V$-tensored via the tensor product
 $ \otimes \maps \tilde{\V} \otimes \tilde{\V} \to \tilde{\V} $.
 
-Similarly, given $b \in \C$ and $v \in \V$, we say an object $v \pfk b \in \C$ is a \define{power} of $b$ by $v$ if it is equipped with a $\V$-natural isomorphism
+Similarly, given $b \in \C$ and $v \in \V$, we say an object $v \pfk b \in \C$ is a \define{power} of $b$ by $v$ if it is equipped with isomorphisms
 \begin{equation}\label{eq:power}
 		 \left[v, \C(a,b)\right] \cong \C(a,v\pfk b) .
 \end{equation}
-In the special case $\V = \Set$  this forces $v \pfk a$ to be the $v$-fold product 
-of copies of $b$:
+$\V$-natural in $a$.  In the special case $\V = \Set$  this forces $v \pfk a$ to be the $v$-fold product of copies of $b$:
 \[          v \pfk b = \prod_{i \in v} b . \]
 In general, if we can choose a power $v \odot b$ for all $v \in \V$, $b \in C$
 we say $\C$ is \textbf{$\V$-powered}, and we obtain a $\V$-functor
@@ -352,17 +352,13 @@ we say $\C$ is \textbf{$\V$-powered}, and we obtain a $\V$-functor
 For example, $\tilde{\V}$ is always $\V$-powered via the internal hom
 $[-,-] \maps \V^\op \times \V \to \V $.
 
-In the nicest situation, where $\C$ is both $\V$-tensored and $\V$-powered, we 
-have natural isomorphisms
+When $\C$ is both $\V$-tensored and $\V$-powered, we have isomorphisms
 \begin{equation}\label{eq:co-power}
 	\C(v\odot a,b) \cong \left[v, \C(a,b)\right] \cong \C(a,v \pfk b).
 \end{equation}
-When $\V = \Set$ this occurs if $\C$ has all products and coproducts.    In what follows we use exponential notation $b^v := v\pfk b$ for $\V$-powers, and denote the unit $I$ by $1$, because the enriching categories under consideration are cartesian.  We should note that tensors are sometimes called ``copowers'', and powers are sometimes called ``cotensors''.
+that are  $\V$-natural in $a,b \in \C$ and $v \in \V$.  When $\V = \Set$ this occurs if $\C$ has all products and coproducts.    In what follows we use exponential notation $b^v := v\pfk b$ for $\V$-powers, and denote the unit $I$ by $1$, because the enriching categories we consider are cartesian.  We should note that tensors are sometimes called ``copowers'', and powers are sometimes called ``cotensors''.
 
-There are just a few more technicalities. Given a $\V$-category $\C$, one often considers the Yoneda embedding into the $\V$-presheaf category $[\C^\op, \V]$, and it is important to know whether certain subcategories are representable; generally, some properties of $\C$ depend on finiteness condition. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits
-theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.
-
-A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial: all categories to be considered are locally finitely presentable. Denote by $\V_f$ the subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
+There are just a few more technicalities. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.   A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial here: all categories to be considered are locally finitely presentable. We will use  $\V_f$ to denote the full subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
 
 Even though the definition of Lawvere theory seems to be all about products, it is actually about \textit{powers}, because these constitute the arities of the operations. These are greatly generalized in the enriched case, because whereas the only finite objects in $\Set$ are \textit{finite sets}, there are more complex finite objects in any other enriching $\V$.  In the next section we discuss some difficulties of this generality and how to circumvent them.
 
