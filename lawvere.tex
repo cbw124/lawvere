@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/1/17
+% 2019/1/18
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -46,12 +46,10 @@ urlcolor=myurlcolor}
 % theorems
 
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}
-\newtheorem*{theorem*}{Theorem}
-\newtheorem*{definition*}{Definition}
-\newtheorem*{example*}{Example}
+\newtheorem{definition}[theorem]{Definition}
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
 \newtheorem{corollary}{Corollary}[theorem]
 
 \def\rd{\rotatebox[origin=c]{90}{$\dashv$}} %rotate dash right
@@ -363,23 +361,35 @@ There are just a few more technicalities. A category is \textbf{locally finitely
 Even though the definition of Lawvere theory seems to be all about products, it is actually about \textit{powers}, because these constitute the arities of the operations. These are greatly generalized in the enriched case, because whereas the only finite objects in $\Set$ are \textit{finite sets}, there are more complex finite objects in any other enriching $\V$.  In the next section we discuss some difficulties of this generality and how to circumvent them.
 
 \section{Enriched Lawvere theories}
-Power introduced the notion of enriched Lawvere theory about twenty years ago, ``in seeking a general account of what have been called notions of computation'', while studying 2-monads on $\Cat$ \cite{power}. The original definition is as follows: for a symmetric monoidal closed category $(\V,\otimes,I)$, a \textit{$\V$-enriched Lawvere theory} is a finitely-powered $\V$-category $\T$, equipped with a strictly power-preserving identity-on-objects $\V$-functor $$\tau\maps\V_f^\op \to \T$$ A \textit{model} of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ which preserves powers by objects of $\V_f$, and models form the $\V$-category $[\T,\V]_{fp}$ with morphisms being $\V$-natural transformations. The monadic adjunction and equivalence of $\S$2 generalize to these theories.
 
-However, this requires $\T$ to have all powers of $\V_f$, i.e. the theory must have arities for every finite object of $\V$. These \textit{generalized arities} may be very powerful---rather than only inputting $n$-tuples of terms, we can operate on any finite object of terms! But despite the great potential, this idea has remained essentially dormant for decades, partly for the difficulty of intuition, but also that of presentation: while it is easy to inductively generate all $n$-ary operations from binary, unary, nullary ones, it is certainly more subtle to generate powers for all finite objects.
+Power introduced the notion of enriched Lawvere theory about twenty years ago, ``in seeking a general account of what have been called notions of computation'' \cite{power}. The original definition is as follows: for a symmetric monoidal closed category $(\V,\otimes,I)$, a ``$\V$-enriched Lawvere theory'' is a $\V$-category $\T$ that has powers by objects in $\V_f$, equipped with an identity-on-objects $\V$-functor 
+\[  \tau\maps\V_f^\op \to \T \]
+that preserves these powers.  A ``model'' of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ which preserves powers by objects of $\V_f$.  There is a category $\Mod(\T,\V)$ whose objects are models and whose morphisms are $\V$-natural transformations. The monadic adjunction and equivalence of $\S$2 generalize to this context.
 
-The abstract idea of ``enriched sketches'' has a high-level explanation in \cite{powsketch}, and ``monads with arities'' have been explored in \cite{mndarty}, but these do not yet appear to have been made computationally practical, nor popularly understood in general. What does it really mean for an operation to take in a finite graph of terms? To what subjects does this pertain primarily, and how can we learn to utilize this generality? We hope that someone brings this subject to light, so that we can expand the notion of ``operation'' far beyond finite sets.
+However, this requires $\T$ to have all powers by all objects of $\V_f$, i.e., the theory must have arities for every finite object of $\V$.  These \textit{generalized arities} may be very powerful---rather than only inputting $n$-tuples of terms, we can operate on any finite object of terms! But despite the great potential, this idea has remained essentially dormant for decades, partly for the difficulty of intuition, but also that of presentation: while it is easy to inductively generate all $n$-ary operations from binary, unary, nullary ones, it is certainly more subtle to generate powers for all finite objects.
 
-For this paper, however, we only need \textit{natural number} arities, while still retaining enrichment. A very general and useful definition of enriched algebraic theory was introduced by Lucyshyn-Wright \cite{rbb}, which allows for theories to be parameterized by a \textbf{system of arities}, a full monoidal subcategory $$j\maps \J \xhookrightarrow{} \V.$$
+Power has also introduced``enriched sketches'' as a way of presenting enriched Lawvere theories, \cite{powsketch}, and ``monads with arities'' have been explored by Berger, Melli\'es and Weber \cite{bergermelliesweber}, but these do not yet appear to have be  widely understood . What does it really mean for an operation to take in a finite graph of terms? To what subjects does this pertain primarily, and how can we learn to use this generality? We hope that someone answers these questions, so that we can use more general arities in computer programming.
 
-\begin{definition*}
-	A $\V$-enriched algebraic theory with $j$-arities or \textbf{$\J$-$\V$ theory} $(\T,\tau,j)$ is a $\V$-category $\T$ equipped with an bijective-on-objects $\V$-functor $$\tau\maps\tilde{\J}^\op \to \T$$ which is ``$\J$-power preserving'', or preserves powers by objects of (the subcategory image of) $\J$. \newline
-\end{definition*}
-%(While the literature uses identity-on-objects, we use a weaker definition to handle change-of-base.)
+For this paper, however, we only need \textit{natural number} arities, while still retaining enrichment. A very general and useful definition of enriched algebraic theory was introduced by Lucyshyn-Wright \cite{rbb}, which allows for theories to be parameterized by a \textbf{system of arities}, a full monoidal subcategory 
+\[ j\maps \J \hookrightarrow \V. \]
+Associated to $\J$ there is a $\V$-category we call $\tilde{\J}$ whose objects are
+those of $\J$ and whose hom-objects are given by
+\[         \hom(a,b) = [j(a), j(b)]   .\]
 
+\begin{definition}
+Given a system of arities $j \maps \J \hookrightarrow \V$, a $\V$-enriched algebraic theory with $j$-arities or \textbf{$\J$-$\V$ theory} $(\T,\tau)$ is a $\V$-category $\T$ equipped with an bijective-on-objects $\V$-functor 
+\[ \tau\maps\tilde{\J}^\op \to \T \]
+that is \textbf{$\J$-power preserving}: that is, it preserves powers by objects of (the subcategory image of) $\J$. 
+\end{definition}
+\noindent
+While the literature demands that $\tau$ be the identity on objects, we use a weaker definition to handle change-of-base.
+
+\begin{definition}
 A \textbf{model} of $\T$ in a $\V$-category $\C$ is a $\J$-power preserving $\V$-functor 
 \[  \mu \maps \T \to \C.\]
+\end{definition}
 
-In the same way that the objects of a Lawvere theory are $\NN$-powers of a generating object, the objects of a $\J$-$\V$ theory are $\J$-powers $t^J$ of a generating object $t$, for each $J \in \J$. (Note that $t$ itself is $t^I$.)  Just as every $n\in \NN^\op$ is a power of $1$, every $J\in \tilde{\J}^{\op}$ is a power of the monoidal unit $I\in \V$, i.e. using Eq. (\ref{eq:co-power}) for $\tilde{\J}^{\op}$, $(\star \mapsto 1_J) \in [I,\tilde{\J}^{\op}(J,J)]$ is sent to the canonical isomorphism:
+In the same way that all the objects of a Lawvere theory are $\NN$-powers of a generating object, the objects of a $\J$-$\V$ theory are $\J$-powers $t^J$ of a generating object $t = \tau(I)$, one for each $J \in \J$.  (BUT IN THE LAST SECTION WE SAID WE'D BE USING $1$ AS OUR NAME FOR THE MONOIDAL UNIT!)  Note that $t$ itself is $t^I$.  Just as every $n\in \NN^\op$ is a power of $1$, every $J\in \tilde{\J}^{\op}$ is a power of the monoidal unit $I\in \V$, i.e. using Eq. (\ref{eq:co-power}) for $\tilde{\J}^{\op}$, $(\star \mapsto 1_J) \in [I,\tilde{\J}^{\op}(J,J)]$ is sent to the canonical isomorphism:
 \begin{equation}
 J \cong I^J.
 \end{equation}
@@ -397,9 +407,9 @@ j\maps & \J & \hookrightarrow & \V & \text{arities}\\
 & & & \C & \text{semantic $\V$-category}\\
 \end{array}\]
 
-This parameterization is quite general; for example, Power's definition is the case $\J = \V_f$. A system of arities is \textbf{eleutheric} if left Kan extensions along $j$ exist and are preserved by $\V(K,-)$ for all $K \in Ob(\J)$. This is what is needed to have the essential \textit{monadicity} theorems: Lucyshyn-Wright proved that any $\J$-$\V$ theory for an eleutheric system of arities has a category of models for $\C = \V$ which is monadic over $\V$. The usual kinds of arities are eleutheric: in particular, \textit{finite cardinals}.
+This parameterization is quite general; for example, Power's definition is the case $\J = \V_f$. A system of arities is \textbf{eleutheric} if left Kan extensions along $j$ exist and are preserved by $\V(K,-)$ for all $K \in Ob(\J)$. This is what is needed to have the essential monadicity theorems: Lucyshyn-Wright proved that any $\J$-$\V$ theory for an eleutheric system of arities has a category of models for $\C = \V$ which is monadic over $\V$. 
 
-This will be our $\J$.
+The usual kinds of arities are eleutheric: in particular, finite cardinals.  We take these as the objects of our system of arities $\J$.  WHEN???  STARTING RIGHT NOW???
 
 Let $(\V,\times,I_\V)$ be a cartesian closed category with finite coproducts of $I_\V$. Define $\NN_\V$ to be the full subcategory of finite coproducts of the unit object: $$n_\V := n \cdot I_\V$$ which is the \textit{copower} of $I_\V$ by a finite set $n \in \NN$, characterized by the universal property
 \begin{equation}
@@ -435,7 +445,7 @@ The forgetful adjoint $U\maps [\T,\V] \to \V$ is still evaluation at the generat
 T(V) = \int^{n_\V\in \NN_\V} V^{n_\V} \times \T(t^{n_\V},t)
 \end{equation}
 
-\begin{example*}
+\begin{example}
 	Let $\V = \Cat$ and let $\T = \Th(\mathrm{PsMon})$ be the $\Cat$-theory of pseudomonoids \cite{pseudo}. Now rather than associativity and unitality \textit{equations}, there are 2-isomorphisms called the \textbf{associator} and \textbf{unitors} which rewrite in the direction of a ``normal form''. To equate the multiple possible rewrite sequences, we need 2-dimensional coherence conditions. Here is the presentation of the 2-theory:
 	
 	$$\textbf{Th(PsMon)}$$
@@ -449,7 +459,7 @@ T(V) = \int^{n_\V\in \NN_\V} V^{n_\V} \times \T(t^{n_\V},t)
 	\textbf{coherence} & (M\times\alpha)\circ \alpha_{MmM}\circ (\alpha\times M) = \alpha_{MMm}\circ \alpha_{mMM} & \text{pentagon identity}\\
 	& (M\times \lambda) \circ \alpha_{M1M} = \rho\times M & \text{triangle identity}\\
 	\end{array}\]
-\end{example*}
+\end{example}
 
 Models of $\T$ in $\Cat$ are \textit{monoidal categories}, and the induced 2-monad on $\Cat$ is the ``free monoidal category'' 2-monad. Let us explore this example in more detail: a model of $\T = \FC_{fp}(\Th(\mathrm{PsMon}))$ is a product ($\NN_\Cat$-power)-preserving 2-functor $\mu\colon \T\to \Cat$, which sends 
 \[\begin{array}{rclcl}
@@ -518,7 +528,7 @@ This is what we implicitly used in the definition of $\V$-theory: the arity cate
 
 We only need to show that everything is simplified by restricting to this particular $\J$.
 
-\section{Simplify with $\NN_\V$-arities}
+\section{Simplifying with natural number arities}
 
 Most of the enriched algebraic theory literature deals with generalized arities; these will be important in time, but for present applications, we would like the benefits of enrichment with the simplicity of natural number arities. Here we provide some lemmas for this simplification. The idea is that instead of thinking about fancy enriched powers, we are justified in considering ordinary products.
 
@@ -813,7 +823,7 @@ This base-change, along with change-of-theory and change-of-modelling, can be as
 
 \bibitem{beardsleywong} J.\ Beardsley and L.\ Z.\ Wong, The enriched Grothendieck construction.  Available as \href{https://arxiv.org/abs/1804.03829}{arXiv:1804.03829}.
 	
-\bibitem{mndarty} C.\ Berger, P.-A.\ Melli\`es and M.\ Weber, Monads with arities and their associated theories, \textsl{J.\ Pure Appl.\ Algebra}, \textbf{216} (2012), 2029--2048.  Available as \href{https://arxiv.org/abs/1101.3064}{arXiv:1101.3064}.
+\bibitem{bergermelliesweber} C.\ Berger, P.-A.\ Melli\`es and M.\ Weber, Monads with arities and their associated theories, \textsl{J.\ Pure Appl.\ Algebra}, \textbf{216} (2012), 2029--2048.  Available as \href{https://arxiv.org/abs/1101.3064}{arXiv:1101.3064}.
 
 \bibitem{borceux} F.\ Borceux, \textsl{Handbook of Categorical Algebra}, vol.\ 2, Cambridge U.\ Press, Cambridge, 1994.
 
