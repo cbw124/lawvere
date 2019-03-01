@@ -1,11 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.11)  23 JAN 2019 22:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.11)  23 JAN 2019 22:55
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**lawvere.tex
-(./lawvere.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
+**\input _region_.tex
+(./_region_.tex  !name(lawvere.tex)
 (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsart.cls
 Document Class: amsart 2017/10/31 v2.20.4
 \linespacing=\dimen102
@@ -1151,8 +1150,8 @@ File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
 Package hyperref Info: Option `colorlinks' set `true' on input line 41.
 \c@theorem=\count153
 \c@corollary=\count154
- (./lawvere.aux)
-\openout1 = `lawvere.aux'.
+ (./_region_.aux)
+\openout1 = `_region_.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
 LaTeX Font Info:    ... okay on input line 100.
@@ -1169,7 +1168,6 @@ LaTeX Font Info:    ... okay on input line 100.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 100.
 LaTeX Font Info:    ... okay on input line 100.
 LaTeX Font Info:    Try loading font information for U+msa on input line 100.
-
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -1259,244 +1257,108 @@ LaTeX Info: Redefining \ref on input line 100.
 LaTeX Info: Redefining \pageref on input line 100.
 LaTeX Info: Redefining \nameref on input line 100.
 
-(./lawvere.out) (./lawvere.out)
+(./_region_.out) (./_region_.out)
 \@outlinefile=\write6
-\openout6 = `lawvere.out'.
+\openout6 = `_region_.out'.
 
+  !name(lawvere.tex) !offset(-3) 
 
-
-LaTeX Warning: Citation `lawvere' on page 1 undefined on input line 138.
-
-
-LaTeX Warning: Citation `enrich' on page 1 undefined on input line 139.
+LaTeX Warning: Citation `enrich' on page 1 undefined on input line 142.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 157.
 
-LaTeX Warning: Citation `sos' on page 2 undefined on input line 142.
-
-
-LaTeX Warning: Citation `seely' on page 2 undefined on input line 148.
-
-
-LaTeX Warning: Citation `ghani' on page 2 undefined on input line 148.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 154.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 154.
-
-
-LaTeX Warning: Citation `rbb' on page 2 undefined on input line 175.
-
-[2]
-
-LaTeX Warning: Citation `roswelt' on page 3 undefined on input line 203.
-
-[3]
-
-LaTeX Warning: Citation `barrwells' on page 4 undefined on input line 224.
-
-
-LaTeX Warning: Citation `crole' on page 4 undefined on input line 224.
-
-
-LaTeX Warning: Citation `hylandpower' on page 4 undefined on input line 264.
-
-
-LaTeX Warning: Citation `linton' on page 4 undefined on input line 264.
-
-<xymatrix 2x1 110>
-
-LaTeX Warning: Citation `adamekrosicky' on page 4 undefined on input line 285.
-
-[4]
-
-LaTeX Warning: Citation `barrwells' on page 5 undefined on input line 290.
-
-
-LaTeX Warning: Citation `lawvere' on page 5 undefined on input line 290.
-
-
-LaTeX Warning: Citation `milewski' on page 5 undefined on input line 290.
-
-
-LaTeX Warning: Citation `adamekrosicky' on page 5 undefined on input line 292.
-
-
-LaTeX Warning: Citation `kelly' on page 5 undefined on input line 296.
-
-
-LaTeX Warning: Citation `maclane' on page 5 undefined on input line 320.
-
-[5]
-
-LaTeX Warning: Citation `adamekrosicky' on page 6 undefined on input line 360.
-
-
-LaTeX Warning: Citation `power' on page 6 undefined on input line 366.
-
-[6]
-
-LaTeX Warning: Citation `powsketch' on page 7 undefined on input line 372.
-
-
-LaTeX Warning: Citation `bergermelliesweber' on page 7 undefined on input line 
-372.
-
-
-LaTeX Warning: Citation `rbb' on page 7 undefined on input line 374.
-
-
-LaTeX Warning: Reference `eq:co-power' on page 7 undefined on input line 393.
-
-[7] <xymatrix 2x1 110>
-
-LaTeX Warning: Citation `rbb' on page 8 undefined on input line 431.
-
-[8]
-
-LaTeX Warning: Citation `pseudo' on page 9 undefined on input line 451.
-
-[9] [10]
-
-LaTeX Warning: Citation `borceux' on page 11 undefined on input line 511.
-
-[11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 609--610
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 157.
+ [2] [3] <xymatrix 2x1
+110> [4] [5] [6] [7] <xymatrix 2x1 110> [8] [9] [10] [11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 613.
+(hyperref)                removing `math shift' on input line 616.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 613.
+(hyperref)                removing `math shift' on input line 616.
 
-[13]
+[13] [14]
 
-LaTeX Warning: Citation `borceux' on page 14 undefined on input line 629.
-
-
-LaTeX Warning: Citation `jacobs' on page 14 undefined on input line 629.
-
-
-LaTeX Warning: Citation `beardsleywong' on page 14 undefined on input line 629.
-
-
-[14]
-
-LaTeX Warning: Citation `ladl' on page 15 undefined on input line 653.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 660.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 657.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 657.
-
-
-LaTeX Warning: Citation `baezstay' on page 15 undefined on input line 657.
-
-
-LaTeX Warning: Citation `combs' on page 15 undefined on input line 664.
-
-
-LaTeX Warning: Citation `tmam' on page 15 undefined on input line 664.
-
-
-LaTeX Warning: Citation `roswelt' on page 15 undefined on input line 666.
+(hyperref)                removing `math shift' on input line 660.
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 694--696
+Underfull \hbox (badness 10000) in paragraph at lines 697--699
 
  []
 
 [16] [17] [18] [19]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 798.
+(hyperref)                removing `math shift' on input line 801.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\rho' on input line 798.
+(hyperref)                removing `\rho' on input line 801.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 798.
+(hyperref)                removing `math shift' on input line 801.
 
 
-LaTeX Warning: Citation `milner' on page 20 undefined on input line 800.
-
-
-LaTeX Warning: Citation `refl' on page 20 undefined on input line 802.
-
-
-LaTeX Warning: Citation `roswelt' on page 20 undefined on input line 804.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 804--805
+Underfull \hbox (badness 10000) in paragraph at lines 807--808
 
  []
 
 [20]
-Overfull \hbox (54.48578pt too wide) detected at line 820
+Overfull \hbox (54.48578pt too wide) detected at line 823
 []
  []
 
-No file lawvere.brf.
+(./_region_.brf)
 \tf@brf=\write7
-\openout7 = `lawvere.brf'.
+\openout7 = `_region_.brf'.
 
-[21]
-Underfull \hbox (badness 1789) in paragraph at lines 886--886
+ [21]
+Underfull \hbox (badness 1789) in paragraph at lines 889--889
 []\OT1/cmr/m/n/8 B. Milewski, \OT1/cmr/m/sl/8 Cat-e-gory The-ory for Pro-gram-m
 ers\OT1/cmr/m/n/8 , Chap. 14: Law-vere the-o-ries, 2017. Avail-able at
  []
 
 [22]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 912.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 912.
- (./lawvere.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 912.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 912.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 915.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 915.
+ (./_region_.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 915.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 915.
+Package rerunfilecheck Info: File `_region_.out' has not changed.
+(rerunfilecheck)             Checksum: 8A9F9208226C7C7E8725BDDDDD0343DA;942.
+Package rerunfilecheck Info: File `_region_.brf' has not changed.
+(rerunfilecheck)             Checksum: 4FFAF3BD1809BE98ECB909ADE40E6D2C;1431.
 
-
-Package rerunfilecheck Warning: File `lawvere.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `lawvere.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  8A9F9208226C7C7E8725BDDDDD0343DA;942.
-
-Package rerunfilecheck Warning: File `lawvere.brf' has changed.
-(rerunfilecheck)                Rerun to get bibliographical references right.
-
-Package rerunfilecheck Info: Checksums for `lawvere.brf':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  4FFAF3BD1809BE98ECB909ADE40E6D2C;1431.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 912.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 915.
  ) 
 Here is how much of TeX's memory you used:
- 25287 strings out of 494923
- 463112 string characters out of 6180741
- 761550 words of memory out of 5000000
- 27900 multiletter control sequences out of 15000+600000
+ 25306 strings out of 494923
+ 463349 string characters out of 6180741
+ 762502 words of memory out of 5000000
+ 27917 multiletter control sequences out of 15000+600000
  18369 words of font info for 70 fonts, out of 8000000 for 9000
  175 hyphenation exceptions out of 8191
- 61i,20n,82p,3260b,1009s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,20n,82p,3268b,1009s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/tex
@@ -1522,10 +1384,10 @@ mti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msa
 m10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb>
-Output written on lawvere.pdf (22 pages, 403578 bytes).
+Output written on _region_.pdf (22 pages, 407477 bytes).
 PDF statistics:
- 305 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
+ 424 PDF objects out of 1000 (max. 8388607)
+ 369 compressed objects within 4 object streams
  82 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 133 words of extra memory for PDF output out of 10000 (max. 10000000)
 
