@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/1/18
+% 2019/3/3
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -262,17 +262,24 @@ For completeness, it is worthwhile to mention the \textit{presentation} of a Law
 \fi
 
 Currently, monads are more widely used in computer science than Lawvere theories.  However, Hyland and Power have suggested that Lawvere theories could do much of the work that monads do today \cite{hylandpower}. In 1965, Linton \cite{linton} proved that Lawvere theories correspond to ``finitary monads'' on the category of sets.   For every Lawvere theory $\T$, there is an adjunction:
+\iffalse
 \[
 \xymatrix{
 \Set \ar@<1.1ex>[r]^-F_-\bot &
 \Mod(\T,\Set) \ar@<1.1ex>[l]^-U
 }\]
-The underlying set functor 
-\[  U\maps \Mod(\T,\Set) \to \Set \]
-sends each model $\mu$ to the image of the generating object in $\Set$, $X = \mu(\tau(1))$. 
+\fi
+\[\begin{tikzcd}[column sep=small]
+\Set \arrow[bend left,below]{rr}{F}
+& {\phantom{AA} \ld} &
+\arrow[bend left,above]{ll}{U} \Mod(\T,\Set).
+\end{tikzcd}\]
+The functor 
+\[  U \maps \Mod(\T,\Set) \to \Set \]
+sends each model $\mu$ to its underlying set, $X = \mu(\tau(1))$. 
 Its left adjoint, the free model functor 
-\[       F\maps\Set \to \Mod(\T,\Set), \]
-sends each finite set $n$ to the representable functor $\T(|n|,-)\maps\T \to \Set$, and in general any set $X$ to the filtered colimit of all such representables, for each finite subset $n \subset X$: $$F(X) = \mathrm{colim}_{n\in P_{fin}(X)} T(|n|,-)$$ which essentially glues together all possible $n$-ary operations on a possibly infinite set.
+\[       F \maps\Set \to \Mod(\T,\Set), \]
+sends each finite set $n \in N$ to the representable functor $\T(\tau(n),-)\maps \T \to \Set$, and in general any set $X$ to the colimit of all such representable functors as $n$ ranges over all finite subsets of $X$.   In rough terms, this gives the set of all possible $n$-ary operations on the possibly infinite set $X$.
 
 These give an adjunction
 \[   \Mod(F(n),\mu) = \Mod(\T(|n|,-),\mu) \cong \mu(n) \cong \mu(1)^n = \Set(n,U(\mu))\] 
