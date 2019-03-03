@@ -282,7 +282,7 @@ Its left adjoint, the free model functor
 sends each finite set $n \in \NN$ to the representable functor $\T(\tau(n),-)\maps \T \to \Set$, and in general any set $X$ to the colimit of all such representable functors as $n$ ranges over all finite subsets of $X$.   In rough terms, this gives the set of all possible $n$-ary operations on the possibly infinite set $X$.
 
 These give an adjunction
-\[   \Mod(F(n),\mu) = \Mod(\T(\tau(n),-),\mu) \cong \mu(n) \cong \mu(1)^n = \Set(n,U(\mu))\] 
+\[   \Mod(F(n),\mu) = \Mod(\T(\tau(n),-),\mu) \cong \mu(\tau(n)) \cong \mu(\tau(1))^n = \Set(n,U(\mu))\] 
 where the left isomorphism arises from the Yoneda lemma, and the right isomorphism from the product preservation of $\mu$.   WHAT IS $\Mod$ HERE???  IS IT REALLY $\Mod(\T,\Set)$???  I think so.   If so, we should either write $\Mod(\T,\Set)$ or explain that we're using an abbreviation!!!
 
 This adjunction induces a monad $T$ on $\Set$:
