@@ -262,18 +262,19 @@ For completeness, it is worthwhile to mention the \textit{presentation} of a Law
 \fi
 
 Currently, monads are more widely used in computer science than Lawvere theories.  However, Hyland and Power have suggested that Lawvere theories could do much of the work that monads do today \cite{hylandpower}. In 1965, Linton \cite{linton} proved that Lawvere theories correspond to ``finitary monads'' on the category of sets.   For every Lawvere theory $\T$, there is an adjunction:
-\[\begin{tikzcd}
-	\Set \arrow[bend left=10,below]{rr}{F}
-	& \ld &
-	\arrow[bend left=10,above]{ll}{U} \Mod(\T,\Set).
-\end{tikzcd}\]
-CAN YOU MAKE THIS LOOK BETTER???  THE ARROWS ARE CLOSE AT LEFT AND FAR APART AT RIGHT, AND THE $F, U$ ARE CLOSER TO THE LEFT.
+\[
+\xymatrix{
+\Set \ar@<1.1ex>[r]^-F_-\bot &
+\Mod(\T,\Set) \ar@<1.1ex>[l]^-U
+}\]
 The underlying set functor 
 \[  U\maps \Mod(\T,\Set) \to \Set \]
 sends each model $\mu$ to the image of the generating object in $\Set$, $X = \mu(\tau(1))$. 
 Its left adjoint, the free model functor 
 \[       F\maps\Set \to \Mod(\T,\Set), \]
-sends each finite set $n$ to the representable functor $\T(|n|,-)\maps\T \to \Set$, and in general any set $X$ to the functor that maps $t^n \in \T$ to the set of all $n$-ary operations on $X$: $\{f(x_1,...,x_n)|f\in \T(n,1), x_i\in X\}$. WHAT DOES THAT MEAN??? These give an adjunction
+sends each finite set $n$ to the representable functor $\T(|n|,-)\maps\T \to \Set$, and in general any set $X$ to the filtered colimit of all such representables, for each finite subset $n \subset X$: $$F(X) = \mathrm{colim}_{n\in P_{fin}(X)} T(|n|,-)$$ which essentially glues together all possible $n$-ary operations on a possibly infinite set.
+
+These give an adjunction
 \[   \Mod(F(n),\mu) = \Mod(\T(|n|,-),\mu) \cong \mu(n) \cong \mu(1)^n = \Set(n,U(\mu))\] 
 where the left isomorphism arises from the Yoneda lemma, and the right isomorphism from the product preservation of $\mu$. 
 
@@ -362,7 +363,7 @@ Even though the definition of Lawvere theory seems to be all about products, it 
 
 \section{Enriched Lawvere theories}
 
-Power introduced the notion of enriched Lawvere theory about twenty years ago, ``in seeking a general account of what have been called notions of computation'' \cite{power}. The original definition is as follows: for a symmetric monoidal closed category $(\V,\otimes,I)$, a ``$\V$-enriched Lawvere theory'' is a $\V$-category $\T$ that has powers by objects in $\V_f$, equipped with an identity-on-objects $\V$-functor 
+Power introduced the notion of enriched Lawvere theory about twenty years ago, ``in seeking a general account of what have been called notions of computation'' \cite{power}. The original definition is as follows: for a symmetric monoidal closed category $(\V,\otimes,1)$, a ``$\V$-enriched Lawvere theory'' is a $\V$-category $\T$ that has powers by objects in $\V_f$, equipped with an identity-on-objects $\V$-functor 
 \[  \tau\maps\V_f^\op \to \T \]
 that preserves these powers.  A ``model'' of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ which preserves powers by objects of $\V_f$.  There is a category $\Mod(\T,\V)$ whose objects are models and whose morphisms are $\V$-natural transformations. The monadic adjunction and equivalence of $\S$2 generalize to this context.
 
@@ -389,11 +390,11 @@ A \textbf{model} of $\T$ in a $\V$-category $\C$ is a $\J$-power preserving $\V$
 \[  \mu \maps \T \to \C.\]
 \end{definition}
 
-In the same way that all the objects of a Lawvere theory are $\NN$-powers of a generating object, the objects of a $\J$-$\V$ theory are $\J$-powers $t^J$ of a generating object $t = \tau(I)$, one for each $J \in \J$.  (BUT IN THE LAST SECTION WE SAID WE'D BE USING $1$ AS OUR NAME FOR THE MONOIDAL UNIT!)  Note that $t$ itself is $t^I$.  Just as every $n\in \NN^\op$ is a power of $1$, every $J\in \tilde{\J}^{\op}$ is a power of the monoidal unit $I\in \V$, i.e. using Eq. (\ref{eq:co-power}) for $\tilde{\J}^{\op}$, $(\star \mapsto 1_J) \in [I,\tilde{\J}^{\op}(J,J)]$ is sent to the canonical isomorphism:
+In the same way that all the objects of a Lawvere theory are $\NN$-powers of a generating object, the objects of a $\J$-$\V$ theory are $\J$-powers $t^J$ of a generating object $t = \tau(1)$, one for each $J \in \J$. Note that $t$ itself is $t^1$.  Just as every $n\in \NN^\op$ is a power of $1$, every $J\in \tilde{\J}^{\op}$ is a power of the monoidal unit $1\in \V$, i.e. using Eq. (\ref{eq:co-power}) for $\tilde{\J}^{\op}$, $(\star \mapsto 1_J) \in [1,\tilde{\J}^{\op}(J,J)]$ is sent to the canonical isomorphism:
 \begin{equation}
-J \cong I^J.
+J \cong 1^J.
 \end{equation}
-This is just the opposite of the usual isomorphism $J \cong J^I$. Then, since $\tau$ preserves $\J$-powers, this implies that every object of $\T$ is a power of $t = \tau(I)$.
+This is just the opposite of the usual isomorphism $J \cong J^1$. Then, since $\tau$ preserves $\J$-powers, this implies that every object of $\T$ is a power of $t = \tau(1)$.
 
 There is a category $\V\Law$ whose objects are $\J$-$\V$ theories and whose morphisms are $\J$-power-preserving $\V$-functors $f\maps \T \to \T'$ such that $f\tau = \tau'$. For every $\J$-$\V$ theory $\T$ and every $\V$-category $\C$ with $\J$-powers, we define the category of models $\Mod(\T,\C)$ to consist of $\J$-power preserving $\V$-functors $\T\to \C$ and $\V$-natural transformations. If  $\V$ is a \textbf{cosmos}, i.e.\ complete and cocomplete, then the functor categories of $\V\Cat$ are also $\V$-categories, including $\V\Law$ and $\Mod(\T,\C)$. This is potentially very useful, and the enriching categories $\V = \Gph, \Cat, \Pos, \Set$ that are the focus of this paper are indeed cosmoi.
 
@@ -409,24 +410,24 @@ j\maps & \J & \hookrightarrow & \V & \text{arities}\\
 
 This parameterization is quite general; for example, Power's definition is the case $\J = \V_f$. A system of arities is \textbf{eleutheric} if left Kan extensions along $j$ exist and are preserved by $\V(K,-)$ for all $K \in Ob(\J)$. This is what is needed to have the essential monadicity theorems: Lucyshyn-Wright proved that any $\J$-$\V$ theory for an eleutheric system of arities has a category of models for $\C = \V$ which is monadic over $\V$. 
 
-The usual kinds of arities are eleutheric: in particular, finite cardinals.  We take these as the objects of our system of arities $\J$.  WHEN???  STARTING RIGHT NOW???
+The usual kinds of arities are eleutheric: in particular, finite cardinals.  We now take these to be the objects of our system of arities $\J$.
 
-Let $(\V,\times,I_\V)$ be a cartesian closed category with finite coproducts of $I_\V$. Define $\NN_\V$ to be the full subcategory of finite coproducts of the unit object:
-\[   n_\V := n \cdot I_\V = \sum_{i \in n} I_\V  \]
+Let $(\V,\times,1_\V)$ be a cartesian closed category with finite coproducts of $1_\V$. Define $\NN_\V$ to be the full subcategory of finite coproducts of the unit object:
+\[   n_\V := n \cdot 1_\V = \sum_{i \in n} 1_\V  \]
 characterized by the universal property
 \begin{equation}
-\V(n_\V,a) = \V(I_\V \odot n,a) \cong \Set(n,\V(I_\V,a)).
+\V(n_\V,a) = \V(1_\V \odot n,a) \cong \Set(n,\V(1_\V,a)).
 \end{equation}
 For $\J = \NN_\V$, we will call $\J$-$\V$ theories \textbf{$\V$-theories} for simplicity.
 
 Because $\NN_\V$ is eleutheric, $\V$-theories correspond to $\V$-monads on $\V$, just as ordinary Lawvere theories correspond to monads on $\Set$, and $\S$6 will demonstrate that the arities are essentially the same---but now we have the rich ``operational'' information of $\V$, and this $\V$ is adaptable.
 
 How exactly does the ``free-forgetful'' $\V$-adjunction work?
-\[\begin{tikzcd}
-\V \arrow[bend left=10,below]{rr}{F}
-& \ld &
-\arrow[bend left=10,above]{ll}{U} \Mod(\T,\V)
-\end{tikzcd}\]
+\[
+\xymatrix{
+\V \ar@<1.1ex>[r]^-F_-\bot &
+\Mod(\T,\V) \ar@<1.1ex>[l]^-U
+}\]
 Lucyshyn-Wright \cite[Sec.\ 8]{rbb} has described the \textbf{free model} of a $\V$-theory.  This is the enriched generalization of the free model described in $\S$2: it is the composite of the (opposite) theory $\tau^\op\maps \NN_\V \to \T^\op$ with the Yoneda embedding $y\maps \T^\op \to [\T,\V]$, sending each $n_\V \in \NN_\V$ to its representable $\V$-functor, i.e. the $n$-ary operations of $\T$:
 \[\begin{array}{rllll}
 \NN_\V^\op & \xrightarrow{\tau} & \T^\op & \xrightarrow{y} & \left[\T,\V\right]\\
@@ -447,22 +448,31 @@ T(V) = \int^{n_\V\in \NN_\V} V^{n_\V} \times \T(t^{n_\V},t)
 \end{equation}
 
 \begin{example}
-	Let $\V = \Cat$ and let $\T = \Th(\mathrm{PsMon})$ be the $\Cat$-theory of pseudomonoids \cite{pseudo}. Now rather than associativity and unitality \textit{equations}, there are 2-isomorphisms called the \textbf{associator} and \textbf{unitors} which rewrite in the direction of a ``normal form''. To equate the multiple possible rewrite sequences, we need 2-dimensional coherence conditions. Here is the presentation of the 2-theory:
-
-	
-	$$\textbf{Th(PsMon)}$$
+	Let $\V = \Cat$ and let $\T = \Th(\mathrm{PsMon})$ be the $\Cat$-theory of pseudomonoids \cite{pseudo}. Now rather than associativity and unitality \textit{equations}, there are 2-isomorphisms called the \textbf{associator} and \textbf{unitors} which rewrite in the direction of a ``normal form''. To equate the multiple possible rewrite sequences, we need 2-dimensional coherences. (This is specific to $\Cat$; if the enrichment were $\Mon$, for example, the relations would be equations of morphisms as elements being operated.) Here is the presentation of the 2-theory:$$\textbf{Th(PsMon)}$$
 	\[\begin{array}{rll}
 	\textbf{sorts} & M & \text{pseudomonoid}\\
 	\textbf{operations} & e\maps1 \to M & \text{identity}\\
 	& m\maps M^2 \to M & \text{multiplication}\\
-	\textbf{rewrites} & \alpha_{MMM}\colon m \circ (m \times \id_M) \Rightarrow m \circ (\id_M \times m) & \text{associator}\\
-	& \lambda\maps  m \circ (e  \times \id_M) \Rightarrow \id_M & \text{left unitor}\\
+	\textbf{rewrites} & \alpha \colon m \circ (m \times \id_M) \Rightarrow m \circ (\id_M \times m) & \text{associator}\\
+	& \lambda\maps  m \circ (e \times \id_M) \Rightarrow \id_M & \text{left unitor}\\
 	& \rho\maps m \circ (\id_M \times e) \Rightarrow \id_M & \text{right unitor}\\
-	\textbf{coherence laws} & (M\times\alpha)\circ \alpha_{MmM}\circ (\alpha\times M) = \alpha_{MMm}\circ \alpha_{mMM} & \text{pentagon identity}\\
-	& (M\times \lambda) \circ \alpha_{M1M} = \rho\times M & \text{triangle identity}\\
-	\end{array}\]
-\end{example}
-NOT OBVIOUS FROM HERE WHERE $\alpha_{MmM}$ and $\alpha_{M1M}$ come from!!!
+	\textbf{coherence}
+          \end{array}\]
+
+        \[\begin{tikzcd}
+          M^4 \ar[rr,"1\times 1\times m"] \ar[dr,"1\times m\times 1" description, ""name=a1] \ar[dd, "m\times 1\times 1",swap,""name=b1] && M^3 \ar[dr, "1\times m",""name=a2] \arrow[Rightarrow,"1\times \alpha",from=a1,to=a2,shorten >=1.3cm,shorten <=1.3cm] &&& M^4 \ar[rr, "1\times 1\times m"] \ar[dd,"m\times 1\times 1",swap,""name=d1] && M^3 \ar[dd,"m\times 1" description,""name=d2] \ar[dr,"1\times m"] \arrow[Rightarrow,"?",from=d1,to=d2,shorten >=1.3cm,shorten <=1.3cm] & \\
+          & M^3 \ar[rr,"1\times m"] \ar[dd,"m\times 1",""name=b2] \arrow[Rightarrow,"\alpha\times 1",from=b1,to=b2,shorten >=0.7cm,shorten <=0.7cm] && M^2 \ar[dd,"m",""name=c1] & = & &&& M^2 \ar[dd,"m",""name=f1] \arrow[Rightarrow,"\alpha",from=d2,to=f1,shorten >=0.6cm,shorten <=0.6cm] \arrow[Rightarrow,"\alpha",from=b2,to=c1,shorten >=1.3cm,shorten <=1.3cm] \\
+          M^3 \ar[dr,"m\times 1",swap] &&& && M^3 \ar[rr,"1\times m"] \ar[dr,"m\times 1",swap,,""name=e1] && M^2 \ar[dr,"m",,""name=e2] \arrow[Rightarrow,"\alpha",from=e1,to=e2,shorten >=1.3cm,shorten <=1.3cm] & \\
+          & M^2 \ar[rr,"m",swap] && M && & M^2 \ar[rr,"m",swap] && M
+        \end{tikzcd}\]
+
+      \[\begin{tikzcd}
+          & M^2 \ar[dl,"1\times e\times 1",""name=a1,swap] \ar[dr,"1",""name=a2] \arrow[Rightarrow,from=a1,to=a2,"1\times \lambda",swap,shorten >=0.4cm,shorten <=0.4cm] & && & M^2 \ar[dl,"1\times e\times 1",swap] \ar[dr,"1"] \ar[dd,"1",""name=c1] & \\
+          M^3 \ar[d,"m\times 1",swap,""name=b1] \ar[rr,"1\times m",swap] && M^2 \ar[d,"m",""name=b2] \arrow[Rightarrow,from=b1,to=b2,"\alpha",shorten >=1.3cm,shorten <=1.3cm,swap] & = & M^3 \ar[dr,"m\times 1",swap] \arrow[Rightarrow,to=c1,"\rho\times 1",shorten >=0.4cm,shorten <=0.4cm] && M^2 \ar[d,"m"] \\
+          M^2 \ar[rr,"m",swap] && M &&& M^2 \ar[r,"m",swap] & M
+        \end{tikzcd}\]
+    \end{example}
+    %(M\times\alpha)\circ \alpha_{MmM}\circ (\alpha\times M) = \alpha_{MMm}\circ \alpha_{mMM} & \text{pentagon identity}\\ & (M\times \lambda) \circ \alpha_{M1M} = \rho\times M & \text{triangle identity}\\
 
 Models of $\T$ in $\Cat$ are monoidal categories, and the induced 2-monad on $\Cat$ is the ``free monoidal category'' 2-monad. Let us explore this example in more detail: a model of $\T = \FC_{fp}(\Th(\mathrm{PsMon}))$ is a finite-product-preserving 2-functor $\mu\colon \T\to \Cat$, which sends 
 \[\begin{array}{rclcl}
@@ -491,10 +501,10 @@ is a category $A$ equipped with a functor $\otimes_A\maps F(A)(1)\to A$ such tha
 
 We now have the tools to formulate the main idea: certain $\V$ correspond to certain kinds of \textit{semantics}, and changing enrichments corresponds to a \textit{change of semantics}. We propose a general framework in which one can translate between different forms of semantics: small-step, big-step, full-step operational semantics, and denotational semantics.
 
-This translation is effected by a (strong) \textbf{monoidal functor}: a functor $$(F,\lambda,\upsilon)\maps (\V,\otimes_\V,I_\V) \to (\W,\otimes_\W,I_\W)$$ which transfers the tensor and unit via the \textit{laxor} and \textit{unitor}
+This translation is effected by a (strong) \textbf{monoidal functor}: a functor $$(F,\lambda,\upsilon)\maps (\V,\otimes_\V,1_\V) \to (\W,\otimes_\W,1_\W)$$ which transfers the tensor and unit via the \textit{laxor} and \textit{unitor}
 \[\begin{array}{rl}
 \lambda\maps & F(a) \otimes_\W F(b) \cong F(a\otimes_\V b)\\
-\upsilon\maps & I_\W \cong F(I_\V)
+\upsilon\maps & 1_\W \cong F(1_\V)
 \end{array}\]
 such that $\lambda$ is natural in $a,b$ and associative, and unital relative to $\upsilon$.
 
@@ -514,15 +524,15 @@ Hence, the change of base operation forms a 2-functor (or ``$\Cat$-functor''):
 \Mon\Cat & \xrightarrow{(-)_*} & 2\Cat\\
 (F\maps \V\to\W) & \mapsto & (F_*\maps \V\Cat\to\W\Cat)
 \end{array}\]
-In particular, there is an important correspondence of adjunctions (if $\V$ has all coproducts of $I_\V$):
+In particular, there is an important correspondence of adjunctions (if $\V$ has all coproducts of $1_\V$):
 \[\begin{tikzcd}
-	\Set \arrow[bend left,below]{rr}{-\odot I}
+	\Set \arrow[bend left,below]{rr}{-\odot 1}
 	& \ld &
 	\arrow[bend left,above]{ll}{\V(I,-)} \V
 	\arrow[maps to]{r}
-	& \Cat \arrow[bend left,below]{rr}{(-\odot I)_*}
+	& \Cat \arrow[bend left,below]{rr}{(-\odot 1)_*}
 	& \ld &
-	\arrow[bend left,above]{ll}{(\V(I,-))_*} \V\Cat.
+	\arrow[bend left,above]{ll}{(\V(1,-))_*} \V\Cat.
 \end{tikzcd}\]
 
 Each set $X$ is represented in $\V$ as the $X$-indexed coproduct of the unit object, and conversely each object $v$ of $\V$ is represented in $\Set$ by the hom-set from the unit to $v$. The latter induces the ``underlying ($\Set$-)category'' change of base, which forgets the enrichment. The former induces the ``free $\V$-enrichment'' change of base, whereby ordinary $\Set$-categories are converted to $\V$-categories, denoted $\C \mapsto \tilde{\C}$. These form an adjunction, because 2-functors preserve adjunctions.
@@ -544,8 +554,8 @@ Let $\V$ be a cartesian closed category with finite coproducts of the unit objec
 	If $a,b \in \V$, then
 	\[\begin{array}{rcll}
 	\V(a,[n_\V,b]) & \cong & \V(a\times n_\V,b) & \text{hom-tensor adjunction}\\
-	& = & \V(a\times (n \cdot I_\V),b) & \text{definition of } n_\V\\
-	& \cong & \V(n \cdot (a\times I_\V),b) & \text{distributivity}\\
+	& = & \V(a\times (n \cdot 1_\V),b) & \text{definition of } n_\V\\
+	& \cong & \V(n \cdot (a\times 1_\V),b) & \text{distributivity}\\
 	& \cong & \V(n\cdot a,b) & \text{unitality}\\
 	& \cong & \V(a,b)^n & \text{cocontinuity of hom}\\
 	& \cong & V(a,b^n) & \text{continuity of hom}.\\
@@ -556,7 +566,7 @@ Each of these isomorphisms is natural in $a$ and $b$; hence by the Yoneda lemma,
 
 So, the full sub-$\V$-category $\tilde{\NN}_\V$ has hom-objects which behave like the exponentiation of $\NN$:
 \[\begin{tikzcd}
-\left[n_\V,m_\V\right] \cong (m\cdot I_\V)^n \cong (m^n)_\V.
+\left[n_\V,m_\V\right] \cong (m\cdot 1_\V)^n \cong (m^n)_\V.
 \end{tikzcd}\]
 
 In $\V\Cat$, the objects of the theory $\T$ are $n_\V$-powers of a generating object $s$. Alas, we cannot simply say that ``$\;s^{n_\V} \cong s^n\;$'', because the latter does not type-check in the $\V$-category $\T$: products are characterized by a $\Set$-enriched universal property. However, we only need:
@@ -591,7 +601,7 @@ Finally, let $\tilde{n}\maps \tilde{\NN}_\W \to F_*(\tilde{\NN}_\V)$ be the isom
 	Let $\V$, $\W$ be cartesian closed categories with finite coproducts of their unit objects, and let $F\maps \V \to \W$ be a cartesian functor. Then $F$ is a \textbf{change of semantics}; i.e.\ for every $\V$-theory $\tau_\V\maps \tilde{\NN}_\V^\op \to \T$, the $\W$-functor $$\tau_\W := F_*(\tau_\V) \circ \tilde{n}^\op\maps \tilde{\NN}_\W^\op \to F_*(\T)$$ is a $\W$-theory. Moreover, $F$ preserves \textit{models}, i.e.\ for every $\NN_\V$-power preserving $\V$-functor $\mu\maps\T \to \C$, the $\W$-functor $F_*(\mu)$ preserves $\NN_\W$-powers.
 \end{theorem}
 \begin{proof}
-	The $\W$-functor $\tau_\W$ is bijective on objects because $\tau_\V$ and $\tilde{n}$ are; and it preserves $\NN_\W$-powers because $\tilde{N}$ does and $F_*(\tau_\V)$ does by the previous lemma. This preservation is strict because $F_*(\T)$ has the same objects as $\T$, so the isomorphism implies that $\tau_\W(I_\W^{n_\W}) = \tau_\W(I_\W)^{n_\W}$. The preservation of models follows from the previous lemma.
+	The $\W$-functor $\tau_\W$ is bijective on objects because $\tau_\V$ and $\tilde{n}$ are; and it preserves $\NN_\W$-powers because $\tilde{N}$ does and $F_*(\tau_\V)$ does by the previous lemma. This preservation is strict because $F_*(\T)$ has the same objects as $\T$, so the isomorphism implies that $\tau_\W(1_\W^{n_\W}) = \tau_\W(1_\W)^{n_\W}$. The preservation of models follows from the previous lemma.
 \end{proof}
 
 Hence, any cartesian functor between cartesian closed categories constitutes a ``change of semantics'' --- this is a simple, ubiquitous condition, which provides for a method of translating formal languages between various ``modes of operation''.
