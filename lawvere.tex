@@ -397,17 +397,17 @@ that is bijective on objects and \textbf{$\NN_\V$-power-preserving}: that is, it
 This definition is adapted from that of Lucyshyn-Wright \cite{rbb}.  While he demands that $\tau$ be the identity on objects, we allow it to be bijective on objects, to handle change-of-base.
 
 \begin{definition}
-A \textbf{model} of $\T$ in a $\V$-category $\C$ is a $\NN_\V$-preserving $\V$-functor 
+A \textbf{model} of $\T$ in a $\V$-category $\C$ is a $\NN_\V$-power-preserving $\V$-functor 
 \[  \mu \maps \T \to \C.\]
 \end{definition}
 
-In the same way that all the objects of a Lawvere theory are $\NN$-powers of a generating object, all the objects of a $\V$-theory are $\NN_\V$-powers $t^{n_\V}$ of a generating object $t = \tau(1_\V)$, one for each $n_\V \in \NN_\V$.  Note that $t$ itself is $t^{1_\V}$.  Moreover, just as every $n\in \NN^\op$ is a power of $1$, every $J\in \NN_\V^\op$ is a power of $1_\V$.  To see this, note that using Eq.\ (\ref{eq:co-power}) for $\NN_\V^\op$, we obtain a natural isomorphism
+In the same way that all the objects of a Lawvere theory are $\NN$-powers of a generating object, all the objects of a $\V$-theory are $\NN_\V$-powers $t^{n_\V}$ of a generating object $t = \tau(1_\V)$, one for each $n_\V \in \NN_\V$.  Note that $t$ itself is $t^{1_\V}$.  Moreover, just as every $n\in \NN^\op$ is a power of $1$, every $J\in \NN_\V^\op$ is a power of $1_\V$.  To see this, note that using Eq.\ (\ref{eq:co-power}), we obtain a natural isomorphism
 \begin{equation}
-n_\V \cong 1^{n_\V}.
+n_\V \cong 1^{n_\V}
 \end{equation}
-This is just the opposite of the usual isomorphism $n_\V \cong n_\V^1$ in $\NN_\V$.   Then, since $\tau$ preserves $\NN_\V$-powers and is bijective on objects, this implies that every object of $\T$ is an $\NN_\V$-power of $t = \tau(1_\V)$.
+in $\NN_\V^\op$.   While perhaps strange at first, this just the opposite of the usual isomorphism $n_\V \cong n_\V^1$ in $\NN_\V$.   Then, since $\tau$ preserves $\NN_\V$-powers and is bijective on objects, this implies that every object of $\T$ is an $\NN_\V$-power of $t = \tau(1_\V)$.
 
-There is a category $\V\Law$ whose objects are $\V$-theories and whose morphisms are $\NN_\V$ power-preserving $\V$-functors $f\maps \T \to \T'$ such that $f\tau = \tau'$. For every $\V$-theory $\T$ and every $\V$-category $\C$ with $\J$-powers, we define the category of models $\Mod(\T,\C)$ to consist of $\NN_\V$-power preserving $\V$-functors $\T\to \C$ and $\V$-natural transformations. If  $\V$ is a \textbf{cosmos}, i.e.\ complete and cocomplete, then the functor categories of $\V\Cat$ are also $\V$-categories, including $\V\Law$ and $\Mod(\T,\C)$. This is potentially very useful, and the enriching categories $\V = \Gph, \Cat, \Pos, \Set$ that are the focus of this paper are indeed cosmoi.
+There is a category $\V\Law$ whose objects are $\V$-theories and whose morphisms are $\NN_\V$-power-preserving $\V$-functors $f\maps \T \to \T'$ such that $f\tau = \tau'$. For every $\V$-theory $\T$ and every $\V$-category $\C$ with $\J$-powers, we define the category of models $\Mod(\T,\C)$ to consist of $\NN_\V$-power preserving $\V$-functors $\T\to \C$ and $\V$-natural transformations. If  $\V$ is a \textbf{cosmos}, i.e.\ complete and cocomplete, then the functor categories of $\V\Cat$ are also $\V$-categories, including $\V\Law$ and $\Mod(\T,\C)$. This is potentially very useful, and the enriching categories $\V = \Gph, \Cat, \Pos, \Set$ that are the focus of this paper are indeed cosmoi.
 
 Here is an overview of the concepts: 
 
