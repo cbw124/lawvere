@@ -454,23 +454,24 @@ When $\V = \Cat$, a $\V$-theory deserves to be called a \define{2-theory}.  For 
 	\textbf{sorts} & M & \text{pseudomonoid}\\
 	\textbf{operations} & e\maps1 \to M & \text{identity}\\
 	& m\maps M^2 \to M & \text{multiplication}\\
-	\textbf{rewrites} & \alpha \colon m \circ (m \times \id_M) \Rightarrow m \circ (\id_M \times m) & \text{associator}\\
-	& \lambda\maps  m \circ (e \times \id_M) \Rightarrow \id_M & \text{left unitor}\\
-	& \rho\maps m \circ (\id_M \times e) \Rightarrow \id_M & \text{right unitor}\\
+	\textbf{rewrites} & \alpha \colon m \circ (m \times \id_M) \stackrel{\sim}{\Longrightarrow} m \circ (\id_M \times m) & \text{associator}\\
+	& \lambda\maps  m \circ (e \times \id_M) \stackrel{\sim}{\Longrightarrow} \id_M & \text{left unitor}\\
+	& \rho\maps m \circ (\id_M \times e) \stackrel{\sim}{\Longrightarrow} \id_M & \text{right unitor}\\
 	\textbf{coherence laws}
           \end{array}\]
 
         \[\begin{tikzcd}
-          M^4 \ar[rr,"1\times 1\times m"] \ar[dr,"1\times m\times 1" description, ""name=a1] \ar[dd, "m\times 1\times 1",swap,""name=b1] && M^3 \ar[dr, "1\times m",""name=a2] \arrow[Rightarrow,"1\times \alpha",from=a1,to=a2,shorten >=1.3cm,shorten <=1.3cm] &&& M^4 \ar[rr, "1\times 1\times m"] \ar[dd,"m\times 1\times 1",swap,""name=d1] && M^3 \ar[dd,"m\times 1" description,""name=d2] \ar[dr,"1\times m"] \arrow[Rightarrow,"\sim",from=d1,to=d2,shorten >=1.3cm,shorten <=1.3cm] & \\
+          M^4 \ar[rr,"1\times 1\times m"] \ar[dr,"1\times m\times 1" description, ""name=a1] \ar[dd, "m\times 1\times 1",swap,""name=b1] && M^3 \ar[dr, "1\times m",""name=a2] \arrow[Rightarrow,"1\times \alpha",from=a1,to=a2,shorten >=1.3cm,shorten <=1.3cm] &&& M^4 \ar[rr, "1\times 1\times m"] \ar[dd,"m\times 1\times 1",swap,""name=d1] && M^3 \ar[dd,"m\times 1" description,""name=d2] \ar[dr,"1\times m"] %\arrow[,"",from=d1,to=d2,shorten >=1.3cm,shorten <=1.3cm] 
+          & \\
           & M^3 \ar[rr,"1\times m"] \ar[dd,"m\times 1",""name=b2] \arrow[Rightarrow,"\alpha\times 1",from=b1,to=b2,shorten >=0.7cm,shorten <=0.7cm] && M^2 \ar[dd,"m",""name=c1] & = & &&& M^2 \ar[dd,"m",""name=f1] \arrow[Rightarrow,"\alpha",from=d2,to=f1,shorten >=0.6cm,shorten <=0.6cm] \arrow[Rightarrow,"\alpha",from=b2,to=c1,shorten >=1.3cm,shorten <=1.3cm] \\
           M^3 \ar[dr,"m\times 1",swap] &&& && M^3 \ar[rr,"1\times m"] \ar[dr,"m\times 1",swap,,""name=e1] && M^2 \ar[dr,"m",,""name=e2] \arrow[Rightarrow,"\alpha",from=e1,to=e2,shorten >=1.3cm,shorten <=1.3cm] & \\
           & M^2 \ar[rr,"m",swap] && M && & M^2 \ar[rr,"m",swap] && M
         \end{tikzcd}\]
 
       \[\begin{tikzcd}
-          & M^2 \ar[dl,"1\times e\times 1",""name=a1,swap] \ar[dr,"1",""name=a2] \arrow[Rightarrow,from=a1,to=a2,"1\times \lambda",swap,shorten >=0.4cm,shorten <=0.4cm] & && & M^2 \ar[dl,"1\times e\times 1",swap] \ar[dr,"1"] \ar[dd,"1",""name=c1] & \\
-          M^3 \ar[d,"m\times 1",swap,""name=b1] \ar[rr,"1\times m",swap] && M^2 \ar[d,"m",""name=b2] \arrow[Rightarrow,from=b1,to=b2,"\alpha",shorten >=1.3cm,shorten <=1.3cm,swap] & = & M^3 \ar[dr,"m\times 1",swap] \arrow[Rightarrow,to=c1,"\rho\times 1",shorten >=0.4cm,shorten <=0.4cm] && M^2 \ar[d,"m"] \\
-          M^2 \ar[rr,"m",swap] && M &&& M^2 \ar[r,"m",swap] & M
+          & M^2 \ar[dl,"1\times e\times 1",""name=a1,swap] \ar[dr,"1",""name=a2] \arrow[Rightarrow,from=a1,to=a2,"1\times \lambda",swap,shorten >=0.4cm,shorten <=0.4cm] & && & M^2 \ar[dl,"1\times e\times 1",swap] \ar[dr,"1"] \ar[ddl,bend left,"1",""name=c1] & \\
+          M^3 \ar[d,"m\times 1",swap,""name=b1] \ar[rr,"1\times m",swap] && M^2 \ar[d,"m",""name=b2] \arrow[Rightarrow,from=b1,to=b2,"\alpha",shorten >=1.3cm,shorten <=1.3cm,swap] & = & M^3 \ar[d,"m\times 1",swap] \arrow[Rightarrow,to=c1,"\rho\times 1",shorten >=0.4cm,shorten <=0.0cm] && M^2 \ar[d,"m"] \\
+          M^2 \ar[rr,"m",swap] && M && M^2 \ar[rr,"m",swap] && M
         \end{tikzcd}\]
     \end{example}
     %(M\times\alpha)\circ \alpha_{MmM}\circ (\alpha\times M) = \alpha_{MMm}\circ \alpha_{mMM} & \text{pentagon identity}\\ & (M\times \lambda) \circ \alpha_{M1M} = \rho\times M & \text{triangle identity}\\
@@ -484,22 +485,19 @@ Models of $\T$ in $\Cat$ are monoidal categories, and the induced 2-monad on $\C
 	\lambda & \mapsto & I\circ 1_\C & \Rightarrow & 1_\C\\
 	\rho & \mapsto & 1_\C \circ I & \Rightarrow & 1_\C
 \end{array}\]
-such that the coherence laws of the rewrites are preserved.  Thus, a model is a category equipped with a tensor product $\otimes$ and unit object $I$ such that these operations are unital and associative up to natural isomorphism; so these models are precisely monoidal categories. In this way, 2-theories generalize equipping \textit{set}-like objects  with operations obeying equations to equipping \textit{category}-like objects with operations obeying equations up to specified 
-transformations, which in turn obey coherence laws of their own.
+such that the coherence laws of the rewrites are preserved.  Thus, a model is a category equipped with a tensor product $\otimes$ and unit object $I$ such that these operations are unital and associative up to natural isomorphism; so these models are precisely monoidal categories. In this way, 2-theories generalize equipping \textit{set}-like objects  with operations obeying equations to equipping \textit{category}-like objects with operations obeying equations up to 
+transformations that obey certain equations of their own.
 
-To form the free model on a category $\C\in \Cat$, we follow the above method: the formula for left Kan extension (writing $n$ instead of $n_\Cat$ for simplicity, see $\S$6) gives $F(\C)\maps \T\to \V$ by 
+To form the free model on a category $\C\in \Cat$, we follow the above method: the formula for left Kan extension (writing $n$ instead of $n_\Cat$ for simplicity) gives $F(\C)\maps \T\to \V$ by 
 \[   F(\C) = \int^{n\in \NN_\Cat} \T(t^{n},t^{(-)})\times \C^{n} \] 
 which is constructed by pairing $n$-ary morphisms in $\T$ with $n$-tuples of objects in $\C$ for all $n\in \NN_\Cat$, then quotienting the coproduct of these pairs by the equations of $\T$ and $\C$.
 
 This functor is not very intuitive, but composing with the left adjoint, i.e., evaluating $F(\C)$ at $1$, gives the \textit{free monoidal category} on $\C$: in the same way that the (underlying set of the) free monoid on a set $X$ consists of all finite strings of elements of $X$, $F(\C)(1)$ consists of all finite tensors of objects and morphisms of $\C$, and all composites of these morphisms, up to the relations induced by the (composites and tensors of the) images of the associator and unitors.
 
-In general for each $m\in \NN_\Cat$, $F(\C)(m)$ gives the category of all $m$-tuples of elements of $F(C)(1)$, forming the ``free monoidal category on $\C$ with $m$ variables'', like a polynomial ring. This can be useful for imposing further relations on $F(\C)$, analogous to Galois theory. Though pure category theorists does not usually consider free variables, perhaps this is a useful notion even outside the context of computation.
-
-The free monoidal category can be given a computational presentation as in the judgement tables for $\FC_{fp}(\Th(\Mon))$ in $\S$2, with the universal property of the product replaced with the bilinearity of the tensor product. There is surely a systematic method of generating these presentations, but it is probably still implicit in the literature for sketches.
-
-Finally, an algebra of the monad 
-\[  T:= F(-)(1)\maps \Cat\to \Cat :: \C \mapsto \int^n \C^n \times \T(n,1) \]
-is a category $A$ equipped with a functor $\otimes_A\maps F(A)(1)\to A$ such that it is compatible with the multiplication and unit of the monad, which are the ``free'' tensor bifunctor and monoidal unit on $A$. Hence, $(A,\otimes_A)$ is precisely a monoidal category, and we have the equivalence: \[ \mathrm{PsMon}(\Cat) = \Mod(\T,\Cat) \simeq \mathrm{Alg}(T). \]
+In general for each $m\in \NN_\Cat$, $F(\C)(m)$ gives the category of all $m$-tuples of elements of $F(C)(1)$, forming the ``free monoidal category on $\C$ with $m$ variables''.  Finally, an algebra of the monad 
+\[  T = UF \maps \C \mapsto \int^n \C^n \times \T(n,1) \]
+is a category $A$ equipped with a functor $\otimes_A\maps F(A)(1)\to A$ such that it is compatible with the multiplication and unit of the monad, which are the ``free'' tensor bifunctor and monoidal unit on $A$. Hence, $(A,\otimes_A,I_A)$ is precisely a monoidal category, and we have the equivalence: 
+\[ \Mod(\T,\Cat) \simeq \mathrm{Alg}(T). \]
 
 \section{Change of Base}
 
