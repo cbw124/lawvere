@@ -171,7 +171,7 @@ Here we take $\Gph$ to be the category of reflexive graphs, $\Set^R$, where $R$ 
 
 %A motivating example is ``logic as a distributive law" \cite{ladl}, an algorithm for deriving a spatial-behavioral type system from a formal presentation of a computational calculus. Essential properties such as soundness are made provable, a powerful query language is generated, and modalities can be ``built in" to express principles of the system.
 
-In section $\S2$, we review Lawvere theories as a more explicit, but equivalent, presentation of finitary monads. In $\S3$, we recall the basics of enrichment, and especially the theory of powers.  In $\S4$ we give the central definition of $\V$-theory, from Lucyshyn-Wright \cite{rbb}, which allows us to parametrize our theory by a monoidal subcategory of arities.
+In section $\S2$, we review Lawvere theories as a more explicit, but equivalent, presentation of finitary monads. In $\S3$, we recall the basics of enrichment, and especially the theory of powers.  In $\S4$ we give the central definition of $\V$-theory, from Lucyshyn-Wright \cite{lucyshyn-wright}, which allows us to parametrize our theory by a monoidal subcategory of arities.
 
 In $\S5$ we discuss how functors between enriching categories induce change-of-base 2-functors between their 2-categories of enriched categories, and in $\S6$ we show that functors preserving finite products induce \textit{change-of-semantics}: that is, they map theories to theories and models to models.   Our main examples arise from this chain of adjunctions:
 \[\begin{tikzcd}[column sep=small]
@@ -364,13 +364,13 @@ Even though the definition of Lawvere theory seems to be all about products, it 
 
 Power introduced the notion of enriched Lawvere theory about twenty years ago, ``in seeking a general account of what have been called notions of computation'' \cite{power}. The original definition is as follows: for a symmetric monoidal closed category $(\V,\otimes,1)$, a ``$\V$-enriched Lawvere theory'' is a $\V$-category $\T$ that has powers by objects in $\V_f$, equipped with an identity-on-objects $\V$-functor 
 \[  \tau\maps \V_f^\op \to \T \]
-that preserves these powers.  A ``model'' of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ which preserves powers by finite objects of $V$.  There is a category $\Mod(\T,\V)$ whose objects are models and whose morphisms are $\V$-natural transformations. The monadic adjunction and equivalence of $\S$2 generalize to this context.
+that preserves these powers.  A ``model'' of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ which preserves powers by finite objects of $\V$.  There is a category $\Mod(\T,\V)$ whose objects are models and whose morphisms are $\V$-natural transformations. The monadic adjunction and equivalence of $\S$2 generalize to this context.
 
 However, this sort of $\V$-enriched Lawvere theory has arities for every finite object of $\V$.  These \textit{generalized arities} may be very powerful---rather than only inputting $n$-tuples of terms, we can input any finite object of terms.  Despite its potential, this generalization has not yet been exploited much in computer science.   Power \cite{powsketch} has introduced``enriched sketches'' as a way of presenting enriched Lawvere theories, and ``monads with arities'' have been explored by Berger, Melli\'es and Weber \cite{bergermelliesweber}, but they are still not yet widely understood or used.  What does it really mean for an operation to take in a finite graph of terms?  How can we learn to use this generality?  We hope that someone answers these questions, so that we can use more general arities in computer programming.
 
 %partly for the difficulty of intuition, but also that of presentation: while it is easy to inductively generate all $n$-ary operations from binary, unary, nullary ones, it is certainly more subtle to generate powers for all finite objects.
 
-In this paper, however, we only consider \textit{natural number} arities, while still retaining enrichment. To do this we use the work of Lucyshyn-Wright \cite{rbb}, who has generalized
+In this paper, however, we only consider \textit{natural number} arities, while still retaining enrichment. To do this we use the work of Lucyshyn-Wright \cite{lucyshyn-wright}, who has generalized
 Power's ideas to allow a more flexible choice of arities.   For simplicity, we also limit ourselves 
 to the case where the tensor product of $\V$ is cartesian.  
 
@@ -394,66 +394,62 @@ equipped with a $\V$-functor
 that is bijective on objects and \textbf{$\NN_\V$-power-preserving}: that is, it preserves powers by objects of (the subcategory image of) $\NN_\V$. 
 \end{definition}
 \noindent
-This definition is adapted from that of Lucyshyn-Wright \cite{rbb}.  While he demands that $\tau$ be the identity on objects, we allow it to be bijective on objects, to handle change-of-base.
+This definition is adapted from that of Lucyshyn-Wright \cite{lucyshyn-wright}.  While he demands that $\tau$ be the identity on objects, we allow it to be bijective on objects, to handle change-of-base.
 
 \begin{definition}
 A \textbf{model} of $\T$ in a $\V$-category $\C$ is a $\NN_\V$-power-preserving $\V$-functor 
 \[  \mu \maps \T \to \C.\]
 \end{definition}
 
-In the same way that all the objects of a Lawvere theory are $\NN$-powers of a generating object, all the objects of a $\V$-theory are $\NN_\V$-powers $t^{n_\V}$ of a generating object $t = \tau(1_\V)$, one for each $n_\V \in \NN_\V$.  Note that $t$ itself is $t^{1_\V}$.  Moreover, just as every $n\in \NN^\op$ is a power of $1$, every $J\in \NN_\V^\op$ is a power of $1_\V$.  To see this, note that using Eq.\ (\ref{eq:co-power}), we obtain a natural isomorphism
+In the same way that all the objects of a Lawvere theory are $\NN$-powers of a single object, all the objects of a $\V$-theory are $\NN_\V$-powers $t^{n_\V}$ of the object $t = \tau(1_\V)$, one for each $n_\V \in \NN_\V$.  Note that $t$ itself is $t^{1_\V}$.  Moreover, just as every object of $\NN^\op$ is a power of $1$, every object of $\NN_\V^\op$ is a power of $1_\V$.  To see this, note that using Eq.\ (\ref{eq:co-power}), we obtain a natural isomorphism
 \begin{equation}
 n_\V \cong 1^{n_\V}
 \end{equation}
-in $\NN_\V^\op$.   While perhaps strange at first, this just the opposite of the usual isomorphism $n_\V \cong n_\V^1$ in $\NN_\V$.   Then, since $\tau$ preserves $\NN_\V$-powers and is bijective on objects, this implies that every object of $\T$ is an $\NN_\V$-power of $t = \tau(1_\V)$.
+in $\NN_\V^\op$.   While this may seem strange at first, it just the opposite of the isomorphism $n_\V \cong n_\V^1$ in $\NN_\V$.   Then, since $\tau$ preserves $\NN_\V$-powers and is bijective on objects, this implies that every object of $\T$ is an $\NN_\V$-power of $t = \tau(1_\V)$.
 
-There is a category $\V\Law$ whose objects are $\V$-theories and whose morphisms are $\NN_\V$-power-preserving $\V$-functors $f\maps \T \to \T'$ such that $f\tau = \tau'$. For every $\V$-theory $\T$ and every $\V$-category $\C$ with $\J$-powers, we define the category of models $\Mod(\T,\C)$ to consist of $\NN_\V$-power preserving $\V$-functors $\T\to \C$ and $\V$-natural transformations. If  $\V$ is a \textbf{cosmos}, i.e.\ complete and cocomplete, then the functor categories of $\V\Cat$ are also $\V$-categories, including $\V\Law$ and $\Mod(\T,\C)$. This is potentially very useful, and the enriching categories $\V = \Gph, \Cat, \Pos, \Set$ that are the focus of this paper are indeed cosmoi.
+\begin{definition}
+We define the \define{category of} $\V$\define{-theories}, $\V\Law$, to be the category for which an object is a $\V$-theory and a morphism from $(\T,\tau)$ to $(\T',\tau')$ is an $\NN_\V$-power-preserving $\V$-functors $f\maps \T \to \T'$ such that $f\tau = \tau'$. 
+\end{definition}
 
-Here is an overview of the concepts: 
+\begin{definition}
+For every $\V$-theory $(\T,\tau)$ and every $\V$-category $\C$ with $\NN_\V$-powers, we define the \define{category of models} of $\T$ in $\C$, $\Mod(\T,\C)$, to consist of $\NN_\V$-power preserving $\V$-functors $\T\to \C$ and $\V$-natural transformations between these.
+\end{definition}
 
-\[\begin{array}{ccccl}
-j\maps & \J & \hookrightarrow & \V & \text{arities}\\
----& --- & --- & --- & \text{enrichment}\\
-\tau\maps & \tilde{\J}^\op & \to & \T & \text{theory}\\
-& & & \downarrow & \text{model}\\
-& & & \C & \text{semantic $\V$-category}\\
-\end{array}\]
+If $\V$ is a \textbf{cosmos}, i.e.\ complete and cocomplete, then $\V\Law$ and $\Mod(\T,\C)$ naturally become $\V$-categories. This is potentially very useful, and the enriching categories $\V = \Gph, \Cat, \Pos, \Set$ that are the focus of this paper are indeed cosmoi.
 
-This parameterization is quite general; for example, Power's definition is the case $\J = \V_f$. A system of arities is \textbf{eleutheric} if left Kan extensions along $j$ exist and are preserved by $\V(K,-)$ for all $K \in Ob(\J)$. This is what is needed to have the essential monadicity theorems: Lucyshyn-Wright proved that any $\J$-$\V$ theory for an eleutheric system of arities has a category of models for $\C = \V$ which is monadic over $\V$. 
-
-The usual kinds of arities are eleutheric: in particular, finite cardinals.  We now take these to be the objects of our system of arities $\J$.
-
-
-Because $\NN_\V$ is eleutheric, $\V$-theories correspond to $\V$-monads on $\V$, just as ordinary Lawvere theories correspond to monads on $\Set$, and $\S$6 will demonstrate that the arities are essentially the same---but now we have the rich ``operational'' information of $\V$, and this $\V$ is adaptable.
-
-How exactly does the ``free-forgetful'' $\V$-adjunction work, going between $\V$ and 
-models of $\T$ in $\V$?
+The basic monadicity results for Lawvere theories generalize to $V$-theories.
+It follows from the work of Lucyshyn-Wright \cite[Sec.\ 8]{lucyshyn-wright} that we have a $\V$-enriched adjunction
 \[\begin{tikzcd}[column sep=small]
 \phantom{AA} \V \arrow[bend left,below]{rr}{F}
-& {\phantom{A} \ld} &
-\arrow[bend left,above]{ll}{U} \Mod(\T,\V)
+& {\phantom{Aa} \ld} &
+\arrow[bend left,above]{ll}{U} \Mod(\T,\V).
 \end{tikzcd}\]
-Lucyshyn-Wright \cite[Sec.\ 8]{rbb} has described the \textbf{free model} of a $\V$-theory.  This is the enriched generalization of the free model described in $\S$2: it is the composite of $\tau^\op\maps \NN_\V \to \T^\op$ with the Yoneda embedding $y\maps \T^\op \to [\T,\V]$ sending each $n_\V \in \NN_\V$ to its representable $\V$-functor:
+The forgetful $\V$-functor $U \maps \Mod(\T,\V) \to \T$ is evaluation at $t \in \T$.   Its left
+adjoint $F$ relies on the existence of the \textbf{free model} on an object $n_\V \in \V$.   This is the enriched generalization of the free model described in $\S$2: it is the composite of $\tau^\op\maps \tilde{\NN}_\V^\op \to \T^\op$ with the enriched Yoneda embedding $y\maps \T^\op \to [\T,\V]$:
 \[\begin{array}{rllll}
-\NN_\V^\op & \xrightarrow{\tau} & \T^\op & \xrightarrow{y} & \left[\T,\V\right]\\
+\NN_\V^\op & \xrightarrow{\tau^\op} & \T^\op & \xrightarrow{y} & \left[\T,\V\right]\\
 \\
 n_\V & \mapsto & t^{n_\V} & \mapsto & \T(t^{n_\V},-)
 \end{array}\]
-
-Since an object of $\V$ does not necessarily have a ``poset of finite subobjects'' over which to take a filtered colimit (as in $\Set$), the extension of the free model to all of $\V$ is specified by a somewhat higher-powered generalization: the ``free model'' functor on $\V$ is the left Kan extension of $y\tau$ along $j$:
+Since an object of $\V$ does not necessarily have a ``poset of finite subobjects'' over which to take a filtered colimit (as in $\Set$), the extension of this ``free model'' functor $y \tau^\op$ to all of $\V$ is specified by a somewhat higher-powered generalization: it is the left Kan extension of $y\tau$ along $j$:
 \[\begin{tikzcd}
-\NN_\V \arrow[rr,"y\tau"{name=y}] \arrow[swap,rd,"j"] & & \left[\T,\V\right].\\
+\NN_\V \arrow[rr,"y\tau^\op"{name=y}] \arrow[swap,rd,"j"] & & \left[\T,\V\right].\\
 & \V \arrow[swap,dotted, ru,"F:=\mathrm{Lan}_jy\tau"] \arrow[Rightarrow,from=y,"\eta", shorten >=0.2cm,shorten <=.2cm]
 \end{tikzcd}\]
-This is essentially the universal ``best solution'' to the problem of making the triangle commute up to a natural transformation: i.e.\ for any other functor $G \maps \V \to [\T,\V]$ and $\V$-natural transformation $\theta \maps y\tau \Rightarrow Gj$, the latter factors uniquely through the unit $\eta$.
+This is essentially the universal ``best solution'' to the problem of making the triangle commute up to a natural transformation.  That is, for any functor $G \maps \V \to [\T,\V]$ and $\V$-natural transformation $\theta \maps y\tau \Rightarrow Gj$, the latter factors uniquely through $\eta$.
 
-The forgetful adjoint $U\maps [\T,\V] \to \V$ is still evaluation at the generating object, and hence the $\V$-monad has a more concrete (elementwise) formula as an enriched coend:
+From the adjunction between $\V$ and the category of models $\Mod(\T,\V)$ we obtain a $\V$-enriched monad
+\[       T = U F \maps \V \to \V, \]
+and this has a more concrete formula as an enriched coend:
 \begin{equation}
 T(V) = \int^{n_\V\in \NN_\V} V^{n_\V} \times \T(t^{n_\V},t)
 \end{equation}
+Finally, it follows from Thm.\ 8.9 and Example 7.5.2 of Lucyshyn-Wright \cite{lucyshyn-wright} that 
+$\Mod(\T,\V)$ is $\V$-monadic over $\V$ via this $\V$-enriched monad $T$.
 
 \begin{example}
-	Let $\V = \Cat$ and let $\T = \Th(\mathrm{PsMon})$ be the $\Cat$-theory of pseudomonoids \cite{pseudo}. Now rather than associativity and unitality \textit{equations}, there are 2-isomorphisms called the \textbf{associator} and \textbf{unitors} which rewrite in the direction of a ``normal form''. To equate the multiple possible rewrite sequences, we need 2-dimensional coherences. (This is specific to $\Cat$; if the enrichment were $\Mon$, for example, the relations would be equations of morphisms as elements being operated.) Here is the presentation of the 2-theory:$$\textbf{Th(PsMon)}$$
+When $\V = \Cat$, a $\V$-theory deserves to be called a \define{2-theory}.  For example, let $\T = \Th(\mathrm{PsMon})$ be the 2-theory of pseudomonoids \cite{pseudo}.  A pseudomonoid is a weakened version of a monoid, so rather than associativity and unitality \textit{equations}, there are 2-isomorphisms called the \textbf{associator} and \textbf{unitors} which rewrite in the direction of a ``normal form''. To equate the multiple possible rewrite sequences, we need coherence laws Here is the presentation of the 2-theory:
+	\[ \textbf{Th(PsMon)} \]
 	\[\begin{array}{rll}
 	\textbf{sorts} & M & \text{pseudomonoid}\\
 	\textbf{operations} & e\maps1 \to M & \text{identity}\\
@@ -461,11 +457,11 @@ T(V) = \int^{n_\V\in \NN_\V} V^{n_\V} \times \T(t^{n_\V},t)
 	\textbf{rewrites} & \alpha \colon m \circ (m \times \id_M) \Rightarrow m \circ (\id_M \times m) & \text{associator}\\
 	& \lambda\maps  m \circ (e \times \id_M) \Rightarrow \id_M & \text{left unitor}\\
 	& \rho\maps m \circ (\id_M \times e) \Rightarrow \id_M & \text{right unitor}\\
-	\textbf{coherence}
+	\textbf{coherence laws}
           \end{array}\]
 
         \[\begin{tikzcd}
-          M^4 \ar[rr,"1\times 1\times m"] \ar[dr,"1\times m\times 1" description, ""name=a1] \ar[dd, "m\times 1\times 1",swap,""name=b1] && M^3 \ar[dr, "1\times m",""name=a2] \arrow[Rightarrow,"1\times \alpha",from=a1,to=a2,shorten >=1.3cm,shorten <=1.3cm] &&& M^4 \ar[rr, "1\times 1\times m"] \ar[dd,"m\times 1\times 1",swap,""name=d1] && M^3 \ar[dd,"m\times 1" description,""name=d2] \ar[dr,"1\times m"] \arrow[Rightarrow,"?",from=d1,to=d2,shorten >=1.3cm,shorten <=1.3cm] & \\
+          M^4 \ar[rr,"1\times 1\times m"] \ar[dr,"1\times m\times 1" description, ""name=a1] \ar[dd, "m\times 1\times 1",swap,""name=b1] && M^3 \ar[dr, "1\times m",""name=a2] \arrow[Rightarrow,"1\times \alpha",from=a1,to=a2,shorten >=1.3cm,shorten <=1.3cm] &&& M^4 \ar[rr, "1\times 1\times m"] \ar[dd,"m\times 1\times 1",swap,""name=d1] && M^3 \ar[dd,"m\times 1" description,""name=d2] \ar[dr,"1\times m"] \arrow[Rightarrow,"\sim",from=d1,to=d2,shorten >=1.3cm,shorten <=1.3cm] & \\
           & M^3 \ar[rr,"1\times m"] \ar[dd,"m\times 1",""name=b2] \arrow[Rightarrow,"\alpha\times 1",from=b1,to=b2,shorten >=0.7cm,shorten <=0.7cm] && M^2 \ar[dd,"m",""name=c1] & = & &&& M^2 \ar[dd,"m",""name=f1] \arrow[Rightarrow,"\alpha",from=d2,to=f1,shorten >=0.6cm,shorten <=0.6cm] \arrow[Rightarrow,"\alpha",from=b2,to=c1,shorten >=1.3cm,shorten <=1.3cm] \\
           M^3 \ar[dr,"m\times 1",swap] &&& && M^3 \ar[rr,"1\times m"] \ar[dr,"m\times 1",swap,,""name=e1] && M^2 \ar[dr,"m",,""name=e2] \arrow[Rightarrow,"\alpha",from=e1,to=e2,shorten >=1.3cm,shorten <=1.3cm] & \\
           & M^2 \ar[rr,"m",swap] && M && & M^2 \ar[rr,"m",swap] && M
@@ -479,7 +475,7 @@ T(V) = \int^{n_\V\in \NN_\V} V^{n_\V} \times \T(t^{n_\V},t)
     \end{example}
     %(M\times\alpha)\circ \alpha_{MmM}\circ (\alpha\times M) = \alpha_{MMm}\circ \alpha_{mMM} & \text{pentagon identity}\\ & (M\times \lambda) \circ \alpha_{M1M} = \rho\times M & \text{triangle identity}\\
 
-Models of $\T$ in $\Cat$ are monoidal categories, and the induced 2-monad on $\Cat$ is the ``free monoidal category'' 2-monad. Let us explore this example in more detail: a model of $\T = \FC_{fp}(\Th(\mathrm{PsMon}))$ is a finite-product-preserving 2-functor $\mu\colon \T\to \Cat$, which sends 
+Models of $\T$ in $\Cat$ are monoidal categories, and the induced 2-monad on $\Cat$ is the ``free monoidal category'' 2-monad. Let us explore this example in more detail.  A model of $\T$ is a finite-product-preserving 2-functor $\mu\colon \T\to \Cat$, which sends 
 \[\begin{array}{rclcl}
 	t & \mapsto & \C &&\\
 	m & \mapsto & \otimes\maps & \C^2 \to \C &\\
@@ -488,11 +484,14 @@ Models of $\T$ in $\Cat$ are monoidal categories, and the induced 2-monad on $\C
 	\lambda & \mapsto & I\circ 1_\C & \Rightarrow & 1_\C\\
 	\rho & \mapsto & 1_\C \circ I & \Rightarrow & 1_\C
 \end{array}\]
-such that the coherence laws of the rewrites are preserved.  Thus, a model is a category equipped with a tensor product $\otimes$ and unit object $I$ such that these operations are unital and associative up to natural isomorphism; so these models are precisely monoidal categories. In this way, 2-theories generalize equipping \textit{set}-like objects with algebraic structure to \textit{category}-like objects.
+such that the coherence laws of the rewrites are preserved.  Thus, a model is a category equipped with a tensor product $\otimes$ and unit object $I$ such that these operations are unital and associative up to natural isomorphism; so these models are precisely monoidal categories. In this way, 2-theories generalize equipping \textit{set}-like objects  with operations obeying equations to equipping \textit{category}-like objects with operations obeying equations up to specified 
+transformations, which in turn obey coherence laws of their own.
 
-To form the free model on a category $\C\in \Cat$, we follow the above method: the formula for left Kan extension (writing $n$ instead of $n_\Cat$ for simplicity, see $\S$6) gives $F(\C)\maps \T\to \V$ by $$F(\C) = \int^{n\in \NN_\Cat} \T(t^{n},t^{(-)})\times \C^{n}$$ which is constructed by pairing $n$-ary morphisms in $\T$ with $n$-tuples of objects in $\C$ for all $n\in \NN_\Cat$, then quotienting the coproduct of these pairs by the equations of $\T$ and $\C$.
+To form the free model on a category $\C\in \Cat$, we follow the above method: the formula for left Kan extension (writing $n$ instead of $n_\Cat$ for simplicity, see $\S$6) gives $F(\C)\maps \T\to \V$ by 
+\[   F(\C) = \int^{n\in \NN_\Cat} \T(t^{n},t^{(-)})\times \C^{n} \] 
+which is constructed by pairing $n$-ary morphisms in $\T$ with $n$-tuples of objects in $\C$ for all $n\in \NN_\Cat$, then quotienting the coproduct of these pairs by the equations of $\T$ and $\C$.
 
-This functor is not very intuitive; but composing with the left adjoint, i.e.\ evaluating $F(\C)$ at $1$, gives the \textit{free monoidal category} on $\C$: in the same way that the (underlying set of the) free monoid on a set $X$ consists of all finite strings of elements of $X$, $F(\C)(1)$ consists of all finite tensors of objects and morphisms of $\C$, and all composites of these morphisms, up to the relations induced by the (composites and tensors of the) images of the associator and unitors.
+This functor is not very intuitive, but composing with the left adjoint, i.e., evaluating $F(\C)$ at $1$, gives the \textit{free monoidal category} on $\C$: in the same way that the (underlying set of the) free monoid on a set $X$ consists of all finite strings of elements of $X$, $F(\C)(1)$ consists of all finite tensors of objects and morphisms of $\C$, and all composites of these morphisms, up to the relations induced by the (composites and tensors of the) images of the associator and unitors.
 
 In general for each $m\in \NN_\Cat$, $F(\C)(m)$ gives the category of all $m$-tuples of elements of $F(C)(1)$, forming the ``free monoidal category on $\C$ with $m$ variables'', like a polynomial ring. This can be useful for imposing further relations on $F(\C)$, analogous to Galois theory. Though pure category theorists does not usually consider free variables, perhaps this is a useful notion even outside the context of computation.
 
@@ -876,14 +875,13 @@ Sci.} \textbf{172} (2007), 437--458.
 \textsl{Proceedings of the Conference on Categorical Algebra}, eds.\ S.\ Eilenberg et al.,
 Springer, Berlin, 1965.
 
-\bibitem{rbb} R.\ B.\ B.\ Lucyshyn-Wright, Enriched algebraic theories and monads for a system of arities, \textsl{Theory Appl. Categ.} \textbf{31} (2016), 101--137.  Available at \href{http://www.tac.mta.ca/tac/volumes/31/5/31-05abs.html}{http://www.tac.mta.ca/tac/volumes/31/5/31-05abs.html}.
+\bibitem{lucyshyn-wright} R.\ B.\ B.\ Lucyshyn-Wright, Enriched algebraic theories and monads for a system of arities, \textsl{Theory Appl. Categ.} \textbf{31} (2016), 101--137.  Available at \href{http://www.tac.mta.ca/tac/volumes/31/5/31-05abs.html}{http://www.tac.mta.ca/tac/volumes/31/5/31-05abs.html}.
 	
 \bibitem{ghani} C.\ L\"{u}th and N.\ Ghani, Monads and modular term rewriting,
 \textsl{Category Theory and Computer Science ({S}anta {M}argherita Ligure, 1997)}, Springer, Berlin, 1997, pp.\ 69--86.  Available at \href{http://www.informatik.uni-bremen.de/~cxl/papers/ctcs97l.pdf}{http://www.informatik.uni-bremen.de/\~cxl/papers/ctcs97l.pdf}.
 
 \bibitem{maclane} S.\ Mac Lane, \textsl{Categories for the Working Mathematician}, Springer, Berlin, 1998.  
 
-    
 \bibitem{refl} L.\ G.\ Meredith and M.\ Radestock, A reflective higher-order calculus,
 \textsl{Electronic Notes in Theoretical Computer Science} \textbf{141} (2005), 49--67.
 
