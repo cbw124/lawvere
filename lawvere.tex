@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/3/3
+% 2019/3/4
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -370,9 +370,8 @@ However, this sort of $\V$-enriched Lawvere theory has arities for every finite 
 
 %partly for the difficulty of intuition, but also that of presentation: while it is easy to inductively generate all $n$-ary operations from binary, unary, nullary ones, it is certainly more subtle to generate powers for all finite objects.
 
-In this paper, however, we only consider \textit{natural number} arities, while still retaining enrichment. To do this we use the work of Lucyshyn-Wright \cite{lucyshyn-wright}, who has generalized
-Power's ideas to allow a more flexible choice of arities.   For simplicity, we also limit ourselves 
-to the case where the tensor product of $\V$ is cartesian.  
+In this paper, however, we only consider \textit{natural number} arities, while still retaining enrichment. To do this we use the work of Lucyshyn-Wright \cite{lucyshyn-wright}, who has generalized Power's original ideas to allow a more flexible choice of arities.   (So, for that matter,
+has Power himself \cite{np}.)  For simplicity, we also limit ourselves to the case where the tensor product of $\V$ is cartesian.  
 
 Thus, in all that follows, we let $(\V,\times,1_\V)$ be a cartesian closed category with finite coproducts of the terminal object $1_\V$.  Define $\NN_\V$ to be the full subcategory of $\V$ whose
 objects are chosen finite coproducts of the terminal object:
@@ -448,7 +447,7 @@ Finally, it follows from Thm.\ 8.9 and Example 7.5.2 of Lucyshyn-Wright \cite{lu
 $\Mod(\T,\V)$ is $\V$-monadic over $\V$ via this $\V$-enriched monad $T$.
 
 \begin{example}
-When $\V = \Cat$, a $\V$-theory deserves to be called a \define{2-theory}.  For example, let $\T = \Th(\mathrm{PsMon})$ be the 2-theory of pseudomonoids \cite{pseudo}.  A pseudomonoid is a weakened version of a monoid, so rather than associativity and unitality \textit{equations}, there are 2-isomorphisms called the \textbf{associator} and \textbf{unitors} which rewrite in the direction of a ``normal form''. To equate the multiple possible rewrite sequences, we need coherence laws Here is the presentation of the 2-theory:
+When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to be called a \define{2-theory}.  For example, let $\T = \Th(\mathrm{PsMon})$ be the 2-theory of pseudomonoids \cite{pseudo}.   A pseudomonoid is a weakened version of a monoid: rather than associativity and unitality \textit{equations}, it has 2-isomorphisms called the associator and unitors, which we can treat as \textit{rewrite rules}.  To equate various possible rewrite sequences, these 2-isomorphisms must obey equations called ``coherence laws''.  Here is a presentation of the 2-theory for pseudomonoids:
 	\[ \textbf{Th(PsMon)} \]
 	\[\begin{array}{rll}
 	\textbf{sorts} & M & \text{pseudomonoid}\\
@@ -469,14 +468,15 @@ When $\V = \Cat$, a $\V$-theory deserves to be called a \define{2-theory}.  For 
         \end{tikzcd}\]
 
       \[\begin{tikzcd}
-          & M^2 \ar[dl,"1\times e\times 1",""name=a1,swap] \ar[dr,"1",""name=a2] \arrow[Rightarrow,from=a1,to=a2,"1\times \lambda",swap,shorten >=0.4cm,shorten <=0.4cm] & && & M^2 \ar[dl,"1\times e\times 1",swap] \ar[dr,"1"] \ar[ddl,bend left,"1",""name=c1] & \\
+          & M^2 \ar[dl,"1\times e\times 1",""name=a1,swap] \ar[dr,"1",""name=a2] \arrow[Rightarrow,from=a1,to=a2,"1\times \lambda",swap,shorten >=0.4cm,shorten <=0.4cm] & && & M^2 \ar[dl,"1\times e\times 1",swap] \ar[dr,"1"] \ar[ddl,bend left =30,looseness=2, "1",""name=c1] & \\
           M^3 \ar[d,"m\times 1",swap,""name=b1] \ar[rr,"1\times m",swap] && M^2 \ar[d,"m",""name=b2] \arrow[Rightarrow,from=b1,to=b2,"\alpha",shorten >=1.3cm,shorten <=1.3cm,swap] & = & M^3 \ar[d,"m\times 1",swap] \arrow[Rightarrow,to=c1,"\rho\times 1",shorten >=0.4cm,shorten <=0.0cm] && M^2 \ar[d,"m"] \\
           M^2 \ar[rr,"m",swap] && M && M^2 \ar[rr,"m",swap] && M
         \end{tikzcd}\]
-    \end{example}
-    %(M\times\alpha)\circ \alpha_{MmM}\circ (\alpha\times M) = \alpha_{MMm}\circ \alpha_{mMM} & \text{pentagon identity}\\ & (M\times \lambda) \circ \alpha_{M1M} = \rho\times M & \text{triangle identity}\\
-
-Models of $\T$ in $\Cat$ are monoidal categories, and the induced 2-monad on $\Cat$ is the ``free monoidal category'' 2-monad. Let us explore this example in more detail.  A model of $\T$ is a finite-product-preserving 2-functor $\mu\colon \T\to \Cat$, which sends 
+    \end{example}   
+\noindent The top diagram expresses the pentagon identity for the associator, while the bottom diagram expresses the usual coherence law involving the left and right unitors.
+   
+Models of $\T$ in $\Cat$ are monoidal categories.   A $\Cat$-enriched monad is called a 2-monad, and $\T$ gives rise to the ``free monoidal category'' 2-monad on $\Cat$ \cite{bkp}.
+Let us explore this example in more detail.  A model of $\T$ is a finite-product-preserving 2-functor $\mu\colon \T\to \Cat$, which sends 
 \[\begin{array}{rclcl}
 	t & \mapsto & \C &&\\
 	m & \mapsto & \otimes\maps & \C^2 \to \C &\\
@@ -845,6 +845,9 @@ This base-change, along with change-of-theory and change-of-modelling, can be as
 	
 \bibitem{bergermelliesweber} C.\ Berger, P.-A.\ Melli\`es and M.\ Weber, Monads with arities and their associated theories, \textsl{J.\ Pure Appl.\ Algebra}, \textbf{216} (2012), 2029--2048.  Available as \href{https://arxiv.org/abs/1101.3064}{arXiv:1101.3064}.
 
+\bibitem{bkp} R.\ Blackwell, G.\ M.\ Kelly and A.\ J.\ Power, Two-dimensional monad theory, 
+\textsl{J.\ Pure Appl.\ Algebra} \textbf{59} (1989), 1--41. 
+ 
 \bibitem{borceux} F.\ Borceux, \textsl{Handbook of Categorical Algebra}, vol.\ 2, Cambridge U.\ Press, Cambridge, 1994.
 
 %\bibitem{ltdistlaw} E.\ Cheng, Distributive laws for Lawvere theories, \href{https://arxiv.org/abs/1112.3076}{arXiv:1112.3076}.
@@ -886,6 +889,8 @@ Springer, Berlin, 1965.
 \bibitem{milewski} B.\ Milewski, \textsl{Category Theory for Programmers}, Chap.\ 14: Lawvere theories, 2017.   Available at \href{https://bartoszmilewskiski.com/2017/08/26/lawvere-theories/}{https://bartoszmilewski.com/2017/08/26/lawvere-theories/}.
 
 \bibitem{milner} R.\ Milner, The polyadic {$\pi$}-calculus: a tutorial, in \textsl{Logic and Algebra of Specification}, Springer, Berlin, 1993, 203--246.
+
+\bibitem{np} K.\ Nishizawa and J.\ Power, Lawvere theories enriched over a general base, \textsl{J.\ Pure Appl.\ Algebra}  \textbf{213} (2009), 377--386.
 
 \bibitem{sos} G.\ D.\ Plotkin, A structural approach to operational semantics, \textsl{J.\ Log.\ Algebr\ Program.} \textbf{60/61} (2004) 17--139.  Available at \href{http://homepages.inf.ed.ac.uk/gdp/publications/sos_jlap.pdf}{http://homepages.inf.ed.ac.uk/gdp/publications/sos\_jlap.pdf}.
 
