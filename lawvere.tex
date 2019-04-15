@@ -541,51 +541,68 @@ Each set $X$ is mapped to the $X$-indexed coproduct of the terminal object in $\
 This is what we implicitly used in the definition of $\V$-theory: the arity category $\NN$ ``sits inside'' many enriching categories under various guises: as finite discrete graphs, categories, posets, etc. For each $\V$ we define the arity subcategory $\NN_\V$ to be the full subcategory of finite coproducts (copowers) of the unit object, and this remains essentially unchanged by the change-of-base to $\tilde{\NN}_\V$.
 \fi
 
-We now study how change of base affects theories and their models.  In Theorem \ref{thm:change-of-base} we show that everything works as one would hope, but we need some preliminary work to
-show this.  We begin by showing that $n_\V$-powers in the enriched category $\tilde{V}$ are
-the same as $n$-fold products in $\V$.  More precisely:
+We now study how change of base affects theories and their models.  In Theorem \ref{thm:change-of-base} we see that everything works as one would hope, but we need some preliminary work to
+prove this.  We begin by showing that $n_\V$-powers in the enriched category $\tilde{\V}$ are
+the same as ordinary cartesian powers in $\V$.  More precisely:
 
 \begin{lemma}
+\label{lem:powers_1}
 The functors $[n_\V,-]\maps \V\to \V$ and $(-)^n\maps \V\to \V$ are naturally isomorphic.  
 \end{lemma}
 \begin{proof}
-	If $a,b \in \V$, then
+If $a,b \in \V$, then
 	\[\begin{array}{rcll}
 	\V(a,[n_\V,b]) & \cong & \V(a\times n_\V,b) & \text{hom-tensor adjunction}\\
 	& = & \V(a\times (n \cdot 1_\V),b) & \text{definition of } n_\V\\
 	& \cong & \V(n \cdot (a\times 1_\V),b) & \text{distributivity}\\
 	& \cong & \V(n\cdot a,b) & \text{unitality}\\
-	& \cong & \V(a,b)^n & \text{cocontinuity of hom}\\
-	& \cong & V(a,b^n) & \text{continuity of hom}.\\
+	& \cong & \V(a,b)^n & \text{continity of hom in its first argument}\\
+	& \cong & \V(a,b^n) & \text{continuity of hom in its second argument}.\\
 	\end{array}\]
-
-Each of these isomorphisms is natural in $a$ and $b$; hence by the Yoneda lemma, $[n_\V,-] \cong (-)^n$.
+Each of these isomorphisms is natural in $a$ and $b$, so by the Yoneda lemma $[n_\V,-] \cong (-)^n$.
 \end{proof}
 
-Now let us consider a $\V$-theory $\T$ as in Definition \label{defn:V-theory}.
-All the objects of $\T$ are $n_\V$-powers of a generating object $t$. Alas, we cannot simply say that ``$t^{n_\V} \cong t^n$'', because the latter does not type-check in the $\V$-category $\T$: products are characterized by a $\Set$-enriched universal property. However, we only need:
+Now let us consider a $\V$-theory $(\T,\tau)$ as in Definition \ref{defn:V-theory}.  All the objects of $\T$ are of the form $t^{n_\V}$.   That is, they are $\NN_\V$-powers of the object $t$.   However, since $\V$ is cartesian, we can also define cartesian powers in $\T$, and we shall show that $t^{n_\V}$ is the cartesian power $t^n$.
+
+In any $\V$-category $\C$, given an object $a \in \Obj(\C)$ and a natural number $n$, we say $b \in \Obj(\C)$ is an \define{$n$th cartesian power} of $a$ if there is a $\V$-natural isomorphism of $\V$-functors
+\[              \C(b,-) \cong \C(a,-)^n  .\]
+In $\T$ there is just one object in each isomorphism class, so we can speak quite strictly of ``the'' $n$th cartesian power of $t$, and denote it by $t^n$, if it exists.   In fact it does: 
 
 \begin{lemma}
-	Let $\T$ be a $\V$-category with $\NN_\V$-powers, and let $s \in \T$. Then a hom into $s^{n_\V}$ is isomorphic to $n$ homs into $s$: 
-\[\begin{tikzcd} \T(a,s^{n_\V}) \cong [n_\V,\T(a,s)] \cong \T(a,s)^n \end{tikzcd}\] 
-by definition of power, and Lemma 1.
+\label{lem:powers_2}
+Let $(\T,\tau)$ be a $\V$-theory.   Then $n$th cartesian power $t^n$ exists and equals $t^{n_\V}$.
 \end{lemma}
 
-We want to know when the functor $F\maps\V \to \W$ induces a change of base $F_*\maps\V\Cat \to \W\Cat$ which ``preserves enriched-theories''---if by $F$ every $\V$-theory $\tau_\V$ gives rise to a $\W$-theory $\tau_\W$, then $F$ is a \textit{change of semantics}. That is, given a $\V$-theory $$\tau_\V\maps \tilde{\NN}_\V^\op \to \T$$ we want to determine a minimal condition for the base-changed functor $$F_*(\tau_\V)\maps F_*(\tilde{\NN}_\V^\op) \to F_*(\T)$$ to induce a $\W$-theory in a canonical way. So, assuming there is a clear identification of $F_*(\tilde{\NN}_\V^\op)$ and $\tilde{\NN}_\W^\op$, it suffices to require that $F_*(\tau_\V)$ preserves $\NN_\W$-powers.
+\begin{proof}
+If $a \in V$ then
+\[    
+\begin{array}{rcll}
+	 \T(a,t^{n_\V}) &\cong& [n_\V,\T(a,t)] & \text{definition of power} \\
+	 &\cong & [n \cdot 1_\V, T(a,t)]  & \text{definition of } n_\V \\
+	 &\cong & \T(a,t)^n  & \text{continuity of hom in its first argument } 
+\end{array}
+\]
+Each of these isomorphisms is natural in $a$, so $t^{n_\V}$ is the $n$th cartesian power of
+$t$.
+\end{proof}
 
-Because $F_*(-)_{\text{hom}}$ is defined $$F_*(\T)(a,s^{n_\V}) = F(\T(a,s^{n_\V})),$$ combined with the previous lemmas, the preservation of ``$\NN_{(-)}$-power preserving functors'' by $F_*$ is implied by the preservation of finite products by $F$: and since our enriching categories and base-change functors are cartesian, this is automatic.
+We want to know when the functor $F\maps\V \to \W$ induces a change of base $F_*\maps\V\Cat \to \W\Cat$ that ``preserves enriched theories''.   That is, given a $\V$-theory $$\tau_\V\maps \tilde{\NN}_\V^\op \to \T$$ we want to determine a minimal condition for the base-changed functor $$F_*(\tau_\V)\maps F_*(\tilde{\NN}_\V^\op) \to F_*(\T)$$ to induce a $\W$-theory in a canonical way. So, assuming there is a clear identification of $F_*(\tilde{\NN}_\V^\op)$ and $\tilde{\NN}_\W^\op$, it suffices to require that $F_*(\tau_\V)$ preserves $\NN_\W$-powers.
+
+Because $F_*(-)_{\text{hom}}$ is defined as
+\[        F_*(\T)(a,s^{n_\V}) = F(\T(a,s^{n_\V})),\] 
+combined with the previous lemmas, the preservation of ``$\NN_{(-)}$-power preserving functors'' by $F_*$ is implied by the preservation of finite products by $F$: and since our enriching categories and base-change functors are cartesian, this is automatic.
 
 \begin{lemma}
-	Let $F\maps \V \to \W$ be a cartesian functor, and let $\NN_\V$, $\NN_\W$ be defined as above. If $f\maps \C \to \D$ is a $\V$-functor which preserves $\NN_\V$-powers, then $F_*(f)\maps F_*(\C)\to F_*(\D)$ is a $\W$-functor which preserves $\NN_\W$-powers.
+	Let $F\maps \V \to \W$ be a cartesian functor, and let $\NN_\V$, $\NN_\W$ be defined as above. If $f\maps \C \to \D$ is a $\V$-functor that preserves $\NN_\V$-powers, then $F_*(f)\maps F_*(\C)\to F_*(\D)$ is a $\W$-functor that preserves $\NN_\W$-powers.
 \end{lemma}
 \begin{proof}
 	\[\begin{array}{rcll}
 	F_*(\D)(F_*(f)(a),F_*(f)(s^{n_\V})) & = & F(\D(f(a),f(s^{n_\V})) & \text{definition of base change}\\
 	& \cong & F(\D(f(a),f(s)^{n_\V}) & f \text{ preserves } \NN_\V \text{-powers}\\
-	& \cong & F(\D(f(a),f(s))^n) & \text{Lemma 2 for } \V\\
+	& \cong & F(\D(f(a),f(s))^n) & \text{Lemma ??? for } \V\\
 	& \cong & F(\D(f(a),f(s)))^n & F \text{ cartesian}\\
 	& = & F_*(\D)(f(a),f(s))^n & \text{definition of base change}\\
-	& \cong & F_*(\D)(f(a),f(s)^{n_\W}) & \text{Lemma 2 for } \W\\
+	& \cong & F_*(\D)(f(a),f(s)^{n_\W}) & \text{Lemma ??? for } \W\\
 	\end{array}\]
 \end{proof}
 
