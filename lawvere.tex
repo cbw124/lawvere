@@ -309,24 +309,24 @@ To go further, let $\V$ be a symmetric monoidal closed category, providing
 \[\begin{array}{rl}
 \text{internal hom} & [-,-]\maps\V^\op \times \V \to \V\\
 \text{tensor-hom adjunction} & \V(u\otimes v,w) \cong \V(u,[v,w]) \quad \forall u,v,w \in \Obj(\V)\\
-\text{braiding natural isomorphism} & \tau_{u,v}\maps u \otimes v \cong v \otimes u \quad \forall u,v \in \Obj(\V)\\
+\text{braiding natural isomorphism} & \tau_{u,v}\maps u \otimes v \stackrel{\sim}{\to} v \otimes u \quad \forall u,v \in \Obj(\V)\\
 \end{array}\]
 obeying the hexagon and triangle equations and the symmetry axiom saying $\tau_{u,v}$ is the inverse of $\tau_{v,u}$ \cite{maclane}.   Then we can construct new $\V$-categories from old by taking tensor products and opposites in an obvious way.   Moreover $\V$ is itself a $\V$-category, denoted $\tilde{\V}$, with the hom-object function providing the internal hom.  The tensor-hom adjunction is called ``currying'' in computer science; the counit is ``evaluation''.  
 
 Generalizing how the symmetric monoidal closed category $\V$ has a tensor product and internal hom, a $\V$-category can be ``$\V$-tensored'' and ``$\V$-powered''.   
 Suppose $\C$ is any $\V$-category.  Given $a \in \C$ and $v \in \V$, we say an object 
-$v \odot a \in \C$ is a \define{tensor product} of $a$ by $v$ if it is equipped with isomorphisms
+$v \cdot a \in \C$ is a \define{tensor product} of $a$ by $v$ if it is equipped with isomorphisms
 \begin{equation}\label{eq:tensor}
-	\C(v\odot a,b) \cong \left[v, \C(a,b)\right]
+	\C(v\cdot a,b) \cong \left[v, \C(a,b)\right]
 \end{equation}
 $\V$-natural in $b$.
 In the special case $\V = \Set$ this forces $v \cdot a$ to be the $v$-fold coproduct 
 of copies of $a$:
-\[       v \odot a = \sum_{i \in v} a . \]
-In general, if we can choose a tensor product $v \odot a$ for all $v \in \V$, $a \in C$
+\[       v \cdot a = \sum_{i \in v} a . \]
+In general, if we can choose a tensor product $v \cdot a$ for all $v \in \V$, $a \in C$
 we say $\C$ is \textbf{$\V$-tensored}, and we obtain a $\V$-functor
 \[
-	\odot \maps \tilde{\V} \otimes \C \to \C.
+	\cdot \maps \tilde{\V} \otimes \C \to \C.
 \]
 For example, $\tilde{\V}$ is always $\V$-tensored via the tensor product
 $ \otimes \maps \tilde{\V} \otimes \tilde{\V} \to \tilde{\V} $.
@@ -337,7 +337,7 @@ Similarly, given $b \in \C$ and $v \in \V$, we say an object $v \pfk b \in \C$ i
 \end{equation}
 $\V$-natural in $a$.  In the special case $\V = \Set$  this forces $v \pfk a$ to be the $v$-fold product of copies of $b$:
 \[          v \pfk b = \prod_{i \in v} b . \]
-In general, if we can choose a power $v \odot b$ for all $v \in \V$, $b \in C$
+In general, if we can choose a power $v \cdot b$ for all $v \in \V$, $b \in C$
 we say $\C$ is \textbf{$\V$-powered}, and we obtain a $\V$-functor
 \[
 \pfk \maps \tilde{\V}^\op \otimes \C \to \C .
@@ -347,7 +347,7 @@ $[-,-] \maps \V^\op \times \V \to \V $.
 
 When $\C$ is both $\V$-tensored and $\V$-powered, we have isomorphisms
 \begin{equation}\label{eq:co-power}
-	\C(v\odot a,b) \cong \left[v, \C(a,b)\right] \cong \C(a,v \pfk b).
+	\C(v\cdot a,b) \cong \left[v, \C(a,b)\right] \cong \C(a,v \pfk b).
 \end{equation}
 that are  $\V$-natural in $a,b \in \C$ and $v \in \V$.  When $\V = \Set$ this occurs if $\C$ has all products and coproducts.    In what follows we use exponential notation $b^v := v\pfk b$ for $\V$-powers, and denote the unit $I$ by $1$, because the enriching categories we consider are cartesian.  We should note that tensors are sometimes called ``copowers'', and powers are sometimes called ``cotensors''.
 
@@ -368,7 +368,7 @@ However, this sort of $\V$-enriched Lawvere theory has arities for every finite 
 In this paper, however, we only consider \textit{natural number} arities, while still retaining enrichment. To do this we use the work of Lucyshyn-Wright \cite{lucyshyn-wright}, who along with Power \cite{np} has generalized Power's original ideas to allow a more flexible choice of arities.    For simplicity, we also limit ourselves to the case where the tensor product of $\V$ is cartesian.  
 
 Thus, in all that follows, we let $(\V,\times,1_\V)$ be a cartesian closed category equipped with chosen finite coproducts of the terminal object $1_\V$, say 
-\[   n_\V : = \sum_{i \in n} 1_\V . \]  
+\[   n_\V : = n \cdot v = \sum_{i \in n} 1_\V . \]  
 These objects come with natural isomorphisms
 \begin{equation}
 \V(n_\V,a) \cong\V(1_\V,a)^n .
@@ -528,11 +528,11 @@ In fact, change of base operation gives a 2-functor
 In particular, if $\V$ has not just finite coproducts of the terminal object, but all 
 coproducts of this object, there is a map of adjunctions
 \[\begin{tikzcd}
-	\Set \arrow[bend left,below]{rr}{-\odot 1}
+	\Set \arrow[bend left,below]{rr}{-\cdot 1}
 	& \ld &
 	\arrow[bend left,above]{ll}{\V(I,-)} \V
 	\arrow[maps to]{r}
-	& \Cat \arrow[bend left,below]{rr}{(-\odot 1)_*}
+	& \Cat \arrow[bend left,below]{rr}{(-\cdot 1)_*}
 	& \ld &
 	\arrow[bend left,above]{ll}{(\V(1,-))_*} \V\Cat.
 \end{tikzcd}\]
@@ -577,23 +577,37 @@ Let $(\T,\tau)$ be a $\V$-theory.   Then $n$th cartesian power $t^n$ exists and 
 If $a \in V$ then
 \[    
 \begin{array}{rcll}
-	 \T(a,t^{n_\V}) &\cong& [n_\V,\T(a,t)] & \text{definition of power} \\
+	 \T(a,t^{n_\V}) &\cong& [n_\V,\T(a,t)] & \text{definition of powers} \\
 	 &\cong & [n \cdot 1_\V, T(a,t)]  & \text{definition of } n_\V \\
-	 &\cong & \T(a,t)^n  & \text{continuity of hom in its first argument } 
+	 &\cong & \T(a,t)^n  & \text{continuity of internal hom in its first argument.} 
 \end{array}
 \]
-Each of these isomorphisms is natural in $a$, so $t^{n_\V}$ is the $n$th cartesian power of
-$t$.
+JUSTIFY LAST STEP: it's a general fact about cartesian closed categories (like $\V$) that
+$a^{b+c} \cong a^b \times a^c$ and $a^0 \cong 1_\V$!!!   Each of these isomorphisms is natural in $a$, so $t^{n_\V}$ is the $n$th cartesian power of $t$.
 \end{proof}
 
-We want to know when the functor $F\maps\V \to \W$ induces a change of base $F_*\maps\V\Cat \to \W\Cat$ that ``preserves enriched theories''.   That is, given a $\V$-theory $$\tau_\V\maps \tilde{\NN}_\V^\op \to \T$$ we want to determine a minimal condition for the base-changed functor $$F_*(\tau_\V)\maps F_*(\tilde{\NN}_\V^\op) \to F_*(\T)$$ to induce a $\W$-theory in a canonical way. So, assuming there is a clear identification of $F_*(\tilde{\NN}_\V^\op)$ and $\tilde{\NN}_\W^\op$, it suffices to require that $F_*(\tau_\V)$ preserves $\NN_\W$-powers.
+We want to know when the functor $F \maps \V \to \W$ induces a change of base $F_*\maps\V\Cat \to \W\Cat$ that ``preserves enriched theories''.   That is, given a $\V$-theory 
+\[         \tilde{\NN}_\V^\op \stackrel{\tau_\V}{\longrightarrow} \T \]
+we want to determine conditions for the base-changed functor 
+\[      F_*(\tilde{\NN}_\V^\op) \stackrel{ F_*(\tau_\V)}{\longrightarrow}  F_*(\T) \]
+to induce a $\W$-theory in a canonical way.   Recall that we are requiring that $\V$ and $\W$ be
+cartesian closed, equipped with chosen finite coproducts of their terminal object.   We thus 
+expect the following conditions to be sufficient: $F$ should be cartesian, and it should
+preserve the chosen finite coproducts of the terminal object:
+\[      F(n_\V) = n_\W  \]
+for all $n$.    
 
-Because $F_*(-)_{\text{hom}}$ is defined as
-\[        F_*(\T)(a,s^{n_\V}) = F(\T(a,s^{n_\V})),\] 
-combined with the previous lemmas, the preservation of ``$\NN_{(-)}$-power preserving functors'' by $F_*$ is implied by the preservation of finite products by $F$: and since our enriching categories and base-change functors are cartesian, this is automatic.
+Given these conditions we shall construct A $\W$-functor, in fact an isomorphism
+\[    \tilde{n} \maps \tilde{\NN}_\W \to F_*(\tilde{\NN}_\V)  . \]
+Using this we shall construct a $\W$-theory
+\[   \tilde{\NN}_\W \stackrel{\tilde{n}}{\longrightarrow} 
+  F_*(\tilde{\NN}_\V^\op) \stackrel{F_*(\tau_\V)}{\longrightarrow} F_*(\T). \]
+We define $\tilde n$ as follows: on objects it maps $n_\V$ to $n_\W$, and on hom-objects it is SOME MORPHISM
+\[    \tilde{n} \maps [n_\W, m_\W] \to F_*([n_\V,m_\V])  .\]
+(in fact an isomorphism).  MORE NEEDED HERE!!!
 
 \begin{lemma}
-	Let $F\maps \V \to \W$ be a cartesian functor, and let $\NN_\V$, $\NN_\W$ be defined as above. If $f\maps \C \to \D$ is a $\V$-functor that preserves $\NN_\V$-powers, then $F_*(f)\maps F_*(\C)\to F_*(\D)$ is a $\W$-functor that preserves $\NN_\W$-powers.
+	Let $F\maps \V \to \W$ be a cartesian functor that  and let $\NN_\V$, $\NN_\W$ be defined as above. If $f\maps \C \to \D$ is an $\NN_\V$-power-preserving $\V$-functor, then $F_*(f)\maps F_*(\C)\to F_*(\D)$ is an $\NN_\V$-power-preserving $\W$-functor.
 \end{lemma}
 \begin{proof}
 	\[\begin{array}{rcll}
@@ -602,7 +616,7 @@ combined with the previous lemmas, the preservation of ``$\NN_{(-)}$-power prese
 	& \cong & F(\D(f(a),f(s))^n) & \text{Lemma \ref{lem:powers_1} for } \V\\
 	& \cong & F(\D(f(a),f(s)))^n & F \text{ cartesian}\\
 	& = & F_*(\D)(f(a),f(s))^n & \text{definition of base change}\\
-	& \cong & F_*(\D)(f(a),f(s)^{n_\W}) & \text{Lemma \ref{lem:powers_1} for } \W\\
+	& \cong & F_*(\D)(f(a),f(s)^{n_\W}) & \text{Lemma \ref{lem:powers_1} for } \W. \qedhere
 	\end{array}\]
 \end{proof}
 
