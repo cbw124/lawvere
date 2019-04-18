@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/3/4 - reverting to this version as of 2019/4/6
+% 2019/4/18
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -370,9 +370,9 @@ In this paper, however, we only consider \textit{natural number} arities, while 
 Thus, in all that follows, we let $(\V,\times,1_\V)$ be a cartesian closed category equipped with chosen finite coproducts of the terminal object $1_\V$, say 
 \[   n_\V : = n \cdot v = \sum_{i \in n} 1_\V . \]  
 These objects come with natural isomorphisms
-\begin{equation}
+\[
 \V(n_\V,a) \cong\V(1_\V,a)^n .
-\end{equation}
+\]
 Define $\NN_\V$ to be the full subcategory of $\V$ containing just these objects $n_\V$, and let
 \[ j \maps \NN_\V \hookrightarrow \V \]
 be the inclusion.  There is also a $\V$-category $\tilde{\NN}_\V$ whose objects are those of $\NN_\V$ and whose hom-objects are given as in $\V$:
@@ -397,12 +397,6 @@ A \textbf{model} of $\T$ in a $\V$-category $\C$ is a $\NN_\V$-power-preserving 
 In the same way that all the objects of a Lawvere theory are $\NN$-powers of a single object, we can see that all the objects of a $\V$-theory are $\NN_\V$-powers $t^{n_\V}$ of the object 
 \[   t = \tau(1_\V) .\]   
 Note that $t$ itself is $t^{1_\V}$.  Moreover, just as every object of $\NN^\op$ is a power of $1$, every object of $\NN_\V^\op$ is a power of $1_\V$.  This fact comes from the isomorphism $n_\V \cong n_\V^1$ in $\NN_\V$ by taking opposites.   Then, since $\tau$ preserves $\NN_\V$-powers and is bijective on objects, it follows that every object of $\T$ is an $\NN_\V$-power of $t$.
-
-Thus, the full sub-$\V$-category $\tilde{\NN}_\V$ has hom-objects which behave as follows:
-\[\begin{tikzcd}
-\left[n_\V,m_\V\right] \cong (m\cdot 1_\V)^n \cong (m^n)_\V.
-\end{tikzcd}\]
-CHECK!!!
 
 \begin{definition}
 We define the \define{category of} $\V$\define{-theories}, $\V\Law$, to be the category for which an object is a $\V$-theory and a morphism from $(\T,\tau)$ to $(\T',\tau')$ is an $\NN_\V$-power-preserving $\V$-functor $f\maps \T \to \T'$ such that $f\tau = \tau'$. 
@@ -519,10 +513,9 @@ F(\C(a,b)) .\]
 Thus, change of base actually gives a 2-functor from the 2-category of $\V$-categories, 
 $\V$-functors and $\V$-natural transformations to the corresponding 2-category for $\W$.
 
-\iffalse
-In fact, change of base operation gives a 2-functor
+In fact, the change of base operation gives a 2-functor
 \[\begin{array}{ccc}
-\FP\Cat & \xrightarrow{(-)_*} & 2\Cat\\
+\Mon\Cat & \xrightarrow{(-)_*} & 2\Cat\\
 (F\maps \V\to\W) & \mapsto & (F_*\maps \V\Cat\to\W\Cat)
 \end{array}\]
 In particular, if $\V$ has not just finite coproducts of the terminal object, but all 
@@ -539,7 +532,6 @@ coproducts of this object, there is a map of adjunctions
 Each set $X$ is mapped to the $X$-indexed coproduct of the terminal object in $\V$ and conversely each object $v$ of $\V$ is represented in $\Set$ by the hom-set from the unit to $v$. The latter induces the ``underlying ($\Set$-)category'' change of base, which forgets the enrichment. The former induces the ``free $\V$-enrichment'' change of base, whereby ordinary $\Set$-categories are converted to $\V$-categories, denoted $\C \mapsto \tilde{\C}$. These form an adjunction, because 2-functors preserve adjunctions.
 
 This is what we implicitly used in the definition of $\V$-theory: the arity category $\NN$ ``sits inside'' many enriching categories under various guises: as finite discrete graphs, categories, posets, etc. For each $\V$ we define the arity subcategory $\NN_\V$ to be the full subcategory of finite coproducts (copowers) of the unit object, and this remains essentially unchanged by the change-of-base to $\tilde{\NN}_\V$.
-\fi
 
 We now study how change of base affects theories and their models.  In Theorem \ref{thm:change-of-base} we see that everything works as one would hope, but we need some preliminary work to
 prove this.  We begin by showing that $n_\V$-powers in the enriched category $\tilde{\V}$ are
@@ -604,7 +596,41 @@ Using this we shall construct a $\W$-theory
   F_*(\tilde{\NN}_\V^\op) \stackrel{F_*(\tau_\V)}{\longrightarrow} F_*(\T). \]
 We define $\tilde n$ as follows: on objects it maps $n_\V$ to $n_\W$, and on hom-objects it is SOME MORPHISM
 \[    \tilde{n} \maps [n_\W, m_\W] \to F_*([n_\V,m_\V])  .\]
-(in fact an isomorphism).  MORE NEEDED HERE!!!
+(in fact an isomorphism).  NEXT USE THIS:
+
+\begin{lemma}
+If $\V$ is any cartesian closed category with chosen coproducts of the initial object then
+$\NN_\V$ is cartesian closed, with finite coproducts.  The unique initial object of $\NN_V$
+is $0_\V$.  The binary coproducts in $\NN_\V$ are unique, given by
+\[     m_\V + n_\V = (m + n)_\V . \]
+The unique terminal object of $\NN_\V$ is $1_\V$, and the binary products are unique, given by
+\[      m_\V \times n_\V = (mn)_\V  .\]
+Exponentials in $\NN_\V$ are also unique, given by 
+\[     {m_\V}^{n_\V} = (m^n)_\V   .\]
+\end{lemma}
+
+\begin{proof}
+ In $\V$ we know that $0_\V$ is an initial object and $1_\V$ is a terminal object, by
+ definition.  Since the subcategory $\NN_\V$ is skeletal $0_\V$ is the unique 
+ initial object and $1_\V$ is the unique terminal object in $\NN_\V$.   Similarly, in
+ $\V$ we have defined $(m+n)_\V$ to be a coproduct of $m_\V$ and $n_\V$, so 
+ in $\NN_\V$ it is the unique such, and we can unambiguously write 
+ \[      m_\V + n_\V = (m + n)_\V .  \]
+ Products distribute over coproducts in any cartesian closed category, so in $\V$ we have 
+ \[   m_\V \times n_\V \cong (1_\V + \cdots + 1_\V) \times (1_\V + \cdots + 1_\V) 
+ \cong (mn)_\V \]
+ where in the second step we use the distributive law twice.
+ It follows that $\NN_\V$ has finite products, and since this subcategory is skeletal
+ they are unique, given by
+ \[   m_\V \times n_\V = (mn)_\V.  \]
+ Finally, $x^0 \cong x$ and $x^y \times x^z \cong x^{y+z}$ in any cartesian closed category
+ with finite coproducts, so in $\V$ we have
+ \[  {m_\V}^{n_\V} \cong {m_\V}^{1_V + \cdots + 1_\V} \cong \prod_{i = 1}^n m_\V \cong
+ (m^n)_\V. \]
+ It follows that $\NN_\V$ has exponentials, and since this subcategory is skeletal they
+ are unique, given by
+ \[     m_\V^{n_\V} = (m^n)_\V .  \qedhere\]
+\end{proof}
 
 \begin{lemma}
 	Let $F\maps \V \to \W$ be a cartesian functor that  and let $\NN_\V$, $\NN_\W$ be defined as above. If $f\maps \C \to \D$ is an $\NN_\V$-power-preserving $\V$-functor, then $F_*(f)\maps F_*(\C)\to F_*(\D)$ is an $\NN_\V$-power-preserving $\W$-functor.
