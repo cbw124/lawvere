@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/4/18
+% 2019/4/19
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -428,9 +428,10 @@ $\V$-natural in $a$, so $c^n$ is the power of $c$ by $n_\V$.
 Our approach to enriched Lawere theories is based on enriched functors that preserve finite powers:
 
 \begin{definition} 
-Suppose $\C$ is a $\V$-category.  We say $\C$ \define{has finite powers} if for any
-object $c \in \Obj(\C)$ and any natural number $n$, the $n$-fold product $b^n$ exists.
-If $\C$ and $\D$ have finite powers, a $\V$-functor $F \maps \C \to \D$ is \define{finite power preserving} if $F(c^n) \cong F(c)^n$ for all $c \in \Obj(\C)$ and all $n$.
+\label{defn:finite_powers}
+Suppose $\C$ and $\D$ are $\V$-categories.  We say $\C$ \define{has finite powers} if for any
+object $c \in \Obj(\C)$ and any natural number $n$, the $n$-fold product $c^n$ exists.
+A $\V$-functor $F \maps \C \to \D$ is \define{finite power preserving} if $F(c^n) \cong F(c)^n$ whenever the $n$-fold product $c^n$ exists.
 \end{definition}
 
 There are just a few more technicalities. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.   A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial here: all categories to be considered are locally finitely presentable. We will use  $\V_f$ to denote the full subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
@@ -446,7 +447,7 @@ However, this sort of $\V$-enriched Lawvere theory has arities for every finite 
 In this paper, however, we only consider \textit{natural number} arities, while still retaining enrichment. To do this we use the work of Lucyshyn-Wright \cite{lucyshyn-wright}, who along with Power \cite{np} has generalized Power's original ideas to allow a more flexible choice of arities.    We also limit ourselves to the case where the tensor product of $\V$ is cartesian.  This has a significant simplifying effect, yet it suffices for many cases of interest in computer science.
 
 Thus, in all that follows, we let $(\V,\times,1_\V)$ be a cartesian closed category equipped with chosen finite coproducts of the terminal object $1_\V$, say 
-\[   n_\V := \sum_{i \in n} 1_\V . \]  
+\[   n_\V = \sum_{i \in n} 1_\V . \]  
 \iffalse
 These objects come with natural isomorphisms
 \[
@@ -459,13 +460,14 @@ Define $\NN_\V$ to be the full subcategory of $\V$ containing just these objects
 \[ j \maps \NN_\V \hookrightarrow \V \]
 be the inclusion.    
 \fi
-There is also a $\V$-category $\tilde{\NN}_\V$ whose objects are those of $\NN_\V$ and whose hom-objects are given as in $\V$.
+There is also a $\V$-category $\tilde{\NN}_\V$ whose objects are those of $\NN_\V$ and whose hom-objects are given as in $\V$.  
 \iffalse
 \[         \NN_\V(a,b) = j(b)^{j(a)}  \]
 for all $a,b \in \NN_\V$. 
 \fi
 We define the $\V$-category of \define{arities} for $\V$ to be 
 \[             \A_\V := \tilde{\NN}_\V^\op   .\]
+We shall soon see that $\A_\V$ has finite powers in the sense of Defn.\ \ref{defn:finite_powers}. This makes it reasonable to consider $\V$-functors out of $\A_\V$ that preserve finite powers.
 
 \begin{definition}
 \label{defn:V-theory}
@@ -475,9 +477,8 @@ equipped with a $\V$-functor
 that is bijective on objects and finite power preserving.
 \end{definition}
 \noindent
-This definition is adapted from that of Lucyshyn-Wright \cite{lucyshyn-wright}.  While he demands that $\tau$ be the identity on objects, we allow it to be bijective on objects, to more easily handle change of base.    We have seen in Lemma \ref{lem:powers_2} that the $n$-fold product $a^n$  is
-also the power $a^{n_\V}$ if either exists.   In Lemma \ref{lem:NN_V} we shall see that 
-this power indeed exists (CHECK!!!)   This makes it reasonable to consider $\V$-functors out of $\A_\V$ that preserve such powers:
+This definition is adapted from that of Lucyshyn-Wright \cite{lucyshyn-wright}.  While he demands that $\tau$ be the identity on objects, we allow it to be bijective on objects, to more easily handle change of base.   Since $\tau$ is finite power preserving and bijective on objects, the fact that
+$\A_\V$ has finite powers implies the same for $\T$.
 
 \begin{definition}
 A \textbf{model} of $\T$ in a $\V$-category $\C$ is a finite-power-preserving $\V$-functor 
