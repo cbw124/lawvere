@@ -72,6 +72,7 @@ urlcolor=myurlcolor}
 \newcommand{\Mod}{\mathsf{Mod}}
 \newcommand{\FinSet}{\mathsf{FinSet}}
 \newcommand{\NN}{\mathsf{N}}
+\newcommand{\A}{\mathsf{A}}
 \newcommand{\V}{\mathsf{V}}
 \newcommand{\W}{\mathsf{W}}
 \newcommand{\D}{\mathsf{D}}
@@ -287,123 +288,212 @@ This correspondence sets up an equivalence between the category $\Law$ of Lawver
 
 \section{Enrichment}
 
-To allow more general semantics, we now turn to Lawvere theories that have hom-\emph{objects} rather than mere hom-\emph{sets}.  To do this we use enriched category theory \cite{kelly}, where we replace sets with objects of a monoidal category  $(\V,\otimes,I)$, the ``enriching'' category.   A \textbf{$\V$-category} or $\V$-enriched category $\C$ is:
+To allow more general semantics, we now turn to Lawvere theories that have hom-\emph{objects} rather than mere hom-\emph{sets}.  To do this we use enriched category theory \cite{kelly} and replace sets with objects of a cartesian closed category $\V$, called the ``enriching'' category or ``base''.    A $\V$-enriched category or \textbf{$\V$-category} $\C$ is:
 \[\begin{array}{rl}
 \text{a collection of objects} & \Obj(\C)\\
 \text{a hom-object function} & \C(-,-)\maps \Obj(\C) \times \Obj(\C) \to \Obj(\V)\\
-\text{composition morphisms} & \circ_{a,b,c}\maps\C(b,c) \otimes \C(a,b) \to \C(a,c) \quad \forall a,b,c \in \Obj(\C)\\
-\text{identity-assigning morphisms} & i_a\maps I\to\C(a,a) \quad \forall a \in \Obj(\C)\\
+\text{composition morphisms} & \circ_{a,b,c}\maps\C(b,c) \times \C(a,b) \to \C(a,c) \quad \forall a,b,c \in \Obj(\C)\\
+\text{identity-assigning morphisms} & i_a\maps 1_\V \to\C(a,a) \quad \forall a \in \Obj(\C)\\
 \end{array}\]
-such that composition is associative and unital.  A \textbf{$\V$-functor} $F\maps\C \to \D$ is:
+such that composition is associative and unital.  A \textbf{$\V$-functor} $F \maps \C \to \D$ is:
 \[\begin{array}{rl}
-\text{a function} & F_0\maps \Obj(\C) \to \Obj(\D)\\
-\text{a collection of morphisms} & F_{ab}\maps \C(a,b) \to \D(F_0(a),F_0(b)) \quad \forall a,b \in \C\\
+\text{a function} & F\maps \Obj(\C) \to \Obj(\D)\\
+\text{a collection of morphisms} & F_{ab}\maps \C(a,b) \to \D(F(a),F(b)) \quad \forall a,b \in \C\\
 \end{array}\]
 such that $F$ is compatible with composition and identity.  A \textbf{$\V$-natural transformation} $\alpha\maps F \Rightarrow G$ is:
 \[\begin{array}{rl}
-\text{a family} & \alpha_a\maps I \to \D(F_0(a),G_0(a)) \quad \forall a \in \Obj(\C)\\
+\text{a family} & \alpha_a \maps 1_\V \to \D(F(a),G(a)) \quad \forall a \in \Obj(\C)\\
 \end{array}\]
 such that $\alpha$ is ``natural'' in $a$.   There a 2-category \textbf{$\V\Cat$} of $\V$-categories, $\V$-functors, and $\V$-natural transformations. 
 
-To go further, let $\V$ be a symmetric monoidal closed category, providing
-\[\begin{array}{rl}
-\text{internal hom} & [-,-]\maps\V^\op \times \V \to \V\\
-\text{tensor-hom adjunction} & \V(u\otimes v,w) \cong \V(u,[v,w]) \quad \forall u,v,w \in \Obj(\V)\\
-\text{braiding natural isomorphism} & \tau_{u,v}\maps u \otimes v \stackrel{\sim}{\to} v \otimes u \quad \forall u,v \in \Obj(\V)\\
-\end{array}\]
-obeying the hexagon and triangle equations and the symmetry axiom saying $\tau_{u,v}$ is the inverse of $\tau_{v,u}$ \cite{maclane}.   Then we can construct new $\V$-categories from old by taking tensor products and opposites in an obvious way.   Moreover $\V$ is itself a $\V$-category, denoted $\tilde{\V}$, with the hom-object function providing the internal hom.  The tensor-hom adjunction is called ``currying'' in computer science; the counit is ``evaluation''.  
+We can construct new $\V$-categories from old by taking products and opposites in an obvious way.   There is also a $\V$-category denoted $\tilde{\V}$ with the same objects as 
+$\V$ and with hom-objects given by the internal hom:
+\[   \tilde{\V}(v,w) = w^v   \quad \forall v,w \in \V  .\]
+The adjunction 
+\[    \tilde{\V}(u \times v, w) \cong \tilde{\V}(u, w^v ) \]
+ is called ``currying'' in computer science; the counit is ``evaluation''.  
 
-Generalizing how the symmetric monoidal closed category $\V$ has a tensor product and internal hom, a $\V$-category can be ``$\V$-tensored'' and ``$\V$-powered''.   
-Suppose $\C$ is any $\V$-category.  Given $a \in \C$ and $v \in \V$, we say an object 
-$v \cdot a \in \C$ is a \define{tensor product} of $a$ by $v$ if it is equipped with isomorphisms
-\begin{equation}\label{eq:tensor}
-	\C(v\cdot a,b) \cong \left[v, \C(a,b)\right]
-\end{equation}
+We can also generalize products and terminal objects to this enriched context.
+Given a $\V$-category $\C$, we say an object $a \times b \in \Obj(\C)$ is a 
+product of $a,b \in \Obj(\C)$ if it is equipped with a $\V$-natural isomorphism
+\[        \C(-, a \times b) \cong \C(-,a) \times \C(-,b) .\]
+More generally, the \textbf{product} of an $n$-tuple of 
+objects $a_1, \dots , a_n \in \Obj(C)$ is an object $a$ equipped with a $\V$-natural isomorphism 
+\[          \C(-,a) \cong \prod_{i=1}^n \C(-,a_i) .\]
+If such an object exists, we denote it by $\prod_{i=1}^n a_i$.   This makes sense
+even when $n = 0$.  A 0-ary product in $\C$ is the same as a \define{terminal object} $1_\C \in \Obj(\C)$: one such that $\C(a,1_\C)$ is terminal in $\V$ for all $a \in \Obj(\C)$.
+
+A bit more subtly, generalizing how $\V$ has a product and internal hom, a $\V$-category $\C$ can be ``$V$-tensored'' and ``$\V$-powered''.   Enriched Lawvere theories turn out to be more 
+about powers than products, so we need to recall these concepts.
+Given $a \in \C$ and $v \in \V$, we say an object $v \cdot a \in \Obj(\C)$ is a \define{tensor product} of $a$ by $v$ if it is equipped with isomorphisms
+\[
+	\C(v\cdot a,b) \cong  \C(a,b)^v
+\]
 $\V$-natural in $b$.
 In the special case $\V = \Set$ this forces $v \cdot a$ to be the $v$-fold coproduct 
 of copies of $a$:
 \[       v \cdot a = \sum_{i \in v} a . \]
-In general, if we can choose a tensor product $v \cdot a$ for all $v \in \V$, $a \in C$
+In general, if we can choose a tensor product $v \cdot a$ for all $v \in \V$, $a \in \C$
 we say $\C$ is \textbf{$\V$-tensored}, and we obtain a $\V$-functor
 \[
-	\cdot \maps \tilde{\V} \otimes \C \to \C.
+\begin{array}{ccl}
+  \tilde{\V} \times \C  &\to& \C \\
+ (v,a) &\mapsto & v \cdot a. \\
+\end{array}
 \]
-For example, $\tilde{\V}$ is always $\V$-tensored via the tensor product
-$ \otimes \maps \tilde{\V} \otimes \tilde{\V} \to \tilde{\V} $.
+For example, $\tilde{\V}$ is always $\V$-tensored via the cartesian product
+$ \times \maps \tilde{\V} \times \tilde{\V} \to \tilde{\V} $.
 
-Similarly, given $b \in \C$ and $v \in \V$, we say an object $v \pfk b \in \C$ is a \define{power} of $b$ by $v$ if it is equipped with isomorphisms
-\begin{equation}\label{eq:power}
-		 \left[v, \C(a,b)\right] \cong \C(a,v\pfk b) .
-\end{equation}
-$\V$-natural in $a$.  In the special case $\V = \Set$  this forces $v \pfk a$ to be the $v$-fold product of copies of $b$:
-\[          v \pfk b = \prod_{i \in v} b . \]
-In general, if we can choose a power $v \cdot b$ for all $v \in \V$, $b \in C$
+Similarly, given $b \in \C$ and $v \in \V$, we say an object $b^v \in \C$ is a \define{power} of $b$ by $v$ if it is equipped with isomorphisms
+\[
+		 \C(a,b^v) \cong \C(a,b)^v
+\]
+$\V$-natural in $a$.  
+In the special case $\V = \Set$  this forces $b^v$ to be the $v$-fold product of copies of $b$:
+\[          b^v = \prod_{i \in v} b . \]
+In general, if we can choose a power $b^v$ for all $b \in C$, $v \in \V$,
 we say $\C$ is \textbf{$\V$-powered}, and we obtain a $\V$-functor
 \[
-\pfk \maps \tilde{\V}^\op \otimes \C \to \C .
+\begin{array}{ccl}
+ \C \times \tilde{\V}^\op  &\to& \C \\
+ (b, v) &\mapsto & b^v .\\
+\end{array}
 \]
-For example, $\tilde{\V}$ is always $\V$-powered via the internal hom
-$[-,-] \maps \V^\op \times \V \to \V $.
+For example, $\tilde{\V}$ is always $\V$-powered.
 
 When $\C$ is both $\V$-tensored and $\V$-powered, we have isomorphisms
-\begin{equation}\label{eq:co-power}
-	\C(v\cdot a,b) \cong \left[v, \C(a,b)\right] \cong \C(a,v \pfk b).
-\end{equation}
-that are  $\V$-natural in $a,b \in \C$ and $v \in \V$.  When $\V = \Set$ this occurs if $\C$ has all products and coproducts.    In what follows we use exponential notation $b^v := v\pfk b$ for $\V$-powers, and denote the unit $I$ by $1$, because the enriching categories we consider are cartesian.  We should note that tensors are sometimes called ``copowers'', and powers are sometimes called ``cotensors''.
+\[
+	\C(v\cdot a,b) \cong \C(a,b)^v \cong \C(a, b^v).
+\]
+that are $\V$-natural in $a,b \in \C$ and $v \in \V$.  When $\V = \Set$ this occurs if $\C$ has all products and coproducts.    We warn the reader that tensors are sometimes called ``copowers'' and powers are sometimes called ``cotensors''.
+
+If $\V$ has finite coproducts of its initial object some potential ambiguities arise, which we must
+resolve.   Suppose
+\[           n_\V = \sum_{i =1}^n 1_\V  \]
+is an $n$-fold coproduct of the initial object of $\V$.   
+On the one hand, for any object $b$ of $\V$ we can form the object $b^{n_\V}$.  
+On the other hand, we can take the product of $n$ copies of $b$, which we call
+$b^n$.    Luckily these are the same, or at least naturally isomorphic:
+
+\begin{lemma}
+\label{lem:powers_1}
+Suppose $\V$ is cartesian closed with an $n$-fold coproduct $n_\V$ of its terminal object.
+Then the functors $(-)^{n_\V} \maps \V\to \V$ and $(-)^n\maps \V\to \V$ are naturally isomorphic.  
+\end{lemma}
+\begin{proof}
+If $a,b \in \V$, then
+	\[\begin{array}{rcll}
+	\V(a,b^{n_\V}) & \cong & \V(a\times n_\V,b) & \text{hom-tensor adjunction}\\
+	& = & \V(a\times \sum_{i=1}^n 1_\V,b) & \text{definition of } n_\V\\ 
+	& \cong & \V(\sum_{i = 1}^n a\times 1_\V, b) & \text{distributivity}\\  
+	& \cong & \V(\sum_{i=1}^n a,b) & \text{unitality}\\  
+	& \cong & \V(a,b)^n & \text{definition of coproduct}\\
+	& \cong & \V(a,b^n) & \text{continuity of hom in its second argument}.\\
+	\end{array}\]
+Each of these isomorphisms is natural in $a$ and $b$, so by the Yoneda lemma $(-)^{n_\V} \cong (-)^n$.
+\end{proof}
+
+More generally suppose $\C$ is any $\V$-category.   The question arises whether the
+power of an object $c \in \C$ by $n_\V$ must also be the product of $n$ copies
+of $c$.   The answer is yes:
+
+\begin{lemma}
+\label{lem:powers_2}
+Suppose $\V$ is cartesian closed with an $n$-fold coproduct $n_\V$ of its terminal object.
+Let $\C$ be a $\V$-category and $c \in \Obj(\C)$.  Then the power $c^{n_\V}$ exists
+if and only if the $n$-fold product $c^n$ exists, in which case they are isomorphic.
+\end{lemma}
+
+\begin{proof}
+If the power $c^{n_\V}$ exists, we have
+\[    
+\begin{array}{rcll}
+	 \C(a,c^{n_\V}) &\cong& \C(a,c)^{n_\V} & \text{definition of powers} \\
+	 &\cong & \C(a,c)^n & \text{Lemma \ref{lem:powers_1}} \\
+\end{array}
+\]
+Each of these isomorphisms is 
+$\V$-natural in $a$, so $c^{n_\V}$ is the $n$-fold product of copies of $c$.  Conversely,
+if the $n$-fold product $c^n$ exists, we have
+\[    
+\begin{array}{rcll}
+	 \C(a,c^n) &\cong& \C(a,c)^n & \text{definition of products} \\
+	 &\cong & \C(a,c)^{n_\V} & \text{Lemma \ref{lem:powers_1}} \\
+\end{array}
+\]
+and each of these isomorphisms is 
+$\V$-natural in $a$, so $c^n$ is the power of $c$ by $n_\V$.
+\end{proof}
+
+Our approach to enriched Lawere theories is based on enriched functors that preserve finite powers:
+
+\begin{definition} 
+Suppose $\C$ is a $\V$-category.  We say $\C$ \define{has finite powers} if for any
+object $c \in \Obj(\C)$ and any natural number $n$, the $n$-fold product $b^n$ exists.
+If $\C$ and $\D$ have finite powers, a $\V$-functor $F \maps \C \to \D$ is \define{finite power preserving} if $F(c^n) \cong F(c)^n$ for all $c \in \Obj(\C)$ and all $n$.
+\end{definition}
 
 There are just a few more technicalities. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.   A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial here: all categories to be considered are locally finitely presentable. We will use  $\V_f$ to denote the full subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
-
-Even though the definition of Lawvere theory seems to be all about products, it is actually about \textit{powers}, because these constitute the arities of the operations. These are greatly generalized in the enriched case, because whereas the only finite objects in $\Set$ are \textit{finite sets}, there are more complex finite objects in any other enriching $\V$.  In the next section we discuss some difficulties of this generality and how to circumvent them.
 
 \section{Enriched Lawvere theories}
 
 Power introduced the notion of enriched Lawvere theory about twenty years ago, ``in seeking a general account of what have been called notions of computation'' \cite{power}. The original definition is as follows: for a symmetric monoidal closed category $(\V,\otimes,1)$, a ``$\V$-enriched Lawvere theory'' is a $\V$-category $\T$ that has powers by objects in $\V_f$, equipped with an identity-on-objects $\V$-functor 
-\[  \tau\maps \V_f^\op \to \T \]
-that preserves these powers.  A ``model'' of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ which preserves powers by finite objects of $\V$.  There is a category $\Mod(\T,\V)$ whose objects are models and whose morphisms are $\V$-natural transformations. The monadic adjunction and equivalence of $\S$2 generalize to this context.
+\[  \tau\maps \tilde{\V}_f^\op \to \T \]
+that preserves these powers.  A ``model'' of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ that preserves powers by finite objects of $\V$.  There is a category $\Mod(\T,\V)$ whose objects are models and whose morphisms are $\V$-natural transformations. The monadic adjunction and equivalence of $\S$2 generalize to this context.
 
-However, this sort of $\V$-enriched Lawvere theory has arities for every finite object of $\V$.  These \textit{generalized arities} may be very powerful---rather than only inputting $n$-tuples of terms, we can input any finite object of terms.  Despite its potential, this generalization remains largely unexploited in computer science.   Power \cite{powsketch} introduced``enriched sketches'' as a way of presenting enriched Lawvere theories, and ``monads with arities'' have been explored by Berger, Melli\'es and Weber \cite{bergermelliesweber}, but they are still not yet widely understood or used.  What does it really mean for an operation to take in a finite graph of terms?  How can we learn to use this generality?  We hope that someone answers these questions, so that we can use more general arities in computer programming.
+However, this sort of $\V$-enriched Lawvere theory has arities for every finite object of $\V$.  These \textit{generalized arities} may be very powerful---rather than only inputting $n$-tuples of terms, we can input any finite object of terms.  Despite its potential, this generalization remains largely unexploited in computer science.   Power \cite{powsketch} introduced ``enriched sketches'' as a way of presenting enriched Lawvere theories, and ``monads with arities'' have been explored by Berger, Melli\'es and Weber \cite{bergermelliesweber}, but they are not yet widely understood or used.  What does it really mean for an operation to take in a finite graph of terms?  How can we learn to use this generality?  We hope that someone answers these questions, so that we can use more general arities in computer programming.
 
-%partly for the difficulty of intuition, but also that of presentation: while it is easy to inductively generate all $n$-ary operations from binary, unary, nullary ones, it is certainly more subtle to generate powers for all finite objects.
-
-In this paper, however, we only consider \textit{natural number} arities, while still retaining enrichment. To do this we use the work of Lucyshyn-Wright \cite{lucyshyn-wright}, who along with Power \cite{np} has generalized Power's original ideas to allow a more flexible choice of arities.    For simplicity, we also limit ourselves to the case where the tensor product of $\V$ is cartesian.  
+In this paper, however, we only consider \textit{natural number} arities, while still retaining enrichment. To do this we use the work of Lucyshyn-Wright \cite{lucyshyn-wright}, who along with Power \cite{np} has generalized Power's original ideas to allow a more flexible choice of arities.    We also limit ourselves to the case where the tensor product of $\V$ is cartesian.  This has a significant simplifying effect, yet it suffices for many cases of interest in computer science.
 
 Thus, in all that follows, we let $(\V,\times,1_\V)$ be a cartesian closed category equipped with chosen finite coproducts of the terminal object $1_\V$, say 
-\[   n_\V : = n \cdot v = \sum_{i \in n} 1_\V . \]  
+\[   n_\V := \sum_{i \in n} 1_\V . \]  
+\iffalse
 These objects come with natural isomorphisms
 \[
 \V(n_\V,a) \cong\V(1_\V,a)^n .
 \]
-Define $\NN_\V$ to be the full subcategory of $\V$ containing just these objects $n_\V$, and let
+\fi
+Define $\NN_\V$ to be the full subcategory of $\V$ containing just these objects $n_\V$.
+\iffalse
+, and let
 \[ j \maps \NN_\V \hookrightarrow \V \]
-be the inclusion.  There is also a $\V$-category $\tilde{\NN}_\V$ whose objects are those of $\NN_\V$ and whose hom-objects are given as in $\V$:
-\[         \hom(a,b) = [j(a), j(b)]   \]
-for all $a,b \in \NN_\V$.
+be the inclusion.    
+\fi
+There is also a $\V$-category $\tilde{\NN}_\V$ whose objects are those of $\NN_\V$ and whose hom-objects are given as in $\V$.
+\iffalse
+\[         \NN_\V(a,b) = j(b)^{j(a)}  \]
+for all $a,b \in \NN_\V$. 
+\fi
+We define the $\V$-category of \define{arities} for $\V$ to be 
+\[             \A_\V := \tilde{\NN}_\V^\op   .\]
 
 \begin{definition}
 \label{defn:V-theory}
 We define a \textbf{$\V$-theory} $(\T,\tau)$ to be a $\V$-category $\T$ 
 equipped with a $\V$-functor 
-\[ \tau  \maps\tilde{\NN}_\V^\op \to \T \]
-that is bijective on objects and \textbf{$\NN_\V$-power-preserving}: that is, it preserves powers by objects of (the subcategory image of) $\NN_\V$. 
+\[ \tau  \maps \A_\V \to \T \]
+that is bijective on objects and finite power preserving.
 \end{definition}
 \noindent
-This definition is adapted from that of Lucyshyn-Wright \cite{lucyshyn-wright}.  While he demands that $\tau$ be the identity on objects, we allow it to be bijective on objects, to more easily handle change of base.
+This definition is adapted from that of Lucyshyn-Wright \cite{lucyshyn-wright}.  While he demands that $\tau$ be the identity on objects, we allow it to be bijective on objects, to more easily handle change of base.    We have seen in Lemma \ref{lem:powers_2} that the $n$-fold product $a^n$  is
+also the power $a^{n_\V}$ if either exists.   In Lemma \ref{lem:NN_V} we shall see that 
+this power indeed exists (CHECK!!!)   This makes it reasonable to consider $\V$-functors out of $\A_\V$ that preserve such powers:
 
 \begin{definition}
-A \textbf{model} of $\T$ in a $\V$-category $\C$ is a $\NN_\V$-power-preserving $\V$-functor 
+A \textbf{model} of $\T$ in a $\V$-category $\C$ is a finite-power-preserving $\V$-functor 
 \[  \mu \maps \T \to \C.\]
 \end{definition}
 
-In the same way that all the objects of a Lawvere theory are $\NN$-powers of a single object, we can see that all the objects of a $\V$-theory are $\NN_\V$-powers $t^{n_\V}$ of the object 
+In the same way that all the objects of a Lawvere theory are finite powers of a single object, we can see that all the objects of a $\V$-theory $\T$ are powers $t^n$ of the object 
 \[   t = \tau(1_\V) .\]   
-Note that $t$ itself is $t^{1_\V}$.  Moreover, just as every object of $\NN^\op$ is a power of $1$, every object of $\NN_\V^\op$ is a power of $1_\V$.  This fact comes from the isomorphism $n_\V \cong n_\V^1$ in $\NN_\V$ by taking opposites.   Then, since $\tau$ preserves $\NN_\V$-powers and is bijective on objects, it follows that every object of $\T$ is an $\NN_\V$-power of $t$.
+Just as every object of $\NN^\op$ is a power of $1$, every object of $\NN_\V^\op$ is a power of $1_\V$.  This fact comes from the isomorphism $n_\V \cong n_\V^1$ in $\NN_\V$ by taking opposites.   Then, since $\tau$ preserves finite powers and is bijective on objects, it follows that every object of $\T$ is a finite power of $t$.   CHECK THIS STUFF CAREFULLY!!!
 
 \begin{definition}
-We define the \define{category of} $\V$\define{-theories}, $\V\Law$, to be the category for which an object is a $\V$-theory and a morphism from $(\T,\tau)$ to $(\T',\tau')$ is an $\NN_\V$-power-preserving $\V$-functor $f\maps \T \to \T'$ such that $f\tau = \tau'$. 
+We define the \define{category of} $\V$\define{-theories}, $\V\Law$, to be the category for which an object is a $\V$-theory and a morphism from $(\T,\tau)$ to $(\T',\tau')$ is a finite-power-preserving $\V$-functor $f\maps \T \to \T'$ such that $f\tau = \tau'$. 
 \end{definition}
 
 \begin{definition}
-For every $\V$-theory $(\T,\tau)$ and every $\V$-category $\C$ with $\NN_\V$-powers, we define the \define{category of models} of $\T$ in $\C$, $\Mod(\T,\C)$, to consist of $\NN_\V$-power preserving $\V$-functors $\T\to \C$ and $\V$-natural transformations between these.
+For every $\V$-theory $(\T,\tau)$ and every $\V$-category $\C$ with finite powers, we define the \define{category of models} of $\T$ in $\C$, $\Mod(\T,\C)$, to consist of $\NN_\V$-power preserving $\V$-functors $\T\to \C$ and $\V$-natural transformations between these.
 \end{definition}
 
 If $\V$ is complete and cocomplete, then $\V\Law$ and $\Mod(\T,\C)$ naturally become $\V$-categories. This is potentially very useful, and the enriching categories $\V = \Gph, \Cat, \Pos, \Set$ that are the focus of this paper are indeed complete and cocomplete.
@@ -413,10 +503,10 @@ It follows from the work of Lucyshyn-Wright \cite[Sec.\ 8]{lucyshyn-wright} that
 \[\begin{tikzcd}[column sep=small]
 \phantom{AA} \V \arrow[bend left,below]{rr}{F}
 & {\phantom{Aa} \ld} &
-\arrow[bend left,above]{ll}{U} \Mod(\T,\V).
+\arrow[bend left,above]{ll}{\;\, U} \Mod(\T,\V).
 \end{tikzcd}\]
 The forgetful $\V$-functor $U \maps \Mod(\T,\V) \to \T$ is evaluation at $t \in \T$.   Its left
-adjoint $F$ relies on the existence of the \textbf{free model} on an object $n_\V \in \V$.   This is the enriched generalization of the free model described in $\S$2: it is the composite of $\tau^\op\maps \tilde{\NN}_\V^\op \to \T^\op$ with the enriched Yoneda embedding $y\maps \T^\op \to [\T,\V]$:
+adjoint $F$ relies on the existence of the \textbf{free model} on an object $n_\V \in \V$.   This is the enriched generalization of the free model described in $\S$2: it is the composite of $\tau^\op\maps \A_\V\to \T^\op$ with the enriched Yoneda embedding $y\maps \T^\op \to [\T,\V]$:
 \[\begin{array}{rllll}
 \NN_\V^\op & \xrightarrow{\tau^\op} & \T^\op & \xrightarrow{y} & \left[\T,\V\right]\\
 \\
@@ -533,55 +623,16 @@ Each set $X$ is mapped to the $X$-indexed coproduct of the terminal object in $\
 
 This is what we implicitly used in the definition of $\V$-theory: the arity category $\NN$ ``sits inside'' many enriching categories under various guises: as finite discrete graphs, categories, posets, etc. For each $\V$ we define the arity subcategory $\NN_\V$ to be the full subcategory of finite coproducts (copowers) of the unit object, and this remains essentially unchanged by the change-of-base to $\tilde{\NN}_\V$.
 
-We now study how change of base affects theories and their models.  In Theorem \ref{thm:change-of-base} we see that everything works as one would hope, but we need some preliminary work to
-prove this.  We begin by showing that $n_\V$-powers in the enriched category $\tilde{\V}$ are
-the same as ordinary cartesian powers in $\V$.  More precisely:
+We now study how change of base affects theories and their models.  In Theorem \ref{thm:change-of-base} we see that everything works as one would hope.
 
-\begin{lemma}
-\label{lem:powers_1}
-The functors $[n_\V,-]\maps \V\to \V$ and $(-)^n\maps \V\to \V$ are naturally isomorphic.  
-\end{lemma}
-\begin{proof}
-If $a,b \in \V$, then
-	\[\begin{array}{rcll}
-	\V(a,[n_\V,b]) & \cong & \V(a\times n_\V,b) & \text{hom-tensor adjunction}\\
-	& = & \V(a\times (n \cdot 1_\V),b) & \text{definition of } n_\V\\
-	& \cong & \V(n \cdot (a\times 1_\V),b) & \text{distributivity}\\
-	& \cong & \V(n\cdot a,b) & \text{unitality}\\
-	& \cong & \V(a,b)^n & \text{continity of hom in its first argument}\\
-	& \cong & \V(a,b^n) & \text{continuity of hom in its second argument}.\\
-	\end{array}\]
-Each of these isomorphisms is natural in $a$ and $b$, so by the Yoneda lemma $[n_\V,-] \cong (-)^n$.
-\end{proof}
+
 
 Now let us consider a $\V$-theory $(\T,\tau)$ as in Definition \ref{defn:V-theory}.  All the objects of $\T$ are of the form $t^{n_\V}$.   That is, they are $\NN_\V$-powers of the object $t$.   However, since $\V$ is cartesian, we can also define cartesian powers in $\T$, and we shall show that $t^{n_\V}$ is the cartesian power $t^n$.
 
-In any $\V$-category $\C$, given an object $a \in \Obj(\C)$ and a natural number $n$, we say $b \in \Obj(\C)$ is an \define{$n$th cartesian power} of $a$ if there is a $\V$-natural isomorphism of $\V$-functors
-\[              \C(b,-) \cong \C(a,-)^n  .\]
-In $\T$ there is just one object in each isomorphism class, so we can speak quite strictly of ``the'' $n$th cartesian power of $t$, and denote it by $t^n$, if it exists.   In fact it does: 
-
-\begin{lemma}
-\label{lem:powers_2}
-Let $(\T,\tau)$ be a $\V$-theory.   Then $n$th cartesian power $t^n$ exists and equals $t^{n_\V}$.
-\end{lemma}
-
-\begin{proof}
-If $a \in V$ then
-\[    
-\begin{array}{rcll}
-	 \T(a,t^{n_\V}) &\cong& [n_\V,\T(a,t)] & \text{definition of powers} \\
-	 &\cong & [n \cdot 1_\V, T(a,t)]  & \text{definition of } n_\V \\
-	 &\cong & \T(a,t)^n  & \text{continuity of internal hom in its first argument.} 
-\end{array}
-\]
-JUSTIFY LAST STEP: it's a general fact about cartesian closed categories (like $\V$) that
-$a^{b+c} \cong a^b \times a^c$ and $a^0 \cong 1_\V$!!!   Each of these isomorphisms is natural in $a$, so $t^{n_\V}$ is the $n$th cartesian power of $t$.
-\end{proof}
-
 We want to know when the functor $F \maps \V \to \W$ induces a change of base $F_*\maps\V\Cat \to \W\Cat$ that ``preserves enriched theories''.   That is, given a $\V$-theory 
-\[         \tilde{\NN}_\V^\op \stackrel{\tau_\V}{\longrightarrow} \T \]
+\[      \tau \maps  \A_\V \to \T \]
 we want to determine conditions for the base-changed functor 
-\[      F_*(\tilde{\NN}_\V^\op) \stackrel{ F_*(\tau_\V)}{\longrightarrow}  F_*(\T) \]
+\[    F_*(\tau) \maps  F_*(\A_\V) \to  F_*(\T) \]
 to induce a $\W$-theory in a canonical way.   Recall that we are requiring that $\V$ and $\W$ be
 cartesian closed, equipped with chosen finite coproducts of their terminal object.   We thus 
 expect the following conditions to be sufficient: $F$ should be cartesian, and it should
@@ -589,16 +640,17 @@ preserve the chosen finite coproducts of the terminal object:
 \[      F(n_\V) = n_\W  \]
 for all $n$.    
 
-Given these conditions we shall construct A $\W$-functor, in fact an isomorphism
-\[    \tilde{n} \maps \tilde{\NN}_\W \to F_*(\tilde{\NN}_\V)  . \]
+Given these conditions we shall construct a $\W$-functor, in fact an isomorphism
+\[    \tilde{F} \maps \A_\W \to F_*(\A_\V)  . \]
 Using this we shall construct a $\W$-theory
-\[   \tilde{\NN}_\W \stackrel{\tilde{n}}{\longrightarrow} 
-  F_*(\tilde{\NN}_\V^\op) \stackrel{F_*(\tau_\V)}{\longrightarrow} F_*(\T). \]
+\[   \A_\W \stackrel{\tilde{F}}{\longrightarrow} 
+  F_*(\A_\V) \stackrel{F_*(\tau_\V)}{\longrightarrow} F_*(\T). \]
 We define $\tilde n$ as follows: on objects it maps $n_\V$ to $n_\W$, and on hom-objects it is SOME MORPHISM
 \[    \tilde{n} \maps [n_\W, m_\W] \to F_*([n_\V,m_\V])  .\]
 (in fact an isomorphism).  TO GET THIS MORPHISM, WE NEED TO USE THIS:
 
 \begin{lemma}
+\label{lem:NN_V}
 If $\V$ is any cartesian closed category with chosen coproducts of the initial object then
 $\NN_\V$ is cartesian closed, with finite coproducts.  The unique initial object of $\NN_V$
 is $0_\V$.  The binary coproducts in $\NN_\V$ are unique, given by
@@ -633,7 +685,7 @@ Exponentials in $\NN_\V$ are also unique, given by
 \end{proof}
 
 \begin{lemma}
-	Let $F\maps \V \to \W$ be a cartesian functor that  and let $\NN_\V$, $\NN_\W$ be defined as above. If $f\maps \C \to \D$ is an $\NN_\V$-power-preserving $\V$-functor, then $F_*(f)\maps F_*(\C)\to F_*(\D)$ is an $\NN_\V$-power-preserving $\W$-functor.
+	Let $F\maps \V \to \W$ be a cartesian functor that.... and let $\NN_\V$, $\NN_\W$ be defined as above. If $f\maps \C \to \D$ is an $\NN_\V$-power-preserving $\V$-functor, then $F_*(f)\maps F_*(\C)\to F_*(\D)$ is an $\NN_\V$-power-preserving $\W$-functor.
 \end{lemma}
 \begin{proof}
 	\[\begin{array}{rcll}
@@ -650,7 +702,7 @@ Finally, let $\tilde{n}\maps \tilde{\NN}_\W \to F_*(\tilde{\NN}_\V)$ be the isom
 
 \begin{theorem}
 \label{thm:change-of-base}
-	Let $\V$, $\W$ be cartesian closed categories with finite coproducts of their unit objects, and let $F\maps \V \to \W$ be a cartesian functor. Then $F$ is a \textbf{change of semantics}; i.e.\ for every $\V$-theory $\tau_\V\maps \tilde{\NN}_\V^\op \to \T$, the $\W$-functor $$\tau_\W := F_*(\tau_\V) \circ \tilde{n}^\op\maps \tilde{\NN}_\W^\op \to F_*(\T)$$ is a $\W$-theory. Moreover, $F$ preserves \textit{models}, i.e.\ for every $\NN_\V$-power preserving $\V$-functor $\mu\maps\T \to \C$, the $\W$-functor $F_*(\mu)$ preserves $\NN_\W$-powers.
+	Let $\V$, $\W$ be cartesian closed categories with finite coproducts of their unit objects, and let $F\maps \V \to \W$ be a cartesian functor. Then $F$ is a \textbf{change of semantics}; i.e.\ for every $\V$-theory $\tau_\V\maps \A_\V\to \T$, the $\W$-functor $$\tau_\W := F_*(\tau_\V) \circ \tilde{n}^\op\maps \A_\W \to F_*(\T)$$ is a $\W$-theory. Moreover, $F$ preserves \textit{models}, i.e.\ for every $\NN_\V$-power preserving $\V$-functor $\mu\maps\T \to \C$, the $\W$-functor $F_*(\mu)$ preserves $\NN_\W$-powers.
 \end{theorem}
 \begin{proof}
 	The $\W$-functor $\tau_\W$ is bijective on objects because $\tau_\V$ and $\tilde{n}$ are; and it preserves $\NN_\W$-powers because $\tilde{N}$ does and $F_*(\tau_\V)$ does by the previous lemma. This preservation is strict because $F_*(\T)$ has the same objects as $\T$, so the isomorphism implies that $\tau_\W(1_\W^{n_\W}) = \tau_\W(1_\W)^{n_\W}$. The preservation of models follows from the previous lemma.
