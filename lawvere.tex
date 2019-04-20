@@ -369,7 +369,7 @@ that are $\V$-natural in $a,b \in \C$ and $v \in \V$.  When $\V = \Set$ this occ
 
 If $\V$ has finite coproducts of its initial object some potential ambiguities arise, which we must
 resolve.   Suppose
-\[           n_\V = \sum_{i =1}^n 1_\V  \]
+\[           n_\V = n \cdot v = \sum_{i =1}^n 1_\V  \]
 is an $n$-fold coproduct of the initial object of $\V$.   
 On the one hand, for any object $b$ of $\V$ we can form the object $b^{n_\V}$.  
 On the other hand, we can take the product of $n$ copies of $b$, which we call
@@ -382,14 +382,15 @@ Then the functors $(-)^{n_\V} \maps \V\to \V$ and $(-)^n\maps \V\to \V$ are natu
 \end{lemma}
 \begin{proof}
 If $a,b \in \V$, then
-	\[\begin{array}{rcll}
+\[\begin{array}{rcll}
 	\V(a,b^{n_\V}) & \cong & \V(a\times n_\V,b) & \text{hom-tensor adjunction}\\
-	& = & \V(a\times \sum_{i=1}^n 1_\V,b) & \text{definition of } n_\V\\ 
-	& \cong & \V(\sum_{i = 1}^n a\times 1_\V, b) & \text{distributivity}\\  
-	& \cong & \V(\sum_{i=1}^n a,b) & \text{unitality}\\  
+	& = & \V(a\times (n \cdot 1_\V),b) & \text{definition of } n_\V\\ 
+	& \cong & \V(n \cdot( a\times 1_\V), b) & \text{products distribute over coproducts}\\  
+	& \cong & \V(n \cdot a,b) & \text{unitality}\\  
 	& \cong & \V(a,b)^n & \text{definition of coproduct}\\
-	& \cong & \V(a,b^n) & \text{continuity of hom in its second argument}.\\
-	\end{array}\]
+	& \cong & \V(a,b^n) & \text{definition of product}.\\
+	\end{array}
+\]
 Each of these isomorphisms is natural in $a$ and $b$, so by the Yoneda lemma $(-)^{n_\V} \cong (-)^n$.
 \end{proof}
 
@@ -454,13 +455,13 @@ These objects come with natural isomorphisms
 \V(n_\V,a) \cong\V(1_\V,a)^n .
 \]
 \fi
-Define $\NN_\V$ to be the full subcategory of $\V$ containing just these objects $n_\V$.
+Define $\NN_\V$ to be the full subcategory of $\V$ containing just these objects $n_\V$.  Since $\NN_\V$ has finite coproducts, $\NN_\V^\op$ has finite products.  
 \iffalse
 , and let
 \[ j \maps \NN_\V \hookrightarrow \V \]
 be the inclusion.    
 \fi
-There is also a $\V$-category $\tilde{\NN}_\V$ whose objects are those of $\NN_\V$ and whose hom-objects are given as in $\V$.  
+There is also a $\V$-category $\tilde{\NN}_\V$ whose objects are those of $\NN_\V$ and whose hom-objects are given as in $\V$.   The 
 \iffalse
 \[         \NN_\V(a,b) = j(b)^{j(a)}  \]
 for all $a,b \in \NN_\V$. 
@@ -676,13 +677,34 @@ Exponentials in $\NN_\V$ are also unique, given by
  It follows that $\NN_\V$ has finite products, and since this subcategory is skeletal
  they are unique, given by
  \[   m_\V \times n_\V = (mn)_\V.  \]
- Finally, $x^0 \cong x$ and $x^y \times x^z \cong x^{y+z}$ in any cartesian closed category
- with finite coproducts, so in $\V$ we have
- \[  {m_\V}^{n_\V} \cong {m_\V}^{1_V + \cdots + 1_\V} \cong \prod_{i = 1}^n m_\V \cong
- (m^n)_\V. \]
+ Finally, by Lemma \ref{lem:powers_1} we have
+ \[  {m_\V}^{n_\V} \cong m_\V^n \cong \prod_{i = 1}^n m_\V \cong
+ (m^n)_\V .\]
  It follows that $\NN_\V$ has exponentials, and since this subcategory is skeletal they
  are unique, given by
  \[     m_\V^{n_\V} = (m^n)_\V .  \qedhere\]
+\end{proof}
+
+\begin{lemma}
+If $\V$ is a cartesian category with chosen coproducts of the initial object then the $\V$-category
+of arities $\A_\V$ has finite powers, given uniquely by
+\[            m_\V^n = (mn)_\V  .\]
+\end{lemma}
+
+\begin{proof}
+For any natural numbers $m,n$ and $a \in \V$ we have
+\[\begin{array}{rcll}
+	\tilde{\NN}_\V((mn)_\V, a) & \cong & \tilde{\NN}_\V(m \cdot n_\V,a) & \text{Lemma \ref{lem:NN_V}} \\
+	&\cong &  a^{m \cdot n_\V} & \text{definition of hom-objects in $\tilde{\NN}_\V$} \\
+	&\cong & \prod_{i=1}^m a^{n_\V} & \text{exponentiation maps coproducts to products} \\
+	&\cong & \prod_{i=1}^m a^n  & \text{Lemma \ref{lem:powers_1}} \\
+	&\cong& a^{mn} \\
+	&\cong& 
+\end{array}
+\]
+	
+  
+ 
 \end{proof}
 
 \begin{lemma}
