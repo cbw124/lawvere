@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/4/20
+% 2019/4/21
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -454,8 +454,7 @@ We define the \define{category of} $\V$\define{-theories}, $\V\Law$, to be the c
 The basic monadicity results for Lawvere theories generalize to $\V$-theories when $\V$ is cocomplete, as in the main examples we consider: $\V = \Gph, \Cat, \Pos,$ and $\Set$.   Under this extra assumption we shall see that $\Mod(\T,\C)$ naturally becomes a $\V$-category $\underline{\Mod}(\T,\C)$.  Furthermore, there is a $\V$-functor 
 \[   U \maps \Mod(\T,\V) \to \underline{\V} \]
 sending any model  $\mu \maps \T \to \V$ to its underlying object $\mu(t) \in \V$.   
-The concepts of adjunction and monad generalize straightforwardly to the enriched context
-\cite{kelly}; $U$ has a left adjoint
+The $\V$-functor $U$ has a left adjoint
 \[   F \maps \underline{\V} \to \underline{\Mod}(\T,\V) ,\]
 and $\underline{\Mod}(\T,\V)$ is equivalent to the category of algebras of the resulting monad $T = UF$.  More precisely:
 
@@ -475,12 +474,12 @@ This follows from Lucyshyn-Wright's general theory \cite{lucyshyn-wright}, so ou
 to explain how.   He allows $\V$ to be a symmetric monoidal category, and uses a more general concept of algebraic theory with a system of arities given by any fully faithful symmetric monoidal $\V$-functor $j \maps \J \to \underline{\V}$.   For us $\J = \underline{\NN}_\V$ and $j \maps \underline{\NN}_\V \to \underline{\V}$ is the obvious inclusion; this is his Example 3.7.
 
 Lucyshyn-Wright defines a \textbf{$\J$-theory} to be a $\V$-functor $\tau \maps \J^\op \to \T$ that is the identity on objects and preserves powers by objects in $\J$ (or more precisely, their images under $j$).  For us $\J^\op = \A_\V$.   We are only demanding that $\tau \maps \A_\V \to \T$ be bijective on objects, but we can make it the identity on objects simply by renaming the objects of $\T$.  So, to apply his theory, we need to show that a $\V$-functor $\tau \maps \A_\V \to \T$ preserves powers by objects in $\NN_\V$ if and only if it preserves finite $\V$-products.
-This is Lemma \ref{lem:powers_3} below.
+This is Lemma \ref{lem:powers_4} below.
 
-He defines a model (or algebra) of a $\J$-theory to be a $\V$-functor $\tau \maps \T \to \underline{\V}$ that preserves powers by objects in $\J$.   He defines a morphism of models to be 
+He defines a model (or ``algebra'') of a $\J$-theory to be a $\V$-functor $\tau \maps \T \to \underline{\V}$ that preserves powers by objects in $\J$.   He defines a morphism of models to be 
 a $\V$-natural transformation between such $\V$-functors.  So, to apply his theory, we also
 need to show that when $\J = \underline{\NN}_\V$, a $\V$-functor $\mu \maps \T \to \underline{\V}$ preserves powers by objects of $\J$ if and only if it preserves finite
-$\V$-products.   This is Lemma \ref{lem:powers_4} below.
+$\V$-products.   This is Lemma \ref{lem:powers_5} below.
 
 A technical concept fundamental to Lucyshyn-Wright's theory is that of an \define{eleutheric} system of arities $j \maps \J \to \underline{\V}$.  This is one where the left Kan extension of any $\V$-functor $T \maps \J \to \underline{\V}$ along $j$ exists and is preserved by each $\V$-functor
 $\underline{\V}(x,-) \maps \underline{\V} \to \underline{\V}$.  In Example 7.5.5 he shows
@@ -536,7 +535,7 @@ When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to 
           M^3 \ar[d,"m\times 1",swap,""name=b1] \ar[rr,"1\times m",swap] && M^2 \ar[d,"m",""name=b2] \arrow[Rightarrow,from=b1,to=b2,"\alpha",shorten >=1.3cm,shorten <=1.3cm,swap] & = & M^3 \ar[d,"m\times 1",swap] \arrow[Rightarrow,to=c1,"\rho\times 1",shorten >=0.4cm,shorten <=0.0cm] && M^2 \ar[d,"m"] \\
           M^2 \ar[rr,"m",swap] && M && M^2 \ar[rr,"m",swap] && M
         \end{tikzcd}\]
-\noindent The top diagram expresses the pentagon identity for the associator, while the bottom one expresses the usual coherence law involving the left and right unitors.  CHECK - SHOULDN'T THERE BE TWO UNITOR LAWS???
+\noindent The top diagram expresses the pentagon identity for the associator, while the bottom one expresses the usual coherence law involving the left and right unitors.  \textbf{CHECK - SHOULDN'T THERE BE TWO UNITOR LAWS???}
    
 Models of $\T = \Th(\mathrm{PsMon})$ in $\Cat$ are monoidal categories.   A $\Cat$-enriched monad is called a 2-monad, and $\T$ gives rise to the ``free monoidal category'' 2-monad on $\Cat$ \cite{bkp}.
 Let us explore this example in more detail.  A model of $\T$ is a finite-product-preserving 2-functor $\mu\colon \T\to \Cat$, which sends 
@@ -628,16 +627,16 @@ Exponentials in $\NN_\V$ are also unique, given by
  \[     m_\V^{n_\V} = (m^n)_\V .  \qedhere\]
 \end{proof}
 
-We warn the reader that $\hom(m_\V,n_\V)$ may not have $n^m$ elements.  This is
-true in $\Gph,\Cat,\Pos$ and of course $\Set$, but not in $\V = \Set^k$, where
+We warn the reader that $\hom(m_\V,n_\V)$ may not have $n^m$ elements.  It does
+in $\Gph,\Cat,\Pos$ and of course $\Set$, but not in $\V = \Set^k$, where
 $|\hom(m_\V, n_\V)| = n^{km}$.   Richard Garner has shown us a simple 
 argument showing that $|\hom(1_\V,2_\V)|$ must be a power of 2 if it is
 finite.   Namely, $2_\V$ is an internal Boolean algebra in $\V$, so its set of 
-points must be a Boolean algebra in $\Set$, and these must have cardinality a power
+points must be a Boolean algebra in $\Set$, and thus its cardinality must be a power
 of 2 when finite.  It should be possible to completely understand the structure of
 $\NN_V$ as a category, but this would be a digression from our current mission.
 
-Next suppose $\C$ is a $\V$-category.   The question arises whether the
+Now suppose $\C$ is a $\V$-category.   The question arises whether the
 power of an object $c \in \C$ by $n_\V$ must also be the $\V$-product of $n$ copies
 of $c$.   The answer is yes:
 
@@ -693,6 +692,47 @@ that any natural numbers $m,n$ and $a \in \V$ there is an isomorphism
 
 \begin{lemma}
 \label{lem:powers_3}
+Suppose $\C$ is a $\V$-category such that every object is the $n$-fold $\V$-product $c^n$ of
+some object $c$.   Then a $\V$-functor $F \maps \C \to \D$ preserves finite $\V$-products
+if and only if it preserves $\NN_\V$-powers.
+\end{lemma}
+
+\begin{proof}
+Suppose $F$ preserves finite $\V$-products.  Then for any object $b \in \Obj(\C)$
+there are isomorphisms
+\[\begin{array}{rcll}
+F(b^{n_\V}) & \cong & F(b^n) & \text{Lemma \ref{lem:powers_2}} \\
+ & \cong & F(b)^n & \text{preservation of products} \\
+ & \cong & F(b)^{n_\V} &  \text{Lemma \ref{lem:powers_2}}
+\end{array}
+\]
+so $F$ preserves  $\NN_\V$-powers.  Conversely suppose $F$ preserves $\NN_\V$-powers.
+To show that $F$ preserves finite $\V$-products it suffices to show it preserves
+the terminal object and binary products.   For the former note that
+\[\begin{array}{rcll}
+F(1_\C) & \cong & F(c^0) & \text{$\V$-terminal object is a 0-ary product} \\
+ & \cong & F(c^{0_\V}) & \text{Lemma \ref{lem:powers_2}} \\
+ & \cong & F(a)^{0_\V} & \text{preservation of $\NN_\V$-powers} \\
+ & \cong & F(a)^0 &  \text{Lemma \ref{lem:powers_2}} \\
+ & \cong & 1_\D & \text{$\V$-terminal object is a 0-ary product.}
+\end{array}
+\]
+For the latter note that
+\[\begin{array}{rcll}
+F(c^m \times c^n) & \cong & F(c^{m+n}) & \text{$\V$-products in $\C$} \\
+ & \cong & F(c^{(m+n)_\V}) & \text{Lemma \ref{lem:powers_2}} \\
+ & \cong & F(c)^{(m+n)_\V} & \text{preservation of $\NN_\V$-powers} \\
+ & \cong & F(c)^{m+n} &  \text{Lemma \ref{lem:powers_2}} \\
+ & \cong & F(c)^m \times F(c)^n & \text{terminal object is a 0-ary product.}
+\end{array}  \qedhere
+\]
+\end{proof}
+
+\noindent
+\textbf{THE ABOVE ARGUMENT IS SLOPPY since ``preserving $\V$-products'' probably means more than just $F(a \times b) \cong F(a) \times F(b)$, since it means more than that for ``preserving products''.  Maybe something similar is true for preserving $\NN_\V$-powers.  WE NEVER DEFINE THE CONCEPTS!!!}
+
+\begin{lemma}
+\label{lem:powers_4}
 Let $\V$ be cartesian closed with chosen finite coproducts of the terminal object and let
 $\T$ be a $\V$-category.  These conditions for a $\V$-functor $\tau \maps \A_\V \to \T$ are equivalent:
 \begin{enumerate}
@@ -705,32 +745,13 @@ $\T$ be a $\V$-category.  These conditions for a $\V$-functor $\tau \maps \A_\V 
 \begin{proof} Conditions 1 and 2 are equivalent by definition.
 Since $\A_\V = \underline{\NN}_\V^\op$, finite $\V$-products in $\A_\V$ are 
 the same as finite $\V$-coproducts in $\underline{\NN}_\V$, which are the same as 
-finite coproducts in $\NN_\V$.   To show that conditions 2 and 3 are equivalent,
-it suffices to consider binary coproducts and the initial
-object in $\NN_\V$, which by Lemma \ref{lem:NN} are given by $m_\V + n_\V = 
-(m+n)_\V$ and $0_\V$ respectively.   It follows that $\tau \maps \A_\V \to \T$
-preserves finite $\V$-products if and only if
-\[    \tau(n_\V) \cong \tau(1_\V)^n  .   \]
-By the enriched Yoneda lemma and the definition of $\V$-product, this holds 
-if and only if there is a $\V$-natural isomorphism
-\[       \T(a, \tau(n_\V)) \cong \T(a, \tau(1))^n \]
-or equivalently, by Lemma \ref{lem:powers_1},
-\[  \T(a, \tau(n_\V)) \cong \T((a,  \tau(1_\V) )^{n_\V}  .\]
-By the definition of powers, there is a natural isomorphism of this form if and only if 
-\[   \tau(n_\V) \cong \tau(1_\V)^{n_\V}.  \]
-This holds if $\tau$ preserves powers by objects of $\NN_\V$, but conversely it implies 
-this condition, since the power of $m_\V$ by $n_\V$ in $\A_\V$ is $(mn)_\V$, and we
-obtain
-\[    \tau((mn)_\V) \cong \tau(1_\V)^{(mn)_\V} = 
-\tau(1_\V)^{m_\V \times n_\V} \cong \left(\tau(1_\V)^{m_\V}\right)^{n_\V} 
-\cong \tau(m_\V)^{n_\V}  .   \qedhere \]
-THE PROBLEM WITH THIS PROOF IS THAT I FOCUS ON OBJECTS AND DON'T 
-EMPHASIZE THE CONE THAT MAKES AN OBJECT BE A PRODUCT, OR SIMILARLY WITH
-POWERS. 
+finite coproducts in $\NN_\V$.   Since every object in $\underline{\NN}_\V$ is a 
+finite coproduct of copies of $1_\V$, Lemma \ref{lem:powers_3} implies that conditions
+2 and 3 are equivalent.
 \end{proof}
 
 \begin{lemma}
-\label{lem:powers_4}
+\label{lem:powers_5}
 Given a $\V$-theory $(\T,\tau)$ and a $\V$-functor $\mu \maps \T \to \C$,
 the following conditions are equivalent:
 \begin{itemize}
@@ -743,9 +764,8 @@ the following conditions are equivalent:
 \begin{proof}
 Conditions 1 and 2 are equivalent by definition.   Since $\tau$ is bijective on 
 objects and preserves $\V$-products each object of $\T$ is of the form $t^n$ 
-where $t = \tau(1_\V)$.   By Lemma \ref{lem:powers_3}, $t^n = t^{n_\V}$.
-As in Lemma \ref{lem:powers_3}, $\mu$ preserves finite $\V$-products if
-
+where $t = \tau(1_\V)$.   Thus, Lemma \ref{lem:powers_3} implies that
+conditions 2 and 3 are equivalent.
 \end{proof}
 
 \section{Change of Base}
@@ -802,22 +822,30 @@ cartesian closed, equipped with chosen finite coproducts of their terminal objec
 expect the following conditions to be sufficient: $F$ should be cartesian, and it should
 preserve the chosen finite coproducts of the terminal object:
 \[      F(n_\V) = n_\W  \]
-for all $n$.    
+for all $n$.   
 
-Given these conditions we shall construct a $\W$-functor, in fact an isomorphism
+Given these conditions there is a $\W$-functor, in fact an isomorphism
 \[    \tilde{F} \maps \A_\W \to F_*(\A_\V)  . \]
-Using this we shall construct a $\W$-theory
+On objects this maps $n_\W$ to $n_\V$, and on hom-objects it is simply the identity from
+\[     \A_\W(m_\W, n_\W) = n_\W^{m_\W} = (n^m)_\W \]
+to 
+\[    F(\A_\V(m_\V, n_\V)) = F(n_\V^{m_\V}) = F((n^m)_\V) = (n^m)_\W \]
+where we use Lemma \ref{lem:NN} in these computation.
+
+Using this we obtain a composite $\W$-functor
 \[   \A_\W \stackrel{\tilde{F}}{\longrightarrow} 
   F_*(\A_\V) \stackrel{F_*(\tau_\V)}{\longrightarrow} F_*(\T). \]
-We define $\tilde n$ as follows: on objects it maps $n_\V$ to $n_\W$, and on hom-objects it is SOME MORPHISM
-\[    \underline{n} \maps [n_\W, m_\W] \to F_*([n_\V,m_\V])  .\]
-(in fact an isomorphism). 
+This is a bijection on objects and preserves finite $\V$-products because each of the factors
+has these properties.   It is thus a $\W$-theory.
+
 
   
 
 
 \begin{lemma}
-	Let $F\maps \V \to \W$ be a cartesian functor that.... and let $\NN_\V$, $\NN_\W$ be defined as above. If $f\maps \C \to \D$ is an $\NN_\V$-power-preserving $\V$-functor, then $F_*(f)\maps F_*(\C)\to F_*(\D)$ is an $\NN_\V$-power-preserving $\W$-functor.
+\label{lem:base_change}
+Let $F \maps \V \to \W$ be a cartesian functor that preserves chosen finite coproducts
+of the terminal object.  If $f \maps \C \to \D$ is an $\NN_\V$-power-preserving $\V$-functor, then $F_*(f) \maps F_*(\C)\to F_*(\D)$ is an $\NN_\V$-power-preserving $\W$-functor.
 \end{lemma}
 \begin{proof}
 	\[\begin{array}{rcll}
@@ -834,21 +862,27 @@ Finally, let $\tilde{n}\maps \underline{\NN}_\W \to F_*(\underline{\NN}_\V)$ be 
 
 \begin{theorem}
 \label{thm:change-of-base}
-	Let $\V$, $\W$ be cartesian closed categories with finite coproducts of their unit objects, and let $F\maps \V \to \W$ be a cartesian functor. Then $F$ is a \textbf{change of semantics}; i.e.\ for every $\V$-theory $\tau_\V\maps \A_\V\to \T$, the $\W$-functor $$\tau_\W := F_*(\tau_\V) \circ \tilde{n}^\op\maps \A_\W \to F_*(\T)$$ is a $\W$-theory. Moreover, $F$ preserves \textit{models}, i.e.\ for every $\NN_\V$-power preserving $\V$-functor $\mu\maps\T \to \C$, the $\W$-functor $F_*(\mu)$ preserves $\NN_\W$-powers.
+Let $\V$, $\W$ be cartesian closed categories with chosen finite coproducts of their terminal objects, and let $F\maps \V \to \W$ be a cartesian functor that preserves these chosen coproducts.  Then $F$ preserves theories: that is, for every $\V$-theory $\tau_\V\maps \A_\V\to \T$, the $\W$-functor 
+\[ \tau_\W := F_*(\tau_\V) \circ \tilde{F} \maps \A_\W \to F_*(\T)\]
+is a $\W$-theory. Moreover, $F$ preserves models: for every model $\mu\maps\T \to \C$
+of $(\T,\tau_\V) $, the $\W$-functor $F_*(\mu) \maps F_*(\T) \to F_*(\C)$ is a model of 
+$(F_*(\T), \tau_\W)$.
 \end{theorem}
+
 \begin{proof}
-	The $\W$-functor $\tau_\W$ is bijective on objects because $\tau_\V$ and $\tilde{n}$ are; and it preserves $\NN_\W$-powers because $\tilde{n}$ does and $F_*(\tau_\V)$ does by the previous lemma. This preservation is strict because $F_*(\T)$ has the same objects as $\T$, so the isomorphism implies that $\tau_\W(1_\W^{n_\W}) = \tau_\W(1_\W)^{n_\W}$. The preservation of models follows from the previous lemma.
+We have seen that $\tau_\W$ is a $\W$-theory.   The preservation of models follows from 
+Lemma \ref{lem:base_change}.
 \end{proof}
 
-Hence, any cartesian functor constitutes a ``change of semantics'' --- this is a simple, ubiquitous condition, which provides for a method of translating formal languages between various ``modes of operation''.
+Hence, any cartesian functor that preserves chosen finite coproducts of the terminal object gives a ``change of semantics'' --- this is a simple, ubiquitous condition, which provides for a method of translating formal languages between various ``modes of operation''.
 
-Moreover, this reasoning generalizes to \textbf{multisorted} $\V$-theories, enriched theories which have multiple sorts: given any $n\in \mathbb{N}$, the monoidal subcategory $(\NN_\V)^n$ is also an eleutheric system of arities. At the end of $\S$8, we give an example demonstrating why this is a very useful generalization.\\
+Moreover, this reasoning generalizes to \textbf{multisorted} $\V$-theories, enriched theories which have multiple sorts: given any $n\in \mathbb{N}$, the monoidal subcategory $(\NN_\V)^n$ is also an eleutheric system of arities.   In Section \ref{ssec:multisorted}, we give an example demonstrating why this is a very useful generalization.\\
 
 Before exploring applications, we introduce two more useful kinds of translations, and demonstrate how all of this information be encapsulated in one categorical notion.
 
 \section{The category of all $\V$-theories}
 
-In addition to change-of-base, there are two other natural and useful translations for these theories. Let $\V\mathrm{Law}$ be the category of $\V$-theories, and let $f\maps\T\to \T'$ be a morphism of theories; this induces a ``change-of-theory'' functor between the respective categories of models $$f^*\maps\V\Mod(\T',\C)\to \V\Mod(\T,\C)$$ defined as precomposition with $f$. Similarly, given a cartesian functor $g\maps \C \to \C'$, this induces a ``change-of-model'' functor $$g_*\maps\V\Mod(\T,\C) \to \V\Mod(\T,\C')$$ defined as postcomposition with $g$.
+In addition to change-of-base, there are two other natural and useful translations for these theories. Let $\V\mathrm{Law}$ be the category of $\V$-theories, and let $f\maps\T\to \T'$ be a morphism of theories; this induces a ``change-of-theory'' functor between the respective categories of models $$f^*\maps\V\Mod(\T',\C)\to \V\Mod(\T,\C)$$ defined as precomposition with $f$. Similarly, given a cartesian functor $g\maps \C \to \C'$, this induces a ``change-of-model'' functor $$g_*\maps\V\Mod(\T,\C) \to \V\Mod(\T,\C')$$ defined as postcomposition with $g$.   \textbf{NO, we need preservation of chosen finite coproducts of the terminal object as well!!!  Fix this everywhere!!!  We need a different category, not $\CCC$, below!!!}
 
 These translations, as well as change-of-base, can all be packed up nicely using the \textbf{Grothendieck construction}: given a (pseudo)functor $F\maps \D \to \Cat$, there is a category $\int F$ that encapsulates all of the categories in the image of $F$, defined
 as follows:
@@ -1032,6 +1066,7 @@ This illustrates a key aspect of categorical universal algebra: because change-o
 This is a necessary limitation, at least in the present setup, but there are ways of working around it: of course, these abstract theories are not floating in isolation but are implemented in code. One can simply use a ``maximal theory'' with all pertinent structure, then selectively forget as needed.
 
 \subsection{Multisorted: the $\rho$-calculus}
+\label{ssec:multisorted}
 
 Many algebraic theories involve multiple sorts in an essential way. In concurrency theory, \textit{process calculi} exhibit an ontology which is fundamentally distinct from that of sequential computing --- rather than simply expressing a series of terms and rewrites, these calculi represent dynamical systems of communicating processes.
 
