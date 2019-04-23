@@ -100,7 +100,7 @@ urlcolor=myurlcolor}
 
 \begin{document}
 
-\title{Enriched Lawvere Theories \\
+\title{Enriched Lawvere Theories 
 for Operational Semantics}
 
 \maketitle
@@ -843,22 +843,19 @@ has these properties.   It is thus a $\W$-theory.
 \label{thm:change-of-base}
 Let $\V$, $\W$ be cartesian closed categories with chosen finite coproducts of their terminal objects, and let $F\maps \V \to \W$ be a cartesian functor that preserves these chosen coproducts.  Then $F$ preserves theories: that is, for every $\V$-theory $\tau_\V\maps \A_\V\to \T$, the $\W$-functor 
 \[ \tau_\W := F_*(\tau_\V) \circ \tilde{F} \maps \A_\W \to F_*(\T)\]
-is a $\W$-theory. Moreover, $F$ preserves models: for every model $\mu\maps\T \to \C$
+is a $\W$-theory. Moreover, $F$ preserves models: for every model $\mu \maps\T \to \C$
 of $(\T,\tau_\V) $, the $\W$-functor $F_*(\mu) \maps F_*(\T) \to F_*(\C)$ is a model of 
 $(F_*(\T), \tau_\W)$.
 \end{theorem}
 
 \begin{proof}
-We have seen that $\tau_\W$ is a $\W$-theory.   The preservation of models follows from 
-Lemma \ref{lem:base_change}.
-\end{proof}
+We have seen that $\tau_\W$ is a $\W$-theory.   To show that $F_*(\mu)$ is a model, we need
+to show it preserves finite $\V$-products.   We do this separately for the $\V$-terminal object and
+binary $\V$-products.  For the former, we need to show $F_*(\mu) 1_{F*(\T)}$ is $\W$-terminal
+in $F_*(\C)$, i.e.\ $F_*(\C) (c, F_*(\mu) 1_{F*(\T)}) $ is terminal in $\W$ for all objects
+$c$ of $\C$.  But ... \textbf{NEED TO FLESH THIS OUT!!!}
 
-\begin{lemma}
-\label{lem:base_change}
-Let $F \maps \V \to \W$ be a cartesian functor that preserves chosen finite coproducts
-of the terminal object.  If $f \maps \C \to \D$ is an $\NN_\V$-power-preserving $\V$-functor, then $F_*(f) \maps F_*(\C)\to F_*(\D)$ is an $\NN_\V$-power-preserving $\W$-functor.
-\end{lemma}
-\begin{proof}
+\iffalse
 	\[\begin{array}{rcll}
 	F_*(\D)(F_*(f)(a),F_*(f)(s^{n_\V})) & = & F(\D(f(a),f(t^{n_\V})) & \text{definition of base change}\\
 	& \cong & F(\D(f(a),f(t)^{n_\V}) & f \text{ preserves } \NN_\V \text{-powers}\\
@@ -867,6 +864,7 @@ of the terminal object.  If $f \maps \C \to \D$ is an $\NN_\V$-power-preserving 
 	& = & F_*(\D)(f(a),f(t))^n & \text{definition of base change}\\
 	& \cong & F_*(\D)(f(a),f(t)^{n_\W}) & \text{Lemma \ref{lem:powers_1} for } \W. \qedhere
 	\end{array}\]
+\fi
 \end{proof}
 
 Hence, any cartesian functor that preserves chosen finite coproducts of the terminal object gives a ``change of semantics'' --- this is a simple, ubiquitous condition, which provides for a method of translating formal languages between various ``modes of operation''.
