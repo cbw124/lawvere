@@ -513,7 +513,7 @@ T(V) = \int^{n_\V\in \NN_\V} V^{n_\V} \times \T(t^{n_\V},t)
 \begin{example}
 When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to be called a \define{2-theory}.  For example, let $\T = \Th(\mathrm{PsMon})$ be the 2-theory of pseudomonoids \cite{pseudo}.   A pseudomonoid is a weakened version of a monoid: rather than associativity and unitality \textit{equations}, it has 2-isomorphisms called the associator and unitors, which we can treat as \textit{rewrite rules}.  To equate various possible rewrite sequences, these 2-isomorphisms must obey equations called ``coherence laws''.  Here is a presentation of the 2-theory for pseudomonoids:
 	\[ \textbf{Th(PsMon)} \]
-	\[\begin{array}{rll}
+	\[\begin{array}{lll}
 	\textbf{sorts} & M & \text{pseudomonoid}\\
 	\textbf{operations} & e\maps1 \to M & \text{identity}\\
 	& m\maps M^2 \to M & \text{multiplication}\\
@@ -561,6 +561,39 @@ In general for each $m\in \NN_\Cat$, $F(\C)(m)$ gives the category of all $m$-tu
 \[  T = UF \maps \C \mapsto \int^n \C^n \times \T(n,1) \]
 is a category $A$ equipped with a functor $\otimes_A\maps F(A)(1)\to A$ such that it is compatible with the multiplication and unit of the monad, which are the ``free'' tensor bifunctor and monoidal unit on $A$. Hence, $(A,\otimes_A,I_A)$ is precisely a monoidal category, and we have the equivalence: 
 \[ \Mod(\T,\Cat) \simeq \mathrm{Alg}(T). \]
+\end{example}
+
+\begin{example}
+  Enrichment generalizes operations in more ways than by weakening their equations to coherent relations. By enriching in $\V = \Cat$, $\V$-theories are, in particular, 2-categories. Hence we can consider operations which are characterized by 2-categorical properties, such as adjunction. The structure of a category $\C$ having chosen finite products is given by a right adjoint $\sqcap$ to the diagonal $\Delta_C\maps \C \to \C\times \C$. Similarly, a category is equipped with chosen finite coproducts by a left adjoint to the diagonal.
+
+  So, for example, there is a $\Cat$-theory of \textit{distributive categories}, categories equipped with finite products and coproducts, such that the former distribute over the latter. Indeed, by the internalization philosophy of Lawvere theories, this generalizes the notion of distributive category to a ``distributive object'' in any 2-category with finite products. Every structure of this kind -- duoidal categories, linearly distributive categories, rig categories etc. can be expressed in this framework. This gives a systematic formalization of studying these concepts, internalizes them to new contexts, and allows for the generation of 2-monads which encapsulate them.
+
+  In the 2-theory of distributive categories, there is a subtle distinction between the external product structure of the theory, and the internal product structure of the generating object -- this is the \textit{microcosm principle} at work \cite{}. Without the coproduct structure, this is the 2-theory of categories with finite products, also known as multisorted Lawvere theories, or algebraic theories. This serves as a testament to the power of the generalization from theories to enriched theories: the former is a category of models of the latter.\newpage
+
+  \[ \textbf{Th(DistObj)} \]
+	\[\begin{array}{lll}
+            \textbf{sorts} & \D & \text{distributive object}\\\\
+            
+            \textbf{products} & \sqcap\maps \D^2 \to \D & \text{product}\\
+                       & \bigtriangleup\maps id_\D \Longrightarrow \sqcap\Delta_\D & \text{diagonal}\\
+                       & \pi\maps \Delta_\D\sqcap \Longrightarrow id_{\D^2} & \text{projection}\\
+                           & (\bigtriangleup, \pi)\maps \sqcap \vdash \Delta_\D & \text{universality}\\\\
+
+                           & \ast\maps 1 \to \D & \text{terminal element}\\
+                           & \top\maps id_\D\Longrightarrow \ast !_\D & \text{terminate}\\
+                           & (\top,id_1)\maps \ast\vdash\; !_\D &  \text{universality}\\\\
+            
+        \textbf{coproducts} & \sqcup\maps \D^2 \to \D & \text{coproduct}\\
+                       & \bigtriangledown\maps \sqcup\Delta_\D \Longrightarrow id_\D & \text{folding}\\
+                       & \iota\maps id_{D^2}\Longrightarrow \Delta_\D\sqcup & \text{inclusion}\\
+                           & (\bigtriangledown,\iota)\maps \Delta_\D \vdash \sqcup & \text{universality}\\\\
+
+                           & \emptyset\maps 1\to \D & \text{initial element}\\
+                           & \bot\maps !_\D\emptyset \Longrightarrow id_\D & \text{initiate}\\
+                           & (id_1,\bot)\maps !_\D\vdash \emptyset & \text{universality}\\\\
+            \textbf{distributivity} & \delta\maps a\sqcap(b\sqcup c) \stackrel{\sim}{\Longrightarrow} (a\sqcap b)\sqcup(a\sqcap c)\\
+          \end{array}\]
+
 \end{example}
 
 \section{Natural number arities}
