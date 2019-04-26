@@ -589,7 +589,7 @@ is a category $A$ equipped with a functor $\otimes_A\maps F(A)(1)\to A$ such tha
 
         In the 2-theory of distributive categories, there is a subtle distinction between the external product structure of the theory, and the internal product structure of the generating object -- this is the \textit{microcosm principle} at work \cite{}. Without the coproduct structure, this is the 2-theory of categories with finite products, also known as multisorted Lawvere theories, or algebraic theories. This serves as a testament to the power of the generalization from theories to enriched theories: the former is a category of models of the latter.
 
-        In fact, by using generalized arities, we can actually express the theory of categories with limits and colimits, and internalize this structure in any 2-category with products. To the authors' knowledge, there has not been a comprehensive exploration of 2-theories. However for the purposes of this paper, to establish and simplify these concepts, we focus on arities which are like the natural numbers, and justify the claim that ``$\V$-theories are simply $\V$-categories with finite products''.
+        In fact, letting arities be finite categories, there are $\Cat$-theories of categories with limits and colimits, and we can internalize this structure in any 2-category with products. However for the purposes of this paper, to establish and simplify these concepts, we focus on arities which are like the natural numbers, and justify the claim that ``$\V$-theories are simply $\V$-categories with finite products''.
         
       \end{example}
 
@@ -1097,32 +1097,34 @@ This illustrates a key aspect of categorical universal algebra: because change-o
 
 This is a necessary limitation, at least in the present setup, but there are ways of working around it: of course, these abstract theories are not floating in isolation but are implemented in code. One can simply use a ``maximal theory'' with all pertinent structure, then selectively forget as needed.
 
-\subsection{Multisorted: the $\rho$-calculus}
+\subsection{Bisimulation}
 \label{ssec:multisorted}
 
-Many algebraic theories involve multiple sorts in an essential way. In concurrency theory, \textit{process calculi} exhibit an ontology which is fundamentally distinct from that of sequential computing --- rather than simply expressing a series of terms and rewrites, these calculi represent dynamical systems of communicating processes.
+This paper uses simple functors to illustrate the basic idea of changing semantics. Of course, there are many interesting and useful change-of-base functors. As demonstrated, any functor $F\maps \V\to \W$ which preserves finite products and finite coproducts of the terminal object can be considered as a change in semantics. For example, if we enrich in labelled directed graphs, we can utilize the important concept of  
 
-The $\pi$-calculus, designed by Milner \cite{milner}, consists of \textbf{names} and \textbf{processes}, or \textit{channels} and \textit{agents} which communicate on those channels. Far more than a sequence of instructions on a single machine, computation develops through the interaction of independent participants in a network.
+% Many algebraic theories involve multiple sorts in an essential way. In concurrency theory, \textit{process calculi} exhibit an ontology which is fundamentally distinct from that of sequential computing --- rather than simply expressing a series of terms and rewrites, these calculi represent dynamical systems of communicating processes.
 
-This powerful idea of modern computer science is being utilized by Greg Meredith and Mike Stay to design a deeply cooperative distributive computing system, called RChain. The ``R'' stands for ``reflective higher-order $\pi$-calculus'', or \textbf{$\rho$-calculus}. It is like Milner's original language, with one crucial difference: ``reflection'' is a formal system's ability to turn code into data and vice versa. This is a powerful idea which replaces opaque, atomic variables with transparent, anatomical names, or ``quoted processes'' \cite{refl}.
+% The $\pi$-calculus, designed by Milner \cite{milner}, consists of \textbf{names} and \textbf{processes}, or \textit{channels} and \textit{agents} which communicate on those channels. Far more than a sequence of instructions on a single machine, computation develops through the interaction of independent participants in a network.
 
-Utilizing both reflection and combinators in a theory requires special type discipline; there is a designated auxiliary sort $T$ for combinatory terms which are analogous to ``machine code'', as contrasted with the sorts $N$ and $P$ which are to be thought of as the actual language: see \cite{roswelt} $\S$7.3 for the details of the translation. The presentation below is only a fragment; it has yet to be determined how to best represent the full algebraic theory of the $\rho$-calculus; we expect that a true mathematical characterization of reflection will call for original and enlightening ideas.\\
+% This powerful idea of modern computer science is being utilized by Greg Meredith and Mike Stay to design a deeply cooperative distributive computing system, called RChain. The ``R'' stands for ``reflective higher-order $\pi$-calculus'', or \textbf{$\rho$-calculus}. It is like Milner's original language, with one crucial difference: ``reflection'' is a formal system's ability to turn code into data and vice versa. This is a powerful idea which replaces opaque, atomic variables with transparent, anatomical names, or ``quoted processes'' \cite{refl}.
 
-\[\textbf{\text{Th(RHO)}}\]
-\[\begin{array}{lrllrll}
-	\textbf{Sorts} & N && \text{names} & T && \text{terms}\\
-	& P && \text{processes} &&&\\\\
-	\textbf{Operations} & 0\maps & 1 \to P & \text{null process} & S\maps & 1\to T & \text{combinator}\\
-	& \&\maps & P \to N & \text{code to data} & K\maps & 1\to T & \text{combinator}\\
-	& *\maps & N \to P & \text{data to code} & (-\;-)\maps & T^2 \to T & \text{application}\\
-	& !\maps & N\times P \to P & \text{send} &&&\\
-	& ?\maps & N^2\times P \to P & \text{receive} &&&\\
-		& -\; |\; - \maps & P^2 \to P & \text{parallel} &&&\\\\
-	\textbf{Equations} && (P,\; |,\; 0) & \text{commutative} &&&\\
-	&&& \text{monoid} &&&\\\\
-	\textbf{Rewrites} & \gamma\maps & x?(y).P\; |\; x!(z)\; |\; Q \Rightarrow & P[z/y]\; |\; Q & \sigma\maps & (((S\; -)\; =)\; \equiv) \Rightarrow & ((-\; \equiv)\;(=\; \equiv))\\
-	& \epsilon\maps & *(\&(P)) \Rightarrow & P & \kappa\maps & ((K\; -)\; =) \Rightarrow & -\\
-\end{array}\]
+% Utilizing both reflection and combinators in a theory requires special type discipline; there is a designated auxiliary sort $T$ for combinatory terms which are analogous to ``machine code'', as contrasted with the sorts $N$ and $P$ which are to be thought of as the actual language: see \cite{roswelt} $\S$7.3 for the details of the translation. The presentation below is only a fragment; it has yet to be determined how to best represent the full algebraic theory of the $\rho$-calculus; we expect that a true mathematical characterization of reflection will call for original and enlightening ideas.\\
+
+% \[\textbf{\text{Th(RHO)}}\]
+% \[\begin{array}{lrllrll}
+% 	\textbf{Sorts} & N && \text{names} & T && \text{terms}\\
+% 	& P && \text{processes} &&&\\\\
+% 	\textbf{Operations} & 0\maps & 1 \to P & \text{null process} & S\maps & 1\to T & \text{combinator}\\
+% 	& \&\maps & P \to N & \text{code to data} & K\maps & 1\to T & \text{combinator}\\
+% 	& *\maps & N \to P & \text{data to code} & (-\;-)\maps & T^2 \to T & \text{application}\\
+% 	& !\maps & N\times P \to P & \text{send} &&&\\
+% 	& ?\maps & N^2\times P \to P & \text{receive} &&&\\
+% 		& -\; |\; - \maps & P^2 \to P & \text{parallel} &&&\\\\
+% 	\textbf{Equations} && (P,\; |,\; 0) & \text{commutative} &&&\\
+% 	&&& \text{monoid} &&&\\\\
+% 	\textbf{Rewrites} & \gamma\maps & x?(y).P\; |\; x!(z)\; |\; Q \Rightarrow & P[z/y]\; |\; Q & \sigma\maps & (((S\; -)\; =)\; \equiv) \Rightarrow & ((-\; \equiv)\;(=\; \equiv))\\
+% 	& \epsilon\maps & *(\&(P)) \Rightarrow & P & \kappa\maps & ((K\; -)\; =) \Rightarrow & -\\
+% \end{array}\]
 
 \section{Conclusion}
 
