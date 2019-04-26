@@ -1047,20 +1047,16 @@ Thus $\FC$ is the change-of-semantics which induces the transitive closure of th
 The same reasoning applies to the ``free poset'' functor $\FP\maps \Cat \to \Pos$; it is a change-of-semantics because the product of posets is defined in the same way. This induces the lesser-known \textbf{full-step semantics}, which collapses hom-sets to truth values, simply asserting the existence of a rewrite sequence between terms, without distinguishing between different paths. Since there was no real algebraic information in the free category, this is simply adding the property that all the distinct paths between two terms are equal, while retaining transitivity.
 
 Finally, we can pass to the purely abstract realm where all computation is already complete.   One rarely speaks of the ``free set on a poset'', but there is a left adjoint $\FS\maps \Pos \to \Set$ of the functor $\UP \maps \Set \to \Pos$ sending any set to the discrete poset on that set.
-The functor $\FP$ collapses every connected component of the poset to a point; equating every formal expression to its final value (this is cartesian because a pair of connected components corresponds to a connected component of pairs).
+The functor $\FP$ collapses every connected component of the poset to a point.   This extracts
+the denotational semantics of the language, by identifying all terms related by rewrites.  If the rewrites are terminating and confluent, we can choose a representative term for each equivalence class.
 
-Assuming that the language is \textbf{terminating}, meaning every term has a finite sequence of possible rewrites, and \textbf{confluent}, meaning every pair of paths which branch from a term eventually rejoin, then this functor gives the denotational semantics of the language. (One more note here - the untyped $SKI$ calculus is actually not terminating, and so we need to consider the simply typed $SKI$-calculus \cite{barendregt}.)
-
-Modulo a couple technicalities, from this simple sequence of functors, we can translate between the main kinds of semantics for the $SKI$-calculus. For example, we have the following computation:
+Thus, from this simple sequence of functors, we can translate between several important kinds of semantics for the $SKI$-calculus. For example, we have the following computation:
 \[\begin{tikzcd}
 &	(((S\; K)\; (I\; K))\; S) \arrow[rd,"\sigma"] \arrow[ld,swap,"\iota"] \arrow[ddl,dotted,bend left=10,"\sigma\iota"] \arrow[ddl,dotted,bend right=10,"\iota\sigma"] \arrow[ddr,dotted,swap,bend left=10,"\kappa\sigma"] \arrow[ddr,dotted,bend right=10,swap,"\kappa\sigma\iota"] \arrow[ddr,dotted,swap,bend right=25,"\kappa\iota\sigma"] &\\
 (((S\; K)\; K)\; S) \arrow[d,swap,"\sigma"] & & ((K\; S)\; ((I\; K)\; S)) \arrow[lld,swap,"\iota"] \arrow[d,"\kappa"]\\
 ((K\; S)\; (K\; S)) \arrow[rr,swap,"\kappa"] & & S
 \end{tikzcd}\]
-
 The solid arrows are the one-step rewrites of the initial $\Gph$-theory; applying $\FC_*$ gives the dotted composites, and $\FP_*$ asserts that all composites between any two objects are equal. Finally, $\FS_*$ collapses the whole diagram to $S$. This is a simple demonstration of the basic stages of computation: small-step, big-step, full-step, and denotational semantics.
-
-Of course, most interesting languages are not always terminating, confluent, nor deterministic; the ``spectrum'' of semantics being presented here is simply an initial proof-of-concept. We expect that there are more interesting change-of-base functors which handle these subtleties --- they have likely been studied in other contexts.
 
 \subsection{Change-of-theory: reduction contexts}
 We can equip term calculi with \textit{reduction contexts}, which determine when rewrites are valid, thus giving the language a certain \textbf{evaluation strategy}. For example, the ``weak head normal form'' is given by only allowing rewrites on the left-hand side of the term.
