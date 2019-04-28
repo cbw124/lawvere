@@ -319,18 +319,17 @@ called ``currying''; its counit is ``evaluation''.
 
 We can generalize products and coproducts to the enriched context.
 Given a $\V$-category $\C$,  the \textbf{$\V$-product} of an $n$-tuple of 
-objects $b_1, \dots , b_n \in \Obj(C)$ is an object $b$ equipped with $\V$-natural
-isomorphisms 
+objects $b_1, \dots , b_n \in \Obj(C)$ is an object $b$ equipped with projections $\pi_{b_i}:b\to b_i$ which induce the $\V$-natural
+isomorphism
 \[          \C(-,b) \cong \prod_{i=1}^n \C(-,b_i). \]
-If such an object exists, we denote it by $\prod_{i=1}^n b_i$.   This makes sense
+If such an object exists, we denote $b$ by $\prod_{i=1}^n b_i$.   This makes sense
 even when $n = 0$: a 0-ary product in $\C$ is called a \textbf{$\V$-terminal object} $1_\C$.   Whenever $\V$ is cartesian closed, the finite products in $\V$ are also $\V$-products in 
 $\underline{\V}$; this amounts to saying
 \[           (u \times v)^w \cong u^w \times v^w \; \textrm{ and } \; 1_\V^w \cong 1_\V .\]
 Conversely, any finite $\V$-product in $\V$ is also a product in the usual sense.
 
-Similarly, the \textbf{$\V$-coproduct} of $b_1, \dots, b_n \in \Obj(C)$ is an object
-$b$ equipped with $\V$-natural isomorphisms
-\[           C(b,-) \cong \sum_{i = 1}^n C(b_i,-). \]
+Similarly, the \textbf{$\V$-coproduct} of $b_1, \dots, b_n \in \Obj(C)$ is an object $b$ equipped with inclusions $\iota_{b_i}$ which induce the $\V$-natural isomorphism
+\[           C(b,-) \cong \prod_{i = 1}^n C(b_i,-). \]
 If such an object exists, we denote it by $\sum_{i=1}^n b_i$.  
 When $n=0$ we call this a \textbf{$\V$-initial object} $0_\C$.   When $\V$ is cartesian
 closed, any finite coproduct that exists in $\V$ is also a $\V$-coproduct in $\underline{\V}$;
@@ -339,7 +338,9 @@ this amounts to saying
 whenever $0$ is an initial object of $\V$.  Conversely, any finite $\V$-coproduct that
 exists in $\V$ is also a coproduct in the usual sense.
 
-A bit more subtly, generalizing how $\V$ has a product and internal hom, a $\V$-category $\C$ can
+We say that a $\V$-functor $F\maps \C\to \D$ \textbf{preserves} $\V$-products if for every $b = \prod_{i=1}^n b_i$ in $\C$, the images of the projections $F(\pi_{b_i})$ induce the $\V$-natural isomorphism $$\D(-,F(b)) \cong \prod_{i=1}^n \D(-,F(b_i)),$$ and similarly for $\V$-coproducts. Note that $\pi_{b_i}$ and $\iota_{b_i}$ are not elements of hom-sets: we can view the $\Set$-product as the right adjoint to the diagonal, and projections are the components of the counit; this generalizes to $\V$-products, and $\pi_{b_i}$ are components of the counit of the enriched adjunction. Although enrichment can seem mysterious, $\V\Cat$ is still a 2-category, and most theoretical aspects can be understood this way.
+
+A bit more subtly, generalizing the product and internal hom of $\V$, a $\V$-category $\C$ can
 have ``tensors'' and ``powers'' (which are sometimes called ``copowers'' and ``cotensors'').
 Given $a \in \Obj(\C)$ and $v \in \Obj(\V)$, we say an object $v \cdot a \in \Obj(\C)$ is the \define{tensor} of $a$ by $v$ if it is equipped with isomorphisms
 \[
@@ -536,7 +537,7 @@ When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to 
           M^3 \ar[d,"m\times 1",swap,""name=b1] \ar[rr,"1\times m",swap] && M^2 \ar[d,"m",""name=b2] \arrow[Rightarrow,from=b1,to=b2,"\alpha",shorten >=1.3cm,shorten <=1.3cm,swap] & = & M^3 \ar[d,"m\times 1",swap] \arrow[Rightarrow,to=c1,"\rho\times 1",shorten >=0.4cm,shorten <=0.0cm] && M^2 \ar[d,"m"] \\
           M^2 \ar[rr,"m",swap] && M && M^2 \ar[rr,"m",swap] && M
         \end{tikzcd}\]
-\noindent The top diagram expresses the pentagon identity for the associator, while the bottom one expresses the usual coherence law involving the left and right unitors.  \textbf{CHECK - SHOULDN'T THERE BE TWO UNITOR LAWS???}
+\noindent The top diagram expresses the pentagon identity for the associator, while the bottom one expresses the usual coherence law involving the left and right unitors.
    
 Models of $\T = \Th(\mathrm{PsMon})$ in $\Cat$ are monoidal categories.   A $\Cat$-enriched monad is called a 2-monad, and $\T$ gives rise to the ``free monoidal category'' 2-monad on $\Cat$ \cite{bkp}.
 Let us explore this example in more detail.  A model of $\T$ is a finite-product-preserving 2-functor $\mu\colon \T\to \Cat$, which sends 
@@ -596,7 +597,7 @@ is a category $A$ equipped with a functor $\otimes_A\maps F(A)(1)\to A$ such tha
 \section{Natural number arities}
 
 In this section we prove the lemmas required for Theorem \ref{thm:monadicity} and
-our study of base change in Section \ref{sec:base_change}.  Throughout this section $\V$ is cartesian closed with chose $n$-fold coproducts $n_\V$ of its terminal object.  
+our study of base change in Section \ref{sec:base_change}.  Throughout this section $\V$ is cartesian closed with chose $n$-fold coproducts $n_\V$ of its terminal object. By $F\maps \C\to \D$ preserving finite $\V$-products, we refer to the definition provided in $\S 3$, and assume that the $\V$-natural isomorphisms $\D(-,\prod_{i=1}^n F(b))\cong \prod_{i=1}^n \D(-,b)$, written $F(b^n)\cong F(b)^n$, are induced by the images of the projections $F(\pi_{b})$.
 
 We begin with a study of $\NN_\V$, the full subcategory of $\V$ on the objects $n_\V$.
 First we must resolve a potential ambiguity.  On the one hand,
@@ -759,9 +760,6 @@ F(c^m \times c^n) & \cong & F(c^{m+n}) & \text{$\V$-products in $\C$} \\
 \]
 \end{proof}
 
-\noindent
-\textbf{THE ABOVE ARGUMENT IS SLOPPY since ``preserving $\V$-products'' probably means more than just $F(a \times b) \cong F(a) \times F(b)$, since it means more than that for ``preserving products''.  Maybe something similar is true for preserving $\NN_\V$-powers.  WE NEVER DEFINED THESE PRESERVATION CONCEPTS!!!}
-
 \begin{lemma}
 \label{lem:powers_4}
 Let $\V$ be cartesian closed with chosen finite coproducts of the terminal object and let
@@ -814,9 +812,8 @@ for all objects $a,b$.   Composition in $F_*(\C)$ is defined by
 The identity-assigning morphisms are given by
 \[          1 \stackrel{\sim}{\longrightarrow} F(1) \stackrel{F(i_a)}{\longrightarrow}
 F(\C(a,b)) .\]
-Moreover, if $f\maps \C \to \D \in \V\Cat$ is a $\V$-functor, there is a $\W$-functor $F_*(f) \maps F_*(C) \to F_*(D)$ that on objects equals $f$ and on hom-objects equals $F(f)$.   
 
-We can also define $F_*$ on enriched natural transformations.   If $\alpha\maps f \Rightarrow g$ is a $\V$-natural transformation and $c\in \Obj(\C)$, then we define $F_*(\alpha)_c$ to be the composite
+Moreover, if $f\maps \C \to \D \in \V\Cat$ is a $\V$-functor, there is a $\W$-functor $F_*(f) \maps F_*(C) \to F_*(D)$ that on objects equals $f$ and on hom-objects equals $F(f)$. If $\alpha\maps f \Rightarrow g$ is a $\V$-natural transformation and $c\in \Obj(\C)$, then we define $F_*(\alpha)_c$ to be the composite
 \[      1 \stackrel{\sim}{\longrightarrow} F(1) \stackrel{F(i_a)}{\longrightarrow}
 F(\C(a,b)) .\]   
 Thus, change of base actually gives a 2-functor from the 2-category of $\V$-categories, 
@@ -832,7 +829,7 @@ coproducts of this object, there is a map of adjunctions
 \[\begin{tikzcd}
 	\Set \arrow[bend left,below]{rr}{-\cdot 1}
 	& \ld &
-	\arrow[bend left,above]{ll}{\V(I,-)} \V
+	\arrow[bend left,above]{ll}{\V(1,-)} \V
 	\arrow[maps to]{r}
 	& \Cat \arrow[bend left,below]{rr}{(-\cdot 1)_*}
 	& \ld &
@@ -848,8 +845,8 @@ We want to know when the functor $F \maps \V \to \W$ induces a change of base $F
 \[      \tau \maps  \A_\V \to \T \]
 we want to determine conditions for the base-changed functor 
 \[    F_*(\tau) \maps  F_*(\A_\V) \to  F_*(\T) \]
-to induce a $\W$-theory in a canonical way.   Recall that we are requiring that $\V$ and $\W$ be
-cartesian closed, equipped with chosen finite coproducts of their terminal object.   We thus 
+to induce a $\W$-theory in a canonical way.   Recall that we require $\V$ and $\W$ to be
+cartesian closed, equipped with chosen finite coproducts of their terminal objects.   We thus 
 expect the following conditions to be sufficient: $F$ should be cartesian, and it should
 preserve the chosen finite coproducts of the terminal object:
 \[      F(n_\V) = n_\W  \]
@@ -869,6 +866,26 @@ Using this we obtain a composite $\W$-functor
 This is a bijection on objects and preserves finite $\V$-products because each of the factors
 has these properties.   It is thus a $\W$-theory.
 
+% \begin{lemma}
+% 	Let $F\maps \V \to \W$ be a cartesian functor, and let $\NN_\V$, $\NN_\W$ be defined as above. If $f\maps \C \to \D$ is a $\V$-functor which preserves $\NN_\V$-powers, then $F_*(f)\maps F_*(\C)\to F_*(\D)$ is a $\W$-functor which preserves $\NN_\W$-powers.
+% \end{lemma}
+% \begin{proof}
+% 	\[\begin{array}{rcll}
+% 	F_*(\D)(F_*(f)(a),F_*(f)(s^{n_\V})) & = & F(\D(f(a),f(s^{n_\V})) & \text{definition of base change}\\
+% 	& \cong & F(\D(f(a),f(s)^{n_\V}) & f \text{ preserves } \NN_\V \text{-powers}\\
+% 	& \cong & F(\D(f(a),f(s))^n) & \text{Lemma 2 for } \V\\
+% 	& \cong & F(\D(f(a),f(s)))^n & F \text{ cartesian}\\
+% 	& = & F_*(\D)(f(a),f(s))^n & \text{definition of base change}\\
+% 	& \cong & F_*(\D)(f(a),f(s)^{n_\W}) & \text{Lemma 2 for } \W\\
+% 	F_*(\D)(F_*(f)(a),F_*(f)(t^{n_\V})) & = & F(\D(f(a),f(t^{n_\V})) & \text{definition of base change}\\
+% 	& \cong & F(\D(f(a),f(t)^{n_\V}) & f \text{ preserves } \NN_\V \text{-powers}\\
+% 	& \cong & F(\D(f(a),f(t))^n) & \text{Lemma 2 for } \V\\
+% 	& \cong & F(\D(f(a),f(t)))^n & F \text{ cartesian}\\
+% 	& = & F_*(\D)(f(a),f(t))^n & \text{definition of base change}\\
+% 	& \cong & F_*(\D)(f(a),f(t)^{n_\W}) & \text{Lemma 2 for } \W\\
+% 	\end{array}\]
+% \end{proof}
+
 \begin{theorem}
 \label{thm:change-of-base}
 Let $\V$, $\W$ be cartesian closed categories with chosen finite coproducts of their terminal objects, and let $F\maps \V \to \W$ be a cartesian functor that preserves these chosen coproducts.  Then $F$ preserves theories: that is, for every $\V$-theory $\tau_\V\maps \A_\V\to \T$, the $\W$-functor 
@@ -879,11 +896,12 @@ $(F_*(\T), \tau_\W)$.
 \end{theorem}
 
 \begin{proof}
-We have seen that $\tau_\W$ is a $\W$-theory.   To show that $F_*(\mu)$ is a model, we need
+  We have seen that $\tau_\W$ is a $\W$-theory, and $F_*(\mu)$ is a model by the previous lemma.
+  (To show that $F_*(\mu)$ is a model, we need
 to show it preserves finite $\V$-products.   We do this separately for the $\V$-terminal object and
 binary $\V$-products.  For the former, we need to show $F_*(\mu) 1_{F*(\T)}$ is $\W$-terminal
 in $F_*(\C)$, i.e.\ $F_*(\C) (c, F_*(\mu) 1_{F*(\T)}) $ is terminal in $\W$ for all objects
-$c$ of $\C$.  But ... \textbf{NEED TO FLESH THIS OUT!!!}
+$c$ of $\C$.  But ...)
 
 \iffalse
 	\[\begin{array}{rcll}
@@ -899,7 +917,7 @@ $c$ of $\C$.  But ... \textbf{NEED TO FLESH THIS OUT!!!}
 
 Hence, any cartesian functor that preserves chosen finite coproducts of the terminal object gives a ``change of semantics'' --- this is a simple, ubiquitous condition, which provides for a method of translating formal languages between various ``modes of operation''.
 
-Moreover, this reasoning generalizes to \textbf{multisorted} $\V$-theories, enriched theories which have multiple sorts: given any $n\in \mathbb{N}$, the monoidal subcategory $(\NN_\V)^n$ is also an eleutheric system of arities.   In Section \ref{ssec:multisorted}, we give an example demonstrating why this is a very useful generalization.\\
+Moreover, this reasoning generalizes to \textbf{multisorted} $\V$-theories, enriched theories which have multiple sorts: given any $n\in \mathbb{N}$, the monoidal subcategory $(\NN_\V)^n$, the category of $n$-fold products of coproducts of $1_\V$, is also an eleutheric system of arities.   In Section \ref{ssec:multisorted}, we give an example of this generalization.\\
 
 Before exploring applications, we introduce two more useful kinds of translations, and demonstrate how all of this information be encapsulated in one categorical notion.
 
@@ -1036,7 +1054,7 @@ Interestingly, in the free model on a nonempty graph, the vertices represent des
 Now we can succinctly characterize the transformation from small-step to \textbf{big-step}, which is found throughout the operational semantics literature. The ``free category'' functor $\FC\maps \Gph \to \Cat$ gives for every graph $G$ the category $\FC(G)$ whose objects are the vertices of $G$, and whose morphisms are freely generated by the edges of $G$, i.e. sequences 
 \[\begin{array}{rl}
 \text{objects} & \text{vertices of } G\\
-\text{morphisms} & \text{finite sequences of vertices and edges } (v_1,e_1,v_2,e_2,...,v_n)\\
+\text{morphisms} & (v_1,e_1,v_2,e_2,...,v_n) \; : \; \;\; \forall i<n \;\; s(e_i)=v_i \; , \; t(e_i)=v_{i+1}\\
 \text{composition} & (v_1,e_1,v_2,e_2,...,v_n) \circ (v'_1,e'_1,v'_2,e'_2,...,v'_n) = (v_1,e_1,...,v_n=v'_1,e'_1,...,v'_n)\\
 \end{array}\]
 
@@ -1096,43 +1114,13 @@ This is a necessary limitation, at least in the present setup, but there are way
 \subsection{Bisimulation}
 \label{ssec:multisorted}
 
-This paper uses simple functors to illustrate the basic idea of changing semantics. Of course, there are many interesting and useful change-of-base functors. As demonstrated, any functor $F\maps \V\to \W$ which preserves finite products and finite coproducts of the terminal object can be considered as a change in semantics. For example, if we enrich in labelled directed graphs, we can utilize the important concept of  
-
-% Many algebraic theories involve multiple sorts in an essential way. In concurrency theory, \textit{process calculi} exhibit an ontology which is fundamentally distinct from that of sequential computing --- rather than simply expressing a series of terms and rewrites, these calculi represent dynamical systems of communicating processes.
-
-% The $\pi$-calculus, designed by Milner \cite{milner}, consists of \textbf{names} and \textbf{processes}, or \textit{channels} and \textit{agents} which communicate on those channels. Far more than a sequence of instructions on a single machine, computation develops through the interaction of independent participants in a network.
-
-% This powerful idea of modern computer science is being utilized by Greg Meredith and Mike Stay to design a deeply cooperative distributive computing system, called RChain. The ``R'' stands for ``reflective higher-order $\pi$-calculus'', or \textbf{$\rho$-calculus}. It is like Milner's original language, with one crucial difference: ``reflection'' is a formal system's ability to turn code into data and vice versa. This is a powerful idea which replaces opaque, atomic variables with transparent, anatomical names, or ``quoted processes'' \cite{refl}.
-
-% Utilizing both reflection and combinators in a theory requires special type discipline; there is a designated auxiliary sort $T$ for combinatory terms which are analogous to ``machine code'', as contrasted with the sorts $N$ and $P$ which are to be thought of as the actual language: see \cite{roswelt} $\S$7.3 for the details of the translation. The presentation below is only a fragment; it has yet to be determined how to best represent the full algebraic theory of the $\rho$-calculus; we expect that a true mathematical characterization of reflection will call for original and enlightening ideas.\\
-
-% \[\textbf{\text{Th(RHO)}}\]
-% \[\begin{array}{lrllrll}
-% 	\textbf{Sorts} & N && \text{names} & T && \text{terms}\\
-% 	& P && \text{processes} &&&\\\\
-% 	\textbf{Operations} & 0\maps & 1 \to P & \text{null process} & S\maps & 1\to T & \text{combinator}\\
-% 	& \&\maps & P \to N & \text{code to data} & K\maps & 1\to T & \text{combinator}\\
-% 	& *\maps & N \to P & \text{data to code} & (-\;-)\maps & T^2 \to T & \text{application}\\
-% 	& !\maps & N\times P \to P & \text{send} &&&\\
-% 	& ?\maps & N^2\times P \to P & \text{receive} &&&\\
-% 		& -\; |\; - \maps & P^2 \to P & \text{parallel} &&&\\\\
-% 	\textbf{Equations} && (P,\; |,\; 0) & \text{commutative} &&&\\
-% 	&&& \text{monoid} &&&\\\\
-% 	\textbf{Rewrites} & \gamma\maps & x?(y).P\; |\; x!(z)\; |\; Q \Rightarrow & P[z/y]\; |\; Q & \sigma\maps & (((S\; -)\; =)\; \equiv) \Rightarrow & ((-\; \equiv)\;(=\; \equiv))\\
-% 	& \epsilon\maps & *(\&(P)) \Rightarrow & P & \kappa\maps & ((K\; -)\; =) \Rightarrow & -\\
-% \end{array}\]
+This paper uses simple functors to illustrate the basic idea of changing semantics. Of course, there are many interesting and useful change-of-base functors. As demonstrated, any functor $F\maps \V\to \W$ which preserves finite products and finite coproducts of the terminal object can be considered as a change in semantics. For example, if we enrich in labelled directed graphs, we can utilize the important concept of 
 
 \section{Conclusion}
 
 We have established the basics of how enriched Lawvere theories provide a framework for unifying the syntax and semantics, the structure and behavior of formal languages. Enriching theories in category-like structures reifies operational semantics by incorporating rewrites between terms; and cartesian functors between enriching categories induce change-of-semantics functors between categories of models---this simplified condition is obtained by using only finite cardinal arities.
 
 This base-change, along with change-of-theory and change-of-modelling, can be assimilated into one category using an iterated Grothendieck construction $\mathrm{Thy}$, which consists of all enriched Lawvere theories. Finally, enriched theories can be used not only for computational effects but the actual design of concrete programming languages, through the use of combinators.
-
-%For future work, we will consider the enrichment of simplicial sets $$\V = \mathrm{sSet} := [\Delta^\op,\Set]$$ and explore the change-of-base induced by nerve and realization. We expect there to be great utility and insight in the model-categorical, toposic, and cohomological analysis of simplicial theories.
-
-%We will also build upon the current ideas, with development of more interesting and useful implementations of change-of-base and change-of-theory, illustrated with other languages and combinators. This approach will be connected with the co-algebra approach to operational semantics, and pertinent concepts such as bisimulation will be comprehended from this perspective.\\
-
-%Additionally, we will begin research on \textit{distributive laws} for enriched Lawvere theories, as developed with $\Set$-enrichment by Eugenia Cheng \cite{ltdistlaw}. We aim to determine necessary and sufficient conditions for the existence of a distributive law between any two enriched Lawvere theories, as well as its construction; this will be used in the ``logic as a distributive law'' algorithm, developed by Greg Meredith and Mike Stay to generate sound type systems and query languages for distributed computing systems. We thank them again for providing us the opportunity and support to develop this research.
 
 \begin{thebibliography}{100}
 
@@ -1152,8 +1140,6 @@ This base-change, along with change-of-theory and change-of-modelling, can be as
 \textsl{J.\ Pure Appl.\ Algebra} \textbf{59} (1989), 1--41. 
  
 \bibitem{borceux} F.\ Borceux, \textsl{Handbook of Categorical Algebra}, vol.\ 2, Cambridge U.\ Press, Cambridge, 1994.
-
-%\bibitem{ltdistlaw} E.\ Cheng, Distributive laws for Lawvere theories, \href{https://arxiv.org/abs/1112.3076}{arXiv:1112.3076}.
 
 \bibitem{crole} R.\ Crole, \textsl{Categories for Types}, Cambridge U.\ Press, Cambridge, 1993.
 
