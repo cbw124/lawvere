@@ -318,27 +318,50 @@ is what we mean \cite{kelly}.   For example, there is an adjunction
 called ``currying''; its counit is ``evaluation''.  
 
 We can generalize products and coproducts to the enriched context.
-Given a $\V$-category $\C$,  the \textbf{$\V$-product} of an $n$-tuple of 
-objects $b_1, \dots , b_n \in \Obj(C)$ is an object $b$ equipped with projections $\pi_{b_i}:b\to b_i$ which induce the $\V$-natural
+Given a $\V$-category $\C$,  a \textbf{$\V$-product} of an $n$-tuple of 
+objects $b_1, \dots , b_n \in \Obj(C)$ is an object $b$ equipped with $\V$-natural
 isomorphism
-\[          \C(-,b) \cong \prod_{i=1}^n \C(-,b_i). \]
-If such an object exists, we denote $b$ by $\prod_{i=1}^n b_i$.   This makes sense
-even when $n = 0$: a 0-ary product in $\C$ is called a \textbf{$\V$-terminal object} $1_\C$.   Whenever $\V$ is cartesian closed, the finite products in $\V$ are also $\V$-products in 
-$\underline{\V}$; this amounts to saying
-\[           (u \times v)^w \cong u^w \times v^w \; \textrm{ and } \; 1_\V^w \cong 1_\V .\]
-Conversely, any finite $\V$-product in $\V$ is also a product in the usual sense.
+\begin{equation}
+\label{eq:prod}          \C(-,b) \cong \prod_{i=1}^n \C(-,b_i). 
+\end{equation}
+If such an object $b$ exists, we denote it by $\prod_{i=1}^n b_i$.   This makes sense
+even when $n = 0$: a 0-ary product in $\C$ is called a \textbf{$\V$-terminal object} and denoted
+as $1_\C$.  
 
-Similarly, the \textbf{$\V$-coproduct} of $b_1, \dots, b_n \in \Obj(C)$ is an object $b$ equipped with inclusions $\iota_{b_i}$ which induce the $\V$-natural isomorphism
+Whenever $\V$ is cartesian closed, the finite products in $\V$ are also $\V$-products in 
+$\underline{\V}$; this mainly amounts to saying
+\[           (u \times v)^w \cong u^w \times v^w \; \textrm{ and } \; 1_\V^w \cong 1_\V .\]
+Conversely, any finite $\V$-product in $\V$ is also a product in the usual sense. 
+In a general $\V$-category $\C$, it makes no sense to say a $\V$-product is a product
+in the usual sense.  However, the $\V$-natural isomorphism in Eq.\ \eqref{eq:prod} gives rise
+to a morphism
+\[    \pi_i \maps 1_\V \to \C(b,b_i)  \]
+for each $i$, defined as the composite
+\[    1_\V \stackrel{i_a}{\longrightarrow} \C(b,b) \stackrel{\sim}{\longrightarrow} \prod_{i=1}^n \C(b,b_i) \longrightarrow \C(b,b_i) .\]
+These morphisms $\pi_i$ serve as substitutes for the projections from $b$ to $b_i$.  They are  ``elements'' of the hom-objects $\C(b,b_i)$, where an \define{element} of $v \in \Obj(\V)$ is a 
+morphism from $1_\V$ to $v$.    Elements of hom-objects behave much like morphisms for 
+$\C$.  For example, we can define a morphism
+\[      p_i \maps \C(a,b) \to \C(a,b_i), \]
+which acts like composition with $\pi_i$, as follows: 
+\[     \C(a,b) \stackrel{\sim}{\longrightarrow} 1_\V \times \C(a,b)  
+ \stackrel{\pi_i \times 1}{\longrightarrow} \C(b,b_i) \times \C(a,b) \stackrel{\circ_{a,b,b_i}}{\longrightarrow} \C(a,b_i). \]
+This morphism is $\V$-natural in $a$, and the isomorphism in Eq.\ \eqref{eq:prod} has components given by the morphisms $p_i$.
+
+Similarly, the \textbf{$\V$-coproduct} of $b_1, \dots, b_n \in \Obj(C)$ is an object $b$ equipped with a $\V$-natural isomorphism
 \[           C(b,-) \cong \prod_{i = 1}^n C(b_i,-). \]
 If such an object exists, we denote it by $\sum_{i=1}^n b_i$.  
 When $n=0$ we call this a \textbf{$\V$-initial object} $0_\C$.   When $\V$ is cartesian
 closed, any finite coproduct that exists in $\V$ is also a $\V$-coproduct in $\underline{\V}$;
-this amounts to saying
+this mainly amounts to saying
 \[          u^{v+w} \cong u^v \times u^w \; \textrm{ and } \;  0^w \cong 1_\V \]
 whenever $0$ is an initial object of $\V$.  Conversely, any finite $\V$-coproduct that
 exists in $\V$ is also a coproduct in the usual sense.
 
-We say that a $\V$-functor $F\maps \C\to \D$ \textbf{preserves} $\V$-products if for every $b = \prod_{i=1}^n b_i$ in $\C$, the images of the projections $F(\pi_{b_i})$ induce the $\V$-natural isomorphism $$\D(-,F(b)) \cong \prod_{i=1}^n \D(-,F(b_i)),$$ and similarly for $\V$-coproducts. Note that $\pi_{b_i}$ and $\iota_{b_i}$ are not elements of hom-sets: we can view the $\Set$-product as the right adjoint to the diagonal, and projections are the components of the counit; this generalizes to $\V$-products, and $\pi_{b_i}$ are components of the counit of the enriched adjunction. Although enrichment can seem mysterious, $\V\Cat$ is still a 2-category, and most theoretical aspects can be understood this way.
+We say that a $\V$-functor $F\maps \C\to \D$ \textbf{preserves} $\V$-products if for every $b = \prod_{i=1}^n b_i$ in $\C$, the $V$-natural transformations
+\[     F(\pi_i \circ -) \maps \D(-,F(b)) \to \D(-,F(b_i))   \]
+are the components of a $\V$-natural isomorphism 
+\[           \D(-,F(b)) \cong \prod_{i=1}^n \D(-,F(b_i)), \]
+and similarly for $\V$-coproducts. 
 
 A bit more subtly, generalizing the product and internal hom of $\V$, a $\V$-category $\C$ can
 have ``tensors'' and ``powers'' (which are sometimes called ``copowers'' and ``cotensors'').
