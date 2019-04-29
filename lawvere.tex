@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/4/26
+% 2019/4/28
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -77,6 +77,7 @@ urlcolor=myurlcolor}
 \newcommand{\W}{\mathsf{W}}
 \newcommand{\D}{\mathsf{D}}
 \newcommand{\C}{\mathsf{C}}
+\newcommand{\X}{\mathsf{X}}
 \newcommand{\K}{\mathsf{K}}
 \newcommand{\J}{\mathsf{J}}
 \newcommand{\T}{\mathsf{T}}
@@ -195,7 +196,8 @@ In $\S7$ we show that models of all possible theories with all possible enrichme
 
 \subsection*{Acknowledgements}
 
-This paper builds upon the ideas of Mike Stay and Greg Meredith presented in ``Representing operational semantics with enriched Lawvere theories''  \cite{roswelt}.  We appreciate their offer to let us develop this work further for use in the innovative distributed computing system RChain, and gratefully acknowledge the support of Pyrofex Corporation. 
+This paper builds upon the ideas of Mike Stay and Greg Meredith presented in ``Representing operational semantics with enriched Lawvere theories''  \cite{roswelt}.  We appreciate their offer to let us develop this work further for use in the innovative distributed computing system RChain, and gratefully acknowledge the support of Pyrofex Corporation.  We also thank Richard Garner, Todd Trimble and others at the $n$-Category Caf\'e for classifying cartesian closed categories
+where every object is a finite coproduct of copies of the terminal object \cite{nCafe}.
 
 \section{Lawvere Theories}
 \label{sec:lawvere}
@@ -413,7 +415,7 @@ $b^v$ to be the exponential.
 
 There are just a few more technicalities. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.   A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial here: all categories to be considered are locally finitely presentable. We will use  $\V_f$ to denote the full subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
 
-\section{Enriched Lawvere theories}
+\section{Enriched Lawvere Theories}
 \label{sec:enriched_lawvere}
 
 Power introduced the notion of enriched Lawvere theory about twenty years ago, ``in seeking a general account of what have been called notions of computation'' \cite{power}. The original definition is as follows: for a symmetric monoidal closed category $(\V,\otimes,1)$, a ``$\V$-enriched Lawvere theory'' is a $\V$-category $\T$ that has powers by objects in $\V_f$, equipped with an identity-on-objects $\V$-functor 
@@ -464,16 +466,13 @@ that preserves finite $\V$-products.
 Just as all the objects of a Lawvere theory are finite products of a single object, we shall see that all the objects of $\T$ are finite $\V$-products of the object 
 \[   t = \tau(1_\V) .\]   
 
-\iffalse
-Just as every object of $\NN^\op$ is a power of $1$, every object of $\NN_\V^\op$ is a power of $1_\V$.  This fact comes from the isomorphism $n_\V \cong n_\V^1$ in $\NN_\V$ by taking opposites.   Then, since $\tau$ preserves finite powers and is bijective on objects, it follows that every object of $\T$ is a finite power of $t$.   CHECK THIS STUFF CAREFULLY!!!
-\fi
-
 \begin{definition}
-For every $\V$-theory $(T,\tau)$ and every $\V$-category $\C$ with finite $\V$-products, we define the \define{category of models} of $(\T,\tau)$ in $\C$, $\Mod(\T,\C)$, to consist of $\V$-functors $\mu \maps \T\to \C$ that preserve finite $\V$-products and $\V$-natural transformations between these.
+For every $\V$-theory $(T,\tau)$ and every $\V$-category $\C$ with finite $\V$-products, we define $\Mod(\T,\C)$, the \define{category of models} of $(\T,\tau)$ in $\C$, to be the category
+for which an object is a $\V$-functor $\mu \maps \T\to \C$ that preserves finite $\V$-products and a morphism is a $\V$-natural transformation.
 \end{definition}
 
 \begin{definition}
-We define the \define{category of} $\V$\define{-theories}, $\V\Law$, to be the category for which an object is a $\V$-theory and a morphism from $(\T,\tau)$ to $(\T',\tau')$ is a $\V$-functor $f \maps \T \to \T'$ that preserves finite $\V$-products and has $f\tau = \tau'$.   
+We define $\V\Law$, the \define{category of} $\V$\define{-theories}, to be the category for which an object is a $\V$-theory and a morphism from $(\T,\tau)$ to $(\T',\tau')$ is a $\V$-functor $f \maps \T \to \T'$ that preserves finite $\V$-products and has $f\tau = \tau'$.   
 \end{definition}
 
 The basic monadicity results for Lawvere theories generalize to $\V$-theories when $\V$ is  complete and cocomplete, as in the main examples we consider: $\V = \Gph, \Cat, \Pos,$ and $\Set$.   Under this extra assumption we shall see that $\Mod(\T,\C)$ naturally becomes a $\V$-category $\underline{\Mod}(\T,\C)$.  Furthermore, there is a $\V$-functor 
@@ -536,15 +535,15 @@ T(V) = \int^{n_\V\in \NN_\V} V^{n_\V} \times \T(t^{n_\V},t)
 
 \begin{example}
 When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to be called a \define{2-theory}.  For example, let $\T = \Th(\mathrm{PsMon})$ be the 2-theory of pseudomonoids \cite{pseudo}.   A pseudomonoid is a weakened version of a monoid: rather than associativity and unitality \textit{equations}, it has 2-isomorphisms called the associator and unitors, which we can treat as \textit{rewrite rules}.  To equate various possible rewrite sequences, these 2-isomorphisms must obey equations called ``coherence laws''.  Here is a presentation of the 2-theory for pseudomonoids:
-	\[ \textbf{Th(PsMon)} \]
+	\[ \Th(\mathrm{PsMon}) \]
 	\[\begin{array}{lll}
-	\textbf{sorts} & M & \text{pseudomonoid}\\
+	\textbf{type} & M & \text{pseudomonoid}\\
 	\textbf{operations} & e\maps1 \to M & \text{identity}\\
 	& m\maps M^2 \to M & \text{multiplication}\\
 	\textbf{rewrites} & \alpha \colon m \circ (m \times \id_M) \stackrel{\sim}{\Longrightarrow} m \circ (\id_M \times m) & \text{associator}\\
 	& \lambda\maps  m \circ (e \times \id_M) \stackrel{\sim}{\Longrightarrow} \id_M & \text{left unitor}\\
 	& \rho\maps m \circ (\id_M \times e) \stackrel{\sim}{\Longrightarrow} \id_M & \text{right unitor}\\
-	\textbf{coherence laws}
+	\textbf{equations}
           \end{array}\]
 
         \[\begin{tikzcd}
@@ -588,39 +587,53 @@ is a category $A$ equipped with a functor $\otimes_A\maps F(A)(1)\to A$ such tha
 \end{example}
 
 \begin{example}
-  Enrichment generalizes operations in more ways than by weakening equations to coherent relations. By enriching in $\V = \Cat$, $\V$-theories are, in particular, 2-categories. Hence we can consider operations which are characterized by 2-categorical properties, such as adjunction. The structure of a category $\C$ having chosen finite products is given by a right adjoint $\sqcap$ to the diagonal $\Delta_C\maps \C \to \C\times \C$. Similarly, a category is equipped with chosen finite coproducts by a left adjoint to the diagonal.
+ Enrichment generalizes operations in more ways than by weakening equations to coherent isomorphisms.  We can use 2-theories to describe structures such as adjunctions. 
+  
+For example, we may define a cartesian category $\X$ to be one equipped with right adjoints to the diagonal $\Delta_\X\maps \X \to \X \times \X$ and the unique functor $!_\X \maps \X \to 1_\Cat$.    These right adjoints are functors $m \maps \X^2 \to \X$ (describing binary products in $\X$) and $e \maps 1 \to \X$ (describing the terminal object in $\X$).   We can capture the fact that they are right adjoints by providing them with units and counits and imposing the triangle equations.   There is thus a 2-theory $\Th(\mathsf{Cart})$ whose models in $\Cat$ are categories equipped with chosen finite products.  More generally a model of this 2-theory in any 2-category $\C$ with finite products could be called a \define{cartesian object} in $\C$.  
 
-  So for example, there is a $\Cat$-theory of \textit{distributive categories}, categories equipped with finite products and coproducts, such that the former distribute over the latter. Indeed, by the internalization philosophy of algebraic theories, this generalizes the notion of distributive category to a ``distributive object'' in any 2-category with finite products. Every structure of this kind -- duoidal categories, linearly distributive categories, rig categories etc. -- can be expressed as 2-theories. This gives a systematic formalization of these categories, internalizes them to new contexts, and allows for the generation of 2-monads which encapsulate them.\newpage
+  \[ \Th(\mathsf{Cart}) \]
+  \[\begin{array}{lllllll}
+      \textbf{type} &
+        \X & \text{cartesian object}\\ \\
+      \textbf{operations}  &
+       e \maps 1 \to \X & \text{terminal element} \\
+     & m \maps \X^2 \to \X & \text{product} \\ \\
+  \textbf{rewrites}  &
+\bigtriangleup\maps \mathrm{id}_\X \Longrightarrow m \circ\, \Delta_\X & \text{unit of adjunction between $m$ and $\Delta_\X$} 
+\\
+&
+\pi\maps \Delta_\X \circ \times \Longrightarrow \mathrm{id}_{\X^2} & \text{counit of adjunction between $m$ and $\Delta_\X$} 
+\\
+& \top\maps \mathrm{id}_\X \Longrightarrow \ast \,\circ\, !_\X & \text{unit of 
+adjunction between $e$ and $!_\X$} \\\\
+ \end{array}\]
+\[
+\begin{array}{lllllll}
+   \textbf{equations}  &
+    \text{triangle equations for adjunction between $m$ and $\Delta_\X$} \qquad\qquad\; \\
+& \text{triangle equations for adjunction between $i$ and $!_\X$} \\
 
-  \[ \textbf{Th(DistObj)} \]
-  \[\begin{array}{lllll}
-      \textbf{sort} \\
-             \D & \text{distributive object}\\\\
-            
-      \textbf{products}  &&& \textbf{coproducts} \\
-      \sqcap\maps \D^2 \to \D & \text{product} && \sqcup\maps \D^2 \to \D & \text{coproduct}\\
-\bigtriangleup\maps id_\D \Longrightarrow \sqcap\Delta_\D & \text{diagonal} && \bigtriangledown\maps \sqcup\Delta_\D \Longrightarrow id_\D & \text{folding}\\
-\pi\maps \Delta_\D\sqcap \Longrightarrow id_{\D^2} & \text{projection} && \iota\maps id_{D^2}\Longrightarrow \Delta_\D\sqcup & \text{inclusion}\\
-(\bigtriangleup, \pi)\maps \sqcap \vdash \Delta_\D & \text{universality} && (\bigtriangledown,\iota)\maps \Delta_\D \vdash \sqcup & \text{universality}\\\\
-
-\ast\maps 1 \to \D & \text{terminal element} && \emptyset\maps 1\to \D & \text{initial element}\\
-\top\maps id_\D\Longrightarrow \ast !_\D & \text{terminate} && \bot\maps !_\D\emptyset \Longrightarrow id_\D & \text{initiate}\\
-(\top,id_1)\maps \ast\vdash\; !_\D &  \text{universality} && (id_1,\bot)\maps !_\D\vdash \emptyset & \text{universality}\\\\
-          \end{array}\]
-        \[\begin{array}{ll}
-            \textbf{distributivity} & \delta\maps a\sqcap(b\sqcup c) \stackrel{\sim}{\Longrightarrow} (a\sqcap b)\sqcup(a\sqcap c)\\
           \end{array}\]\\
 
-        In the 2-theory of distributive categories, there is a subtle distinction between the external product structure of the theory, and the internal product structure of the generating object -- this is the \textit{microcosm principle} at work \cite{}. Without the coproduct structure, this is the 2-theory of categories with finite products, also known as multisorted Lawvere theories, or algebraic theories. This serves as a testament to the power of the generalization from theories to enriched theories: the former is a category of models of the latter.
+We omit the counit of the adjunction between $e \maps 1 \to \X$ and $!_\X \maps \X 
+\to 1$ because one of the triangle equations says it is an identity 2-morphism. 
 
-        In fact, letting arities be finite categories, there are $\Cat$-theories of categories with limits and colimits, and we can internalize this structure in any 2-category with products. However for the purposes of this paper, to establish and simplify these concepts, we focus on arities which are like the natural numbers, and justify the claim that ``$\V$-theories are simply $\V$-categories with finite products''.
-        
-      \end{example}
+The subtle interplay between the cartesian structure of $\Th(\mathsf{Cart}$ and the 
+cartesian structure of the object $\X \in \Th(\mathsf{Cart}$ is an example of the ``microcosm
+principle'': objects with a given structure are most generally defined in a context that has
+the same sort of structure.   As seen in the previous example, we can also define pseudomonoids
+in any 2-category with finite products, but this is excess to requirements: one can in 
+fact define them more generally in any monoidal 2-category \cite{pseudo}.
 
-\section{Natural number arities}
+Without the coproduct structure, this is the 2-theory of categories with finite products, also known as multisorted Lawvere theories, or algebraic theories. This serves as a testament to the power of the generalization from theories to enriched theories: the former is a category of models of the latter.
+
+In fact, if we let arities be finite categories, we would have $\Cat$-theories of categories with finite limits and colimits.   However, for the purposes of this paper we are using only natural number arities, which suffice for finite products and coproducts.   Various other kinds of categories---duoidal categories, linearly distributive categories, rig categories, etc.---can also be expressed using $\Cat$-theories with natural number arities. This gives a systematic formalization of these categories, internalizes them to new contexts, and allows for the generation of 2-monads which encapsulate them.
+\end{example}
+
+\section{Natural Number Arities}
 
 In this section we prove the lemmas required for Theorem \ref{thm:monadicity} and
-our study of base change in Section \ref{sec:base_change}.  Throughout this section $\V$ is cartesian closed with chose $n$-fold coproducts $n_\V$ of its terminal object. By $F\maps \C\to \D$ preserving finite $\V$-products, we refer to the definition provided in $\S 3$, and assume that the $\V$-natural isomorphisms $\D(-,\prod_{i=1}^n F(b))\cong \prod_{i=1}^n \D(-,b)$, written $F(b^n)\cong F(b)^n$, are induced by the images of the projections $F(\pi_{b})$.
+our study of base change in Section \ref{sec:base_change}.  Throughout this section $\V$ is cartesian closed with chose $n$-fold coproducts $n_\V$ of its terminal object. 
 
 We begin with a study of $\NN_\V$, the full subcategory of $\V$ on the objects $n_\V$.
 First we must resolve a potential ambiguity.  On the one hand,
@@ -684,12 +697,10 @@ Exponentials in $\NN_\V$ are also unique, given by
 
 We warn the reader that $\hom(m_\V,n_\V)$ may not have $n^m$ elements.  It does
 in $\Gph,\Cat,\Pos$ and of course $\Set$, but not in $\V = \Set^k$, where
-$|\hom(m_\V, n_\V)| = n^{km}$.   Richard Garner has shown us a simple 
-argument showing that $|\hom(1_\V,2_\V)|$ must be a power of 2 if it is
-finite.   Namely, $2_\V$ is an internal Boolean algebra in $\V$, so its set of 
-points must be a Boolean algebra in $\Set$, and thus its cardinality must be a power
-of 2 when finite.  It should be possible to completely understand the structure of
-$\NN_\V$ as a category, but this would be a digression from our current mission.
+$|\hom(m_\V, n_\V)| = n^{km}$.    In fact, whenever $\NN_\V$ has finite hom-sets
+it is equivalent to $\FinSet^k$ for some $k$.   The reason is that $2_\V$ is 
+an internal Boolean algebra in $\V$, so its set of elements $\hom(1_\V,2_\V)$ 
+must be some Boolean algebra $B$ in $\Set$.   A further argument due to Garner and Trimble shows that $\NN_\V$ is completely characterized, up to equivalence, by this Boolean algebra, and any Boolean algebra can occur \cite{nCafe}.   By the classification of finite Boolean algebras, if $B$ is finite it must be isomorphic to $\{F,T\}^k$ for some $k \ge 0$.  In this case, $\NN_V$ is equivalent to $\FinSet^k$.
 
 Now suppose $\C$ is a $\V$-category.   The question arises whether the
 power of an object $c \in \C$ by $n_\V$ must also be the $\V$-product of $n$ copies
@@ -744,6 +755,8 @@ that any natural numbers $m,n$ and $a \in \V$ there is an isomorphism
 \]
 \end{proof}	
 \fi
+
+WE NEED TO DEFINE PRESERVATION OF $\NN_\V$-POWERS, AND FIX THE PROOFS BELOW!!!
 
 \begin{lemma}
 \label{lem:powers_3}
@@ -919,14 +932,12 @@ $(F_*(\T), \tau_\W)$.
 \end{theorem}
 
 \begin{proof}
-  We have seen that $\tau_\W$ is a $\W$-theory, and $F_*(\mu)$ is a model by the previous lemma.
-  (To show that $F_*(\mu)$ is a model, we need
+To show that $F_*(\mu)$ is a model, we need
 to show it preserves finite $\V$-products.   We do this separately for the $\V$-terminal object and
 binary $\V$-products.  For the former, we need to show $F_*(\mu) 1_{F*(\T)}$ is $\W$-terminal
 in $F_*(\C)$, i.e.\ $F_*(\C) (c, F_*(\mu) 1_{F*(\T)}) $ is terminal in $\W$ for all objects
-$c$ of $\C$.  But ...)
+$c$ of $\C$.  But ...   FINISH THIS!!!
 
-\iffalse
 	\[\begin{array}{rcll}
 	F_*(\D)(F_*(f)(a),F_*(f)(s^{n_\V})) & = & F(\D(f(a),f(t^{n_\V})) & \text{definition of base change}\\
 	& \cong & F(\D(f(a),f(t)^{n_\V}) & f \text{ preserves } \NN_\V \text{-powers}\\
@@ -935,7 +946,6 @@ $c$ of $\C$.  But ...)
 	& = & F_*(\D)(f(a),f(t))^n & \text{definition of base change}\\
 	& \cong & F_*(\D)(f(a),f(t)^{n_\W}) & \text{Lemma \ref{lem:powers_1} for } \W. \qedhere
 	\end{array}\]
-\fi
 \end{proof}
 
 Hence, any cartesian functor that preserves chosen finite coproducts of the terminal object gives a ``change of semantics'' --- this is a simple, ubiquitous condition, which provides for a method of translating formal languages between various ``modes of operation''.
@@ -944,7 +954,7 @@ Moreover, this reasoning generalizes to \textbf{multisorted} $\V$-theories, enri
 
 Before exploring applications, we introduce two more useful kinds of translations, and demonstrate how all of this information be encapsulated in one categorical notion.
 
-\section{The category of all $\V$-theories}
+\section{The Category of all $\V$-Theories}
 
 In addition to change-of-base, there are two other natural and useful translations for these theories. Let $\V\mathrm{Law}$ be the category of $\V$-theories, and let $f\maps\T\to \T'$ be a morphism of theories; this induces a ``change-of-theory'' functor between the respective categories of models $$f^*\maps\V\Mod(\T',\C)\to \V\Mod(\T,\C)$$ defined as precomposition with $f$. Similarly, given a cartesian functor $g\maps \C \to \C'$, this induces a ``change-of-model'' functor $$g_*\maps\V\Mod(\T,\C) \to \V\Mod(\T,\C')$$ defined as postcomposition with $g$.   \textbf{NO, we need preservation of chosen finite coproducts of the terminal object as well!!!  Fix this everywhere!!!  We need a different category, not $\CCC$, below!!!}
 
@@ -1062,19 +1072,19 @@ Finally, the fact that $\mu((-\;-))$ is not just a function but a graph homomorp
 	S & ((K\; S)\; K)\arrow[l,"\kappa"]
 \end{tikzcd}\]
 
-This process is intuitive, but how do we actually define the model, as a functor, to pick out a specific graph? There are many models of $\Th(SKI)$, but in particular we care about the canonical \textit{free} model, which means that $\mu(t)$ is simply the graph of all closed terms and rewrites in the $SKI$-calculus. This utilizes the enriched adjunction of $\S4$:
+This process is intuitive, but how do we actually define the model, as a functor, to pick out a specific graph? There are many models of $\Th(SKI)$, but in particular we care about the canonical \textit{free} model, which means that $\mu(t)$ is simply the graph of all closed terms and rewrites in the $SKI$-calculus. This utilizes the enriched adjunction of Thm.\ \ref{thm:monadicity}:
 \[\begin{tikzcd}
-\Gph \arrow[bend left=10,"f_\Gph"]{rr}
-& \ld &
-\arrow[bend left=10,"u_\Gph"]{ll} \Mod(\Th(SKI),\Gph)
+\phantom{AAAA} \Gph \arrow[bend left=20,"f_\Gph"]{rr}
+& {\phantom{Aa} \ld} &
+\arrow[bend left=20,"u_\Gph"]{ll} \Mod(\Th(SKI),\Gph)
 \end{tikzcd}\]
 
 Then the canonical model of closed terms and rewrites is simply the free model on the empty graph, $f_\Gph(\emptyset)$, i.e. the $\V$-functor $\T(1,-)\maps\T\to \V$. Hence for us, the syntax and semantics of the $SKI$ combinator calculus are unified in the model $$\mu_{SKI}^\Gph:= \Th(SKI)(1,-)\maps \Th(SKI) \to \Gph$$ Here we reap the benefits of the abstract construction: the graph $\mu_{SKI}^\Gph(t)$ is the \textit{transition system} which represents the \textbf{small-step operational semantics} of the $SKI$-calculus: $$(\mu(a) \to \mu(b) \in \mu_{SKI}^\Gph(t)) \iff (a \Rightarrow b \in \Th(SKI)(1,t))$$
 
 Interestingly, in the free model on a nonempty graph, the vertices represent designated ``ground variables'', and edges represent rewrites of one variable into another. This is potentially useful for ``building in'' a language with other basic features not intrinsic to the theory.
 
-\subsection{Change-of-base}
-Now we can succinctly characterize the transformation from small-step to \textbf{big-step}, which is found throughout the operational semantics literature. The ``free category'' functor $\FC\maps \Gph \to \Cat$ gives for every graph $G$ the category $\FC(G)$ whose objects are the vertices of $G$, and whose morphisms are freely generated by the edges of $G$, i.e. sequences 
+\subsection{Change of base}
+Now we can succinctly characterize the transformation from small-step to \textbf{big-step} operational semantics. The ``free category'' functor $\FC\maps \Gph \to \Cat$ gives for every graph $G$ the category $\FC(G)$ whose objects are the vertices of $G$, and whose morphisms are freely generated by the edges of $G$, i.e. sequences 
 \[\begin{array}{rl}
 \text{objects} & \text{vertices of } G\\
 \text{morphisms} & (v_1,e_1,v_2,e_2,...,v_n) \; : \; \;\; \forall i<n \;\; s(e_i)=v_i \; , \; t(e_i)=v_{i+1}\\
@@ -1089,7 +1099,7 @@ The same reasoning applies to the ``free poset'' functor $\FP\maps \Cat \to \Pos
 
 Finally, we can pass to the purely abstract realm where all computation is already complete.   One rarely speaks of the ``free set on a poset'', but there is a left adjoint $\FS\maps \Pos \to \Set$ of the functor $\UP \maps \Set \to \Pos$ sending any set to the discrete poset on that set.
 The functor $\FP$ collapses every connected component of the poset to a point.   This extracts
-the denotational semantics of the language, by identifying all terms related by rewrites.  If the rewrites are terminating and confluent, we can choose a representative term for each equivalence class.
+the denotational semantics of the language, by identifying all terms related by rewrites.  If the rewrites are terminating and confluent, we can choose a representative term for each equivalence class: the unique term that admits no nontrivial rewrites.
 
 Thus, from this simple sequence of functors, we can translate between several important kinds of semantics for the $SKI$-calculus. For example, we have the following computation:
 \[\begin{tikzcd}
@@ -1149,6 +1159,8 @@ This base-change, along with change-of-theory and change-of-modelling, can be as
 
 \bibitem{adamekrosicky} J.\ Ad\'{a}mek and J.\ Rosick\'{y}, \textsl{Locally Presentable and Accessible Categories}, Cambridge U.\ Press, Cambridge, 1994.
 
+\bibitem{nCafe} J.\ Baez, Can 1+1 have more than two points?, \textsl{The $n$-Category Caf\'e}, April 19, 2019.   Available at \href{https://golem.ph.utexas.edu/category/2019/04/can_11_have_more_than_two_poin.html}{https://golem.ph.utexas.edu/category/2019/04/can\_11\_have\_more\_than\_two\_poin.html}.
+
 \bibitem{baezstay} J.\ Baez and M.\ Stay, Physics, topology, logic and computation: a Rosetta Stone, in \textsl{New Structures for Physics}, ed.\ B.\ Coecke, Springer, Berlin, 2011, pp.\ 95--172.  Available as \href{https://arxiv.org/abs/0903.0340}{arXiv:0903.0340}.
 
 \bibitem{barendregt} H.P. Barendregt, The Lambda Calculus, its syntax and semantics, in \textsl{Studies in Logic and The Foundations of Mathematics}, Elsevier, London, 1984.
@@ -1166,6 +1178,9 @@ This base-change, along with change-of-theory and change-of-modelling, can be as
 
 \bibitem{crole} R.\ Crole, \textsl{Categories for Types}, Cambridge U.\ Press, Cambridge, 1993.
 
+\bibitem{pseudo} B.\ Day and R.\ Street, Monoidal categories and Hopf algebroids,
+\textsl{Adv.\ Math.} \textbf{127} (1997), 99--157.
+
 \bibitem{hylandpower} M.\ Hyland and J.\ Power, The category theoretic understanding of 
 universal algebra: Lawvere theories and monads, in \textsl{Electron.\ Notes Theor.\ Comput.\ 
 Sci.} \textbf{172} (2007), 437--458.
@@ -1177,9 +1192,6 @@ Sci.} \textbf{172} (2007), 437--458.
 
 \bibitem{powsketch} Y.\ Kinoshita, J.\ Power and M.\ Takeyama, Sketches,
 \textsl{J.\ Pure Appl.\ Algebra} \textbf{143} (1999), 275--291.
-
-\bibitem{pseudo} B.\ Day and R.\ Street, Monoidal categories and Hopf algebroids,
-\textsl{Adv.\ Math.} \textbf{127} (1997), 99--157.
 
 \bibitem{lawvere} F.\ W.\ Lawvere, Functorial semantics of algebraic theories, reprinted in
 \textsl{Repr.\ Theory Appl.\ Categ.} \textbf{5} (2004), 1--121.  Available at \href{http://tac.mta.ca/tac/reprints/articles/5/tr5abs.html}{http://tac.mta.ca/tac/reprints/articles/5/tr5abs.html}.
