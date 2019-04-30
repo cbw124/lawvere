@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/4/28
+% 2019/4/29
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -102,7 +102,7 @@ urlcolor=myurlcolor}
 \begin{document}
 
 \title{Enriched Lawvere Theories 
-for Operational Semantics}
+for Operational Semantics \\ DRAFT VERSION}
 
 \maketitle
 \begin{center}   
@@ -130,7 +130,7 @@ for Operational Semantics}
 \end{center} 
 
 \begin{abstract} 
-Enriched Lawvere theories are a generalization of Lawvere theories that allow us to describe operational semantics for formal systems.  For example, a graph-enriched Lawvere theory describes structures that have a \emph{graph} of operations of each arity, where the vertices are operations and the edges are rewrites going between operations. Enriched theories can be used to equip systems with operational semantics, and maps between enriching categories can serve to translate between different forms of operational and denotational semantics. We use a definition of Lucyshyn-Wright which allows for theories to be parameterized by a monoidal subcategory of arities, and show that presentation of enriched Lawvere theories is simplified by restricting to natural number arities. We illustrate these ideas with the $SKI$ combinator calculus, a variable-free version of the lambda calculus, presented as a graph-enriched theory.  
+Enriched Lawvere theories are a generalization of Lawvere theories that allow us to describe operational semantics for formal systems.  For example, a graph-enriched Lawvere theory describes structures that have a \emph{graph} of operations of each arity, where the vertices are operations and the edges are rewrites going between operations. Enriched theories can be used to equip systems with operational semantics, and maps between enriching categories can serve to translate between different forms of operational and denotational semantics.  We illustrate these ideas with the $SKI$ combinator calculus, a variable-free version of the lambda calculus, presented as a graph-enriched theory.  
 \end{abstract}
 
 \section{Introduction}
@@ -475,7 +475,7 @@ for which an object is a $\V$-functor $\mu \maps \T\to \C$ that preserves finite
 We define $\V\Law$, the \define{category of} $\V$\define{-theories}, to be the category for which an object is a $\V$-theory and a morphism from $(\T,\tau)$ to $(\T',\tau')$ is a $\V$-functor $f \maps \T \to \T'$ that preserves finite $\V$-products and has $f\tau = \tau'$.   
 \end{definition}
 
-The basic monadicity results for Lawvere theories generalize to $\V$-theories when $\V$ is  complete and cocomplete, as in the main examples we consider: $\V = \Gph, \Cat, \Pos,$ and $\Set$.   Under this extra assumption we shall see that $\Mod(\T,\C)$ naturally becomes a $\V$-category $\underline{\Mod}(\T,\C)$.  Furthermore, there is a $\V$-functor 
+The basic monadicity results for Lawvere theories generalize to $\V$-theories when $\V$ is  complete and cocomplete, as in the main examples we consider: $\V = \Gph, \Cat, \Pos,$ and $\Set$.   Under this extra assumption $\Mod(\T,\C)$ naturally becomes a $\V$-category $\underline{\Mod}(\T,\C)$.  Furthermore, there is a $\V$-functor 
 \[   U \maps \underline{\Mod}(\T,\V) \to \underline{\V} \]
 sending any model  $\mu \maps \T \to \V$ to its underlying object $\mu(t) \in \V$.   
 Recall that monads and adjunctions make sense in $\V\Cat$, just as they do in $\Cat$.  
@@ -497,13 +497,9 @@ Suppose $\V$ is cartesian closed, complete and cocomplete, and has chosen finite
 This follows from Lucyshyn-Wright's general theory \cite{lucyshyn-wright}, so our task is
 to explain how.   He allows $\V$ to be a symmetric monoidal category, and uses a more general concept of algebraic theory with a system of arities given by any fully faithful symmetric monoidal $\V$-functor $j \maps \J \to \underline{\V}$.   For us $\J = \underline{\NN}_\V$ and $j \maps \underline{\NN}_\V \to \underline{\V}$ is the obvious inclusion; this is his Example 3.7.
 
-Lucyshyn-Wright defines a \textbf{$\J$-theory} to be a $\V$-functor $\tau \maps \J^\op \to \T$ that is the identity on objects and preserves powers by objects in $\J$ (or more precisely, their images under $j$).  For us $\J^\op = \A_\V$.   We are only demanding that $\tau \maps \A_\V \to \T$ be bijective on objects, but we can make it the identity on objects simply by renaming the objects of $\T$.  So, to apply his theory, we need to show that a $\V$-functor $\tau \maps \A_\V \to \T$ preserves powers by objects in $\NN_\V$ if and only if it preserves finite $\V$-products.
-This is Lemma \ref{lem:powers_4} below.
+Lucyshyn-Wright defines a \textbf{$\J$-theory} to be a $\V$-functor $\tau \maps \J^\op \to \T$ that is the identity on objects and preserves powers by objects in $\J$ (or more precisely, their images under $j$).  For us $\J^\op = \A_\V$.   We are only demanding that $\tau \maps \A_\V \to \T$ be bijective on objects, but we can make it the identity on objects simply by renaming the objects of $\T$.  So, to apply his theory, we need to show that a $\V$-functor $\tau \maps \A_\V \to \T$ preserves powers by objects in $\NN_\V$ if and only if it preserves finite $\V$-products.  This is Lemma \ref{lem:powers_4} below.
 
-He defines a model (or ``algebra'') of a $\J$-theory to be a $\V$-functor $\tau \maps \T \to \underline{\V}$ that preserves powers by objects in $\J$.   He defines a morphism of models to be 
-a $\V$-natural transformation between such $\V$-functors.  So, to apply his theory, we also
-need to show that when $\J = \underline{\NN}_\V$, a $\V$-functor $\mu \maps \T \to \underline{\V}$ preserves powers by objects of $\J$ if and only if it preserves finite
-$\V$-products.   This is Lemma \ref{lem:powers_5} below.
+He defines a model (or ``algebra'') of a $\J$-theory to be a $\V$-functor $\tau \maps \T \to \underline{\V}$ that preserves powers by objects in $\J$.   He defines a morphism of models to be a $\V$-natural transformation between such $\V$-functors.  So, to apply his theory, we also need to show that when $\J = \underline{\NN}_\V$, a $\V$-functor $\mu \maps \T \to \underline{\V}$ preserves powers by objects of $\J$ if and only if it preserves finite $\V$-products.   This is Lemma \ref{lem:powers_5} below.
 
 A technical concept fundamental to Lucyshyn-Wright's theory is that of an \define{eleutheric} system of arities $j \maps \J \to \underline{\V}$.  This is one where the left Kan extension of any $\V$-functor $T \maps \J \to \underline{\V}$ along $j$ exists and is preserved by each $\V$-functor
 $\underline{\V}(x,-) \maps \underline{\V} \to \underline{\V}$.  In Example 7.5.5 he shows
@@ -512,7 +508,7 @@ countably cocomplete.  In Thm.\ 8.9 shows that when $j \maps \J \to \underline{\
 \[   U \maps \underline{\Mod}(\T,\V) \to \underline{\V} \]
 is monadic.  This is the result we need.   So, our theorem actually holds whenever $\V$ is cartesian closed, with equalizers and countable colimits, and has chosen finite coproducts of the initial object.  \end{proof}
 
-Before proving the required lemmas, a word about Lucyshyn-Wright's construction of the left adjoint $F$ and the monad $T$ is in order.  These rely on the ``free model'' on an object $n_\V \in \V$.   This is the enriched generalization of the free model described in Section \ref{sec:lawvere}: it is the composite of $\tau^\op\maps \A_\V^\op \to \T^\op$ with the enriched Yoneda embedding $y\maps \T^\op \to [\T,\V]$:
+Before turning to examples, a word about Lucyshyn-Wright's construction of the left adjoint $F$ and the monad $T$ is in order.  These rely on the ``free model'' on an object $n_\V \in \V$.   This is the enriched generalization of the free model described in Section \ref{sec:lawvere}: it is the composite of $\tau^\op\maps \A_\V^\op \to \T^\op$ with the enriched Yoneda embedding $y\maps \T^\op \to [\T,\V]$:
 \[
 \begin{array}{rllll}
 \A_\V^\op & \xrightarrow{\tau^\op} & \T^\op & \xrightarrow{y} & \left[\T,\V\right]\\
@@ -538,8 +534,9 @@ When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to 
 	\[ \Th(\mathrm{PsMon}) \]
 	\[\begin{array}{lll}
 	\textbf{type} & M & \text{pseudomonoid}\\
-	\textbf{operations} & e\maps1 \to M & \text{identity}\\
+	 \textbf{operations}
 	& m\maps M^2 \to M & \text{multiplication}\\
+	 & e\maps1 \to M & \text{identity}\\
 	\textbf{rewrites} & \alpha \colon m \circ (m \times \id_M) \stackrel{\sim}{\Longrightarrow} m \circ (\id_M \times m) & \text{associator}\\
 	& \lambda\maps  m \circ (e \times \id_M) \stackrel{\sim}{\Longrightarrow} \id_M & \text{left unitor}\\
 	& \rho\maps m \circ (\id_M \times e) \stackrel{\sim}{\Longrightarrow} \id_M & \text{right unitor}\\
@@ -559,7 +556,7 @@ When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to 
           M^3 \ar[d,"m\times 1",swap,""name=b1] \ar[rr,"1\times m",swap] && M^2 \ar[d,"m",""name=b2] \arrow[Rightarrow,from=b1,to=b2,"\alpha",shorten >=1.3cm,shorten <=1.3cm,swap] & = & M^3 \ar[d,"m\times 1",swap] \arrow[Rightarrow,to=c1,"\rho\times 1",shorten >=0.4cm,shorten <=0.0cm] && M^2 \ar[d,"m"] \\
           M^2 \ar[rr,"m",swap] && M && M^2 \ar[rr,"m",swap] && M
         \end{tikzcd}\]
-\noindent The top diagram expresses the pentagon identity for the associator, while the bottom one expresses the usual coherence law involving the left and right unitors.
+\noindent We write the equations as commutative diagrams merely for convenience; they could also be written as equations in a more traditional style.   The top diagram expresses the pentagon identity for the associator, while the bottom one expresses the usual coherence law involving the left and right unitors.
    
 Models of $\T = \Th(\mathrm{PsMon})$ in $\Cat$ are monoidal categories.   A $\Cat$-enriched monad is called a 2-monad, and $\T$ gives rise to the ``free monoidal category'' 2-monad on $\Cat$ \cite{bkp}.
 Let us explore this example in more detail.  A model of $\T$ is a finite-product-preserving 2-functor $\mu\colon \T\to \Cat$, which sends 
@@ -582,52 +579,52 @@ This functor is not very intuitive, but composing with the left adjoint, i.e., e
 
 In general for each $m\in \NN_\Cat$, $F(\C)(m)$ gives the category of all $m$-tuples of elements of $F(C)(1)$, forming the ``free monoidal category on $\C$ with $m$ variables''.  Finally, an algebra of the monad 
 \[  T = UF \maps \C \mapsto \int^n \C^n \times \T(n,1) \]
-is a category $A$ equipped with a functor $\otimes_A\maps F(A)(1)\to A$ such that it is compatible with the multiplication and unit of the monad, which are the ``free'' tensor bifunctor and monoidal unit on $A$. Hence, $(A,\otimes_A,I_A)$ is precisely a monoidal category, and we have the equivalence: 
-\[ \Mod(\T,\Cat) \simeq \mathrm{Alg}(T). \]
+is a category $A$ equipped with a functor $\otimes_A\maps F(A)(1)\to A$ such that it is compatible with the multiplication and unit of the monad, which are the ``free'' tensor bifunctor and monoidal unit on $A$. Hence, $(A,\otimes_A,I_A)$ is precisely a monoidal category.   
 \end{example}
 
 \begin{example}
- Enrichment generalizes operations in more ways than by weakening equations to coherent isomorphisms.  We can use 2-theories to describe structures such as adjunctions. 
+ Enrichment generalizes operations in more ways than by weakening equations to coherent isomorphisms.  We can also use 2-theories to describe other structures that make sense inside 2-categories, such as adjunctions. 
   
-For example, we may define a cartesian category $\X$ to be one equipped with right adjoints to the diagonal $\Delta_\X\maps \X \to \X \times \X$ and the unique functor $!_\X \maps \X \to 1_\Cat$.    These right adjoints are functors $m \maps \X^2 \to \X$ (describing binary products in $\X$) and $e \maps 1 \to \X$ (describing the terminal object in $\X$).   We can capture the fact that they are right adjoints by providing them with units and counits and imposing the triangle equations.   There is thus a 2-theory $\Th(\mathsf{Cart})$ whose models in $\Cat$ are categories equipped with chosen finite products.  More generally a model of this 2-theory in any 2-category $\C$ with finite products could be called a \define{cartesian object} in $\C$.  
+For example, we may define a cartesian category $\X$ to be one equipped with right adjoints to the diagonal $\Delta_\X\maps \X \to \X \times \X$ and the unique functor $!_\X \maps \X \to 1_\Cat$.    These right adjoints are a functor $m \maps \X^2 \to \X$ describing binary products in $\X$ and a functor $e \maps 1 \to \X$ picking out the terminal object in $\X$.   We can capture the fact that they are right adjoints by providing them with units and counits and imposing the triangle equations.   There is thus a 2-theory $\Th(\mathsf{Cart})$ whose models in $\Cat$ are categories with chosen finite products.  More generally a model of this 2-theory in any 2-category $\C$ with finite products could be called a \define{cartesian object} in $\C$.  
 
   \[ \Th(\mathsf{Cart}) \]
   \[\begin{array}{lllllll}
       \textbf{type} &
         \X & \text{cartesian object}\\ \\
       \textbf{operations}  &
-       e \maps 1 \to \X & \text{terminal element} \\
-     & m \maps \X^2 \to \X & \text{product} \\ \\
+      m \maps \X^2 \to \X & \text{product} \\ 
+        &  e \maps 1 \to \X & \text{terminal element} \\ \\
   \textbf{rewrites}  &
 \bigtriangleup\maps \mathrm{id}_\X \Longrightarrow m \circ\, \Delta_\X & \text{unit of adjunction between $m$ and $\Delta_\X$} 
 \\
 &
 \pi\maps \Delta_\X \circ \times \Longrightarrow \mathrm{id}_{\X^2} & \text{counit of adjunction between $m$ and $\Delta_\X$} 
 \\
-& \top\maps \mathrm{id}_\X \Longrightarrow \ast \,\circ\, !_\X & \text{unit of 
-adjunction between $e$ and $!_\X$} \\\\
+& \top\maps \mathrm{id}_\X \Longrightarrow e \,\circ\, !_\X & \text{unit of adjunction between $e$ and $!_\X$} \\
+& \epsilon \maps !_\X \, \circ \, e \Longrightarrow \mathrm{id}_{1} & \text{counit of adjunction between $e$ and $!_\X$} \\\\
+ \textbf{equations}  
  \end{array}\]
-\[
-\begin{array}{lllllll}
-   \textbf{equations}  &
-    \text{triangle equations for adjunction between $m$ and $\Delta_\X$} \qquad\qquad\; \\
-& \text{triangle equations for adjunction between $i$ and $!_\X$} \\
+\[\begin{tikzcd}
+\Delta_\X \ar[Rightarrow,d,"\Delta_\X \circ \bigtriangleup",swap,""name=b1] \ar[Rightarrow,dr,"1"]
+& &   
+m \ar[Rightarrow,d,"\bigtriangleup \circ m",swap,""name=b1] \ar[Rightarrow,dr,"1"]  \\
+         \Delta_X \circ m \circ \Delta_\X \ar[Rightarrow,r,"\pi \circ \Delta_\X",swap] & \Delta_\X & 
+         m \circ \Delta_X \circ m \ar[Rightarrow,r,"m \circ \pi",swap] & m
+        \end{tikzcd}\]
+\[\begin{tikzcd}
+!_\X \ar[Rightarrow,d,"!_\X \circ \top",swap,""name=b1] \ar[Rightarrow,dr,"1"]
+& &   
+e \ar[Rightarrow,d,"\top \circ e",swap,""name=b1] \ar[Rightarrow,dr,"1"]  \\
+         !_X \circ e \, \circ \, !_\X \ar[Rightarrow,r,"\epsilon \circ !_\X",swap] & !_\X & 
+         e \, \circ \, !_X \circ e \ar[Rightarrow,r,"e \circ \epsilon",swap] & e
+        \end{tikzcd}\]
+Again we write the equations as commutative diagrams, but this time commutative
+triangles of 2-morphisms in $\Th(\mathsf{Cart})$.  These are the triangle equations that force $m$ to be the right adjoint of $\Delta_\X$ and $e$ to be the right adjoint of $!_\X$.  A model of $\Th(\mathsf{Cart})$ is a category with chosen binary products and a chosen terminal object; morphisms in $\Mod(\Th(\mathsf{Cart},\Cat)$ are functors that preserve the chosen binary products and terminal object.
 
-          \end{array}\]\\
-
-We omit the counit of the adjunction between $e \maps 1 \to \X$ and $!_\X \maps \X 
-\to 1$ because one of the triangle equations says it is an identity 2-morphism. 
-
-The subtle interplay between the cartesian structure of $\Th(\mathsf{Cart}$ and the 
-cartesian structure of the object $\X \in \Th(\mathsf{Cart}$ is an example of the ``microcosm
-principle'': objects with a given structure are most generally defined in a context that has
-the same sort of structure.   As seen in the previous example, we can also define pseudomonoids
-in any 2-category with finite products, but this is excess to requirements: one can in 
+The subtle interplay between the cartesian structure of $\Th(\mathsf{Cart})$ and the cartesian structure of the object $\X \in \Th(\mathsf{Cart})$ is an example of the ``microcosm principle'': objects with a given structure are most generally defined in a context that has the same sort of structure.   As seen in the previous example, we can also define pseudomonoids in any 2-category with finite products, but this is excess to requirements: one can in 
 fact define them more generally in any monoidal 2-category \cite{pseudo}.
 
-Without the coproduct structure, this is the 2-theory of categories with finite products, also known as multisorted Lawvere theories, or algebraic theories. This serves as a testament to the power of the generalization from theories to enriched theories: the former is a category of models of the latter.
-
-In fact, if we let arities be finite categories, we would have $\Cat$-theories of categories with finite limits and colimits.   However, for the purposes of this paper we are using only natural number arities, which suffice for finite products and coproducts.   Various other kinds of categories---duoidal categories, linearly distributive categories, rig categories, etc.---can also be expressed using $\Cat$-theories with natural number arities. This gives a systematic formalization of these categories, internalizes them to new contexts, and allows for the generation of 2-monads which encapsulate them.
+In fact, if we let arities be finite categories, we would have $\Cat$-theories of categories with finite limits and colimits.   However, for the purposes of this paper we are using only natural number arities.  This suffices for constructing $\Th(\mathsf{Cart})$ and also $\Th(\mathsf{CoCart})$, the theory of categories with chosen binary coproducts and a chosen initial objec.   Various other kinds of categories---distributive categories, rig categories, etc.---can also be expressed using $\Cat$-theories with natural number arities. This gives a systematic formalization of these categories, internalizes them to new contexts, and allows for the generation of 2-monads that describe them.
 \end{example}
 
 \section{Natural Number Arities}
@@ -700,7 +697,7 @@ in $\Gph,\Cat,\Pos$ and of course $\Set$, but not in $\V = \Set^k$, where
 $|\hom(m_\V, n_\V)| = n^{km}$.    In fact, whenever $\NN_\V$ has finite hom-sets
 it is equivalent to $\FinSet^k$ for some $k$.   The reason is that $2_\V$ is 
 an internal Boolean algebra in $\V$, so its set of elements $\hom(1_\V,2_\V)$ 
-must be some Boolean algebra $B$ in $\Set$.   A further argument due to Garner and Trimble shows that $\NN_\V$ is completely characterized, up to equivalence, by this Boolean algebra, and any Boolean algebra can occur \cite{nCafe}.   By the classification of finite Boolean algebras, if $B$ is finite it must be isomorphic to $\{F,T\}^k$ for some $k \ge 0$.  In this case, $\NN_V$ is equivalent to $\FinSet^k$.
+must be some Boolean algebra $B$ in $\Set$.   A further argument due to Garner and Trimble shows that $\NN_\V$ is completely characterized, up to equivalence, by this Boolean algebra, and any Boolean algebra can occur \cite{nCafe}.   If this Boolean algebra is finite it must be isomorphic to $\{0,1\}^k$ for some $k \ge 0$.  In this case, $\NN_V$ is equivalent to $\FinSet^k$.
 
 Now suppose $\C$ is a $\V$-category.   The question arises whether the
 power of an object $c \in \C$ by $n_\V$ must also be the $\V$-product of $n$ copies
@@ -875,15 +872,12 @@ Each set $X$ is mapped to the $X$-indexed coproduct of the terminal object in $\
 
 This is what we implicitly used in the definition of $\V$-theory: the arity category $\NN$ ``sits inside'' many enriching categories under various guises: as finite discrete graphs, categories, posets, etc. For each $\V$ we define the arity subcategory $\NN_\V$ to be the full subcategory of finite coproducts (copowers) of the unit object, and this remains essentially unchanged by the change-of-base to $\underline{\NN}_\V$.
 
-We now study how change of base affects theories and their models.  In Theorem \ref{thm:change-of-base} we see that everything works as one would hope.
-
-We want to know when the functor $F \maps \V \to \W$ induces a change of base $F_*\maps\V\Cat \to \W\Cat$ that ``preserves enriched theories''.   That is, given a $\V$-theory 
+We now study how change of base affects theories and their models.  We start by asking when a functor $F \maps \V \to \W$ induces a change of base $F_*\maps\V\Cat \to \W\Cat$ that ``preserves enriched theories''.   That is, given a $\V$-theory 
 \[      \tau \maps  \A_\V \to \T \]
 we want to determine conditions for the base-changed functor 
 \[    F_*(\tau) \maps  F_*(\A_\V) \to  F_*(\T) \]
 to induce a $\W$-theory in a canonical way.   Recall that we require $\V$ and $\W$ to be
-cartesian closed, equipped with chosen finite coproducts of their terminal objects.   We thus 
-expect the following conditions to be sufficient: $F$ should be cartesian, and it should
+cartesian closed, equipped with chosen finite coproducts of their terminal objects.   We thus expect the following conditions to be sufficient: $F$ should be cartesian, and it should
 preserve the chosen finite coproducts of the terminal object:
 \[      F(n_\V) = n_\W  \]
 for all $n$.   
@@ -924,7 +918,7 @@ has these properties.   It is thus a $\W$-theory.
 
 \begin{theorem}
 \label{thm:change-of-base}
-Let $\V$, $\W$ be cartesian closed categories with chosen finite coproducts of their terminal objects, and let $F\maps \V \to \W$ be a cartesian functor that preserves these chosen coproducts.  Then $F$ preserves theories: that is, for every $\V$-theory $\tau_\V\maps \A_\V\to \T$, the $\W$-functor 
+Let $\V$, $\W$ be cartesian closed categories with chosen finite coproducts of their terminal objects, and let $F\maps \V \to \W$ be a cartesian functor that preserves these chosen coproducts.  Then $F$ \define{preserves enriched theories}: that is, for every $\V$-theory $\tau_\V\maps \A_\V\to \T$, the $\W$-functor 
 \[ \tau_\W := F_*(\tau_\V) \circ \tilde{F} \maps \A_\W \to F_*(\T)\]
 is a $\W$-theory. Moreover, $F$ preserves models: for every model $\mu \maps\T \to \C$
 of $(\T,\tau_\V) $, the $\W$-functor $F_*(\mu) \maps F_*(\T) \to F_*(\C)$ is a model of 
@@ -938,6 +932,7 @@ binary $\V$-products.  For the former, we need to show $F_*(\mu) 1_{F*(\T)}$ is 
 in $F_*(\C)$, i.e.\ $F_*(\C) (c, F_*(\mu) 1_{F*(\T)}) $ is terminal in $\W$ for all objects
 $c$ of $\C$.  But ...   FINISH THIS!!!
 
+\iffalse
 	\[\begin{array}{rcll}
 	F_*(\D)(F_*(f)(a),F_*(f)(s^{n_\V})) & = & F(\D(f(a),f(t^{n_\V})) & \text{definition of base change}\\
 	& \cong & F(\D(f(a),f(t)^{n_\V}) & f \text{ preserves } \NN_\V \text{-powers}\\
@@ -946,6 +941,7 @@ $c$ of $\C$.  But ...   FINISH THIS!!!
 	& = & F_*(\D)(f(a),f(t))^n & \text{definition of base change}\\
 	& \cong & F_*(\D)(f(a),f(t)^{n_\W}) & \text{Lemma \ref{lem:powers_1} for } \W. \qedhere
 	\end{array}\]
+	\fi
 \end{proof}
 
 Hence, any cartesian functor that preserves chosen finite coproducts of the terminal object gives a ``change of semantics'' --- this is a simple, ubiquitous condition, which provides for a method of translating formal languages between various ``modes of operation''.
@@ -956,7 +952,10 @@ Before exploring applications, we introduce two more useful kinds of translation
 
 \section{The Category of all $\V$-Theories}
 
-In addition to change-of-base, there are two other natural and useful translations for these theories. Let $\V\mathrm{Law}$ be the category of $\V$-theories, and let $f\maps\T\to \T'$ be a morphism of theories; this induces a ``change-of-theory'' functor between the respective categories of models $$f^*\maps\V\Mod(\T',\C)\to \V\Mod(\T,\C)$$ defined as precomposition with $f$. Similarly, given a cartesian functor $g\maps \C \to \C'$, this induces a ``change-of-model'' functor $$g_*\maps\V\Mod(\T,\C) \to \V\Mod(\T,\C')$$ defined as postcomposition with $g$.   \textbf{NO, we need preservation of chosen finite coproducts of the terminal object as well!!!  Fix this everywhere!!!  We need a different category, not $\CCC$, below!!!}
+In addition to change-of-base, there are two other natural and useful translations for these theories.  A morphism of $V$-theories $f\maps\T\to \T'$ induces a ``change-of-theory'' functor between the respective categories of models \[  f^*\maps\V\Mod(\T',\C)\to \V\Mod(\T,\C) \]
+defined as precomposition with $f$.  Similarly, a $V$-product-preserving $\V$-functor $g\maps \C \to \C'$ induces a ``change-of-context'' functor 
+\[  g_*\maps \V\Mod(\T,\C) \to \V\Mod(\T,\C') \]
+defined as postcomposition with $g$.   
 
 These translations, as well as change-of-base, can all be packed up nicely using the \textbf{Grothendieck construction}: given a (pseudo)functor $F\maps \D \to \Cat$, there is a category $\int F$ that encapsulates all of the categories in the image of $F$, defined
 as follows:
@@ -965,12 +964,12 @@ as follows:
 \text{morphisms} & (f\maps d\to d',a\maps F(f)(x)\to x')\\
 \text{composition} & (f,a) \circ (f',a') = (f \circ f', a \circ F(f)(a')).
 \end{array}\]
-Moreover there is a functor $\overline{F} \maps \int F \to \D$ given as follows:
+Moreover there is a functor $p_F \maps \int F \to \D$ given as follows:
 \[\begin{array}{rl}
-\text{on objects} & \overline{F} \maps (d,x) \mapsto d \\
-\text{on morphisms} & \overline{F} \maps (f,a) \mapsto f .\\
+\text{on objects} & p_F \maps (d,x) \mapsto d \\
+\text{on morphisms} & p_F \maps (f,a) \mapsto f .\\
 \end{array}\]
-For more details see \cite{borceux,jacobs}.  We noted in $\S$4 that $\V\Law$ and $\Mod(\T,\C)$ are $\V$-categories when $\V$ is complete and cocomplete: this and further conditions imply we can use the \textit{enriched} Grothendieck construction \cite{beardsleywong}; but we will focus on the $\Set$-enriched case for simplicity. 
+For more details see \cite{borceux,jacobs}.  We noted in Section that $\V\Law$ and $\Mod(\T,\C)$ are $\V$-categories when $\V$ is complete and cocomplete: this and further conditions imply we can use the \textit{enriched} Grothendieck construction \cite{beardsleywong}; but we will focus on the $\Set$-enriched case for simplicity. 
 
 This idea allows us to bring together all of the different enrichments, theories, and models into one big category. For every enriching category $\V$, let $\V\Cat_{np}$ be the subcategory of $\V\Cat$ of $\V$-categories with $\NN$-powers and $\NN$-power preserving functors; then there is a functor $$\V\Mod\maps \V\Law^\op \times \V\Cat_{np} \to \Cat$$ which sends $(\T,\C)$ to $\V\Mod(\T,\C)$. The (bi)functoriality of $\V\Mod$ gives the contravariant change-of-theory and the covariant change-of-model above.
 
@@ -1018,9 +1017,9 @@ This problem was noticed early in the history of mathematical foundations, even 
 
 The key insight of Stay and Meredith \cite{roswelt} is that Lawvere theories are by definition free of variables, and it is precisely through abstraction elimination that a programming language can be made an algebraic object. When representing a computational calculus as an $\Gph$-theory, the general rewrite rules are simply edges in the hom-graphs $t^n \to t$, with the object $t$ serving in place of the variable. Below is the theory of the $SKI$-calculus:
 
-$$\textbf{Th(\textit{SKI})}$$
+$$\Th(\mathsf{SKI})$$
 \[\begin{array}{rcl}
-\textbf{sort} & t &\\
+\textbf{type} & t &\\
 \textbf{term constructors} & S\maps & 1 \to t\\
 & K\maps & 1 \to t\\
 & I\maps & 1 \to t\\
@@ -1047,14 +1046,14 @@ These abstract rules are evaluated on concrete terms by ``plugging in'' via prec
 \end{tikzcd}\]\\
 (Morphisms $1\to t$ are the ``closed'' terms, meaning they have no free variables; in general morphisms $t^n\to t$ are terms with $n$ free variables, and the same reasoning applies.)\\
 
-A model of this theory is a power-preserving $\Gph$-functor $\mu\maps \Th(SKI) \to \Gph$. This gives a graph $\mu(t)$ of all terms and rewrites in the $SKI$-calculus as follows:
+A model of this theory is a power-preserving $\Gph$-functor $\mu\maps \Th(\mathsf{SKI}) \to \Gph$. This gives a graph $\mu(t)$ of all terms and rewrites in the $SKI$-calculus as follows:
 \[\begin{tikzcd}
 1 \cong \mu(1) \arrow[r,"\mu(S)"] & \mu(t) & \mu(t^2) \arrow[l,swap,"\mu(\left(-\;-\right))"] \cong \mu(t)^2
 \end{tikzcd}\]
 The images of the nullary operations $S,K,I$ are distinguished vertices of the graph $\mu(t)$, because $\mu$ preserves the terminal object which ``points out'' vertices. The image of the binary operation $(-\; -)$ gives for every pair of vertices $(u,v) \in \mu(t)^2$, through the isomorphism $\mu(t)^2 \cong \mu(t^2)$, a vertex $(u\; v)$ in $\mu(t)$ which is their application. In this way we get all possible terms (writing $\mu(S),\mu(K),\mu(I)$ as $S,K,I$ for simplicity): 
 \[  ((((S\; (K\; (I\; I)))\; S) \dots \]
 
-The rewrites are transferred by the enrichment of the functor: rather than functions between hom-sets, the morphism component of $\mu$ consists of graph homomorphisms between hom-graphs. So, $$\mu_{1,t}\maps \Th(SKI)(1,t)\to \Gph(1,\mu(t))$$ maps the ``syntactic'' graph of all closed terms and rewrites coherently into the ``semantic'' graph, meaning a rewrite in the theory $a\Rightarrow b$ is sent to a rewrite in the model $\mu(a) \Rightarrow \mu(b)$.
+The rewrites are transferred by the enrichment of the functor: rather than functions between hom-sets, the morphism component of $\mu$ consists of graph homomorphisms between hom-graphs. So, $$\mu_{1,t}\maps \Th(\mathsf{SKI})(1,t)\to \Gph(1,\mu(t))$$ maps the ``syntactic'' graph of all closed terms and rewrites coherently into the ``semantic'' graph, meaning a rewrite in the theory $a\Rightarrow b$ is sent to a rewrite in the model $\mu(a) \Rightarrow \mu(b)$.
 
 These rewrites in the image of $\mu$ are \textit{graph transformations}, which are just like natural transformations of functors, without the commuting diagram: given two graph homomorphisms $f,g\maps G\to H$, a graph transformation $\alpha\maps f \Rightarrow g$ is a function $G_0\to H_1$ which sends a vertex $v\in G$ to an edge $\alpha(v)$ with source $f(v)$ and target $g(v)$.
 
@@ -1072,14 +1071,14 @@ Finally, the fact that $\mu((-\;-))$ is not just a function but a graph homomorp
 	S & ((K\; S)\; K)\arrow[l,"\kappa"]
 \end{tikzcd}\]
 
-This process is intuitive, but how do we actually define the model, as a functor, to pick out a specific graph? There are many models of $\Th(SKI)$, but in particular we care about the canonical \textit{free} model, which means that $\mu(t)$ is simply the graph of all closed terms and rewrites in the $SKI$-calculus. This utilizes the enriched adjunction of Thm.\ \ref{thm:monadicity}:
+This process is intuitive, but how do we actually define the model, as a functor, to pick out a specific graph? There are many models of $\Th(\mathsf{SKI})$, but in particular we care about the canonical \textit{free} model, which means that $\mu(t)$ is simply the graph of all closed terms and rewrites in the $SKI$-calculus. This utilizes the enriched adjunction of Thm.\ \ref{thm:monadicity}:
 \[\begin{tikzcd}
 \phantom{AAAA} \Gph \arrow[bend left=20,"f_\Gph"]{rr}
 & {\phantom{Aa} \ld} &
-\arrow[bend left=20,"u_\Gph"]{ll} \Mod(\Th(SKI),\Gph)
+\arrow[bend left=20,"u_\Gph"]{ll} \Mod(\Th(\mathsf{SKI}),\Gph)
 \end{tikzcd}\]
 
-Then the canonical model of closed terms and rewrites is simply the free model on the empty graph, $f_\Gph(\emptyset)$, i.e. the $\V$-functor $\T(1,-)\maps\T\to \V$. Hence for us, the syntax and semantics of the $SKI$ combinator calculus are unified in the model $$\mu_{SKI}^\Gph:= \Th(SKI)(1,-)\maps \Th(SKI) \to \Gph$$ Here we reap the benefits of the abstract construction: the graph $\mu_{SKI}^\Gph(t)$ is the \textit{transition system} which represents the \textbf{small-step operational semantics} of the $SKI$-calculus: $$(\mu(a) \to \mu(b) \in \mu_{SKI}^\Gph(t)) \iff (a \Rightarrow b \in \Th(SKI)(1,t))$$
+Then the canonical model of closed terms and rewrites is simply the free model on the empty graph, $f_\Gph(\emptyset)$, i.e. the $\V$-functor $\T(1,-)\maps\T\to \V$. Hence for us, the syntax and semantics of the $SKI$ combinator calculus are unified in the model $$\mu_{SKI}^\Gph:= \Th(\mathsf{SKI})(1,-)\maps \Th(\mathsf{SKI}) \to \Gph$$ Here we reap the benefits of the abstract construction: the graph $\mu_{SKI}^\Gph(t)$ is the \textit{transition system} which represents the \textbf{small-step operational semantics} of the $SKI$-calculus: $$(\mu(a) \to \mu(b) \in \mu_{SKI}^\Gph(t)) \iff (a \Rightarrow b \in \Th(\mathsf{SKI})(1,t))$$
 
 Interestingly, in the free model on a nonempty graph, the vertices represent designated ``ground variables'', and edges represent rewrites of one variable into another. This is potentially useful for ``building in'' a language with other basic features not intrinsic to the theory.
 
@@ -1110,10 +1109,11 @@ Thus, from this simple sequence of functors, we can translate between several im
 The solid arrows are the one-step rewrites of the initial $\Gph$-theory; applying $\FC_*$ gives the dotted composites, and $\FP_*$ asserts that all composites between any two objects are equal. Finally, $\FS_*$ collapses the whole diagram to $S$. This is a simple demonstration of the basic stages of computation: small-step, big-step, full-step, and denotational semantics.
 
 \subsection{Change-of-theory: reduction contexts}
+
 We can equip term calculi with \textit{reduction contexts}, which determine when rewrites are valid, thus giving the language a certain \textbf{evaluation strategy}. For example, the ``weak head normal form'' is given by only allowing rewrites on the left-hand side of the term.
 
-We can do this for $\Th(SKI)$ by adding a reduction context marker as a unary operation, and a structural congruence rule which pushes the marker to the left-hand side of an application; lastly we modify the rewrite rules to be valid only when the marker is present:
-$$\textbf{Th(\textit{SKI}+\textit{R})}$$
+We can do this for $\Th(\mathsf{SKI})$ by adding a reduction context marker as a unary operation, and a structural congruence rule which pushes the marker to the left-hand side of an application; lastly we modify the rewrite rules to be valid only when the marker is present:
+$$\Th(\mathsf{SKI}+\mathsf{R})$$
 \[\begin{array}{rcl}
 \textbf{sort} & t &\\
 \textbf{term constructors} & S,K,I \maps &1 \to t\\
@@ -1127,16 +1127,18 @@ $$\textbf{Th(\textit{SKI}+\textit{R})}$$
 
 The $SKI$-calculus is thereby equipped with ``lazy evaluation'', an essential paradigm in modern programming. This represents a broad potential application of equipping theories with computational methods, such as evaluation strategies.
 
-Moreover, these equipments can be added or removed as needed: using change-of-theory, we can utilize a ``free reduction'' $\Gph$-functor $f_R\maps\Th(SKI)\to \Th(SKI+R)$:
+Moreover, these equipments can be added or removed as needed: using change-of-theory, we can utilize a ``free reduction'' $\Gph$-functor $f_R\maps\Th(\mathsf{SKI})\to \Th(\mathsf{SKI}+\mathsf{R})$:
 \[\begin{array}{rrcl}
 \text{objects} & t^n & \mapsto & t^n\\
 \text{hom-vertices} & S,K,I & \mapsto & S,K,I\\
 & (-\; -) & \mapsto & R(-\; -)\\
 \text{hom-edges} & \sigma, \kappa, \iota & \mapsto & \sigma_r, \kappa_r, \iota_r\\
 \end{array}\]
-This essentially interprets ordinary $SKI$ as having every subterm be a reduction context. This is a $\Gph$-functor because its hom component consists of graph-homomorphisms: $$f_{n,m}\maps \Th(SKI)(t^n,t^m) \to \Th(SKI+R)(t^n,t^m)$$ which simply send each application to its postcomposition with $R$, and each rewrite to its ``marked'' correspondent; and this is all coherent: for example, even though $(((S\; x)\; y)\; z) \mapsto R(R(R(S\; x)\; y)\; z)$, the extra markers are ignored by $\sigma_r$, because they are now just a part of the lefthand terms.
+This essentially interprets ordinary $SKI$ as having every subterm be a reduction context. This is a $\Gph$-functor because its hom component consists of graph-homomorphisms: $$f_{n,m}\maps \Th(\mathsf{SKI})(t^n,t^m) \to \Th(\mathsf{SKI}+\mathsf{R})(t^n,t^m)$$ which simply send each application to its postcomposition with $R$, and each rewrite to its ``marked'' correspondent; and this is all coherent: for example, even though $(((S\; x)\; y)\; z) \mapsto R(R(R(S\; x)\; y)\; z)$, the extra markers are ignored by $\sigma_r$, because they are now just a part of the lefthand terms.
 
-So, by precomposition this induces the change of theory on categories of models: $$f_R^*\maps \Mod(\Th(SKI+R),\C) \to \Mod(\Th(SKI),\C)$$ for all semantic categories $\C$, which forgets the reduction contexts.
+So, by precomposition this induces the change of theory on categories of models: 
+\[   f_R^*\maps \Mod(\Th(\mathsf{SKI} + \mathsf{R}),\C) \to \Mod(\Th(\mathsf{SKI}),\C) \]
+for all semantic categories $\C$, which forgets the reduction contexts.
 
 Similarly, there is a $\Gph$-functor $u_R\maps \Th(SKI+R)\to \Th(SKI)$ which forgets reduction contexts, by sending $\sigma_r,\kappa_r,\iota_r \mapsto\sigma, \kappa,\iota$ and $R \mapsto id_t$; this latter is the only way that the marked reductions can be mapped coherently to the unmarked. However, this means that $u_R^*$ does not give the desired change-of-theory of ``freely adjoining contexts'', because collapsing $R$ to the identity eliminates the significance of the marker.
 
