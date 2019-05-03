@@ -532,6 +532,8 @@ and this has a more concrete formula as an enriched coend:
 T(V) = \int^{n_\V\in \NN_\V} V^{n_\V} \times \T(t^{n_\V},t).
 \]
 
+We next give two examples of a rather abstract nature, where we show how $\Cat$-enriched Lawvere theories can describe categories with extra structure.   In Section \ref{sec:applications} we study examples more directly relevant to computation. 
+
 \begin{example}
 When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to be called a \define{2-theory}.  For example, let $\T = \Th(\mathrm{PsMon})$ be the 2-theory of pseudomonoids \cite{pseudo}.   A pseudomonoid is a weakened version of a monoid: rather than associativity and unitality \textit{equations}, it has 2-isomorphisms called the associator and unitors, which we can treat as \textit{rewrite rules}.  To equate various possible rewrite sequences, these 2-isomorphisms must obey equations called ``coherence laws''.  Here is a presentation of the 2-theory for pseudomonoids:\newpage
 	\[ \Th(\mathrm{PsMon}) \]
@@ -570,13 +572,13 @@ Models of $\T = \Th(\mathrm{PsMon})$ in $\Cat$ are monoidal categories: let us e
 	\lambda & \mapsto & \ell \maps &  I\circ 1_\C  \Rightarrow  1_\C\\
 	\rho & \mapsto & r \maps & 1_\C \circ I  \Rightarrow  1_\C
 \end{array}\]
-such that the coherence laws of the rewrites are preserved.  Thus, a model is a category equipped with a tensor product $\otimes$ and unit object $I$ such that these operations are associative and unital up to natural isomorphism; so these models are precisely monoidal categories. Given two models $\mu,\nu\maps \T\to \Cat$, a morphism of models is a 2-natural transformation $\varphi\maps \mu \Rightarrow \nu$; this amounts to a strict monoidal functor $\varphi\maps (\C,\otimes_C,I_C)\to(\D,\otimes_D,I_D)$.
+such that the coherence laws of the rewrites are preserved.  Thus, a model is a category equipped with a tensor product $\otimes$ and unit object $I$ such that these operations are associative and unital up to natural isomorphism; so these models are precisely monoidal categories.
 
-The strictness arises because we models and morphisms are 2-functors and 2-natural transformations, rather than pseudofunctors and pseudonatural transformations. There is a substantial amount of theory on pseudomonads and pseudoalgebras \cite{bkp}, but to the authors' knowledge the theory-monad correspondence has not yet been extended to weak enrichment. 
+Given two models $\mu,\nu\maps \T\to \Cat$, a morphism of models is a 2-natural transformation $\varphi\maps \mu \Rightarrow \nu$; this amounts to a strict monoidal functor $\varphi\maps (\C,\otimes_C,I_C)\to(\D,\otimes_D,I_D)$.  The strictness arises because morphisms between models are 2-natural transformations rather than pseudonatural transformations. There is a substantial amount of theory on pseudomonads and pseudoalgebras \cite{bkp}, but to the authors' knowledge the theory-monad correspondence has not yet been extended to weak enrichment. 
 
-Finally, because $\Cat$ is complete and cocomplete, the category of models $[\T,\Cat]$ is in fact a 2-category; we can form the hom-category between two models $[\mu,\nu]$ by forming $\V$-enriched ends \cite{dubuc} -- more simply, we are using the fact that $2\Cat$ is closed. A 2-morphism of model morphisms is a modification $\chi\maps \varphi\to \psi$, which by strictness amounts to simply a natural transformation. Thus, the 2-category of models $[\Th(\mathrm{PsMon}),\Cat]$ is the 2-category of monoidal categories, strict monoidal functors, and natural transformations.
+Finally, because $\Cat$ is complete and cocomplete, the category of models $\Mod(\T,\Cat)$ can be promoted to a 2-category $\underline{\Mod}(\T,\Cat)$.  This is the 2-category of monoidal categories, strict monoidal functors, and monoidal natural transformations.
 
-We can accomplish the same thing on the monad side: A $\Cat$-enriched monad is called a 2-monad, and $\T$ gives rise to the ``free monoidal category'' 2-monad $T_{fmc}$ on $\Cat$ \cite{bkp}. To give this 2-monad, form the free model on a category $\C\in \Cat$ by taking the left Kan extension as above, and evaluate this model at the generating object. In the same way the (underlying set of the) free monoid on a set $X$ consists of all finite strings of elements of $X$, $F(\C)(1)$ consists of all finite tensors of objects and morphisms of $\C$, and all composites of these morphisms, up to the equations induced by the (composites and tensors of the) images of the associator and unitors. Hence this algebra is a monoidal category; morphisms of these algebras are strict monoidal functors, and 2-morphisms are natural transformation. We thereby have a 2-equivalence between $\Mod(\T,\Cat)$ and $Alg(T_{fmc})$.
+We can accomplish the same thing on the monad side: a $\Cat$-enriched monad is called a \define{2-monad}, and $\T$ gives rise to the ``free monoidal category'' 2-monad $T$ on $\Cat$ \cite{bkp}. To apply this 2-monad to $C \in \Cat$ we first form the free model on $\C$ by taking a left Kan extension as above, and then evaluate this model at the generating object.  In the same way that the (underlying set of the) free monoid on a set $X$ consists of all finite strings of elements of $X$, $T(\C)$ is the monoidal category consisting of all finite tensor products of objects of $\C$ and all morphisms built from those of $\C$ by composition and tensoring together with associators and unitors obeying the necessary coherence laws.   Morphisms of these algebras are strict monoidal functors, while 2-morphisms are natural transformation. We thus have a 2-equivalence between $\underline{\Mod}(\T,\Cat)$ and the 2-category of algebras of $T$
 
 %: the formula for left Kan extension (writing $n$ instead of $n_\Cat$ for simplicity) gives $F(\C)\maps \T\to \V$ by 
 % \[   F(\C) = \int^{n\in \NN_\Cat} \T(t^{n},t^{(-)})\times \C^{n} \] 
@@ -594,8 +596,7 @@ We can accomplish the same thing on the monad side: A $\Cat$-enriched monad is c
 % \[  T = UF \maps \C \mapsto \int^n \C^n \times \T(t^n,t) \]
 % is a category $A$ equipped with a functor $\otimes_A\maps F(A)(1)\to A$ such that it is compatible with the multiplication and unit of the monad, which are the ``free'' tensor bifunctor and monoidal unit on $A$. Hence, $(A,\otimes_A,I_A)$ is precisely a monoidal category.
 
-In this way, 2-theories generalize equipping \textit{set}-like objects  with operations obeying equations to equipping \textit{category}-like objects with operations obeying equations up to 
-transformations that obey certain equations of their own. In particular, this gives us a way to present graphical calculi, such as string diagrams -- the language of monoidal categories.
+In this way, 2-theories generalize equipping \textit{set}-like objects  with operations obeying equations to equipping \textit{category}-like objects with operations obeying equations up to transformations that obey equations of their own. In particular, this gives us a way to present graphical calculi, such as string diagrams -- the language of monoidal categories.
 \end{example}
 
 \begin{example}
@@ -1020,6 +1021,7 @@ This category assimilates a lot of conceptual interaction. Most importantly, the
 There are many unexplored questions about the large, heterogeneous categories which arise from the Grothendieck construction, regarding what unusual structure may be gained, such as limits and colimits with objects of different types, or identifying ``processes'' in which the kinds of objects change in an essential way. This is only a remark; for our purposes we need only recognize that enriched Lawvere theories can be assimilated into one category, which provides a unified context for change-of-base, change-of-theory, and change-of-context.
 
 \section{Applications}
+\label{sec:applications}
 
 In computer science literature, enriched algebraic theories have primarily been studied in the context of ``computational effects'' \cite{compeffects}. Mike Stay and Greg Meredith propose that enriched Lawvere theories can be utilized for the design of programming languages \cite{ladl}. The primary difference between programming languages and enriched theories, however, is that the latter do not have a notion of \textit{variable binding} -- there has certainly been progress on this idea \cite{fiore}, but it leads us beyond our present focus. There are other approaches which instead use an enriched theory as a ``compiler'', which can translate a higher language with binding to one without -- this idea comes from an important but underappreciated subject in foundations: combinatory logic.
 
@@ -1233,7 +1235,7 @@ This base-change, along with change-of-theory and change-of-context, using an it
 
 \bibitem{crole} R.\ Crole, \textsl{Categories for Types}, Cambridge U.\ Press, Cambridge, 1993.
 
-\bibitem{dubuc} E. J. Dubuc, \textsl{Kan Extensions in Enriched Category Theory}, Lecture Notes in Mathematics, Springer, Berlin, 1970.
+%\bibitem{dubuc} E. J. Dubuc, \textsl{Kan Extensions in Enriched Category Theory}, Lecture Notes in Mathematics, Springer, Berlin, 1970.
 
 \bibitem{fiore} M. Fiore, \textsl{Abstract Syntax with Variable Binding}, Logic in Computer Science, IEEE Computer Science Press, 1999.
 
