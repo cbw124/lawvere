@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/4/29
+% 2019/5/4
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -86,9 +86,9 @@ urlcolor=myurlcolor}
 
 \newcommand{\FC}{\mathrm{FC}}
 \newcommand{\FP}{\mathrm{FP}}
-\newcommand{\US}{\mathrm{US}}
+\newcommand{\FS}{\mathrm{FS}}
 \newcommand{\UC}{\mathrm{UC}}
-%\newcommand{\UP}{\mathrm{UP}}
+\newcommand{\UP}{\mathrm{UP}}
 \newcommand{\UG}{\mathrm{UG}}
 
 \newcommand{\op}{\mathrm{op}}
@@ -103,7 +103,7 @@ urlcolor=myurlcolor}
 \begin{document}
 
 \title{Enriched Lawvere Theories 
-for Operational Semantics \\ DRAFT VERSION}
+for Operational Semantics \\}
 
 \maketitle
 \begin{center}   
@@ -149,13 +149,13 @@ In the context of these works, the purpose of the present paper is to provide a 
 While we consider general enriching categories, we focus on graph-enriched Lawvere theories, which have a clear connection to the original idea of operational semantics:
 
 \[\begin{array}{rl}
-\text{sort} & \text{: generating object }\\
+\text{type, or sort} & \text{: generating object }\\
 \text{term constructors} & \text{: generating morphisms }\\
 \text{structural congruence} & \text{: commuting diagrams}\\
-\text{\textasteriskcentered \quad rewrite rules} & \text{: generating hom-edges\quad\textasteriskcentered}\\
+\text{rewrite rules} & \text{: generating hom-edges}\\
 \end{array}\]
 
-For an enriching category $\V$, a \define{$\V$-theory} is a $\V$-enriched Lawvere theory with natural number arities (see $\S$4). There are functors between these which allow the translation between different kinds of operational and denotational semantics.  There is a ``spectrum'' of enriching categories which allow us to examine the semantics of term calculi at various levels of detail:
+For an enriching category $\V$, we take a \textbf{$\V$-theory} to be a $\V$-enriched Lawvere theory with natural number arities. There are functors between these which allow the translation between different kinds of operational and denotational semantics.  There is a ``spectrum'' of enriching categories which allow us to examine the semantics of term calculi at various levels of detail:
 
 \begin{itemize}
 \item 
@@ -167,38 +167,41 @@ For an enriching category $\V$, a \define{$\V$-theory} is a $\V$-enriched Lawver
 \item
 \textbf{Sets}: $\Set$-theories represent denotational semantics: \\ --- a hom-set element is an \textit{equivalence class} of the symmetric closure of the big-step relation.
 \end{itemize}
-Here we take $\Gph$ to be the category of reflexive graphs, $\Set^R$, where $R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.  Thus, every vertex has a distinguished self-loop, which is needed for the ``free category'' functor to be a valid change-of-semantics ($\S$6). We can use labelled graphs to incorporate important concepts such as bisimulation; see $\S8$.
+Here we take $\Gph$ to be the category of reflexive graphs, $\Set^R$, where $R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.  Thus, every vertex has a distinguished self-loop, which is needed for the ``free category'' functor to be a valid change-of-semantics (see Section \ref{sec:base_change}). 
 
-In section $\S2$, we review Lawvere theories as a more explicit, but equivalent, presentation of finitary monads. In $\S3$, we recall the basics of enrichment, and especially the theory of powers.  In $\S4$ we give the central definition of $\V$-theory, from Lucyshyn-Wright \cite{lucyshyn-wright}, which allows us to parametrize our theory by a monoidal subcategory of arities.
+In Section \ref{sec:lawvere}, we review Lawvere theories as a more explicit, but equivalent, presentation of finitary monads. In Section \ref{sec:enrichment}, we recall the basics of enrichment, focusing specially on the case of enrichment over a cartesian
+closed category.   In Section \ref{sec:enriched_lawvere} we give the central definition of $\V$-theory, adapted from the work of Lucyshyn-Wright \cite{lucyshyn-wright}, which allows us to apply his theorem relating enriched Lawvere theories and monads.
 
-In $\S5$ we discuss how functors between enriching categories induce change-of-base 2-functors between their 2-categories of enriched categories, and in $\S6$ we show that functors preserving finite products induce \textit{change-of-semantics}: that is, they map theories to theories and models to models.   Our main examples arise from this chain of adjunctions:
+In Section \ref{sec:base_change} we discuss how functors between enriching categories induce change-of-base 2-functors between their 2-categories of enriched categories, and in $\S6$ we show that functors preserving finite products induce \textit{change-of-semantics}: that is, they map theories to theories and models to models.   Our main examples arise from this chain of adjunctions:
 \[\begin{tikzcd}[column sep=small]
 \Gph \arrow[bend left,below]{rr}{\FC}
 & \ld &
 \arrow[bend left,above]{ll}{\UG} \Cat \arrow[bend left,below]{rr}{\FP}
 & \ld &
-\arrow[bend left,above]{ll}{\UC} \Pos \arrow[bend left,below]{rr}{\US}
-& \rd &
-\Set \arrow[bend left,above]{ll}{\FP}
+\arrow[bend left,above]{ll}{\UC} \Pos \arrow[bend left,below]{rr}{\FS}
+& \ld &
+\Set \arrow[bend left,above]{ll}{\UP}
 \end{tikzcd}\]
 The right adjoints here automatically preserve finite products, but the left adjoints 
 do as well, and these are more important in applications:
 \begin{itemize}
 \item 
-Change of base along $\FC \maps \Gph \to \Cat$ maps small-step operational semantics to big-step operational semantics.
+$\FC \maps \Gph \to \Cat$ maps any reflexive graph to the category freely generated from 
+this graph by composing edges.  Change of base along $\FC$ maps small-step operational semantics to big-step operational semantics.
 \item
-Change of base along $\FP \maps \Cat \to \Pos$ maps big-step operational semantics to full-step operational semantics.
+$\FP \maps \Cat \to \Pos$ maps any category $C$ to the poset whose elements are objects of $C$, with $c \le c'$ iff $C$ has a morphism from $c$ to $c'$.
+Change of base along $\FP$ maps big-step operational semantics to full-step operational semantics.
 \item
-Change of base along $\US \maps \Pos \to \Set$ maps full-step operational semantics to
+$\FS \maps \Pos \to \Set$ maps any poset $P$ to its set of ``components'', where $p,p' \in P$ are in the same component if $p \le p'$.
+Change of base along $\FS$ maps full-step operational semantics to
 denotational semantics.
 \end{itemize}
 
-In $\S7$ we mention that models of all $\V$-theories for all enriching $\V$ can be assimilated into one category using the Grothendieck construction.  Finally, in $\S8$ we bring all the strands together by demonstrating these concepts with the $SKI$-combinator calculus, illustrating the idea of studying formal languages with enriched Lawvere theories.
+In Section \ref{sec:V-theories} we show that models of all $\V$-theories for all enriching $\V$ can be assimilated into one category using the Grothendieck construction.  In Section \ref{ssec:SKI} we bring all the strands together by demonstrating these concepts with the $SKI$-combinator calculus.  In Section \ref{ssec:bisimulation} we show how theories enriched over the category of \emph{labelled} graphs can be used to study bisimulation.
 
 \subsection*{Acknowledgements}
 
-This paper builds upon the ideas of Mike Stay and Greg Meredith presented in ``Representing operational semantics with enriched Lawvere theories''  \cite{roswelt}.  We appreciate their offer to let us develop this work further for use in the innovative distributed computing system RChain, and gratefully acknowledge the support of Pyrofex Corporation.  We also thank Richard Garner, Todd Trimble and others at the $n$-Category Caf\'e for classifying cartesian closed categories
-where every object is a finite coproduct of copies of the terminal object \cite{nCafe}.
+This paper builds upon the ideas of Mike Stay and Greg Meredith presented in ``Representing operational semantics with enriched Lawvere theories''  \cite{roswelt}.  We appreciate their offer to let us develop this work further for use in the innovative distributed computing system RChain, and gratefully acknowledge the support of Pyrofex Corporation.  We also thank Richard Garner, Todd Trimble and others at the $n$-Category Caf\'e for classifying cartesian closed categories where every object is a finite coproduct of copies of the terminal object \cite{nCafe}.
 
 \section{Lawvere Theories}
 \label{sec:lawvere}
@@ -647,6 +650,7 @@ In fact, if we let arities be finite categories, we would have $\Cat$-theories o
 \end{example}
 
 \section{Natural Number Arities}
+\label{sec:arities}
 
 In this section we prove the lemmas required for Theorem \ref{thm:monadicity} and
 our study of base change in Section \ref{sec:base_change}.  Throughout this section $\V$ is cartesian closed with chose $n$-fold coproducts $n_\V$ of its terminal object. 
@@ -967,11 +971,12 @@ $c$ of $\C$.  But ...   FINISH THIS!!!
 
 Hence, any cartesian functor that preserves chosen finite coproducts of the terminal object gives a ``change of semantics'' --- this is a simple, ubiquitous condition, which provides for a method of translating formal languages between various ``modes of operation''.
 
-Moreover, this reasoning generalizes to \textbf{multisorted} $\V$-theories, enriched theories which have multiple sorts: given any $n\in \mathbb{N}$, the monoidal subcategory $(\NN_\V)^n$, the category of $n$-fold products of coproducts of $1_\V$, is also an eleutheric system of arities.   In Section \ref{ssec:multisorted}, we give an example of this generalization.\\
+Moreover, this reasoning generalizes to \textbf{multisorted} $\V$-theories, enriched theories which have multiple sorts: given any $n\in \mathbb{N}$, the monoidal subcategory $(\NN_\V)^n$, the category of $n$-fold products of coproducts of $1_\V$, is also an eleutheric system of arities, so Lucyshyn-Wright's monadicity theorem still applies.   In Section \ref{ssec:bisimulation} we show how this is useful in the study of bisimulation.
 
-Before exploring applications, we introduce two more useful kinds of translations, and demonstrate how all of this information be encapsulated in one categorical notion.
+Before exploring applications, we introduce two more useful kinds of translations, and demonstrate how all of these can be encapsulated in a single category.
 
 \section{The Category of all $\V$-Theories}
+\label{sec:V-theories}
 
 In addition to change-of-base, there are two other natural and useful translations for these theories.  A morphism of $\V$-theories $f\maps\T\to \T'$ induces a ``change-of-theory'' functor between the respective categories of models \[  f^*\maps\V\Mod(\T',\C)\to \V\Mod(\T,\C) \]
 defined as precomposition with $f$.  Similarly, a $\V$-product-preserving $\V$-functor $g\maps \C \to \C'$ induces a ``change-of-context'' functor 
@@ -1028,6 +1033,7 @@ There are many unexplored questions about the large, heterogeneous categories wh
 In computer science literature, enriched algebraic theories have primarily been studied in the context of ``computational effects'' \cite{compeffects}. Mike Stay and Greg Meredith propose that enriched Lawvere theories can be utilized for the design of programming languages \cite{ladl}. The primary difference between programming languages and enriched theories, however, is that the latter do not have a notion of \textit{variable binding} -- there has certainly been progress on this idea \cite{fiore}, but it leads us beyond our present focus. There are other approaches which instead use an enriched theory as a ``compiler'', which can translate a higher language with binding to one without -- this idea comes from an important but underappreciated subject in foundations: combinatory logic.
 
 \subsection{The $SKI$-combinator calculus}
+\label{ssec:SKI}
 
 The $\lambda$-calculus is an elegant formal language which is the foundation of functional computation, the model of intuitionistic logic, and the internal logic of cartesian closed categories: this is the Curry--Howard--Lambek correspondence \cite{baezstay}.
 
@@ -1120,8 +1126,8 @@ Thus $\FC$ is the change-of-semantics which induces the transitive closure of th
 
 The same reasoning applies to the ``free poset'' functor $\FP\maps \Cat \to \Pos$; it is a change-of-semantics because the product of posets is defined in the same way. This induces the lesser-known \textbf{full-step semantics}, which collapses hom-sets to truth values, simply asserting the existence of a rewrite sequence between terms, without distinguishing between different paths. Starting from a free category, this is simply adding the property that all distinct paths between two terms are equal, while retaining transitivity.
 
-Finally, we can pass to the purely abstract realm where all computation is already complete. We take the right adjoint $\US\maps \Pos \to \Set$ to the functor $\FP \maps \Set \to \Pos$ sending any set to the discrete poset on that set.
-The functor $\US$ collapses every connected component of the poset to a point.   This extracts
+Finally, we can pass to the purely abstract realm where all computation is already complete. We take the right adjoint $\FS\maps \Pos \to \Set$ to the functor $\UP \maps \Set \to \Pos$ sending any set to the discrete poset on that set.
+The functor $\FS$ collapses every connected component of the poset to a point.   This extracts
 the denotational semantics of the language, by identifying all terms related by rewrites.  If the rewrites are terminating and confluent, we can choose a representative term for each equivalence class: the unique term that admits no nontrivial rewrites.
 
 Thus from this simple sequence of functors, we can translate between several important kinds of semantics for the $SKI$-calculus. For example, we have the following computation:
@@ -1130,7 +1136,7 @@ Thus from this simple sequence of functors, we can translate between several imp
 (((S\; K)\; K)\; S) \arrow[d,swap,"\sigma"] & & ((K\; S)\; ((I\; K)\; S)) \arrow[lld,swap,"\iota"] \arrow[d,"\kappa"]\\
 ((K\; S)\; (K\; S)) \arrow[rr,swap,"\kappa"] & & S
 \end{tikzcd}\]
-The solid arrows are the one-step rewrites of the initial $\Gph$-theory; applying $\FC_*$ gives the dotted composites, and $\FP_*$ asserts that all composites between any two objects are equal. Finally, $\US_*$ collapses the whole diagram to $S$. This is a simple demonstration of the basic stages of computation: small-step, big-step, full-step, and denotational semantics.
+The solid arrows are the one-step rewrites of the initial $\Gph$-theory; applying $\FC_*$ gives the dotted composites, and $\FP_*$ asserts that all composites between any two objects are equal. Finally, $\FS_*$ collapses the whole diagram to $S$. This is a simple demonstration of the basic stages of computation: small-step, big-step, full-step, and denotational semantics.
 
 \subsection{Change-of-theory}
 
@@ -1171,7 +1177,7 @@ Similarly, there is a $\Gph$-functor $u_R\maps \Th(SKI+R)\to \Th(SKI)$ which for
 This illustrates a key aspect of categorical universal algebra: because change-of-theory is given by precomposition and is thus contravariant, \textit{properties} (equations) and \textit{structure} (operations) can only be removed. This is a necessary limitation, at least in the present setup, but there are ways to make do. These abstract theories are not floating in isolation but are implemented in code: one can simply use a ``maximal theory'' with all pertinent structure, then selectively forget as needed.
 
 \subsection{Bisimulation}
-\label{ssec:multisorted}
+\label{ssec:bisimulation}
 
 This paper uses simple functors to illustrate the basic idea of changing semantics. Of course, there are many interesting and useful change-of-base functors. As demonstrated, any functor $F\maps \V\to \W$ which preserves finite products and finite coproducts of the terminal object can be considered as a change in semantics. For example, if we enrich in labelled directed graphs, we can utilize the important concept of \textit{bisimulation}.
 
@@ -1189,7 +1195,7 @@ In particular, labelled transition systems allow for the correct definition of p
 
 \[\Th(\mathsf{CCS})\]
 \[\begin{array}{lrll}
-    \textbf{sorts} & P && \text{processes}\\
+    \textbf{types} & P && \text{processes}\\
                    & N && \text{actions}\\
                    & \overline{N} && \text{coactions}\\\\
     \textbf{operations} & 0\maps & 1\to P & \text{nullity}\\
@@ -1204,11 +1210,12 @@ In particular, labelled transition systems allow for the correct definition of p
                    & inter \maps & |\circ (.\times \overline{.}) \Rightarrow | & (a.P|\overline{a}.Q \xrightarrow{react} P|Q)\\
   \end{array}\]
 
-The theory is summarized in the two rewrite rules: $tau$ is an ``unobservable'' action, a process evolving in a way that is private to the ambient context; $inter$ is interaction or communication - the action $a$ is being triggered by the coaction $\overline{a}$, they are used up and the sequential processes continue in parallel. This calculus is the precursor to the $\pi$ calculus \cite{milner}, and is a very simple and general framework for understanding systems of interacting automata.
+The theory is summarized in the two rewrite rules: $\tau$ is an ``unobservable'' action, a process evolving in a way that is private to the ambient context; $inter$ is interaction or communication - the action $a$ is being triggered by the coaction $\overline{a}$, they are used up and the sequential processes continue in parallel. This calculus is the precursor to the $\pi$ calculus \cite{milner}, and is a very simple and general framework for understanding systems of interacting automata.
 
 There is an endofunctor $B\maps \mathsf{LTS} \to \mathsf{LTS}$ which quotients by the bisimulation relation. It preserves products, $B(G\times H)\cong B(G)\times B(H)$, because $(p_1,p_2)\equiv(q_1,q_2)$ iff ($p_1\equiv q_1$ and $p_2\equiv q_2$). Thus we can utilize base change to perform a very useful tranformation  on our semantics: from $\Th(\mathsf{CCS})$, we get a new theory $B_*(\Th(\mathsf{CCS}))$, the hom-LTS's of which consist of bisimulation equivalence classes of terms and rewrites in the calculus of communicating systems.
 
 \section{Conclusion}
+\label{sec:conclusion}
 
 We have established the basics of how enriched Lawvere theories provide a framework for unifying the syntax and semantics, the structure and behavior of formal languages. Enriching theories in category-like structures reifies operational semantics by incorporating rewrites between terms; and cartesian functors between enriching categories induce change-of-semantics functors between categories of models---this simplified condition is obtained by using only finite cardinal arities.
 
