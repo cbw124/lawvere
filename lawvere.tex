@@ -77,6 +77,7 @@ urlcolor=myurlcolor}
 \newcommand{\W}{\mathsf{W}}
 \newcommand{\D}{\mathsf{D}}
 \newcommand{\C}{\mathsf{C}}
+\newcommand{\R}{\mathsf{R}}
 \newcommand{\X}{\mathsf{X}}
 \newcommand{\K}{\mathsf{K}}
 \newcommand{\J}{\mathsf{J}}
@@ -142,35 +143,32 @@ In a Lawvere theory the objects are types and the morphisms are terms; however t
 \begin{center}\begin{tikzcd}(\lambda x.x+x \; \; 2) \ar{r}{\beta} & 2+2 \ar{r}{+} & 4\end{tikzcd}\end{center}
 We can use an enhanced Lawvere theory in which, rather than merely \emph{sets} of morphisms, there are \emph{graphs} or perhaps a \emph{categories}. Enriched Lawvere theories are exactly for this purpose.
 
-To be clear, this is certainly not a new idea. Using enriched Lawvere theories for operational semantics has been explored in the past. For example, category-enriched theories have been studied by Seely \cite{seely} for the $\lambda$-calculus, and poset-enriched ones by Ghani and L\"uth \cite{ghani} for understanding ``modularity'' in term rewriting systems.  They have been utilized extensively by Power, enriching in $\omega$-complete partial orders to study recursion \cite{compeffects} -- in fact, there the simplified ``natural number'' enriched theories which we explore were implicitly considered.
+To be clear, this is not a new idea. Using enriched Lawvere theories for operational semantics has been explored in the past. For example, category-enriched theories have been studied by Seely \cite{seely} for the $\lambda$-calculus, and poset-enriched ones by Ghani and L\"uth \cite{ghani} for understanding ``modularity'' in term rewriting systems.  They have been utilized extensively by Power, enriching in $\omega$-complete partial orders to study recursion \cite{compeffects} -- in fact, there the simplified ``natural number'' enriched theories which we explore were implicitly considered.
 
-In the context of these works, the purpose of the present paper is to provide a simple, general exposition of enriched theories: we hope to familiarize computer scientists with enriched category theory, and prove some basic results to show that one does not need to leave the nice computational world of cartesian closed categories to enjoy the benefits of enrichment.
-
-While we consider general enriching categories, we focus on graph-enriched Lawvere theories, which have a clear connection to the original idea of operational semantics:
+The goal of this paper is to give a simple unified explanation of enriched Lawvere theories and some of their applications to operational semantics.    We aim our explanations at readers familiar with category theory but not yet enriched categories.  To reduce the technical overhead we only consider enrichment over cartesian closed categories.   A key example for us is $\Gph$, the category of reflexive graphs.  This is $\Set^\R$, where $\R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.   A reflexive graph has directed edges and allows multiple edges between any pair of vertices; further, every vertex is equipped with a distinguished self-loop.    A category enriched over $\Gph$, or $\Gph$-category, has a set of objects and for any two objects a reflexive graph called a``hom-graph''.  The vertices of this hom-graph represent morphisms, but there are also edges between these morphisms.  $\Gph$-categories have a clear connection to the original idea of operational semantics:
 
 \[\begin{array}{rl}
-\text{type, or sort} & \text{: generating object }\\
-\text{term constructors} & \text{: generating morphisms }\\
-\text{structural congruence} & \text{: commuting diagrams}\\
-\text{rewrite rules} & \text{: generating hom-edges}\\
+\text{types: } & \text{objects }\\
+\text{terms: } & \text{morphisms }\\
+\text{equations between terms: } & \text{commuting diagrams of morphisms}\\
+\text{rewrites between terms } & \text{edges in hom-graphs}\\
 \end{array}\]
 
-For an enriching category $\V$, we take a \textbf{$\V$-theory} to be a $\V$-enriched Lawvere theory with natural number arities. There are functors between these which allow the translation between different kinds of operational and denotational semantics.  There is a ``spectrum'' of enriching categories which allow us to examine the semantics of term calculi at various levels of detail:
+\vskip 0.5em
+In general, for a cartesian closed category $\V$, we take a ``$\V$-theory'' to be a $\V$-enriched Lawvere theory with natural number arities. There are functors between these that allow the translation between different kinds of operational and denotational semantics.  There is a spectrum of choices for $\V$, which allow us to examine the semantics of term calculi at various levels of detail:
 
 \begin{itemize}
 \item 
-\textbf{Graphs}: $\Gph$-theories represent ``small-step" operational semantics: \\ --- a hom-graph edge is a \textit{single term} rewrite.
+\textbf{Graphs}: $\Gph$-theories represent ``small-step" operational semantics: \\ --- a hom-graph edge is a \textit{single} term rewrite.
 \item
-\textbf{Categories}: $\Cat$-theories represent ``big-step" operational semantics:*\\ (* Often this means a rewrite to a \textit{normal form}. We use the term more generally.)\\ --- a composite of morphisms is a \textit{big-step} rewrite. 
+\textbf{Categories}: $\Cat$-theories represent ``big-step" operational semantics. \\ ( (Often this means a rewrite to a \textit{normal form}. We use the term more generally.)\\ --- a composite of morphisms is a \textit{big-step} rewrite. 
 \item
 \textbf{Posets}: $\Pos$-theories represent ``full-step" operational semantics:\\ --- a hom-poset boolean is the \textit{existence} of a big-step rewrite.
 \item
 \textbf{Sets}: $\Set$-theories represent denotational semantics: \\ --- a hom-set element is an \textit{equivalence class} of the symmetric closure of the big-step relation.
 \end{itemize}
-Here we take $\Gph$ to be the category of reflexive graphs, $\Set^R$, where $R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.  Thus, every vertex has a distinguished self-loop, which is needed for the ``free category'' functor to be a valid change-of-semantics (see Section \ref{sec:base_change}). 
 
-In Section \ref{sec:lawvere}, we review Lawvere theories as a more explicit, but equivalent, presentation of finitary monads. In Section \ref{sec:enrichment}, we recall the basics of enrichment, focusing specially on the case of enrichment over a cartesian
-closed category.   In Section \ref{sec:enriched_lawvere} we give the central definition of $\V$-theory, adapted from the work of Lucyshyn-Wright \cite{lucyshyn-wright}, which allows us to apply his theorem relating enriched Lawvere theories and monads.
+In Section \ref{sec:lawvere} we review Lawvere theories as a more explicit, but equivalent, presentation of finitary monads. In Section \ref{sec:enrichment}, we recall the basics of enrichment over cartesian closed categories.   In Section \ref{sec:enriched_lawvere} we give the central definition of $\V$-theory, adapted from the work of Lucyshyn-Wright \cite{lucyshyn-wright}, which allows us to apply his theorem relating enriched Lawvere theories and monads.
 
 In Section \ref{sec:base_change} we discuss how functors between enriching categories induce change-of-base 2-functors between their 2-categories of enriched categories, and in $\S6$ we show that functors preserving finite products induce \textit{change-of-semantics}: that is, they map theories to theories and models to models.   Our main examples arise from this chain of adjunctions:
 \[\begin{tikzcd}[column sep=small]
@@ -197,7 +195,7 @@ Change of base along $\FS$ maps full-step operational semantics to
 denotational semantics.
 \end{itemize}
 
-In Section \ref{sec:V-theories} we show that models of all $\V$-theories for all enriching $\V$ can be assimilated into one category using the Grothendieck construction.  In Section \ref{ssec:SKI} we bring all the strands together by demonstrating these concepts with the $SKI$-combinator calculus.  In Section \ref{ssec:bisimulation} we show how theories enriched over the category of \emph{labelled} graphs can be used to study bisimulation.
+In Section \ref{sec:V-theories} we show that models of all $\V$-theories for all enriching $\V$ can be assimilated into one category using the Grothendieck construction.  In Section \ref{ssec:SKI} we bring all the strands together and demonstrate these concepts with the $SKI$-combinator calculus.  In Section \ref{ssec:bisimulation} we show how theories enriched over the category of labelled graphs can be used to study bisimulation.
 
 \subsection*{Acknowledgements}
 
