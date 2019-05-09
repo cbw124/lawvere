@@ -101,6 +101,8 @@ urlcolor=myurlcolor}
 \newcommand{\maps}{\colon}
 \newcommand{\id}{\mathrm{id}}
 
+\newcommand{\ul}[1]{\underline{#1}}
+
 \begin{document}
 
 \title{Enriched Lawvere Theories 
@@ -408,21 +410,6 @@ we say $\C$ is \textbf{$\V$-powered}, and we obtain a $\V$-functor
 \]
 \fi
 
-
- As with $\V$-products, the $\V$-natural isomorphism of powers gives rise to ``projections'' given by
- \[\varepsilon_{b,v}\maps 1_\V \stackrel{i_{b^v}}{\longrightarrow}  \C(b^v,b^v) \stackrel{\sim}{\longrightarrow} \V(v,\C(b^v,b))\]
- and these allow us to define ``internal projections'' 
- \[ e_{b,v}\maps \C(a,b^v) \to \V(v,\C(a,b)) \]
- given  by
- \[\C(a,b^v) \stackrel{\sim}{\longrightarrow} 1_\V \times \C(a,b^v)  \stackrel{\epsilon_{b,v} \times 1}{\longrightarrow} \V(v,\C(b^v,b))\times \C(a,b^v) \stackrel{\sim}{\longrightarrow} \]\[ \V(v,\C(b^v,b))\times \V(1_\V,\C(a,b^v)) \stackrel{\times}{\longrightarrow} \V(v\times 1_\V, \C(b^v,b)\times \C(a,b^v)) \stackrel{\circ_{a,b^v,b}}{\longrightarrow} \V(v,\C(a,b)) \]
-
-We say that a $\V$-functor $F\maps \C\to \D$ \textbf{preserves powers} if for every $b$ in $\C$ and $v$ in $\V$, the $\V$-natural transformations
-\[     F(e_{b,v}) \maps \D(-,F(b^v)) \to \V(v,\C(-,F(b)))   \]
-are the components of a $\V$-natural isomorphism 
-\[           \D(-,F(b^v)) \cong \V(v,\D(-,F(b))), \]
-and similarly for tensors.
-
-
 When all objects of $\C$ have both tensors and powers by some object $v \in \V$, we have isomorphisms
 \[
 	\C(v\cdot a,b) \cong \C(a,b)^v \cong \C(a, b^v)
@@ -430,6 +417,13 @@ When all objects of $\C$ have both tensors and powers by some object $v \in \V$,
 that are $\V$-natural in $a$ and $b$.  When $\V$ is cartesian closed and $\C = \underline{\V}$
 this holds for all $v \in \V$, since we can take $v \cdot a$ to be the product in $\V$ and take
 $b^v$ to be the exponential.
+
+
+ As with $\V$-products, the $\V$-natural isomorphism of powers gives rise to ``projections'' given by
+ \[\varepsilon_{b,v}\maps 1_\V \stackrel{i_{b^v}}{\longrightarrow}  \C(b^v,b^v) \stackrel{\sim}{\longrightarrow} C(b^v,b)^v\]
+ and a $\V$-functor $F\maps \C\to \D$ \textbf{preserves powers} if for all $b,v$ the image of the ``universal cone''
+ \[I \stackrel{\varepsilon_{b,v}}{\longrightarrow} \C(b^v,b)^v \stackrel{F^v}{\longrightarrow} \D(F(b^v),F(b))^v \stackrel{\sim}{\longrightarrow} \D(F(b^v),F(b)^v)\]
+is an isomorphism, exhibiting $F(b^v)$ as ``the'' power of $F(b)$ by $v$. Similarly, $F$ preserves tensors if for all $b,v$ we have $F(v\cdot b)\cong v\cdot F(b)$.
 
 
 There are just a few more technicalities. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.   A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial here: all categories to be considered are locally finitely presentable. We will use  $\V_f$ to denote the full subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
