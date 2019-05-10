@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/5/5
+% 2019/5/9
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -390,7 +390,7 @@ $b^v$ to be the exponential.
  \[\varepsilon_{b,v}\maps 1_\V \stackrel{i_{b^v}}{\longrightarrow}  \C(b^v,b^v) \stackrel{\sim}{\longrightarrow} C(b^v,b)^v\]
  and a $\V$-functor $F\maps \C\to \D$ \textbf{preserves powers} if for all $b,v$ the composite of $F$ with this cone,
  \[I \stackrel{\varepsilon_{b,v}}{\longrightarrow} \C(b^v,b)^v \stackrel{F^v}{\longrightarrow} \D(F(b^v),F(b))^v \stackrel{\sim}{\longrightarrow} \D(F(b^v),F(b)^v)\]
-is an isomorphism, exhibiting $F(b^v)$ as ``the'' power of $F(b)$ by $v$. Similarly, $F$ preserves tensors if for all $b,v$ we have $F(v\cdot b)\cong v\cdot F(b)$.
+is an isomorphism, exhibiting $F(b^v)$ as ``the'' power of $F(b)$ by $v$. %Similarly, $F$ preserves tensors if for all $b,v$ we have $F(v\cdot b)\cong v\cdot F(b)$.
 
 
 There are just a few more technicalities. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.   A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial here: all categories to be considered are locally finitely presentable. We will use  $\V_f$ to denote the full subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
