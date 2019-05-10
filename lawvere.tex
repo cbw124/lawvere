@@ -339,8 +339,8 @@ $\underline{\V}$.  In particular,
 \[           (u \times v)^w \cong u^w \times v^w \; \textrm{ and } \; 1_\V^w \cong 1_\V .\]
 Conversely, any finite $\V$-product in $\V$ is also a product in the usual sense. 
 In a general $\V$-category $\C$, it makes no sense to say a $\V$-product is a product
-in the usual sense.  However, the $\V$-natural isomorphism in Eq.\ \eqref{eq:prod} gives rise
-to a morphism
+in the usual sense.  However, for any $\V$-product $b = \prod_{i=1}^n b_i$, 
+ the $\V$-natural isomorphism in Eq.\ \eqref{eq:prod} gives rise to a morphism
 \[    \pi_i \maps 1_\V \to \C(b,b_i)  \]
 for each $i$, defined as the composite
 \[    1_\V \stackrel{i_b}{\longrightarrow} \C(b,b) \stackrel{\sim}{\longrightarrow} \prod_{i=1}^n \C(b,b_i) \longrightarrow \C(b,b_i) .\]
@@ -351,7 +351,7 @@ $\C$.  For example, we can define a $V$-natural transformation
 which acts like composition with $\pi_i$, as follows:
 \[     \C(-,b) \stackrel{\sim}{\longrightarrow} 1_\V \times \C(-,b)  
  \stackrel{\pi_i \times 1}{\longrightarrow} \C(b,b_i) \times \C(-,b) \stackrel{\circ_{-,b,b_i}}{\longrightarrow} \C(-,b_i). \]
-The $V$-natural isomorphism in Eq.\ \eqref{eq:prod} has the $\V$-natural transformations $p_i \maps \C(-,b) \to \C(-,b_i)$ as components.
+The $V$-natural isomorphism in Eq.\ \eqref{eq:prod} has the $\V$-natural transformations $p_i \maps \C(-,b) \to \C(-,b_i)$ as its factors.
 
 Similarly, the \textbf{$\V$-coproduct} of $b_1, \dots, b_n \in \Obj(C)$ is an object $b$ equipped with a $\V$-natural isomorphism
 \[           C(b,-) \cong \prod_{i = 1}^n C(b_i,-). \]
@@ -368,60 +368,15 @@ are the components of a $\V$-natural isomorphism
 \[           \D(-,F(b)) \cong \prod_{i=1}^n \D(-,F(b_i)), \]
 and similarly for $\V$-coproducts. 
 
-A bit more subtly, generalizing the product and internal hom of $\V$, a $\V$-category $\C$ can
-have ``tensors'' and ``powers'' (which are sometimes called ``copowers'' and ``cotensors'').
-Given $a \in \Obj(\C)$ and $v \in \Obj(\V)$, we say an object $v \cdot a \in \Obj(\C)$ is the \define{tensor} of $a$ by $v$ if it is equipped with isomorphisms
+A bit more subtly, generalizing the product and internal hom of $\V$, a $\V$-category $\C$ can have ``powers''.   Lucyshyn--Wright's work on enriched Lawvere theory makes extensive of use of these  \cite{lucyshyn-wright}.  Given $b \in \Obj(\C)$ and $v \in \Obj(\V)$, we say an object $b^v \in \Obj(C)$ is a \define{power} of $b$ by $v$ if it is equipped with a $\V$-natural isomorphism
 \[
-	\C(v\cdot a,b) \cong  \C(a,b)^v
+	e \maps \C(-,b^v) \cong \C(-,b)^v.
 \]
-$\V$-natural in $b$.
-In the special case $\V = \Set$ this forces $v \cdot a$ to be the $v$-fold coproduct 
-of copies of $a$:
-\[       v \cdot a = \sum_{i \in v} a . \]
-\iffalse
-In general, if we can choose a tensor product $v \cdot a$ for all $v \in \V$, $a \in \C$
-we say $\C$ is \textbf{$\V$-tensored}, and we obtain a $\V$-functor
-\[
-\begin{array}{ccl}
-  \underline{\V} \times \C  &\to& \C \\
- (v,a) &\mapsto & v \cdot a. \\
-\end{array}
-\]
-For example, $\underline{\V}$ is always $\V$-tensored via the cartesian product
-$ \times \maps \underline{\V} \times \underline{\V} \to \underline{\V} $.
-\fi
-Similarly, given $b \in \Obj(\C)$ and $v \in \Obj(\V)$, we say an object $b^v \in \Obj(C)$ is a \define{power} of $b$ by $v$ if it is equipped with isomorphisms
-\[
-		 \C(a,b^v) \cong \C(a,b)^v
-\]
-$\V$-natural in $a$.  
 In the special case $\V = \Set$  this forces $b^v$ to be the $v$-fold product of copies of $b$:
 \[          b^v = \prod_{i \in v} b . \]
-\iffalse
-In general, if we can choose a power $b^v$ for all $b \in C$, $v \in \V$,
-we say $\C$ is \textbf{$\V$-powered}, and we obtain a $\V$-functor
-\[
-\begin{array}{ccl}
- \C \times \underline{\V}^\op  &\to& \C \\
- (b, v) &\mapsto & b^v .\\
-\end{array}
-\]
-\fi
-
-
- As with $\V$-products, the $\V$-natural isomorphism of powers gives rise to ``projections'' given by
- \[\varepsilon_{b,v}\maps 1_\V \stackrel{i_{b^v}}{\longrightarrow}  \C(b^v,b^v) \stackrel{\sim}{\longrightarrow} \V(v,\C(b^v,b))\]
- and these allow us to define ``internal projections'' 
- \[ e_{b,v}\maps \C(a,b^v) \to \V(v,\C(a,b)) \]
- given  by
- \[\C(a,b^v) \stackrel{\sim}{\longrightarrow} 1_\V \times \C(a,b^v)  \stackrel{\epsilon_{b,v} \times 1}{\longrightarrow} \V(v,\C(b^v,b))\times \C(a,b^v) \stackrel{\sim}{\longrightarrow} \]\[ \V(v,\C(b^v,b))\times \V(1_\V,\C(a,b^v)) \stackrel{\times}{\longrightarrow} \V(v\times 1_\V, \C(b^v,b)\times \C(a,b^v)) \stackrel{\circ_{a,b^v,b}}{\longrightarrow} \V(v,\C(a,b)) \]
-
-We say that a $\V$-functor $F\maps \C\to \D$ \textbf{preserves powers} if for every $b$ in $\C$ and $v$ in $\V$, the $\V$-natural transformations
-\[     F(e_{b,v}) \maps \D(-,F(b^v)) \to \V(v,\C(-,F(b)))   \]
-are the components of a $\V$-natural isomorphism 
-\[           \D(-,F(b^v)) \cong \V(v,\D(-,F(b))), \]
-and similarly for tensors.
-
+We say that a $\V$-functor $F\maps \C\to \D$ \textbf{preserves powers} by $v \in \Obj(\V)$ if for every $b \in \Obj(\C)$, the $\V$-natural transformation
+\[     F(e) \maps \D(-,F(b^v)) \to \D(-,F(b))^v  \]
+is an isomorphism.  In particular, this makes $F(b)^v$ into a power of $F(b)$ by $v$.
 
 When all objects of $\C$ have both tensors and powers by some object $v \in \V$, we have isomorphisms
 \[
@@ -441,7 +396,7 @@ Power introduced the notion of enriched Lawvere theory about twenty years ago, `
 \[  \tau\maps \underline{\V}_f^\op \to \T \]
 that preserves these powers.  A ``model'' of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ that preserves powers by finite objects of $\V$.  There is a category $\Mod(\T,\V)$ whose objects are models and whose morphisms are $\V$-natural transformations. The monadic adjunction and equivalence of $\S$2 generalize to the enriched setting.
 
-However, this sort of $\V$-enriched Lawvere theory has arities for every finite object of $\V$.  These \textit{generalized arities} may be very powerful---rather than only inputting $n$-tuples of terms, we can input any finite object of terms.  Despite its potential, this generalization remains largely unexploited in computer science.   Power \cite{powsketch} introduced ``enriched sketches'' as a way of presenting enriched Lawvere theories, but to the authors' knowledge these are not yet widely understood or used.  What does it mean for an operation to take in a finite graph of terms?  How can we learn to use this generality? One clue that we note in Example \ref{ex:2} is that limits and colimits are operations whose arity is a ``shape'' rather than only a natural number. We hope that this idea is explored more widely, so that we can use more general arities in both mathematics and computer programming.
+However, this sort of $\V$-enriched Lawvere theory has arities for every finite object of $\V$.  These \textit{generalized arities} may be very powerful---rather than only inputting $n$-tuples of terms, we can input any finite object of terms.  Despite its potential, this generalization remains largely unexploited in computer science.   Power \cite{powsketch} introduced ``enriched sketches'' as a way of presenting enriched Lawvere theories, but to the authors' knowledge these are not yet widely understood or used.  What does it mean for an operation to take in a finite graph of terms?  How can we learn to use this generality? One clue that we note in Example \ref{ex:2} is that limits and colimits are operations whose arity is a ``diagram shape'' rather than a natural number. We hope that this idea is explored more widely, so that we can use more general arities in both mathematics and computer programming.
 
 In this paper, however, we only consider \textit{natural number} arities, while still retaining enrichment. To do this we use the work of Lucyshyn-Wright \cite{lucyshyn-wright}, who along with Power \cite{np} has generalized Power's original ideas to allow a more flexible choice of arities.    We also limit ourselves to the case where the tensor product of $\V$ is cartesian.  This has a significant simplifying effect, yet it suffices for many cases of interest in computer science.
 
