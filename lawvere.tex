@@ -101,6 +101,8 @@ urlcolor=myurlcolor}
 \newcommand{\maps}{\colon}
 \newcommand{\id}{\mathrm{id}}
 
+\newcommand{\ul}[1]{\underline{#1}}
+
 \begin{document}
 
 \title{Enriched Lawvere Theories 
@@ -374,9 +376,6 @@ A bit more subtly, generalizing the product and internal hom of $\V$, a $\V$-cat
 \]
 In the special case $\V = \Set$  this forces $b^v$ to be the $v$-fold product of copies of $b$:
 \[          b^v = \prod_{i \in v} b . \]
-We say that a $\V$-functor $F\maps \C\to \D$ \textbf{preserves powers} by $v \in \Obj(\V)$ if for every $b \in \Obj(\C)$, the $\V$-natural transformation
-\[     F(e) \maps \D(-,F(b^v)) \to \D(-,F(b))^v  \]
-is an isomorphism.  In particular, this makes $F(b)^v$ into a power of $F(b)$ by $v$.
 
 When all objects of $\C$ have both tensors and powers by some object $v \in \V$, we have isomorphisms
 \[
@@ -385,6 +384,13 @@ When all objects of $\C$ have both tensors and powers by some object $v \in \V$,
 that are $\V$-natural in $a$ and $b$.  When $\V$ is cartesian closed and $\C = \underline{\V}$
 this holds for all $v \in \V$, since we can take $v \cdot a$ to be the product in $\V$ and take
 $b^v$ to be the exponential.
+
+
+ As with $\V$-products, the $\V$-natural isomorphism of powers gives rise to a ``universal cone'' by
+ \[\varepsilon_{b,v}\maps 1_\V \stackrel{i_{b^v}}{\longrightarrow}  \C(b^v,b^v) \stackrel{\sim}{\longrightarrow} C(b^v,b)^v\]
+ and a $\V$-functor $F\maps \C\to \D$ \textbf{preserves powers} if for all $b,v$ the composite of $F$ with this cone,
+ \[I \stackrel{\varepsilon_{b,v}}{\longrightarrow} \C(b^v,b)^v \stackrel{F^v}{\longrightarrow} \D(F(b^v),F(b))^v \stackrel{\sim}{\longrightarrow} \D(F(b^v),F(b)^v)\]
+is an isomorphism, exhibiting $F(b^v)$ as ``the'' power of $F(b)$ by $v$. Similarly, $F$ preserves tensors if for all $b,v$ we have $F(v\cdot b)\cong v\cdot F(b)$.
 
 
 There are just a few more technicalities. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.   A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial here: all categories to be considered are locally finitely presentable. We will use  $\V_f$ to denote the full subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
