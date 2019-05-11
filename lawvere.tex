@@ -333,27 +333,7 @@ isomorphism
 \label{eq:prod}          \C(-,b) \cong \prod_{i=1}^n \C(-,b_i). 
 \end{equation}
 If such an object $b$ exists, we denote it by $\prod_{i=1}^n b_i$.   This makes sense
-even when $n = 0$: a 0-ary product in $\C$ is called a \textbf{$\V$-terminal object} and denoted
-as $1_\C$.  
-
-Whenever $\V$ is cartesian closed, the finite products in $\V$ are also $\V$-products in 
-$\underline{\V}$.  In particular,
-\[           (u \times v)^w \cong u^w \times v^w \; \textrm{ and } \; 1_\V^w \cong 1_\V .\]
-Conversely, any finite $\V$-product in $\V$ is also a product in the usual sense. 
-In a general $\V$-category $\C$, it makes no sense to say a $\V$-product is a product
-in the usual sense.  However, for any $\V$-product $b = \prod_{i=1}^n b_i$, 
- the $\V$-natural isomorphism in Eq.\ \eqref{eq:prod} gives rise to a morphism
-\[    \pi_i \maps 1_\V \to \C(b,b_i)  \]
-for each $i$, defined as the composite
-\[    1_\V \stackrel{i_b}{\longrightarrow} \C(b,b) \stackrel{\sim}{\longrightarrow} \prod_{i=1}^n \C(b,b_i) \longrightarrow \C(b,b_i) .\]
-These morphisms $\pi_i$ serve as substitutes for the projections from $b$ to $b_i$.  They are  ``elements'' of the hom-objects $\C(b,b_i)$, where an \define{element} of $v \in \Obj(\V)$ is a 
-morphism from $1_\V$ to $v$.    Elements of hom-objects behave much like morphisms for 
-$\C$.  For example, we can define a $V$-natural transformation
-\[     p_i \maps \C(-,b) \to \C(-,b_i), \]
-which acts like composition with $\pi_i$, as follows:
-\[     \C(-,b) \stackrel{\sim}{\longrightarrow} 1_\V \times \C(-,b)  
- \stackrel{\pi_i \times 1}{\longrightarrow} \C(b,b_i) \times \C(-,b) \stackrel{\circ_{-,b,b_i}}{\longrightarrow} \C(-,b_i). \]
-The $V$-natural isomorphism in Eq.\ \eqref{eq:prod} has the $\V$-natural transformations $p_i \maps \C(-,b) \to \C(-,b_i)$ as its factors.
+even when $n = 0$: a 0-ary product in $\C$ is called a \textbf{$\V$-terminal object} and denoted as $1_\C$.  
 
 Similarly, the \textbf{$\V$-coproduct} of $b_1, \dots, b_n \in \Obj(C)$ is an object $b$ equipped with a $\V$-natural isomorphism
 \[           C(b,-) \cong \prod_{i = 1}^n C(b_i,-). \]
@@ -364,11 +344,37 @@ closed, any finite coproduct that exists in $\V$ is also a $\V$-coproduct in $\u
 whenever $0$ is an initial object of $\V$.  Conversely, any finite $\V$-coproduct that
 exists in $\V$ is also a coproduct in the usual sense.
 
-We say that a $\V$-functor $F\maps \C\to \D$ \textbf{preserves} $\V$\textbf{-products} if for every $b = \prod_{i=1}^n b_i$ in $\C$, the $V$-natural transformations
-\[     F(p_i) \maps \D(-,F(b)) \to \D(-,F(b_i))   \]
-are the components of a $\V$-natural isomorphism 
-\[           \D(-,F(b)) \cong \prod_{i=1}^n \D(-,F(b_i)), \]
-and similarly for $\V$-coproducts. 
+Whenever $\V$ is cartesian closed, the finite products in $\V$ are also $\V$-products in $\underline{\V}$.  In particular,
+\[           (u \times v)^w \cong u^w \times v^w \; \textrm{ and } \; 1_\V^w \cong 1_\V .\]
+Conversely, any finite $\V$-product in $\V$ is also a product in the usual sense. 
+In a general $\V$-category $\C$, it makes no sense to say a $\V$-product is a product
+in the usual sense.  However, for any $\V$-product $b = \prod_{i=1}^n b_i$, 
+ the $\V$-natural isomorphism in Eq.\ \eqref{eq:prod} gives rise to a morphism
+\[    p_i \maps 1_\V \to \C(b,b_i)  \]
+for each $i$, defined as the composite
+\[    1_\V \stackrel{i_b}{\longrightarrow} \C(b,b) \stackrel{\sim}{\longrightarrow} \prod_{i=1}^n \C(b,b_i) \longrightarrow \C(b,b_i) .\]
+Using $p_i$ we can define a $V$-natural transformation
+\[     \pi_i \maps \C(-,b) \to \C(-,b_i) \]
+as follows:
+\begin{equation}
+\label{eq:projections}    \C(-,b) \stackrel{\sim}{\longrightarrow} 1_\V \times \C(-,b)  
+ \stackrel{p_i \times 1}{\longrightarrow} \C(b,b_i) \times \C(-,b) \stackrel{\circ_{-,b,b_i}}{\longrightarrow} \C(-,b_i). 
+ \end{equation}
+The $V$-natural isomorphism in Eq.\ \eqref{eq:prod} has these $\V$-natural transformations $\pi_i$ as its factors.   
+
+Indeed, we can equivalently define an object $b$ to be a $\V$-product of objects $b_1, \dots, b_n$ if it is equipped with morphisms
+\[       p_i \maps 1_\V \to \C(b,b_i)  \]
+such that the $\V$-natural transformations 
+\[     \pi_i \maps \C(-,b) \to \C(-,b_i) \]
+defined by Eq.\ (\ref{eq:projections}) give rise to an \emph{invertible} $\V$-natural transformation
+\[      (\pi_1, \dots, \pi_n) \maps \C(-,b) \to \prod_{i=1}^n \C(-,b_i). \]
+One advantage of this approach is that we can say a $\V$-functor $F \maps \C \to \D$ \textbf{preserves $\V$-products} if for every $\V$-product $b = \prod_{i = 1}^n b_i$
+with projections 
+\[              p_i \maps 1_\V \to \C(b,b_i)  \]
+the morphisms
+\[        F \circ p_i \maps 1_\V \to \D(F(b),F(b_i)) \]
+make $F(b)$ into the $\V$-product of the objects $F(b_i)$.
+
 
 A bit more subtly, generalizing the product and internal hom of $\V$, a $\V$-category $\C$ can have ``powers''.   Lucyshyn--Wright's work on enriched Lawvere theory makes extensive of use of these  \cite{lucyshyn-wright}.  Given $b \in \Obj(\C)$ and $v \in \Obj(\V)$, we say an object $b^v \in \Obj(C)$ is a \define{power} of $b$ by $v$ if it is equipped with a $\V$-natural isomorphism
 \[
