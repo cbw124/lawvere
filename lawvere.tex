@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/5/9
+% 2019/5/11
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -358,45 +358,49 @@ Using $p_i$ we can define a $V$-natural transformation
 as follows:
 \begin{equation}
 \label{eq:projections}    \C(-,b) \stackrel{\sim}{\longrightarrow} 1_\V \times \C(-,b)  
- \stackrel{p_i \times 1}{\longrightarrow} \C(b,b_i) \times \C(-,b) \stackrel{\circ_{-,b,b_i}}{\longrightarrow} \C(-,b_i). 
+ \stackrel{p_i \times 1}{\longrightarrow} \C(b,b_i) \times \C(-,b) \stackrel{\circ}{\longrightarrow} \C(-,b_i). 
  \end{equation}
-The $V$-natural isomorphism in Eq.\ \eqref{eq:prod} has these $\V$-natural transformations $\pi_i$ as its factors.   
+The $V$-natural isomorphism in Eq.\ \eqref{eq:prod} has these $\V$-natural transformations $\pi_i$ as its factors.    So, the morphisms $p_i \maps 1_\V \to \C(b,b_i)$ serve as a substitute for the projections we normally expect from a product.
 
-Indeed, we can equivalently define an object $b$ to be a $\V$-product of objects $b_1, \dots, b_n$ if it is equipped with morphisms
+Indeed, we can equivalently define an object $b$ to be a $\V$-product of objects $b_1, \dots, b_n$ if it is equipped with morphisms 
 \[       p_i \maps 1_\V \to \C(b,b_i)  \]
-such that the $\V$-natural transformations 
+called \define{projections} such that if we define $\V$-natural transformations 
 \[     \pi_i \maps \C(-,b) \to \C(-,b_i) \]
-defined by Eq.\ (\ref{eq:projections}) give rise to an \emph{invertible} $\V$-natural transformation
+by Eq.\ (\ref{eq:projections}), these give rise to an \emph{invertible} $\V$-natural transformation
 \[      (\pi_1, \dots, \pi_n) \maps \C(-,b) \to \prod_{i=1}^n \C(-,b_i). \]
-One advantage of this approach is that we can say a $\V$-functor $F \maps \C \to \D$ \textbf{preserves $\V$-products} if for every $\V$-product $b = \prod_{i = 1}^n b_i$
-with projections 
-\[              p_i \maps 1_\V \to \C(b,b_i)  \]
-the morphisms
+The advantage of this reformulation is that we can say a $\V$-functor $F \maps \C \to \D$ \textbf{preserves finite $\V$-products} if for every $\V$-product $b = \prod_{i = 1}^n b_i$ with projections
+\[              p_i \maps 1_\V \to \C(b,b_i) , \]
+the composites
 \[        F \circ p_i \maps 1_\V \to \D(F(b),F(b_i)) \]
-make $F(b)$ into the $\V$-product of the objects $F(b_i)$.
+serve as projections making $F(b)$ into the $\V$-product of the objects $F(b_i)$.
 
 
-A bit more subtly, generalizing the product and internal hom of $\V$, a $\V$-category $\C$ can have ``powers''.   Lucyshyn--Wright's work on enriched Lawvere theory makes extensive of use of these  \cite{lucyshyn-wright}.  Given $b \in \Obj(\C)$ and $v \in \Obj(\V)$, we say an object $b^v \in \Obj(C)$ is a \define{power} of $b$ by $v$ if it is equipped with a $\V$-natural isomorphism
-\[
-	e \maps \C(-,b^v) \cong \C(-,b)^v.
-\]
-In the special case $\V = \Set$  this forces $b^v$ to be the $v$-fold product of copies of $b$:
-\[          b^v = \prod_{i \in v} b . \]
+A bit more subtly, generalizing the product and internal hom of $\V$, a $\V$-category $\C$ can have ``powers''.   Lucyshyn--Wright's work on enriched Lawvere theory makes extensive of use of these  \cite{lucyshyn-wright}.  Given $b \in \Obj(\C)$ and $v \in \Obj(\V)$, we say an object $c^v \in \Obj(C)$ is a \textbf{$v$-power} of $c$ if it is equipped with a $\V$-natural isomorphism
+\begin{equation}
+\label{eq:power}
+ \C(-,c^v) \cong \C(-,c)^v.
+\end{equation}
+In the special case $\V = \Set$  this forces $c^v$ to be the $v$-fold product of copies of $c$:
+\[          c^v = \prod_{i \in v} c . \]
 
-When all objects of $\C$ have both tensors and powers by some object $v \in \V$, we have isomorphisms
-\[
-	\C(v\cdot a,b) \cong \C(a,b)^v \cong \C(a, b^v)
-\]
-that are $\V$-natural in $a$ and $b$.  When $\V$ is cartesian closed and $\C = \underline{\V}$
-this holds for all $v \in \V$, since we can take $v \cdot a$ to be the product in $\V$ and take
-$b^v$ to be the exponential.
-
-
- As with $\V$-products, the $\V$-natural isomorphism of powers gives rise to a ``universal cone'' by
- \[\varepsilon_{b,v}\maps 1_\V \stackrel{i_{b^v}}{\longrightarrow}  \C(b^v,b^v) \stackrel{\sim}{\longrightarrow} C(b^v,b)^v\]
- and a $\V$-functor $F\maps \C\to \D$ \textbf{preserves powers} if for all $b,v$ the composite of $F$ with this cone,
- \[I \stackrel{\varepsilon_{b,v}}{\longrightarrow} \C(b^v,b)^v \stackrel{F^v}{\longrightarrow} \D(F(b^v),F(b))^v \stackrel{\sim}{\longrightarrow} \D(F(b^v),F(b)^v)\]
-is an isomorphism, exhibiting $F(b^v)$ as ``the'' power of $F(b)$ by $v$. %Similarly, $F$ preserves tensors if for all $b,v$ we have $F(v\cdot b)\cong v\cdot F(b)$.
+As with $\V$-products, it is useful to repackage the isomorphism of Eq.\ \eqref{eq:power} so we can define what it means for a $\V$-functor to preserve a $v$-power.   First, note that this isomorphism gives rise to a ``universal cone''  $e \maps 1_\V \to  \C(c^v,c)^v$,
+namely the composite
+\[ 1_\V \stackrel{i_{c^v}}{\longrightarrow}  \C(c^v,c^v) \stackrel{\sim}{\longrightarrow} \C(c^v,c)^v .\]
+Uncurrying $e$, we obtain a morphism
+\[  \epsilon \maps v \to \C(c^v,c) .  \]
+Next, note that we can recover the $\V$-natural isomorphism in Eq.\ \eqref{eq:power}
+from $\epsilon$ by taking the composite
+\begin{equation}
+\label{eq:power2}   v \times \C(-,c^v) \stackrel{\epsilon \times 1}{\longrightarrow} \C(c^v,c) \times \C(-,c^v) \stackrel{\circ}{\longrightarrow} \C(-,c) 
+\end{equation}
+and currying it.  So, we can equivalently define an object $c^v$ to be a $v$-power
+of $c$ if it is equipped with morphism $\epsilon \maps v \to  \C(c^v,c)$ such that
+currying the composite in Eq.\ \eqref{eq:power2}, the resulting $\V$-natural
+transformation
+\[      \C(-,c^v) \to \C(-,c)^v   \]
+is an isomorphism.  Thus, we say that a $\V$-functor $F\maps \C\to \D$ \textbf{preserves} the $v$-power $c^v$ if the composite
+\[F \circ \epsilon \maps v \to \D(F(c^v),F(c)) \]
+makes $F(c^v)$ into the $v$-power of $F(v)$.
 
 
 There are just a few more technicalities. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.   A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial here: all categories to be considered are locally finitely presentable. We will use  $\V_f$ to denote the full subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
