@@ -136,7 +136,8 @@ for Operational Semantics \\}
 \end{center} 
 
 \begin{abstract} 
-Enriched Lawvere theories are a generalization of Lawvere theories that allow us to describe the operational semantics of formal systems.  For example, a graph-enriched Lawvere theory describes structures that have a \emph{graph} of operations of each arity, where the vertices are operations and the edges are rewrites between operations. Enriched theories can be used to equip systems with operational semantics, and maps between enriching categories can serve to translate between different forms of operational and denotational semantics.  We illustrate these ideas with the $SKI$ combinator calculus, a variable-free version of the lambda calculus, presented as a graph-enriched theory.  
+Enriched Lawvere theories are a generalization of Lawvere theories that allow us to describe the operational semantics of formal systems.  For example, a graph-enriched Lawvere theory describes structures that have a \emph{graph} of operations of each arity, where the vertices are operations and the edges are rewrites between operations. Enriched theories can be used to equip systems with operational semantics, and maps between enriching categories can serve to translate between different forms of operational and denotational semantics.  The Grothendieck construction lets us study all models of all enriched theories
+in all contexts in a single category.  We illustrate these ideas with the $SKI$-combinator calculus, a variable-free version of the lambda calculus, and with Milner's calculus of communicating processes.
 \end{abstract}
 
 \section{Introduction}
@@ -155,7 +156,7 @@ The goal of this paper is to give a simple unified explanation of enriched Lawve
 \text{types: } & \text{objects }\\
 \text{terms: } & \text{morphisms }\\
 \text{equations between terms: } & \text{commuting diagrams of morphisms}\\
-\text{rewrites between terms } & \text{edges in hom-graphs}\\
+\text{rewrites between terms: } & \text{edges in hom-graphs}\\
 \end{array}\]
 
 \vskip 0.5em
@@ -1129,7 +1130,7 @@ In particular, labelled transition systems allow for the correct definition of p
     \end{array}\]
   Intuitively, this means that the processes $p$ and $q$ can always ``match each other's moves'' as they evolve. Then for all intents and purposes, these processes behave the same way, and hence should be considered as operationally equivalent. The \define{bisimulation} on $G$ is the largest bisimilarity relation which is also a \textit{congruence}, meaning that processes are bisimilar iff they are so in every context, i.e. when substituted into any one-hole term.
   
-  This concept, as well as the Calculus of Communicating Processes, were invented and demonstrated by Milner \cite{ccs}. The latter can be expressed as an $\LTS$-theory. The category of labelled transition systems is just like $\Gph$, except of course we now keep track of labels. Morphisms in $\LTS$, operations in $\LTS$-theories, and $\LTS$-functors all preserve labels; for example, when we compose and multiply rewrite rules, we retain this information by labelling with the actual denotation for that composite/product. Modulo these details, $\V=\LTS$ is exactly like the cases considered above.
+ This concept, as well as the calculus of communicating processes, were invented and demonstrated by Milner \cite{ccs}. The latter can be expressed as an $\LTS$-theory. The category of labelled transition systems is just like $\Gph$, except of course we now keep track of labels. Morphisms in $\LTS$, operations in $\LTS$-theories, and $\LTS$-functors all preserve labels; for example, when we compose and multiply rewrite rules, we retain this information by labelling with the actual denotation for that composite/product. Modulo these details, $\V=\LTS$ is exactly like the cases considered above.
 
 \[\Th(\mathsf{CCS})\]
 \[\begin{array}{lrll}
