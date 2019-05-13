@@ -335,7 +335,7 @@ Given a $\V$-category $\C$, the \textbf{$\V$-coproduct} of an $n$-tuple of objec
 If such an object exists, we denote it by $\sum_{i=1}^n b_i$.  
 This makes sense even when $n = 0$: a 0-ary $\V$-coproduct in $\C$ is called a \textbf{$\V$-initial object} and denoted as $0_\C$.   When $\V$ is cartesian
 closed, any finite coproduct that exists in $\V$ is also a $\V$-coproduct in $\underline{\V}$.   In particular,
-\[          u^{v+w} \cong u^v \times u^w \; \textrm{ and } \;  0^w \cong 1_\V \]
+\[          u^{v+w} \cong u^v \times u^w \; \textrm{ and } \;  w^0 \cong 1_\V \]
 whenever $0$ is an initial object of $\V$.  Conversely, any finite $\V$-coproduct that
 exists in $\V$ is also a coproduct in the usual sense.
 
@@ -344,7 +344,8 @@ Similarly, a \textbf{$\V$-product} of objects $b_1, \dots , b_n \in \Obj(C)$ is 
 \label{eq:prod}          \C(-,b) \cong \prod_{i=1}^n \C(-,b_i). 
 \end{equation}
 If such an object $b$ exists, we denote it by $\prod_{i=1}^n b_i$.   A 0-ary product in $\C$ is called a \textbf{$\V$-terminal object} and denoted as $1_\C$.     Whenever $\V$ is cartesian closed, the finite products in $\V$ are also $\V$-products in $\underline{\V}$.  In particular,
-\[           (u \times v)^w \cong u^w \times v^w \; \textrm{ and } \; 1_\V^w \cong 1_\V .\]
+\[           (u \times v)^w \cong u^w \times v^w \; \textrm{ and } \; 1_\V^w \cong 1_\V \]
+where our chosen terminal object $1_\V$ is also $\V$-terminal.
 Conversely, any finite $\V$-product in $\V$ is also a product in the usual sense. 
 
 A general $\V$-category $\C$ does not exactly have projections from a 
@@ -491,7 +492,7 @@ n_\V & \mapsto & t^{n_\V} & \mapsto & \T(t^{n_\V},-)
 Since an object of $\V$ does not necessarily have a ``poset of finite subobjects'' over which to take a filtered colimit (as in $\Set$), the extension of this ``free model'' functor $y \tau^\op$ to all of $\V$ is specified by a somewhat higher-powered generalization: it is the left Kan extension of $y\tau$ along $j$.
 \[\begin{tikzcd}
 \NN_\V \arrow[rr,"y\tau^\op"{name=y}] \arrow[swap,rd,"j"] & & \left[\T,\V\right]\\
-& \V \arrow[swap,dotted, ru,"F:=\mathrm{Lan}_jy\tau"] \arrow[Rightarrow,from=y,"\eta", shorten >=0.2cm,shorten <=.2cm]
+& \V \arrow[swap,dotted, ru,"F:=\mathrm{Lan}_jy\tau^{\op}"] \arrow[Rightarrow,from=y,"\eta", shorten >=0.2cm,shorten <=.2cm]
 \end{tikzcd}\]
 This is the universal ``best solution'' to the problem of making the triangle commute up to a $\V$-natural transformation.  That is, for any functor $G \maps \V \to [\T,\V]$ and $\V$-natural transformation $\theta \maps y\tau \Rightarrow Gj$, the latter factors uniquely through $\eta$.
 From the adjunction between $\V$ and the category of models $\Mod(\T,\V)$ we obtain a $\V$-enriched monad
@@ -506,6 +507,7 @@ We next give two examples of a rather abstract nature, where we show how $\Cat$-
 \begin{example}
 \label{ex:1}
 When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to be called a \define{2-theory}.  For example, let $\T = \Th(\mathrm{PsMon})$ be the 2-theory of pseudomonoids \cite{pseudo}.   A pseudomonoid is a weakened version of a monoid: rather than associativity and unitality \textit{equations}, it has 2-isomorphisms called the associator and unitors, which we can treat as \textit{rewrite rules}.  To equate various possible rewrite sequences, these 2-isomorphisms must obey equations called ``coherence laws''.  Here is a presentation of the 2-theory for pseudomonoids:
+\newpage
 	\[ \Th(\mathrm{PsMon}) \]
 	\[\begin{array}{lll}
 	\textbf{sort} & M & \text{pseudomonoid}\\
@@ -574,7 +576,7 @@ In this way, 2-theories generalize equipping \textit{set}-like objects  with ope
  Enrichment generalizes operations in more ways than by weakening equations to coherent isomorphisms.  We can also use 2-theories to describe other structures that make sense inside 2-categories, such as adjunctions. 
   
 For example, we may define a cartesian category $\X$ to be one equipped with right adjoints to the diagonal $\Delta_\X\maps \X \to \X \times \X$ and the unique functor $!_\X \maps \X \to 1_\Cat$.    These right adjoints are a functor $m \maps \X^2 \to \X$ describing binary products in $\X$ and a functor $e \maps 1 \to \X$ picking out the terminal object in $\X$.   We can capture the fact that they are right adjoints by providing them with units and counits and imposing the triangle equations.   There is thus a 2-theory $\Th(\mathsf{Cart})$ whose models in $\Cat$ are categories with chosen finite products.  More generally a model of this 2-theory in any 2-category $\C$ with finite products is called a \define{cartesian object} in $\C$.  
-
+\newpage
   \[ \Th(\mathsf{Cart}) \]
   \[\begin{array}{lllllll}
       \textbf{type} &
@@ -871,7 +873,7 @@ Next we introduce two more useful kinds of translations, and demonstrate how all
 eager to see applications.
 
 
-\section{The Category of all $\V$-Theories}
+\section{The Category of All Models}
 \label{sec:V-theories}
 
 In addition to change of base, there are two other natural and useful ways to go between models of enriched theories.   Suppose $\V$ is any cartesian closed category with chosen finite coproducts of the terminal object.   Let $\V\Mod(\T,\C)$ be the category of models of a $\V$-theory $\T$ in a $\V$-category $\C$ with finite $\V$-products, as in Defn.\ \ref{defn:VMod}.  A morphism of $\V$-theories $f\maps\T\to \T'$ induces a \define{change of theory} functor between the respective categories of models 
@@ -983,7 +985,8 @@ This problem was noticed early in the history of mathematical foundations, even 
 
 The insight of Stay and Meredith \cite{roswelt} is that even though Lawvere theories have no variables, through abstraction elimination a programming language can be made into an algebraic object. When representing a computational calculus as a $\Gph$-theory, the general rewrite rules are simply edges in the hom-graphs $t^n \to t$, with the object $t$ serving in place of the variable. Below is the theory of the $SKI$-calculus:
 
-$$\Th(\mathsf{SKI})$$
+\newpage
+\[  \Th(\mathsf{SKI})\]
 \[\begin{array}{lrl}
 \textbf{type} & t &\\
 \textbf{term constructors} & S\maps & 1 \to t\\
@@ -1152,9 +1155,10 @@ There is an endofunctor $B\maps \mathsf{LTS} \to \mathsf{LTS}$ which quotients b
 \section{Conclusion}
 \label{sec:conclusion}
 
-We have established the basics of how enriched Lawvere theories provide a framework for unifying the syntax and semantics, the structure and behavior of formal languages. Enriching theories in category-like structures reifies operational semantics by incorporating rewrites between terms; and cartesian functors between enriching categories induce change-of-semantics functors between categories of models---this simplified condition is obtained by using only finite cardinal arities.
+We have established the basics of how enriched Lawvere theories provide a framework for unifying the syntax and semantics, the structure and behavior of formal languages. Enriching theories in category-like structures reifies operational semantics by incorporating rewrites between terms, and cartesian functors between enriching categories induce change-of-semantics functors between categories of models---this simplified condition is obtained by using only natural number arities.
 
-This base-change, along with change-of-theory and change-of-context, using an iterated Grothendieck construction can be assimilated into one category $\mathrm{Thy}$, which consists of all enriched Lawvere theories. We have demonstrated these concepts with the theory of combinatory logic, $\Th(\mathsf{SKI})$, giving change-of-semantics from small-step to big-step to full-step to denotational semantics. Finally, we suggest that there are many interesting change-of-semantics functors, by considering an endofunctor on the category of labelled transition systems, which quotients by the bisimulation relation and is indeed a change-of-semantics.
+Change of base, along with change of theory and change of context, can be used to create
+a single category $\mathrm{Mod}$, which consists of all models of all enriched Lawvere theories in all contexts. We have demonstrated these concepts with the theory of combinatory logic, $\Th(\mathsf{SKI})$, describing a change of semantics from small-step to big-step to full-step to denotational semantics. Finally, we suggest that there are many interesting change-of-semantics functors, by considering an endofunctor on the category of labelled transition systems, which quotients by the bisimulation relation and is indeed a change of semantics.
 
 \begin{thebibliography}{100}
 
@@ -1170,7 +1174,7 @@ This base-change, along with change-of-theory and change-of-context, using an it
 
 \bibitem{beardsleywong} J.\ Beardsley and L.\ Z.\ Wong, The enriched Grothendieck construction.  Available as \href{https://arxiv.org/abs/1804.03829}{arXiv:1804.03829}.
 	
-\bibitem{bergermelliesweber} C.\ Berger, P.-A.\ Melli\`es and M.\ Weber, Monads with arities and their associated theories, \textsl{J.\ Pure Appl.\ Algebra}, \textbf{216} (2012), 2029--2048.  Available as \href{https://arxiv.org/abs/1101.3064}{arXiv:1101.3064}.
+%\bibitem{bergermelliesweber} C.\ Berger, P.-A.\ Melli\`es and M.\ Weber, Monads with arities and their associated theories, \textsl{J.\ Pure Appl.\ Algebra}, \textbf{216} (2012), 2029--2048.  Available as \href{https://arxiv.org/abs/1101.3064}{arXiv:1101.3064}.
 
 \bibitem{bkp} R.\ Blackwell, G.\ M.\ Kelly and A.\ J.\ Power, Two-dimensional monad theory, 
 \textsl{J.\ Pure Appl.\ Algebra} \textbf{59} (1989), 1--41. 
@@ -1208,10 +1212,9 @@ Springer, Berlin, 1965.
 \bibitem{ghani} C.\ L\"{u}th and N.\ Ghani, Monads and modular term rewriting,
 \textsl{Category Theory and Computer Science ({S}anta {M}argherita Ligure, 1997)}, Springer, Berlin, 1997, pp.\ 69--86.  Available at \href{http://www.informatik.uni-bremen.de/~cxl/papers/ctcs97l.pdf}{http://www.informatik.uni-bremen.de/\~cxl/papers/ctcs97l.pdf}.
 
-\bibitem{maclane} S.\ Mac Lane, \textsl{Categories for the Working Mathematician}, Springer, Berlin, 1998.  
+%\bibitem{maclane} S.\ Mac Lane, \textsl{Categories for the Working Mathematician}, Springer, Berlin, 1998.  
 
-\bibitem{refl} L.\ G.\ Meredith and M.\ Radestock, A reflective higher-order calculus,
-\textsl{Electronic Notes in Theoretical Computer Science} \textbf{141} (2005), 49--67.
+%\bibitem{refl} L.\ G.\ Meredith and M.\ Radestock, A reflective higher-order calculus,\textsl{Electronic Notes in Theoretical Computer Science} \textbf{141} (2005), 49--67.
 
 \bibitem{milewski} B.\ Milewski, \textsl{Category Theory for Programmers}, Chap.\ 14: Lawvere theories, 2017.   Available at \href{https://bartoszmilewskiski.com/2017/08/26/lawvere-theories/}{https://bartoszmilewski.com/2017/08/26/lawvere-theories/}.
 
@@ -1226,11 +1229,11 @@ Springer, Berlin, 1965.
 \bibitem{compeffects} M.\ Hyland and J.\ Power, Discrete Lawvere theories and computational effects, in \textsl{Theoretical Comp.
 Sci.} \textbf{366} (2006), 144--162. Available at \href{https://core.ac.uk/download/pdf/81105779.pdf}.
   
-\bibitem{power} J.\ Power, Enriched Lawvere theories, \textsl{Theory Appl.\ Categ.} \textbf{6}(1999), 83--93.
+\bibitem{power} J.\ Power, Enriched Lawvere theories, \textsl{Theory Appl.\ Categ.}  \textbf{6} (1999), 83--93.
 
 \bibitem{combs} M.\ Sch\"{o}nfinkel, \"Uber die Bausteine der mathematischen Logik, 
  \textsl{Mathematische Annalen} \textbf{92} (1924), 305--316.  Available at \href{http://www.digizeitschriften.de/dms/img/?PID=GDZPPN002270110}{http://www.digizeitschriften.de/dms/img/?PID=GDZPPN002270110}.
- 
+
 \bibitem{seely} R.\ A.\ G.\ Seely, Modelling computations: a 2-categorical framework, in
 \textsl{Proceedings of the Second Annual IEEE Symposium on Logic in Computer Science (LICS 1987)}, IEEE Computer Society Press, Ithaca, New York, pp.\ 22--25.
  
