@@ -314,7 +314,7 @@ such that $F$ preserves composition and identity.  A \textbf{$\V$-natural transf
 \[\begin{array}{rl}
 \text{a family} & \alpha_a \maps 1_\V \to \D(F(a),G(a)) \quad \forall a \in \Obj(\C)\\
 \end{array}\]
-such that $\alpha$ is ``natural'' in $a$.   There is a 2-category \textbf{$\V\Cat$} of $\V$-categories, $\V$-functors, and $\V$-natural transformations. 
+such that $\alpha$ is ``natural'' in $a$: an evident square commutes.   There is a 2-category \textbf{$\V\Cat$} of $\V$-categories, $\V$-functors, and $\V$-natural transformations. 
 
 We can construct new $\V$-categories from old by taking products and opposites in an obvious way.   There is also a $\V$-category denoted $\underline{\V}$ with the same objects as 
 $\V$ and with hom-objects given by the internal hom:
@@ -323,85 +323,62 @@ The concepts of adjunction and monad generalize straightforwardly to $\V$-catego
 and when we speak of an adjunction or monad in the enriched context this generalization
 is what we mean \cite{kelly}.   For example, there is an adjunction
 \[    \underline{\V}(u \times v, w) \cong \underline{\V}(u, w^v ) \]
-called ``currying''; its counit is evaluation.  
+called ``currying''.    
+
+%
 
 We can generalize products and coproducts to the enriched context.
-Given a $\V$-category $\C$,  a \textbf{$\V$-product} of an $n$-tuple of 
-objects $b_1, \dots , b_n \in \Obj(C)$ is an object $b$ equipped with $\V$-natural
-isomorphism
-\begin{equation}
-\label{eq:prod}          \C(-,b) \cong \prod_{i=1}^n \C(-,b_i). 
-\end{equation}
-If such an object $b$ exists, we denote it by $\prod_{i=1}^n b_i$.   This makes sense
-even when $n = 0$: a 0-ary product in $\C$ is called a \textbf{$\V$-terminal object} and denoted as $1_\C$.  
-
-Similarly, the \textbf{$\V$-coproduct} of $b_1, \dots, b_n \in \Obj(C)$ is an object $b$ equipped with a $\V$-natural isomorphism
+Given a $\V$-category $\C$, the \textbf{$\V$-coproduct} of an $n$-tuple of objects $b_1, \dots, b_n \in \Obj(C)$ is an object $b$ equipped with a $\V$-natural isomorphism
 \[           C(b,-) \cong \prod_{i = 1}^n C(b_i,-). \]
 If such an object exists, we denote it by $\sum_{i=1}^n b_i$.  
-When $n=0$ we call this a \textbf{$\V$-initial object} $0_\C$.   When $\V$ is cartesian
+This makes sense even when $n = 0$: a 0-ary $\V$-coproduct in $\C$ is called a \textbf{$\V$-initial object} and denoted as $0_\C$.   When $\V$ is cartesian
 closed, any finite coproduct that exists in $\V$ is also a $\V$-coproduct in $\underline{\V}$.   In particular,
 \[          u^{v+w} \cong u^v \times u^w \; \textrm{ and } \;  0^w \cong 1_\V \]
 whenever $0$ is an initial object of $\V$.  Conversely, any finite $\V$-coproduct that
 exists in $\V$ is also a coproduct in the usual sense.
 
-Whenever $\V$ is cartesian closed, the finite products in $\V$ are also $\V$-products in $\underline{\V}$.  In particular,
+Similarly, a \textbf{$\V$-product} of objects $b_1, \dots , b_n \in \Obj(C)$ is an object $b$ equipped with a $\V$-natural isomorphism
+\begin{equation}
+\label{eq:prod}          \C(-,b) \cong \prod_{i=1}^n \C(-,b_i). 
+\end{equation}
+If such an object $b$ exists, we denote it by $\prod_{i=1}^n b_i$.   A 0-ary product in $\C$ is called a \textbf{$\V$-terminal object} and denoted as $1_\C$.     Whenever $\V$ is cartesian closed, the finite products in $\V$ are also $\V$-products in $\underline{\V}$.  In particular,
 \[           (u \times v)^w \cong u^w \times v^w \; \textrm{ and } \; 1_\V^w \cong 1_\V .\]
 Conversely, any finite $\V$-product in $\V$ is also a product in the usual sense. 
-In a general $\V$-category $\C$, it makes no sense to say a $\V$-product is a product
-in the usual sense.  However, for any $\V$-product $b = \prod_{i=1}^n b_i$, 
- the $\V$-natural isomorphism in Eq.\ \eqref{eq:prod} gives rise to a morphism
+
+A general $\V$-category $\C$ does not exactly have projections from a 
+$\V$-product to its factors, since given two objects $c, c' \in \Obj(\C)$ there is not, fundamentally, a \emph{set} of morphisms from $c$ to $c'$.  Instead there is the hom-object $\C(c,c')$, which is an object of $\V$.    However, any object $v$ of $\V$ has a set of \define{elements}, namely morphisms $f \maps 1_\V \to v$.   Elements of $\C(c,c')$ act like morphisms from $c$ to $c'$.  In particular, any $\V$-product $b = \prod_{i=1}^n b_i$ gives rise to elements
 \[    p_i \maps 1_\V \to \C(b,b_i)  \]
-for each $i$, defined as the composite
-\[    1_\V \stackrel{i_b}{\longrightarrow} \C(b,b) \stackrel{\sim}{\longrightarrow} \prod_{i=1}^n \C(b,b_i) \longrightarrow \C(b,b_i) .\]
-Using $p_i$ we can define a $V$-natural transformation
-\[     \pi_i \maps \C(-,b) \to \C(-,b_i) \]
-as follows:
+which serve as substitutes for the projections in a usual product.   These elements
+are defined as composites
+\[    1_\V \stackrel{i_b}{\longrightarrow} \C(b,b) \stackrel{\sim}{\longrightarrow} \prod_{i=1}^n \C(b,b_i) \to \C(b,b_i)   \]
+where the isomorphism comes from Eq.\ \eqref{eq:prod} and the last arrow is a projection in $\V$.
+
+Even better, we can bundle up all these elements $p_i$ into a single element
+\[    p \maps 1_\V \to \prod_{i=1}^n \C(b,b_i)  \]
+which serves as a substitute for the universal cone in a usual product.  Starting from $p$ we can recover the $\V$-natural isomorphism in Eq.\ \eqref{eq:prod} as follows:
 \begin{equation}
-\label{eq:projections}    \C(-,b) \stackrel{\sim}{\longrightarrow} 1_\V \times \C(-,b)  
- \stackrel{p_i \times 1}{\longrightarrow} \C(b,b_i) \times \C(-,b) \stackrel{\circ}{\longrightarrow} \C(-,b_i). 
+\label{eq:projection}    \C(-,b) \stackrel{\sim}{\longrightarrow} 1_\V \times \C(-,b)  
+ \xrightarrow{p \times 1} \prod_{i=1}^n \C(b,b_i) \times \C(-,b) \longrightarrow \prod_{i=1}^n \C(-,b_i)
  \end{equation}
-The $V$-natural isomorphism in Eq.\ \eqref{eq:prod} has these $\V$-natural transformations $\pi_i$ as its factors.    So, the morphisms $p_i \maps 1_\V \to \C(b,b_i)$ serve as a substitute for the projections we normally expect from a product.
+ where the last arrow is given by composition.   Thus, we say a \define{universal cone} exhibiting $b$ as the $\V$-product of objects $b_1, \dots, b_n$ is an element $p \maps 1_\V \to \prod_{i=1}^n \C(b,b_i)$ such that the $\V$-natural transformation $\C(-,b) \to \prod_{i=1}^n \C(-,b_i)$ given by Eq.\ \eqref{eq:projection} is an isomorphism.
 
-Indeed, we can equivalently define an object $b$ to be a $\V$-product of objects $b_1, \dots, b_n$ if it is equipped with morphisms 
-\[       p_i \maps 1_\V \to \C(b,b_i)  \]
-called \define{projections} such that if we define $\V$-natural transformations 
-\[     \pi_i \maps \C(-,b) \to \C(-,b_i) \]
-by Eq.\ (\ref{eq:projections}), these give rise to an \emph{invertible} $\V$-natural transformation
-\[      (\pi_1, \dots, \pi_n) \maps \C(-,b) \to \prod_{i=1}^n \C(-,b_i). \]
-The advantage of this reformulation is that we can say a $\V$-functor $F \maps \C \to \D$ \textbf{preserves finite $\V$-products} if for every $\V$-product $b = \prod_{i = 1}^n b_i$ with projections
-\[              p_i \maps 1_\V \to \C(b,b_i) , \]
-the composites
-\[        F \circ p_i \maps 1_\V \to \D(F(b),F(b_i)) \]
-serve as projections making $F(b)$ into the $\V$-product of the objects $F(b_i)$.
+The advantage of this reformulation is that we can say a $\V$-functor $F \maps \C \to \D$ \textbf{preserves finite $\V$-products} if for every universal cone $p \maps 1_\V \to \prod_{i=1}^n \C(b,b_i)$ exhibiting $b$ as the $\V$-product of the objects $b_i$, the composite
+\[       1_\V \stackrel{p}{\longrightarrow} \prod_{i=1}^n \C(b,b_i) \xrightarrow{\prod_i F} \D(F(b),F(b_i)) \]
+is universal cone exhibiting $F(b)$ as the $\V$-product of the objects $F(b_i)$.
 
-
-A bit more subtly, generalizing the product and internal hom of $\V$, a $\V$-category $\C$ can have ``powers''.   Lucyshyn--Wright's work on enriched Lawvere theory makes extensive of use of these  \cite{lucyshyn-wright}.  Given $b \in \Obj(\C)$ and $v \in \Obj(\V)$, we say an object $c^v \in \Obj(C)$ is a \textbf{$v$-power} of $c$ if it is equipped with a $\V$-natural isomorphism
+A bit more subtly, generalizing the exponentials in $\V$, a $\V$-category $\C$ can have ``powers''.    Given $v \in \Obj(\V)$, we say an object $c^v \in \Obj(\C)$ is a \textbf{$v$-power} of $c \in \Obj(\C)$ if it is equipped with a $\V$-natural isomorphism
 \begin{equation}
 \label{eq:power}
  \C(-,c^v) \cong \C(-,c)^v.
 \end{equation}
-In the special case $\V = \Set$  this forces $c^v$ to be the $v$-fold product of copies of $c$:
-\[          c^v = \prod_{i \in v} c . \]
-
-As with $\V$-products, it is useful to repackage the isomorphism of Eq.\ \eqref{eq:power} so we can define what it means for a $\V$-functor to preserve a $v$-power.   First, note that this isomorphism gives rise to a ``universal cone''  $e \maps 1_\V \to  \C(c^v,c)^v$,
+In the special case $\V = \Set$  this forces $c^v$ to be the $v$-fold product of copies of $c$.  %In general, if $\C$ has $v$-powers, we obtain a $\V$-functor
+%\[     -^v \maps \C \to \C  \]
+%by choosing a $v$-power of each object of $\C$.
+As with $\V$-products, it is useful to repackage the isomorphism of Eq.\ \eqref{eq:power} so we can say what it means for a $\V$-functor to preserve $v$-powers.   First, note that this isomorphism gives rise to an element 
+\[     q \maps 1_\V \to  \C(c^v,c)^v , \]
 namely the composite
 \[ 1_\V \stackrel{i_{c^v}}{\longrightarrow}  \C(c^v,c^v) \stackrel{\sim}{\longrightarrow} \C(c^v,c)^v .\]
-Uncurrying $e$, we obtain a morphism
-\[  \epsilon \maps v \to \C(c^v,c) .  \]
-Next, note that we can recover the $\V$-natural isomorphism in Eq.\ \eqref{eq:power}
-from $\epsilon$ by taking the composite
-\begin{equation}
-\label{eq:power2}   v \times \C(-,c^v) \stackrel{\epsilon \times 1}{\longrightarrow} \C(c^v,c) \times \C(-,c^v) \stackrel{\circ}{\longrightarrow} \C(-,c) 
-\end{equation}
-and currying it.  So, we can equivalently define an object $c^v$ to be a $v$-power
-of $c$ if it is equipped with morphism $\epsilon \maps v \to  \C(c^v,c)$ such that
-currying the composite in Eq.\ \eqref{eq:power2}, the resulting $\V$-natural
-transformation
-\[      \C(-,c^v) \to \C(-,c)^v   \]
-is an isomorphism.  Thus, we say that a $\V$-functor $F\maps \C\to \D$ \textbf{preserves} the $v$-power $c^v$ if the composite
-\[F \circ \epsilon \maps v \to \D(F(c^v),F(c)) \]
-makes $F(c^v)$ into the $v$-power of $F(v)$.
-
+Conversely, any element $q \maps 1_\V \to  \C(c^v,c)^v$ determines a $\V$-natural transformation $C(-,c^v) \to C(-,c)^v$, and we say $e$ is a \textbf{universal cone} if this $\V$-natural transformation is an isomorphism.  Next, suppose $\C$ and $\D$ are $\V$-categories with $v$-powers.  We say a $\V$-functor $F\maps \C\to \D$ \textbf{preserves $v$-powers} if it maps universal cones to universal cones.
 
 There are just a few more technicalities. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.   A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial here: all categories to be considered are locally finitely presentable. We will use  $\V_f$ to denote the full subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
 
@@ -523,7 +500,7 @@ We next give two examples of a rather abstract nature, where we show how $\Cat$-
 
 \begin{example}
 \label{ex:1}
-When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to be called a \define{2-theory}.  For example, let $\T = \Th(\mathrm{PsMon})$ be the 2-theory of pseudomonoids \cite{pseudo}.   A pseudomonoid is a weakened version of a monoid: rather than associativity and unitality \textit{equations}, it has 2-isomorphisms called the associator and unitors, which we can treat as \textit{rewrite rules}.  To equate various possible rewrite sequences, these 2-isomorphisms must obey equations called ``coherence laws''.  Here is a presentation of the 2-theory for pseudomonoids:\newpage
+When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to be called a \define{2-theory}.  For example, let $\T = \Th(\mathrm{PsMon})$ be the 2-theory of pseudomonoids \cite{pseudo}.   A pseudomonoid is a weakened version of a monoid: rather than associativity and unitality \textit{equations}, it has 2-isomorphisms called the associator and unitors, which we can treat as \textit{rewrite rules}.  To equate various possible rewrite sequences, these 2-isomorphisms must obey equations called ``coherence laws''.  Here is a presentation of the 2-theory for pseudomonoids:
 	\[ \Th(\mathrm{PsMon}) \]
 	\[\begin{array}{lll}
 	\textbf{sort} & M & \text{pseudomonoid}\\
@@ -717,24 +694,13 @@ if and only if the $n$-fold $\V$-product $c^n$ exists, in which case they are is
 \end{lemma}
 
 \begin{proof}
-If the power $c^{n_\V}$ exists, we have
-\[    
-\begin{array}{rcll}
-	 \C(a,c^{n_\V}) &\cong& \C(a,c)^{n_\V} & \text{definition of powers} \\
-	 &\cong & \C(a,c)^n & \text{Lemma \ref{lem:powers_1}} \\
-\end{array}
-\]
-Each of these isomorphisms is 
-$\V$-natural in $a$, so $c^{n_\V}$ is the $n$-fold product of copies of $c$.  Conversely,
-if the $n$-fold product $c^n$ exists, we have
-\[    
-\begin{array}{rcll}
-	 \C(a,c^n) &\cong& \C(a,c)^n & \text{definition of $\V$-products} \\
-	 &\cong & \C(a,c)^{n_\V} & \text{Lemma \ref{lem:powers_1}} \\
-\end{array}
-\]
-and each of these isomorphisms is 
-$\V$-natural in $a$, so $c^n$ is the power of $c$ by $n_\V$.
+In Section \ref{sec:enrichment} we saw that an object $b \in \Obj(\C)$ is an $n$-fold $\V$-product of copies of $c$ precisely when it is equipped with a universal cone 
+\[        p \maps 1_\V \to \C(b,c)^n . \]
+Similarly, $b$ is an $n_\V$-power of $c$ when it is equipped with a universal
+cone 
+\[       q \maps 1_\V \to \C(b,c)^{n_\V} .\]
+The universality properties are formally the same.  However, by Lemma \ref{lem:powers_1}, the functors $(-)^n \maps \V\to \V$ and $(-)^{n_\V} \maps \V\to \V$ are naturally isomorphic.   Thus, given either sort of universal cone we get the other, so an object
+is an $n$-fold product of copies of $c$ if and only if it is the $n_\V$-power of $c$. 
 \end{proof}
 
 \iffalse
@@ -760,46 +726,25 @@ that any natural numbers $m,n$ and $a \in \V$ there is an isomorphism
 \end{proof}	
 \fi
 
-To be precise, we need not only to define preservation of $\V$-products but that of $\V$-powers, as that is in the actual definition of $\V$-theories and their models. We then show that they are equivalent.
-
-Let $\C$ be a $\V$-category which is powered over $\V$. Similarly to $\V$-products, the ******
+%Given $\V$-categories $\C,\D$ with $v$-powers for some object $v \in \V$, we defined what it means for a $\V$-functor $F \maps \C \to \D$ to preserve $v$-powers at the end of Section \ref{sec:enrichment}.  We say $F$ \textbf{preserves $\NN_\V$-powers} if it preserves $n_\V$-powers for all $n$.   
 
 \begin{lemma}
 \label{lem:powers_3}
-Suppose $\C$ is a $\V$-category such that every object is the $n$-fold $\V$-product $c^n$ of
-some object $c$.   Then a $\V$-functor $F \maps \C \to \D$ preserves finite $\V$-products
-if and only if it preserves $\NN_\V$-powers.
+Suppose $\C$ is a $\V$-category such that every object is the $n$-fold $\V$-product $c^n$ of some object $c$.   Then a $\V$-functor $F \maps \C \to \D$ preserves finite $\V$-products if and only if it preserves powers by all objects of $\NN_\V$.
 \end{lemma}
 
 \begin{proof}
-Suppose $F$ preserves finite $\V$-products.  Then for any object $b \in \Obj(\C)$
-there are isomorphisms
-\[\begin{array}{rcll}
-F(b^{n_\V}) & \cong & F(b^n) & \text{Lemma \ref{lem:powers_2}} \\
- & \cong & F(b)^n & \text{preservation of $\V$-products} \\
- & \cong & F(b)^{n_\V} &  \text{Lemma \ref{lem:powers_2}}
-\end{array}
-\]
-so $F$ preserves  $\NN_\V$-powers.  Conversely suppose $F$ preserves $\NN_\V$-powers.
-To show that $F$ preserves finite $\V$-products it suffices to show it preserves
-the terminal object and binary products.   For the former note that
-\[\begin{array}{rcll}
-F(1_\C) & \cong & F(c^0) & \text{$\V$-terminal object is a 0-ary product} \\
- & \cong & F(c^{0_\V}) & \text{Lemma \ref{lem:powers_2}} \\
- & \cong & F(a)^{0_\V} & \text{preservation of $\NN_\V$-powers} \\
- & \cong & F(a)^0 &  \text{Lemma \ref{lem:powers_2}} \\
- & \cong & 1_\D & \text{$\V$-terminal object is a 0-ary product.}
-\end{array}
-\]
-For the latter note that
-\[\begin{array}{rcll}
-F(c^m \times c^n) & \cong & F(c^{m+n}) & \text{$\V$-products in $\C$} \\
- & \cong & F(c^{(m+n)_\V}) & \text{Lemma \ref{lem:powers_2}} \\
- & \cong & F(c)^{(m+n)_\V} & \text{preservation of $\NN_\V$-powers} \\
- & \cong & F(c)^{m+n} &  \text{Lemma \ref{lem:powers_2}} \\
- & \cong & F(c)^m \times F(c)^n & \text{definition of $m+n$-fold $\V$-product.}
-\end{array}  
-\]
+Define a ``finite $\V$-power'' to be a finite $\V$-product of $n$ copies of the same object.
+The $\V$-functor $F$ preserves finite $\V$-powers if and only if it maps any universal cone
+\[        p \maps 1_\V \to \C(b,c)^n  \]
+in $\C$ to a universal cone in $\D$.   Similarly, $F$ preserves powers by all objects of $\NN_\V$ if and only if it maps any universal cone
+\[       q \maps 1_\V \to \C(b,c)^{n_\V}  \]
+in $\C$ to a universal cone in $\D$.   Two kinds of universality are involved here, but
+since they are formally the same, Lemma \ref{lem:powers_1} implies that $F$ preserves
+finite $\V$-powers if and only if it preserves powers by all objects of $\NN_\V$.
+
+It thus suffices to show that $F$ preserves finite $\V$-products if and only if it preserves
+finite $\V$-powers.  This follows from the assumption that every object is the $n$-fold $\V$-product $c^n$ of some object $c$. 
 \end{proof}
 
 \begin{lemma}
