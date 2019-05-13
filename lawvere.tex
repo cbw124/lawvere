@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/5/11
+% 2019/5/13
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -70,6 +70,8 @@ urlcolor=myurlcolor}
 \newcommand{\CCC}{\mathsf{CCC}}
 \newcommand{\Pos}{\mathsf{Pos}}
 \newcommand{\Mod}{\mathsf{Mod}}
+\newcommand{\Enr}{\mathsf{Enr}}
+\newcommand{\Con}{\mathsf{Con}}
 \newcommand{\FinSet}{\mathsf{FinSet}}
 \newcommand{\NN}{\mathsf{N}}
 \newcommand{\A}{\mathsf{A}}
@@ -346,7 +348,9 @@ If such an object $b$ exists, we denote it by $\prod_{i=1}^n b_i$.   A 0-ary pro
 Conversely, any finite $\V$-product in $\V$ is also a product in the usual sense. 
 
 A general $\V$-category $\C$ does not exactly have projections from a 
-$\V$-product to its factors, since given two objects $c, c' \in \Obj(\C)$ there is not, fundamentally, a \emph{set} of morphisms from $c$ to $c'$.  Instead there is the hom-object $\C(c,c')$, which is an object of $\V$.    However, any object $v$ of $\V$ has a set of \define{elements}, namely morphisms $f \maps 1_\V \to v$.   Elements of $\C(c,c')$ act like morphisms from $c$ to $c'$.  In particular, any $\V$-product $b = \prod_{i=1}^n b_i$ gives rise to elements
+$\V$-product to its factors, since given two objects $c, c' \in \Obj(\C)$ there is not, fundamentally, a \emph{set} of morphisms from $c$ to $c'$.  Instead there is the hom-object $\C(c,c')$, which is an object of $\V$.    However, any object $v$ of $\V$ has a set of \define{elements}, namely morphisms $f \maps 1_\V \to v$.   Elements of $\C(c,c')$ act like morphisms from $c$ to $c'$.  
+
+In particular, any $\V$-product $b = \prod_{i=1}^n b_i$ gives rise to elements
 \[    p_i \maps 1_\V \to \C(b,b_i)  \]
 which serve as substitutes for the projections in a usual product.   These elements
 are defined as composites
@@ -434,15 +438,17 @@ Just as all the objects of a Lawvere theory are finite products of a single obje
 \[   t = \tau(1_\V) .\]   
 
 \begin{definition}
-For every $\V$-theory $(T,\tau)$ and every $\V$-category $\C$ with finite $\V$-products, we define $\Mod(\T,\C)$, the \define{category of models} of $(\T,\tau)$ in $\C$, to be the category
-for which an object is a $\V$-functor $\mu \maps \T\to \C$ that preserves finite $\V$-products and a morphism is a $\V$-natural transformation.
-\end{definition}
-
-\begin{definition}
+\label{defn:VLaw}
 We define $\V\Law$, the \define{category of} $\V$\define{-theories}, to be the category for which an object is a $\V$-theory and a morphism from $(\T,\tau)$ to $(\T',\tau')$ is a $\V$-functor $f \maps \T \to \T'$ that preserves finite $\V$-products and has $f\tau = \tau'$.   
 \end{definition}
 
-The basic monadicity results for Lawvere theories generalize to $\V$-theories when $\V$ is  complete and cocomplete, as in the main examples we consider: $\V = \Gph, \Cat, \Pos,$ and $\Set$.   Under this extra assumption $\Mod(\T,\C)$ naturally becomes a $\V$-category $\underline{\Mod}(\T,\C)$.  Furthermore, there is a $\V$-functor 
+\begin{definition}
+\label{defn:VMod}
+For every $\V$-theory $(T,\tau)$ and every $\V$-category $\C$ with finite $\V$-products, we define $\Mod(\T,\C)$, the \define{category of models} of $(\T,\tau)$ in $\C$, to be the category for which an object is a $\V$-functor $\mu \maps \T\to \C$ that preserves finite $\V$-products and a morphism is a $\V$-natural transformation.
+\end{definition}
+
+The basic monadicity results for Lawvere theories generalize to $\V$-theories when $\V$ is  complete and cocomplete, as in the main examples we consider: $\V = \Gph, \Cat, \Pos,$ and $\Set$.   Under this extra assumption $\V\Law$ and  $\Mod(\T,\C)$ can be promoted to 
+$\V$-categories, which we call $\underline{\V\Law}$ and $\underline{\Mod}(\T,\C)$.  Furthermore, there is a $\V$-functor 
 \[   U \maps \underline{\Mod}(\T,\V) \to \underline{\V} \]
 sending any model  $\mu \maps \T \to \V$ to its underlying object $\mu(t) \in \V$.   
 Recall that monads and adjunctions make sense in $\V\Cat$, just as they do in $\Cat$.  
@@ -461,8 +467,7 @@ Suppose $\V$ is cartesian closed, complete and cocomplete, and has chosen finite
 \end{theorem}
 
 \begin{proof}
-This follows from Lucyshyn-Wright's general theory \cite{lucyshyn-wright}, so our task is
-to explain how.   He allows $\V$ to be a symmetric monoidal category, and uses a more general concept of algebraic theory with a system of arities given by any fully faithful symmetric monoidal $\V$-functor $j \maps \J \to \underline{\V}$.   For us $\J = \underline{\NN}_\V$ and $j \maps \underline{\NN}_\V \to \underline{\V}$ is the obvious inclusion; this is his Example 3.7.
+This follows from Lucyshyn-Wright's general theory \cite{lucyshyn-wright}, so our task is simply to explain how.   He allows $\V$ to be a symmetric monoidal category, and uses a more general concept of algebraic theory with a system of arities given by any fully faithful symmetric monoidal $\V$-functor $j \maps \J \to \underline{\V}$.   For us $\J = \underline{\NN}_\V$ and $j \maps \underline{\NN}_\V \to \underline{\V}$ is the obvious inclusion; this is his Example 3.7.
 
 Lucyshyn-Wright defines a \textbf{$\J$-theory} to be a $\V$-functor $\tau \maps \J^\op \to \T$ that is the identity on objects and preserves powers by objects in $\J$ (or more precisely, their images under $j$).  For us $\J^\op = \A_\V$.   We are only demanding that $\tau \maps \A_\V \to \T$ be bijective on objects, but we can make it the identity on objects simply by renaming the objects of $\T$.  So, to apply his theory, we need to show that a $\V$-functor $\tau \maps \A_\V \to \T$ preserves powers by objects in $\NN_\V$ if and only if it preserves finite $\V$-products.  This is Lemma \ref{lem:powers_4} below.
 
@@ -530,7 +535,7 @@ When $\V = \Cat$, a $\V$-category is a 2-category, so a $\V$-theory deserves to 
    
 Models of $\T = \Th(\mathrm{PsMon})$ in $\Cat$ are monoidal categories: let us explore this example in more detail.  A model of $\T$ is a finite-product-preserving 2-functor $\mu\colon \T\to \Cat$, which sends 
 \[\begin{array}{rccl}
-	t & \mapsto& \C \\
+	t & \mapsto& \C & \\
 	m & \mapsto & \otimes \maps &  \C^2 \to \C \\
 	e & \mapsto & I \maps &  1\to \C \\
 	\alpha & \mapsto & a \maps & \otimes \circ (\otimes \times 1_\C)  \Rightarrow  \otimes \circ (1_\C \times \otimes)\\
@@ -699,8 +704,7 @@ In Section \ref{sec:enrichment} we saw that an object $b \in \Obj(\C)$ is an $n$
 Similarly, $b$ is an $n_\V$-power of $c$ when it is equipped with a universal
 cone 
 \[       q \maps 1_\V \to \C(b,c)^{n_\V} .\]
-The universality properties are formally the same.  However, by Lemma \ref{lem:powers_1}, the functors $(-)^n \maps \V\to \V$ and $(-)^{n_\V} \maps \V\to \V$ are naturally isomorphic.   Thus, given either sort of universal cone we get the other, so an object
-is an $n$-fold product of copies of $c$ if and only if it is the $n_\V$-power of $c$. 
+The universality properties have the same form, and by Lemma \ref{lem:powers_1} the functors $(-)^n \maps \V\to \V$ and $(-)^{n_\V} \maps \V\to \V$ are naturally isomorphic.   Thus, given either sort of universal cone we get the other, so an object is an $n$-fold product of copies of $c$ if and only if it is the $n_\V$-power of $c$. 
 \end{proof}
 
 \iffalse
@@ -740,8 +744,8 @@ The $\V$-functor $F$ preserves finite $\V$-powers if and only if it maps any uni
 in $\C$ to a universal cone in $\D$.   Similarly, $F$ preserves powers by all objects of $\NN_\V$ if and only if it maps any universal cone
 \[       q \maps 1_\V \to \C(b,c)^{n_\V}  \]
 in $\C$ to a universal cone in $\D$.   Two kinds of universality are involved here, but
-since they are formally the same, Lemma \ref{lem:powers_1} implies that $F$ preserves
-finite $\V$-powers if and only if it preserves powers by all objects of $\NN_\V$.
+since they have the same form, and since Lemma \ref{lem:powers_1} says the functors $(-)^n \maps \V\to \V$ and $(-)^{n_\V} \maps \V\to \V$ are naturally isomorphic,
+it follows that $F$ preserves finite $\V$-powers if and only if it preserves powers by all objects of $\NN_\V$.
 
 It thus suffices to show that $F$ preserves finite $\V$-products if and only if it preserves
 finite $\V$-powers.  This follows from the assumption that every object is the $n$-fold $\V$-product $c^n$ of some object $c$. 
@@ -795,14 +799,13 @@ Suppose $F \maps \V \to W$ preserves finite products.   This induces a \textbf{c
 \[      F_*(\C)(a,b) := F(\C(a,b)) \]
 for all objects $a,b$.   Composition in $F_*(\C)$ is defined by
 \[       F(\C(b,c)) \times F(\C(a,b)) \stackrel{\sim}{\longrightarrow} F(\C(b,c) \times \C(a,b)) 
-\stackrel{F(\circ_{a,b,c})}{\longrightarrow} F(C(a,b)) . \]  
+\xrightarrow{F(\circ_{a,b,c})} F(C(a,b)) . \]  
 The identity-assigning morphisms are given by
-\[          1 \stackrel{\sim}{\longrightarrow} F(1) \stackrel{F(i_a)}{\longrightarrow}
+\[          1 \stackrel{\sim}{\longrightarrow} F(1) \xrightarrow{F(i_a)}
 F(\C(a,b)) .\]
 
 Moreover, if $f\maps \C \to \D \in \V\Cat$ is a $\V$-functor, there is a $\W$-functor $F_*(f) \maps F_*(C) \to F_*(D)$ that on objects equals $f$ and on hom-objects equals $F(f)$. If $\alpha\maps f \Rightarrow g$ is a $\V$-natural transformation and $c\in \Obj(\C)$, then we define $F_*(\alpha)_c$ to be the composite
-\[      1 \stackrel{\sim}{\longrightarrow} F(1) \stackrel{F(i_a)}{\longrightarrow}
-F(\C(a,b)) .\]   
+\[      1 \stackrel{\sim}{\longrightarrow} F(1) \xrightarrow{F(i_a)} F(\C(a,b)) .\]   
 Thus, change of base actually gives a 2-functor from the 2-category of $\V$-categories, 
 $\V$-functors and $\V$-natural transformations to the corresponding 2-category for $\W$.
 
@@ -822,9 +825,7 @@ coproducts of this object, there is a map of adjunctions
 	& \ld &
 	\arrow[bend left,above]{ll}{(\V(1,-))_*} \V\Cat.
 \end{tikzcd}\]
-Each set $X$ is mapped to the $X$-indexed coproduct of the terminal object in $\V$ and conversely each object $v$ of $\V$ is represented in $\Set$ by the hom-set from the unit to $v$. The latter induces the ``underlying ($\Set$-)category'' change of base, which forgets the enrichment. The former induces the ``free $\V$-enrichment'' change of base, whereby ordinary $\Set$-categories are converted to $\V$-categories, denoted $\C \mapsto \underline{\C}$. These form an adjunction, because 2-functors preserve adjunctions.
-
-This is what we implicitly used in the definition of $\V$-theory: the arity category $\NN$ ``sits inside'' many enriching categories under various guises: as finite discrete graphs, categories, posets, etc. For each $\V$ we define the arity subcategory $\NN_\V$ to be the full subcategory of finite coproducts (copowers) of the unit object, and this remains essentially unchanged by the change-of-base to $\underline{\NN}_\V$.
+Each set $X$ is mapped to the $X$-indexed coproduct of the terminal object in $\V$ and conversely each object $v$ of $\V$ is represented in $\Set$ by the hom-set from the unit to $v$. The latter induces the ``underlying category'' change of base, which forgets the enrichment. The former induces the ``free $\V$-enrichment'' change of base, whereby ordinary $\Set$-categories are converted to $\V$-categories, denoted $\C \mapsto \underline{\C}$. These form an adjunction, because 2-functors preserve adjunctions.
 
 We now study how change of base affects theories and their models.  We start by asking when a functor $F \maps \V \to \W$ induces a change of base $F_*\maps\V\Cat \to \W\Cat$ that ``preserves enriched theories''.   That is, given a $\V$-theory 
 \[      \tau \maps  \A_\V \to \T \]
@@ -846,73 +847,40 @@ where we use Lemma \ref{lem:NN} in these computations.
 
 Using this we obtain a composite $\W$-functor
 \[   \A_\W \stackrel{\tilde{F}}{\longrightarrow} 
-  F_*(\A_\V) \stackrel{F_*(\tau_\V)}{\longrightarrow} F_*(\T). \]
+  F_*(\A_\V) \xrightarrow{F_*(\tau_\V)} F_*(\T). \]
 This is a bijection on objects and preserves finite $\V$-products because each of the factors
-has these properties.   It is thus a $\W$-theory.
-
-% \begin{lemma}
-% 	Let $F\maps \V \to \W$ be a cartesian functor, and let $\NN_\V$, $\NN_\W$ be defined as above. If $f\maps \C \to \D$ is a $\V$-functor which preserves $\NN_\V$-powers, then $F_*(f)\maps F_*(\C)\to F_*(\D)$ is a $\W$-functor which preserves $\NN_\W$-powers.
-% \end{lemma}
-% \begin{proof}
-% 	\[\begin{array}{rcll}
-% 	F_*(\D)(F_*(f)(a),F_*(f)(s^{n_\V})) & = & F(\D(f(a),f(s^{n_\V})) & \text{definition of base change}\\
-% 	& \cong & F(\D(f(a),f(s)^{n_\V}) & f \text{ preserves } \NN_\V \text{-powers}\\
-% 	& \cong & F(\D(f(a),f(s))^n) & \text{Lemma 2 for } \V\\
-% 	& \cong & F(\D(f(a),f(s)))^n & F \text{ cartesian}\\
-% 	& = & F_*(\D)(f(a),f(s))^n & \text{definition of base change}\\
-% 	& \cong & F_*(\D)(f(a),f(s)^{n_\W}) & \text{Lemma 2 for } \W\\
-% 	F_*(\D)(F_*(f)(a),F_*(f)(t^{n_\V})) & = & F(\D(f(a),f(t^{n_\V})) & \text{definition of base change}\\
-% 	& \cong & F(\D(f(a),f(t)^{n_\V}) & f \text{ preserves } \NN_\V \text{-powers}\\
-% 	& \cong & F(\D(f(a),f(t))^n) & \text{Lemma 2 for } \V\\
-% 	& \cong & F(\D(f(a),f(t)))^n & F \text{ cartesian}\\
-% 	& = & F_*(\D)(f(a),f(t))^n & \text{definition of base change}\\
-% 	& \cong & F_*(\D)(f(a),f(t)^{n_\W}) & \text{Lemma 2 for } \W\\
-% 	\end{array}\]
-% \end{proof}
+has these properties.   It is thus a $\W$-theory.   
 
 \begin{theorem}
 \label{thm:change-of-base}
-Let $\V$, $\W$ be cartesian closed categories with chosen finite coproducts of their terminal objects, and let $F\maps \V \to \W$ be a cartesian functor that preserves these chosen coproducts.  Then $F$ \define{preserves enriched theories}: that is, for every $\V$-theory $\tau_\V\maps \A_\V\to \T$, the $\W$-functor 
+Let $\V$, $\W$ be cartesian closed categories with chosen finite coproducts of their terminal objects, and let $F\maps \V \to \W$ be a cartesian functor that preserves these chosen coproducts.  Then $F_*$ \define{preserves enriched theories}: that is, for every $\V$-theory $\tau_\V\maps \A_\V\to \T$, the $\W$-functor 
 \[ \tau_\W := F_*(\tau_\V) \circ \tilde{F} \maps \A_\W \to F_*(\T)\]
-is a $\W$-theory. Moreover, $F$ preserves models: for every model $\mu \maps\T \to \C$
-of $(\T,\tau_\V) $, the $\W$-functor $F_*(\mu) \maps F_*(\T) \to F_*(\C)$ is a model of 
+is a $\W$-theory.   Moreover, $F_*$ \textbf{preserves models}: for every model $\mu \maps\T \to \C$ of $(\T,\tau_\V) $, the $\W$-functor $F_*(\mu) \maps F_*(\T) \to F_*(\C)$ is a model of 
 $(F_*(\T), \tau_\W)$.
 \end{theorem}
 
 \begin{proof}
-To show that $F_*(\mu)$ is a model, we need
-to show it preserves finite $\V$-products.   We do this separately for the $\V$-terminal object and
-binary $\V$-products.  For the former, we need to show $F_*(\mu) 1_{F*(\T)}$ is $\W$-terminal
-in $F_*(\C)$, i.e.\ $F_*(\C) (c, F_*(\mu) 1_{F*(\T)}) $ is terminal in $\W$ for all objects
-$c$ of $\C$.  But ...   FINISH THIS!!!
-
-\iffalse
-	\[\begin{array}{rcll}
-	F_*(\D)(F_*(f)(a),F_*(f)(s^{n_\V})) & = & F(\D(f(a),f(t^{n_\V})) & \text{definition of base change}\\
-	& \cong & F(\D(f(a),f(t)^{n_\V}) & f \text{ preserves } \NN_\V \text{-powers}\\
-	& \cong & F(\D(f(a),f(t))^n) & \text{Lemma \ref{lem:powers_1} for } \V\\
-	& \cong & F(\D(f(a),f(t)))^n & F \text{preserves $\V$-products}\\
-	& = & F_*(\D)(f(a),f(t))^n & \text{definition of base change}\\
-	& \cong & F_*(\D)(f(a),f(t)^{n_\W}) & \text{Lemma \ref{lem:powers_1} for } \W. \qedhere
-	\end{array}\]
-	\fi
+We have shown the first part.  For the second, by Lemma \ref{lem:powers_5} it
+suffices to assume that $\mu$ preserves finite $\NN_V$-powers and check that $F_*(\mu)$
+preserves $\NN_\W$-powers.  We leave this as an exercise to the reader.
 \end{proof}
 
-Hence, any cartesian functor that preserves chosen finite coproducts of the terminal object gives a ``change of semantics'' --- this is a simple, ubiquitous condition, which provides for a method of translating formal languages between various ``modes of operation''.
+Hence, any cartesian functor that preserves chosen finite coproducts of the terminal object gives a ``change of semantics''.  That is, it provides for a method of translating formal languages between various ``modes of operation''.   Moreover, this reasoning generalizes to \textbf{multisorted} $\V$-theories, enriched theories which have multiple sorts: given any $n\in \mathbb{N}$, the monoidal subcategory $(\NN_\V)^n$ is also an eleutheric system of arities, so Lucyshyn-Wright's monadicity theorem still applies.   In Section \ref{ssec:bisimulation} we show how this is useful in the study of bisimulation.
 
-Moreover, this reasoning generalizes to \textbf{multisorted} $\V$-theories, enriched theories which have multiple sorts: given any $n\in \mathbb{N}$, the monoidal subcategory $(\NN_\V)^n$, the category of $n$-fold products of coproducts of $1_\V$, is also an eleutheric system of arities, so Lucyshyn-Wright's monadicity theorem still applies.   In Section \ref{ssec:bisimulation} we show how this is useful in the study of bisimulation.
+Next we introduce two more useful kinds of translations, and demonstrate how all of these can be encapsulated in a single category.  The following section can be skipped by readers
+eager to see applications.
 
-Before exploring applications, we introduce two more useful kinds of translations, and demonstrate how all of these can be encapsulated in a single category.
 
 \section{The Category of all $\V$-Theories}
 \label{sec:V-theories}
 
-In addition to change-of-base, there are two other natural and useful translations for these theories.  A morphism of $\V$-theories $f\maps\T\to \T'$ induces a ``change-of-theory'' functor between the respective categories of models \[  f^*\maps\V\Mod(\T',\C)\to \V\Mod(\T,\C) \]
-defined as precomposition with $f$.  Similarly, a $\V$-product-preserving $\V$-functor $g\maps \C \to \C'$ induces a ``change-of-context'' functor 
+In addition to change of base, there are two other natural and useful ways to go between models of enriched theories.   Suppose $\V$ is any cartesian closed category with chosen finite coproducts of the terminal object.   Let $\V\Mod(\T,\C)$ be the category of models of a $\V$-theory $\T$ in a $\V$-category $\C$ with finite $\V$-products, as in Defn.\ \ref{defn:VMod}.  A morphism of $\V$-theories $f\maps\T\to \T'$ induces a \define{change of theory} functor between the respective categories of models 
+\[  f^*\maps\V\Mod(\T',\C)\to \V\Mod(\T,\C) \]
+defined as pre-composition with $f$.  Similarly, a $\V$-product-preserving $\V$-functor $g\maps \C \to \C'$ induces a \define{change of context} functor 
 \[  g_*\maps \V\Mod(\T,\C) \to \V\Mod(\T,\C') \]
-defined as postcomposition with $g$.   
+defined as post-composition with $g$.   
 
-These translations, as well as change-of-base, can all be packed up nicely using the \textbf{Grothendieck construction}: given a (pseudo)functor $F\maps \D \to \Cat$, there is a category $\int F$ that encapsulates all of the categories in the image of $F$, defined
+These translations, as well as change of base, can all be packed up nicely using the \textbf{Grothendieck construction}: given any functor $F\maps \D \to \Cat$, there is a category $\int F$ that encapsulates all of the categories in the image of $F$, defined
 as follows:
 \[\begin{array}{rl}
 \text{objects} & (d,x) \colon d\in \D, \; x\in F(d)\\
@@ -924,42 +892,80 @@ Moreover there is a functor $p_F \maps \int F \to \D$ given as follows:
 \text{on objects} & p_F \maps (d,x) \mapsto d \\
 \text{on morphisms} & p_F \maps (f,a) \mapsto f .\\
 \end{array}\]
-For more details see \cite{borceux,jacobs}.  We noted in Section that $\V\Law$ and $\Mod(\T,\C)$ are $\V$-categories when $\V$ is complete and cocomplete: this and further conditions imply we can use the \textit{enriched} Grothendieck construction \cite{beardsleywong}; but we will focus on the $\Set$-enriched case for simplicity. 
+For more details see \cite{borceux,jacobs}. We noted in Section \ref{sec:enriched_lawvere} that $\V\Law$ and $\Mod(\T,\C)$ can be promoted to $\V$-categories when $\V$ is complete and cocomplete: this and further conditions imply that we can use the enriched Grothendieck construction \cite{beardsleywong}, but we focus on the ordinary Grothendieck
+construction for simplicity.   
 
-This idea allows us to bring together all of the different enrichments, theories, and models into one big category. For every enriching category $\V$, let $\V\Cat_{np}$ be the subcategory of $\V\Cat$ of $\V$-categories with $\NN_\V$-powers and $\NN_\V$-power preserving functors; then there is a functor $$\V\Mod\maps \V\Law^\op \times \V\Cat_{np} \to \Cat$$ which sends $(\T,\C)$ to $\V\Mod(\T,\C)$. The (bi)functoriality of $\V\Mod$ gives the contravariant change-of-theory and the covariant change-of-context above.
+First, this construction lets us bring together all models of all different $\V$-theories in all different contexts into one category.   All the $\V$-theories
+are objects of $\V\Law$, as in Defn. \ref{defn:VLaw}.   We can also create a category of all  ``$\V$-contexts''.
 
-Using the Grothedieck construction, we obtain a category \textbf{$\int \V\Mod$}, in which a morphism 
-\[   ((f,g),\alpha)\maps ((\T,\C),\mu) \to ((\T',\C'),\mu') \]
-consists of:
+\begin{definition} 
+\label{defn:VCon}
+Let $\V\Con$, the \textbf{category of $\V$-contexts} be the category for which an
+object is a $\V$-category with finite $\V$-products and  a morphism is a functor that
+preserves finite $\V$-products.   
+\end{definition}
+
+There is a functor 
+\[    \V\Mod\maps \V\Law^\op \times \V\Con \to \Cat \]
+that sends any object $(\T,\C)$ to $\V\Mod(\T,\C)$ and any morphism $(f,g)$ to
+$f^* g_* = g_* f^*$.   The functoriality of $\V\Mod$ summarizes the 
+contravariant change-of-theory and the covariant change-of-context above.
+Applying the Grothedieck construction we obtain a category $\int \V\Mod$. 
+Technically an object of $\int \V\Mod$ is a triple $(T,\C,\mu)$, but more intuitively 
+it is a model $\mu \maps \T \to \C$ of any $\V$-theory $\T$ in any $\V$-context $\C$.   Similarly, a morphism 
+\[   (f,g,\alpha)\maps (\T,\C,\mu) \to (\mu',\T',\C') \]
+in $\V\Mod$ consists of:
 \begin{itemize}
 \item
-a $\V$-functor $f\maps\T\to \T'$ which preserves $\NN_\V$-powers,
+a morphism of $\V$-theories $f \maps \T' \to \T$,
 \item
-a $\V$-functor $g\maps\C\to \C'$ which preserves $\NN_\V$-powers, and
-\item a $\V$-natural transformation $\alpha\maps\V\Mod(f,g)(\mu)\to \mu'$.
+a $\V$-functor $g \maps\C\to \C'$ that preserves finite $\V$-products, and
+\item 
+a $\V$-natural transformation $\alpha\maps g \circ \mu \circ f \Rightarrow \mu'$.
 \end{itemize}
+This is a natural way to map between different models of different theories in different contexts.
 
-\begin{lemma}
-	There is a functor $$\mathrm{thy}\maps \CCC \to \Cat$$ which assigns $\V$ to $\int \V\Mod$ and $(F\maps \V \to \W)$ to a functor $(F_*^*\maps \int \V\Mod \to \int \W\Mod)$.
-\end{lemma}
-\begin{proof}
-	Given $F\maps\V\to \W$, base change $F_*\maps \V\Cat \to \W\Cat$ is a 2-functor, thereby inducing the functor $F_*^*\maps\V\Mod\to \W\Mod$ which sends a morphism $((f,g),\alpha)$ to $((F_*(f),F_*(g)),F_*(\alpha))$. Checking functoriality is left to the reader.
-\end{proof}
+We can go further by creating a category that even contains all choices of enriching 
+categories $\V$.   
 
-Thus, we can use the Grothendieck construction once more to encapsulate even the enrichment:
+\begin{definition}
+\label{defn:enrichment}
+Let $\Enr$ be the category for which an object is a cartesian closed category $\V$ with chosen finite coproducts of the terminal object, and a morphism is a cartesian
+ functor $F \maps \V \to \W$ preserving the chosen finite coproducts of 
+the initial object.   
+\end{definition}
+
+There is a functor 
+\[   \mathrm{Mod} \maps \Enr \to \Cat \]
+that maps any object $\V$ to $\int \V\Mod$ and any morphism $F \maps \V \to \W$ to a functor 
+\[    \mathrm{Mod}(F) \maps \textstyle{\int \V\Mod \to \int \W\Mod} \]
+that has the following effect:
+\begin{itemize}
+\item  $\mathrm{Mod}(F)$ maps any object $(\T,\C,\mu)$ to
+the object $(F_*(\T),F_*(\C),F_*(\mu))$. 
+\item $\mathrm{Mod}(F)$ maps any morphism $ (f,g,\alpha)$
+to the morphism $(F_*(f),F_*(g),F_*(\alpha))$. 
+\end{itemize}
+Thus, we can use the Grothendieck construction once more to pack up all choices of 
+enrichment into one big category:
+
 \begin{theorem}
-	There is a category $\mathrm{Thy} := \int \mathrm{thy}$ in which a morphism $$(F,((f,g),\alpha))\maps (\V,((\T,\C),\mu)) \to (\W,((\T',\C'),\mu'))$$ is a cartesian functor $F$ and a morphism $(f,g,\alpha)\maps F_*^*(((\T,\C),\mu)) \to ((\T',\C'),\mu')$ in $\W\Mod$.
+There is a category $\int \mathrm{Mod}$ in which:
+\begin{itemize}
+\item An object is a choice of cartesian closed category $\V$ with chosen finite coproducts
+of the terminal object, a $\V$-theory $\T$, a  $\V$-category $\C$ with finite $\V$-products, and a model $\mu \maps \T \to \C$.
+\item A morphism is a cartesian functor $F \maps \V \to \W$ preserving the chosen finite
+coproducts of the terminal object and a morphism $(f,g,\alpha) \maps (F_*(\T), F_*(\C), F_*(\mu)) \to (\T,\C,\mu)$ in $\W\Mod$.
+\end{itemize}
 \end{theorem}
 
-This category assimilates a lot of conceptual interaction. Most importantly, there are morphisms between objects of ``different kinds'', something we consider often but is normally not possible in category theory. For example, in $\mathrm{Thy}$ there is a morphism: 
-\[ (id_\Set, ((id_{\T_\Grp}, \mathrm{Disc}), \mathrm{exp}))\maps (\Set,((\T_{\mathrm{Grp}},\Set),(\mathbb{R},+,0))) \to (\Set,((\T_\Grp,\Top),(\mathbb{R},\times,1))). \]*******\\
-
-There are many unexplored questions about the large, heterogeneous categories which arise from the Grothendieck construction, regarding what unusual structure may be gained, such as limits and colimits with objects of different types, or identifying ``processes'' in which the kinds of objects change in an essential way. This is only a remark; for our purposes we need only recognize that enriched Lawvere theories can be assimilated into one category, which provides a unified context for change-of-base, change-of-theory, and change-of-context.
+This category allows us to formally treat morphisms between objects of ``different kinds'', something we often use informally, for example when speaking of a map from a set to a ring, or a group to a topological group.   There are many unexplored questions about the large, heterogeneous categories which arise from the Grothendieck construction, regarding what unusual structure may be gained, such as limits and colimits with objects of different types, or identifying ``processes'' in which the kinds of objects change in an essential way. However, for our purposes we need only recognize that enriched Lawvere theories can be assimilated into one category, which provides a unified context for change of base, change of theory, and change of context.
 
 \section{Applications}
 \label{sec:applications}
 
-In computer science literature, enriched algebraic theories have primarily been studied in the context of ``computational effects'' \cite{compeffects}. Mike Stay and Greg Meredith propose that enriched Lawvere theories can be utilized for the design of programming languages \cite{ladl}. The primary difference between programming languages and enriched theories, however, is that the latter do not have a notion of \textit{variable binding} -- there has certainly been progress on this idea \cite{fiore}, but it leads us beyond our present focus. There are other approaches which instead use an enriched theory as a ``compiler'', which can translate a higher language with binding to one without -- this idea comes from an important but underappreciated subject in foundations: combinatory logic.
+In computer science literature, enriched algebraic theories have primarily been studied in the context of ``computational effects'' \cite{compeffects}.   Stay and Meredith have proposed that enriched Lawvere theories can be utilized for the design of programming languages \cite{ladl}. The primary difference between programming languages and enriched theories, however, is that the latter do not have a notion of \textit{variable binding}---there has certainly been progress on this idea \cite{fiore}, but it leads us beyond our present focus. There are other approaches which instead use an enriched theory as a ``compiler'', which can translate a higher language with binding to one without---this idea comes the
+subject of combinatory logic.
 
 \subsection{The $SKI$-combinator calculus}
 \label{ssec:SKI}
@@ -1139,7 +1145,7 @@ In particular, labelled transition systems allow for the correct definition of p
                    & inter \maps & |\circ (.\times \overline{.}) \Rightarrow | & (a.P|\overline{a}.Q \xrightarrow{react} P|Q)\\
   \end{array}\]
 
-The theory is summarized in the two rewrite rules: $\tau$ is an ``unobservable'' action, a process evolving in a way that is private to the ambient context; $inter$ is interaction or communication - the action $a$ is being triggered by the coaction $\overline{a}$, they are used up and the sequential processes continue in parallel. This calculus is the precursor to the $\pi$ calculus \cite{milner}, and is a very simple and general framework for understanding systems of interacting automata.
+The theory is summarized in the two rewrite rules: $tau$ is an ``unobservable'' action, a process evolving in a way that is private to the ambient context; $inter$ is interaction or communication - the action $a$ is being triggered by the coaction $\overline{a}$, they are used up and the sequential processes continue in parallel. This calculus is the precursor to the $\pi$ calculus \cite{milner}, and is a very simple and general framework for understanding systems of interacting automata.
 
 There is an endofunctor $B\maps \mathsf{LTS} \to \mathsf{LTS}$ which quotients by the bisimulation relation. It preserves products, $B(G\times H)\cong B(G)\times B(H)$, because $(p_1,p_2)\equiv(q_1,q_2)$ iff ($p_1\equiv q_1$ and $p_2\equiv q_2$). Thus we can utilize base change to perform a very useful tranformation  on our semantics: from $\Th(\mathsf{CCS})$, we get a new theory $B_*(\Th(\mathsf{CCS}))$, the hom-LTS's of which consist of bisimulation equivalence classes of terms and rewrites in the calculus of communicating systems.
 
