@@ -996,7 +996,7 @@ The insight of Stay and Meredith \cite{roswelt} is that even though Lawvere theo
 & \kappa\maps & ((K\; -)\; =) \Rightarrow -\\
 & \iota\maps & (I\; -) \Rightarrow -\\
 \end{array}\]
-These rewrites are implicitly universally quantified; i.e. they apply to arbitrary subterms $-, =, \equiv$ without any variable binding involved, by using the cartesian structure of the category. (Here $l,r$ denote the unitors and $\tau$ the symmetry of the product.) They are simply edges with vertices:
+These rewrites are implicitly universally quantified; i.e. they apply to arbitrary subterms $-, =, \equiv$ without any variable binding involved, by using the cartesian structure of the category. (Here $l,r$ denote the unitors and $\sigma$ the symmetry of the product.) They are simply edges with vertices:
 \[\begin{tikzcd}
 (((S\; -)\; =)\; \equiv)\maps \arrow[Rightarrow,d,swap,"\sigma"] & t^3 \arrow[d,equal] \arrow[r,"l^{-1} \times t^3"] & 1\times t^3 \arrow[r,"S \times t^3"] & t^4 \arrow[Rightarrow,d,shorten >=0.2cm,shorten <=0.2cm] \arrow[r,"(-\;-)\times t^2"] & t^3 \arrow[r,"(-\;-) \times t"] & t^2 \arrow[r,"(-\;-)"] & t\arrow[d,equal]\\
 ((-\; \equiv)\; (=\; \equiv))\maps & t^3 \arrow[r,"t^2 \times \Delta"] & t^4 \arrow[r,"t \times \tau \times t"]& t^4 \arrow[rr,"(-\;-) \times (-\;-)"]&& t^2 \arrow[r,"(-\;-)"]& t\\
@@ -1143,7 +1143,7 @@ In particular, labelled transition systems allow for the correct definition of p
     \textbf{congruence} && (P,|,0) & \text{commutative monoid}\\
                    && (P,+,0) & \text{commutative monoid}\\\\
     \textbf{rewrites} & tau\maps & .\circ (\tau\times P)\circ l^{-1} \Rightarrow id_P & (\tau.P \xrightarrow{tau} P)\\
-                   & inter \maps & |\circ (.\times \overline{.}) \Rightarrow | & (a.P|\overline{a}.Q \xrightarrow{react} P|Q)\\
+                   & inter \maps & +\circ |\circ (.\times \overline{.}) \Rightarrow | & (P'+a.P|\overline{a}.Q \xrightarrow{react} P|Q)\\
   \end{array}\]
 
 The theory is summarized in the two rewrite rules: $tau$ is an ``unobservable'' action, a process evolving in a way that is private to the ambient context; $inter$ is interaction or communication - the action $a$ is being triggered by the coaction $\overline{a}$, they are used up and the sequential processes continue in parallel. This calculus is the precursor to the $\pi$ calculus \cite{milner}, and is a very simple and general framework for understanding systems of interacting automata.
@@ -1186,7 +1186,7 @@ a single category $\mathrm{Mod}$, which consists of all models of all enriched L
 
 \bibitem{dubuc} E. J. Dubuc, \textsl{Kan Extensions in Enriched Category Theory}, Lecture Notes in Mathematics, Springer, Berlin, 1970.
 
-\bibitem{fiore} M. Fiore, \textsl{Abstract Syntax with Variable Binding}, Logic in Computer Science, IEEE Computer Science Press, 1999.
+%\bibitem{fiore} M. Fiore, \textsl{Abstract Syntax with Variable Binding}, Logic in Computer Science, IEEE Computer Science Press, 1999.
 
 \bibitem{hylandpower} M.\ Hyland and J.\ Power, The category theoretic understanding of 
 universal algebra: Lawvere theories and monads, in \textsl{Electron.\ Notes Theor.\ Comput.\ Sci.} \textbf{172} (2007), 437--458.
@@ -1235,8 +1235,7 @@ Sci.} \textbf{366} (2006), 144--162. Available at \href{https://core.ac.uk/downl
 \bibitem{seely} R.\ A.\ G.\ Seely, Modelling computations: a 2-categorical framework, in
 \textsl{Proceedings of the Second Annual IEEE Symposium on Logic in Computer Science (LICS 1987)}, IEEE Computer Society Press, Ithaca, New York, pp.\ 22--25.
  
- \bibitem{lam} P.\ Selinger, Lecture notes on the lambda calculus.  Available as 
- \href{https://arxiv.org/abs/0804.3434}{arXiv:0804.3434}.
+% \bibitem{lam} P.\ Selinger, Lecture notes on the lambda calculus.  Available as \href{https://arxiv.org/abs/0804.3434}{arXiv:0804.3434}.
 
 \bibitem{tmam} R.\ Smullyan, \textsl{To Mock a Mockingbird: and Other Logic Puzzles Including an Amazing Adventure in Combinatory Logic}, Oxford U.\ Press, Oxford, 2000.
 	
