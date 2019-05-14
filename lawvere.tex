@@ -686,7 +686,7 @@ in $\Gph,\Cat,\Pos$ and of course $\Set$, but not in $\V = \Set^k$, where
 $|\hom(m_\V, n_\V)| = n^{km}$.    In fact, whenever $\NN_\V$ has finite hom-sets
 it is equivalent to $\FinSet^k$ for some $k$.   The reason is that $2_\V$ is 
 an internal Boolean algebra in $\V$, so its set of elements $\hom(1_\V,2_\V)$ 
-must be some Boolean algebra $B$ in $\Set$.   A further argument due to Garner and Trimble shows that $\NN_\V$ is completely characterized, up to equivalence, by this Boolean algebra, and any Boolean algebra can occur \cite{nCafe}.   If this Boolean algebra is finite it must be isomorphic to $\{0,1\}^k$ for some $k \ge 0$.  In this case, $\NN_V$ is equivalent to $\FinSet^k$.
+must be some Boolean algebra $B$ in $\Set$.   A further argument due to Garner and Trimble shows that $\NN_\V$ is completely characterized, up to equivalence, by this Boolean algebra, and any Boolean algebra can occur \cite{nCafe}.   If this Boolean algebra is finite it must be isomorphic to $\{0,1\}^k$ for some $k \ge 0$.  In this case, $\NN_\V$ is equivalent to $\FinSet^k$.
 
 Now suppose $\C$ is a $\V$-category.   The question arises whether the
 power of an object $c \in \C$ by $n_\V$ must also be the $\V$-product of $n$ copies
@@ -805,7 +805,7 @@ The identity-assigning morphisms are given by
 F(\C(a,b)) .\]
 
 Moreover, if $f\maps \C \to \D \in \V\Cat$ is a $\V$-functor, there is a $\W$-functor $F_*(f) \maps F_*(C) \to F_*(D)$ that on objects equals $f$ and on hom-objects equals $F(f)$. If $\alpha\maps f \Rightarrow g$ is a $\V$-natural transformation and $c\in \Obj(\C)$, then we define $F_*(\alpha)_c$ to be the composite
-\[      1 \stackrel{\sim}{\longrightarrow} F(1) \xrightarrow{F(i_a)} F(\C(a,b)) .\]   
+\[      1 \stackrel{\sim}{\longrightarrow} F(1) \xrightarrow{F(i_a)} F(\C(a,a)) .\]   
 Thus, change of base actually gives a 2-functor from the 2-category of $\V$-categories, 
 $\V$-functors and $\V$-natural transformations to the corresponding 2-category for $\W$.
 
@@ -913,7 +913,7 @@ contravariant change-of-theory and the covariant change-of-context above.
 Applying the Grothedieck construction we obtain a category $\int \V\Mod$. 
 Technically an object of $\int \V\Mod$ is a triple $(T,\C,\mu)$, but more intuitively 
 it is a model $\mu \maps \T \to \C$ of any $\V$-theory $\T$ in any $\V$-context $\C$.   Similarly, a morphism 
-\[   (f,g,\alpha)\maps (\T,\C,\mu) \to (\mu',\T',\C') \]
+\[   (f,g,\alpha)\maps (\T,\C,\mu) \to (T',\C',\mu') \]
 in $\V\Mod$ consists of:
 \begin{itemize}
 \item
@@ -926,7 +926,7 @@ a $\V$-natural transformation $\alpha\maps g \circ \mu \circ f \Rightarrow \mu'$
 This is a natural way to map between different models of different theories in different contexts.
 
 We can go further by creating a category that even contains all choices of enriching 
-categories $\V$.   
+categories $\V$:
 
 \begin{definition}
 \label{defn:enrichment}
