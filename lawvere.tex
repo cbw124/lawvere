@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/5/13
+% 2019/5/14 - first arXiv version
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -20,7 +20,6 @@
 \usepackage{fancybox}
 \usepackage[all,2cell]{xy} \UseAllTwocells
 \usetikzlibrary{arrows, positioning, intersections}
-\input{coya-tikz.tex}
 \tikzset{%
 	symbol/.style={%
 		draw=none,
@@ -150,7 +149,7 @@ We can use an enhanced Lawvere theory in which, rather than merely \emph{sets} o
 
 To be clear, this is not a new idea. Using enriched Lawvere theories for operational semantics has been explored in the past. For example, category-enriched theories have been studied by Seely \cite{seely} for the $\lambda$-calculus, and poset-enriched ones by Ghani and L\"uth \cite{ghani} for understanding ``modularity'' in term rewriting systems.  They have been utilized extensively by Power, enriching in $\omega$-complete partial orders to study recursion \cite{compeffects} -- in fact, there the simplified ``natural number'' enriched theories which we explore were implicitly considered.
 
-The goal of this paper is to give a simple unified explanation of enriched Lawvere theories and some of their applications to operational semantics.    We aim our explanations at readers familiar with category theory but not yet enriched categories.  To reduce the technical overhead we only consider enrichment over cartesian closed categories.   A key example for us is $\Gph$, the category of reflexive graphs.  This is $\Set^\R$, where $\R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.   A reflexive graph has directed edges and allows multiple edges between any pair of vertices; further, every vertex is equipped with a distinguished self-loop.    A category enriched over $\Gph$, or $\Gph$-category, has a set of objects and for any two objects a reflexive graph called a``hom-graph''.  The vertices of this hom-graph represent morphisms, but there are also edges between these morphisms.  $\Gph$-categories have a clear connection to the original idea of operational semantics:
+The goal of this paper is to give a simple unified explanation of enriched Lawvere theories and some of their applications to operational semantics.    We aim our explanations at readers familiar with category theory but not yet enriched categories.  To reduce the technical overhead we only consider enrichment over cartesian closed categories.   A key example for us is $\Gph$, the category of reflexive graphs.  This is $\Set^\R$, where $\R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.   A reflexive graph has directed edges and allows multiple edges between any pair of vertices; further, every vertex is equipped with a distinguished self-loop.    A category enriched over $\Gph$, or $\Gph$-category, has a set of objects and for any two objects a reflexive graph called a ``hom-graph''.  The vertices of this hom-graph represent morphisms, but there are also edges between these morphisms.  $\Gph$-categories have a clear connection to the original idea of operational semantics:
 
 \[\begin{array}{rl}
 \text{types: } & \text{objects }\\
