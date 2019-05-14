@@ -160,13 +160,13 @@ The goal of this paper is to give a simple unified explanation of enriched Lawve
 \end{array}\]
 
 \vskip 0.5em
-In general, for a cartesian closed category $\V$, we take a ``$\V$-theory'' to be a $\V$-enriched Lawvere theory with natural number arities. There are functors between these that allow the translation between different kinds of operational and denotational semantics.  There is a spectrum of choices for $\V$, which allow us to examine the semantics of term calculi at various levels of detail:
+In general, for a cartesian closed category $\V$, we take a ``$\V$-theory'' to be a $\V$-enriched Lawvere theory with natural number arities. There are functors between enriching categories that allow the translation between different kinds of operational and denotational semantics.  There is a spectrum of choices for $\V$, which allow us to examine the semantics of term calculi at various levels of detail:
 
 \begin{itemize}
 \item 
 \textbf{Graphs}: $\Gph$-theories represent ``small-step" operational semantics: \\ --- a hom-graph edge is a \textit{single} term rewrite.
 \item
-\textbf{Categories}: $\Cat$-theories represent ``big-step" operational semantics. \\ ( (Often this means a rewrite to a \textit{normal form}. We use the term more generally.)\\ --- a composite of morphisms is a \textit{big-step} rewrite. 
+\textbf{Categories}: $\Cat$-theories represent ``big-step" operational semantics. \\  (Often this means a rewrite to a \textit{normal form}. We use the term more generally.)\\ --- a composite of morphisms is a \textit{big-step} rewrite. 
 \item
 \textbf{Posets}: $\Pos$-theories represent ``full-step" operational semantics:\\ --- a hom-poset boolean is the \textit{existence} of a big-step rewrite.
 \item
@@ -226,7 +226,7 @@ For efficiency let us call a functor that preserves finite products \define{cart
 
 A theory can thus have models in many different contexts.   For example, there is a Lawvere theory $\Th(\Mon)$, the theory of monoids, described as above.  Ordinary monoids are models of this theory in $\Set$, while topological monoids are models of this theory in $\Top$.
 
-For completeness, it is worthwhile to mention the \textit{presentation} of a Lawvere theory: after all, we are arguing their utility in everyday programming.  How exactly does the above ``sketch'' of $\Th(\Mon)$ produce a category with finite products?  It is precisely analogous to the presentation of an algebra by generators and relations: we form the free category with finite products on the data given, and impose the required equations. The result is a category whose objects are powers of $M$, and whose morphisms are composites of products of the morphisms in $\Th(\Mon)$, projections, deletions, symmetries and diagonals.  A detailed account was given by Barr and Wells \cite[Chap.\ 4]{barrwells}; for a more computer-science-oriented approach see Crole \cite[Chap.\ 3]{crole}. In $\S4$ we see that this construction is actually given by the $\Cat$-theory for categories with finite products.
+For completeness, it is worthwhile to mention the \textit{presentation} of a Lawvere theory: after all, we are arguing their utility in everyday programming.  How exactly does the above ``sketch'' of $\Th(\Mon)$ produce a category with finite products?  It is precisely analogous to the presentation of an algebra by generators and relations: we form the free category with finite products on the data given, and impose the required equations. The result is a category whose objects are powers of $M$, and whose morphisms are composites of products of the morphisms in $\Th(\Mon)$, projections, deletions, symmetries and diagonals.  A detailed account was given by Barr and Wells \cite[Chap.\ 4]{barrwells}; for a more computer-science-oriented approach see Crole \cite[Chap.\ 3]{crole}.
 
 \iffalse
 \begin{center}
@@ -289,14 +289,14 @@ T(X) = \int^{n\in \NN} X^n \times \T(n,1).
 \end{equation}
 The integral here is a coend, essentially a coproduct quotiented by the equations of the theory and the equations induced by the cartesian structure of the category. This forms the set of all terms that can be constructed from applying the operations to the elements, subject to the equations of the theory.  The monad constructed this way is always \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}, or its action on sets is determined by its action on finite sets.
 
-Conversely, for a monad $T$ on $\Set$, its Kleisli category $\Kl(T)$ is the category of all free algebras of the monad, which has all coproducts. There is a functor $k\maps \Set \to \Kl(T)$ that is the identity on objects and preserves coproducts (because it is a right adjoint).  Thus,
+Conversely, for a monad $T$ on $\Set$, its Kleisli category $\Kl(T)$ is the category of all free algebras of the monad, which has all coproducts. There is a functor $k\maps \Set \to \Kl(T)$ that is the identity on objects and preserves coproducts. Thus,
 \[ k^{\op}\maps \Set^{\op} \to \Kl(T)^{\op} \]
 is a cartesian functor, and restricting its domain to $\NN^{\op}$ is a Lawvere theory $k_T$. To see what this is doing, note that:
 $$\Kl(T)^{\op}(n,m) = \Kl(T)(m,n) = \Set(m,T(n))$$
 where the latter is considered as $m$ $n$-ary operations in the Lawvere theory $k_T$.
 When $T$ is finitary, the monad arising from this Lawvere theory is naturally isomorphic to $T$ itself.
 
-This correspondence sets up an equivalence between the category $\Law$ of Lawvere theories and the category of finitary monads on $\Set$.  There is also an equivalence of between the category $\Mod(\T)$ of models of any given Lawvere theory and the category of algebra of the corresponding finitary monad $T$.  Furthermore, all this generalizes with $\Set$ replaced by any ``locally finitely presentable'' category \cite{adamekrosicky}. For more details see \cite{barrwells,lawvere,milewski}.
+This correspondence sets up an equivalence between the category $\Law$ of Lawvere theories and the category of finitary monads on $\Set$.  There is also an equivalence of between the category $\Mod(\T)$ of models of any given Lawvere theory and the category of algebras of the corresponding finitary monad $T$.  Furthermore, all this generalizes with $\Set$ replaced by any ``locally finitely presentable'' category \cite{adamekrosicky}. For more details see \cite{barrwells,lawvere,milewski}.
 
 \section{Enrichment}
 \label{sec:enrichment}
@@ -393,7 +393,7 @@ There are just a few more technicalities. A category is \textbf{locally finitely
 
 Power introduced the notion of enriched Lawvere theory about twenty years ago, ``in seeking a general account of what have been called notions of computation'' \cite{power}. The original definition is as follows: for a symmetric monoidal closed category $(\V,\otimes,1)$, a ``$\V$-enriched Lawvere theory'' is a $\V$-category $\T$ that has powers by objects in $\V_f$, equipped with an identity-on-objects $\V$-functor 
 \[  \tau\maps \underline{\V}_f^\op \to \T \]
-that preserves these powers.  A ``model'' of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ that preserves powers by finite objects of $\V$.  There is a category $\Mod(\T,\V)$ whose objects are models and whose morphisms are $\V$-natural transformations. The monadic adjunction and equivalence of $\S$2 generalize to the enriched setting.
+that preserves these powers.  A ``model'' of a $\V$-theory is a $\V$-functor $\mu\maps\T \to \V$ that preserves powers by finite objects of $\V$.  There is a category $\Mod(\T,\V)$ whose objects are models and whose morphisms are $\V$-natural transformations. The monadic adjunction and equivalence of Section \ref{sec:lawvere} generalize to the enriched setting.
 
 However, this sort of $\V$-enriched Lawvere theory has arities for every finite object of $\V$.  These \textit{generalized arities} may be very powerful---rather than only inputting $n$-tuples of terms, we can input any finite object of terms.  Despite its potential, this generalization remains largely unexploited in computer science.   Power \cite{powsketch} introduced ``enriched sketches'' as a way of presenting enriched Lawvere theories, but to the authors' knowledge these are not yet widely understood or used.  What does it mean for an operation to take in a finite graph of terms?  How can we learn to use this generality? One clue that we note in Example \ref{ex:2} is that limits and colimits are operations whose arity is a ``diagram shape'' rather than a natural number. We hope that this idea is explored more widely, so that we can use more general arities in both mathematics and computer programming.
 
@@ -475,10 +475,7 @@ Lucyshyn-Wright defines a \textbf{$\J$-theory} to be a $\V$-functor $\tau \maps 
 
 He defines a model (or ``algebra'') of a $\J$-theory to be a $\V$-functor $\tau \maps \T \to \underline{\V}$ that preserves powers by objects in $\J$.   He defines a morphism of models to be a $\V$-natural transformation between such $\V$-functors.  So, to apply his theory, we also need to show that when $\J = \underline{\NN}_\V$, a $\V$-functor $\mu \maps \T \to \underline{\V}$ preserves powers by objects of $\J$ if and only if it preserves finite $\V$-products.   This is Lemma \ref{lem:powers_5} below.
 
-A technical concept fundamental to Lucyshyn-Wright's theory is that of an \define{eleutheric} system of arities $j \maps \J \to \underline{\V}$.  This is one where the left Kan extension of any $\V$-functor $T \maps \J \to \underline{\V}$ along $j$ exists and is preserved by each $\V$-functor
-$\underline{\V}(x,-) \maps \underline{\V} \to \underline{\V}$.  In Example 7.5.5 he shows
-that $j \maps \underline{\NN}_\V \to \underline{\V}$ is eleutheric when $\V$ is 
-countably cocomplete.  In Thm.\ 8.9 shows that when $j \maps \J \to \underline{\V}$ is eleutheric, and has equalizers, we may form the $\V$-category $\underline{\Mod}(\T,\V)$, and that the forgetful $\V$-functor
+A technical concept fundamental to Lucyshyn-Wright's theory is that of an \define{eleutheric} system of arities $j \maps \J \to \underline{\V}$.  This is one where the left Kan extension of any $\V$-functor $f \maps \J \to \underline{\V}$ along $j$ exists and is preserved by each $\V$-functor $\underline{\V}(x,-) \maps \underline{\V} \to \underline{\V}$.  In Example 7.5.5 he shows that $j \maps \underline{\NN}_\V \to \underline{\V}$ is eleutheric when $\V$ is countably cocomplete.  In Thm.\ 8.9 shows that when $j \maps \J \to \underline{\V}$ is eleutheric, and has equalizers, we may form the $\V$-category $\underline{\Mod}(\T,\V)$, and that the forgetful $\V$-functor
 \[   U \maps \underline{\Mod}(\T,\V) \to \underline{\V} \]
 is monadic.  This is the result we need.   So, our theorem actually holds whenever $\V$ is cartesian closed, with equalizers and countable colimits, and has chosen finite coproducts of the initial object.  \end{proof}
 
@@ -490,12 +487,12 @@ Before turning to examples, a word about Lucyshyn-Wright's construction of the l
 n_\V & \mapsto & t^{n_\V} & \mapsto & \T(t^{n_\V},-)
 \end{array}
 \]
-Since an object of $\V$ does not necessarily have a ``poset of finite subobjects'' over which to take a filtered colimit (as in $\Set$), the extension of this ``free model'' functor $y \tau^\op$ to all of $\V$ is specified by a somewhat higher-powered generalization: it is the left Kan extension of $y\tau$ along $j$.
+Since an object of $\V$ does not necessarily have a ``poset of finite subobjects'' over which to take a filtered colimit (as in $\Set$), the extension of this ``free model'' functor $y \tau^\op$ to all of $\V$ is specified by a somewhat higher-powered generalization: it is the left Kan extension of $y\tau^{\op}$ along $j$.
 \[\begin{tikzcd}
 \NN_\V \arrow[rr,"y\tau^\op"{name=y}] \arrow[swap,rd,"j"] & & \left[\T,\V\right]\\
 & \V \arrow[swap,dotted, ru,"F:=\mathrm{Lan}_jy\tau^{\op}"] \arrow[Rightarrow,from=y,"\eta", shorten >=0.2cm,shorten <=.2cm]
 \end{tikzcd}\]
-This is the universal ``best solution'' to the problem of making the triangle commute up to a $\V$-natural transformation.  That is, for any functor $G \maps \V \to [\T,\V]$ and $\V$-natural transformation $\theta \maps y\tau \Rightarrow Gj$, the latter factors uniquely through $\eta$.
+This is the universal ``best solution'' to the problem of making the triangle commute up to a $\V$-natural transformation.  That is, for any functor $G \maps \V \to [\T,\V]$ and $\V$-natural transformation $\theta \maps y\tau^{\op} \Rightarrow Gj$, the latter factors uniquely through $\eta$.
 From the adjunction between $\V$ and the category of models $\Mod(\T,\V)$ we obtain a $\V$-enriched monad
 \[       T = U F \maps \V \to \V, \]
 and this has a more concrete formula as an enriched coend:
@@ -1061,7 +1058,7 @@ Now we can succinctly characterize the transformation from small-step to \textbf
 
 This functor is cartesian, because the definition of graphical product and categorical product are identical except for composition: vertices/objects are pairs of vertices/objects from each component, and same for edges/morphisms; hence the above operation fulfills the preservation isomorphism: $$\FC(G\times H) \cong \FC(G)\times \FC(H)$$ because they have the same objects, and a morphism of the former is a sequence of pairs, while that of the latter is the corresponding pair of sequences.
 
-Thus $\FC$ is the change-of-semantics which induces the transitive closure of the rewrite relation, hence $$\mu_{SKI}^\Cat := \FC_*(\mu_{SKI}^\Gph)$$ is the category which represents the big-step operational semantics of the $SKI$-calculus. To correpond with the conventional meaning of big-step semantics, as noted in $\S1$, we can quotient by Curry's equations to identify $SKI$-terms which are extensionally equivalent \cite{barendregt}.
+Thus $\FC$ is the change-of-semantics which induces the transitive closure of the rewrite relation, hence $$\mu_{SKI}^\Cat := \FC_*(\mu_{SKI}^\Gph)$$ is the category which represents the big-step operational semantics of the $SKI$-calculus. To obtains the conventional big-step semantics, we can quotient by Curry's equations to identify $SKI$-terms that are extensionally equivalent \cite{barendregt}.
 
 The same reasoning applies to the ``free poset'' functor $\FP\maps \Cat \to \Pos$; it is a change-of-semantics because the product of posets is defined in the same way. This induces the lesser-known \textbf{full-step semantics}, which collapses hom-sets to truth values, simply asserting the existence of a rewrite sequence between terms, without distinguishing between different paths. Starting from a free category, this is simply adding the property that all distinct paths between two terms are equal, while retaining transitivity.
 
