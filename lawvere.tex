@@ -295,7 +295,7 @@ $$\Kl(T)^{\op}(n,m) = \Kl(T)(m,n) = \Set(m,T(n))$$
 where the latter is considered as $m$ $n$-ary operations in the Lawvere theory $k_T$.
 When $T$ is finitary, the monad arising from this Lawvere theory is naturally isomorphic to $T$ itself.
 
-This correspondence sets up an equivalence between the category $\Law$ of Lawvere theories and the category of finitary monads on $\Set$.  There is also an equivalence of between the category $\Mod(\T)$ of models of any given Lawvere theory and the category of algebras of the corresponding finitary monad $T$.  Furthermore, all this generalizes with $\Set$ replaced by any ``locally finitely presentable'' category \cite{adamekrosicky}. For more details see \cite{barrwells,lawvere,milewski}.
+This correspondence sets up an equivalence between the category $\Law$ of Lawvere theories and the category of finitary monads on $\Set$.  There is also an equivalence between the category $\Mod(\T,\Set)$ of models of a Lawvere theory $\T$ and the category of algebras of the corresponding finitary monad $T$.  Furthermore, all this generalizes with $\Set$ replaced by any ``locally finitely presentable'' category \cite{adamekrosicky}. For more details see \cite{barrwells,lawvere,milewski}.
 
 \section{Enrichment}
 \label{sec:enrichment}
@@ -383,7 +383,7 @@ As with $\V$-products, it is useful to repackage the isomorphism of Eq.\ \eqref{
 \[     q \maps 1_\V \to  \C(c^v,c)^v , \]
 namely the composite
 \[ 1_\V \stackrel{i_{c^v}}{\longrightarrow}  \C(c^v,c^v) \stackrel{\sim}{\longrightarrow} \C(c^v,c)^v .\]
-Conversely, any element $q \maps 1_\V \to  \C(c^v,c)^v$ determines a $\V$-natural transformation $C(-,c^v) \to C(-,c)^v$, and we say $e$ is a \textbf{universal cone} if this $\V$-natural transformation is an isomorphism.  Next, suppose $\C$ and $\D$ are $\V$-categories with $v$-powers.  We say a $\V$-functor $F\maps \C\to \D$ \textbf{preserves $v$-powers} if it maps universal cones to universal cones.
+Conversely, any element $q \maps 1_\V \to  \C(c^v,c)^v$ determines a $\V$-natural transformation $e\maps C(-,c^v) \to C(-,c)^v$, and we say $e$ is a \textbf{universal cone} if this $\V$-natural transformation is an isomorphism.  Next, suppose $\C$ and $\D$ are $\V$-categories with $v$-powers.  We say a $\V$-functor $F\maps \C\to \D$ \textbf{preserves $v$-powers} if it maps universal cones to universal cones.
 
 There are just a few more technicalities. A category is \textbf{locally finitely presentable} if it is the category of models for a finite limits theory, and an object is \define{finite} if its representable functor is \define{finitary}: that is, it preserves filtered colimits \cite{adamekrosicky}.   A $\V$-category $\C$ is \textbf{locally finitely presentable} if its underlying category $\C_0$ is locally finitely presentable, $\C$ has finite powers, and $(-)^x\maps \C_0 \to \C_0$ is finitary for all finitely presentable $x$.  The details are not crucial here: all categories to be considered are locally finitely presentable. We will use  $\V_f$ to denote the full subcategory of $\V$ of finite objects: in $\Gph$, these are simply graphs with finitely many vertices and edges.
 
@@ -800,11 +800,11 @@ for all objects $a,b$.   Composition in $F_*(\C)$ is defined by
 \[       F(\C(b,c)) \times F(\C(a,b)) \stackrel{\sim}{\longrightarrow} F(\C(b,c) \times \C(a,b)) 
 \xrightarrow{F(\circ_{a,b,c})} F(C(a,b)) . \]  
 The identity-assigning morphisms are given by
-\[          1 \stackrel{\sim}{\longrightarrow} F(1) \xrightarrow{F(i_a)}
-F(\C(a,b)) .\]
+\[          1_\W \stackrel{\sim}{\longrightarrow} F(1_\V) \xrightarrow{F(i_a)} F(\C(a,a)) .\]
 
-Moreover, if $f\maps \C \to \D \in \V\Cat$ is a $\V$-functor, there is a $\W$-functor $F_*(f) \maps F_*(C) \to F_*(D)$ that on objects equals $f$ and on hom-objects equals $F(f)$. If $\alpha\maps f \Rightarrow g$ is a $\V$-natural transformation and $c\in \Obj(\C)$, then we define $F_*(\alpha)_c$ to be the composite
-\[      1 \stackrel{\sim}{\longrightarrow} F(1) \xrightarrow{F(i_a)} F(\C(a,a)) .\]   
+Moreover, if $f\maps \C \to \D \in \V\Cat$ is a $\V$-functor, there is a $\W$-functor $F_*(f) \maps F_*(C) \to F_*(D)$ that on objects equals $f$ and on hom-objects equals $F(f)$. If $\alpha\maps f \Rightarrow g$ is a $\V$-natural transformation and $c\in \Obj(\C)$, then we define
+\[F_*(\alpha)_c\maps 1_\W \stackrel{\sim}{\longrightarrow} F(1_\V) \xrightarrow{F(\alpha_c)} F(\D(f(c),g(c))).\]
+%\[      1 \stackrel{\sim}{\longrightarrow} F(1) \xrightarrow{F(i_a)} F(\C(a,a)) .\]   
 Thus, change of base actually gives a 2-functor from the 2-category of $\V$-categories, 
 $\V$-functors and $\V$-natural transformations to the corresponding 2-category for $\W$.
 
@@ -1084,12 +1084,12 @@ $$\Th(\mathsf{SKI}+\mathsf{R})$$
 \textbf{term constructors} & S,K,I \maps &1 \to t\\
 & R\maps & t \to t\\
 & (-\; -)\maps & t^2 \to t\\\\
-    \textbf{structural congruence} & R(x\; y) & = (Rx\; y) \\
-    & (x\; Ry) & = (x\; y) \\
+    \textbf{structural congruence} & R(-\; =) & = (R-\; =) \\
 & RR & = R\\\\
-\textbf{rewrites} & \sigma_r\maps & (((RS\; -)\; =)\; \equiv) \Rightarrow ((R-\; \equiv)\; (=\; \equiv))\\
+    \textbf{rewrites} & \sigma_r\maps & (((RS\; -)\; =)\; \equiv) \Rightarrow ((R-\; \equiv)\; (=\; \equiv))\\
 & \kappa_r\maps & ((RK\; -)\; =) \Rightarrow R-\\
-& \iota_r\maps & (RI\; -) \Rightarrow R-\\
+              & \iota_r\maps & (RI\; -) \Rightarrow R-\\
+    & n_r\maps & (-\; R=) \Rightarrow (-\; =) \\
 \end{array}\]
 
 The $SKI$-calculus is thereby equipped with ``lazy evaluation'', an essential paradigm in modern programming. This represents a broad potential application of equipping theories with computational methods, such as evaluation strategies.
