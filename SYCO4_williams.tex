@@ -1,0 +1,298 @@
+\documentclass{beamer}
+\usetheme{Goettingen}
+\usecolortheme{wolverine}
+%\usefonttheme{serif}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bussproofs}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{mathtools}
+%\usepackage{authblk}
+\usepackage{pict2e}
+\usepackage[mathscr]{euscript}
+\usepackage{tikz-cd}
+\tikzstyle{none}=[inner sep=0pt]
+\tikzstyle{circ}=[circle,fill=black,draw,inner sep=3pt]
+\usepackage{fancybox}
+\usepackage[all,2cell]{xy} \UseAllTwocells
+\usetikzlibrary{arrows, positioning, intersections}
+\input{coya-tikz.tex}
+\tikzset{%
+	symbol/.style={%
+		draw=none,
+		every to/.append style={%
+			edge node={node [sloped, allow upside down, auto=false]{$#1$}}}
+	}
+}
+
+% hyperlinks
+% \usepackage{color}
+% \definecolor{myurlcolor}{rgb}{0.5,0,0}
+% \definecolor{mycitecolor}{rgb}{0,0,1}
+% \definecolor{myrefcolor}{rgb}{0,0,1}
+% \usepackage[pagebackref]{hyperref}
+% \hypersetup{colorlinks,
+% linkcolor=myrefcolor,
+% citecolor=mycitecolor,
+% urlcolor=myurlcolor}
+
+% \newcommand{\define}[1]{{\bf \boldmath{#1}}}
+% \renewcommand*{\backref}[1]{(Referred to on page #1.)}
+
+% theorems
+
+% \theoremstyle{definition}
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{example}[theorem]{Example}
+% \newtheorem{corollary}{Corollary}[theorem]
+
+\def\rd{\rotatebox[origin=c]{90}{$\dashv$}} %rotate dash right
+\def\ld{\rotatebox[origin=c]{-90}{$\dashv$}} %rotate dash left
+
+% categories
+
+\newcommand{\Th}{\mathsf{Th}}
+\newcommand{\Gph}{\mathsf{Gph}}
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Cat}{\mathsf{Cat}}
+\newcommand{\Law}{\mathsf{Law}}
+\newcommand{\Mnd}{\mathrm{Mnd}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Mon}{\mathsf{Mon}}
+\newcommand{\Alg}{\mathsf{Alg}}
+\newcommand{\CCC}{\mathsf{CCC}}
+\newcommand{\Pos}{\mathsf{Pos}}
+\newcommand{\Mod}{\mathsf{Mod}}
+\newcommand{\FinSet}{\mathsf{FinSet}}
+\newcommand{\NN}{\mathsf{N}}
+\newcommand{\A}{\mathsf{A}}
+\newcommand{\V}{\mathsf{V}}
+\newcommand{\W}{\mathsf{W}}
+\newcommand{\D}{\mathsf{D}}
+\newcommand{\C}{\mathsf{C}}
+\newcommand{\R}{\mathsf{R}}
+\newcommand{\X}{\mathsf{X}}
+\newcommand{\K}{\mathsf{K}}
+\newcommand{\J}{\mathsf{J}}
+\newcommand{\T}{\mathsf{T}}
+\newcommand{\Kl}{\mathsf{Kl}}
+\newcommand{\LTS}{\mathsf{LTS}}
+
+\newcommand{\FC}{\mathrm{FC}}
+\newcommand{\FP}{\mathrm{FP}}
+\newcommand{\FS}{\mathrm{FS}}
+\newcommand{\UC}{\mathrm{UC}}
+\newcommand{\UP}{\mathrm{UP}}
+\newcommand{\UG}{\mathrm{UG}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Obj}{\mathrm{Ob}}
+
+\newcommand{\pic}{$\pi$-calculus}
+
+\newcommand{\pfk}{\pitchfork}
+\newcommand{\maps}{\colon}
+\newcommand{\id}{\mathrm{id}}
+
+\newcommand{\ul}[1]{\underline{#1}}
+
+
+\title{Enriched Lawvere Theories\\ for Operational Semantics}
+\author{John C. Baez: baez@math.ucr.edu\\ Christian Williams: williams@same}
+\institute{University of California, Riverside}
+\date{SYCO 4, May 22 2019}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Introduction}
+  How do we integrate syntax and semantics?
+  \[\begin{array}{ll}
+      \text{type} & \text{object}\\
+      \text{term} & \text{morphism}\\
+      \text{rewrite} & \text{2-morphism}\\
+    \end{array}\]
+  \[\begin{tikzcd}[ampersand replacement=\&]
+      (\lambda x.x+x \; \; 2) \ar{r}{\beta} \& 2+2 \ar{r}{+} \& 4
+    \end{tikzcd}\]
+\end{frame}
+\begin{frame}{Change of semantics}
+  \[\begin{tikzcd}[column sep=small, ampersand replacement=\&]
+\Gph \arrow[bend left,below]{rr}{\FC}
+\& \ld \&
+\arrow[bend left,above]{ll}{\UG} \Cat \arrow[bend left,below]{rr}{\FP}
+\& \ld \&
+\arrow[bend left,above]{ll}{\UC} \Pos \arrow[bend left,below]{rr}{\FS}
+\& \ld \&
+\Set \arrow[bend left,above]{ll}{\UP}
+\end{tikzcd}\]
+
+\[\begin{array}{ll}
+    \FC_* & \text{maps small-step to big-step operational semantics.}\\
+    \FP_* & \text{maps big-step to full-step operational semantics.}\\
+    \FS_* & \text{maps full-step to denotational semantics.}\\
+\end{array}\]
+
+\end{frame}
+
+\section{theories}
+\subsection{Lawvere theories}
+\begin{frame}{Lawvere theories}
+  A \textbf{Lawvere theory} is a category $\T$ whose objects are finite powers of a distinguished object $t = \tau(1)$.
+  $$\tau\maps \mathbb{N}^{\op}\to \T$$
+  Morphisms $t^n\to t$ are $n$-ary operations, and commuting diagrams are equations.\\~\\
+  Classical algebra is represented and internalized in any category with finite products.
+\end{frame}
+\begin{frame}{Models}
+  Let $\C$ be a category with finite products.\\~\\
+  A \textbf{model} of a Lawvere theory $\T$ in $\C$ is a product-preserving functor $\mu\maps \T\to \C$. A morphism of models is a natural transformation. \\~\\
+  These form a category $\Mod(\T,\C)$. For example, $\Mod(\Th(\Grp),\Top)$ is the category of topological groups.
+\end{frame}
+\subsection{theories and monads}
+\begin{frame}{Monadicity}
+  Another way to describe algebraic structure is by \textit{monads}. Theories induce ``free-forgetful'' adjunctions: 
+  \[\begin{tikzcd}[column sep=small, ampersand replacement=\&]
+      \Set \arrow[bend left,below]{rr}{F}
+      \& {\phantom{AA} \ld} \&
+      \arrow[bend left,above]{ll}{U} \Mod(\T,\Set).
+    \end{tikzcd}\]
+  \[\begin{array}{lll}
+      U :: \mu\mapsto \mu(1) && F :: n\mapsto \T(n,-)\\
+      && \text{extends to $\Set$ by colimit.}
+    \end{array}\]\\
+  This induces a monad $T$ on $\Set$, and we have that:
+  $$T\text{-Alg} \simeq \Mod(\T,\Set).$$
+\end{frame}
+
+\section{enrichment}
+\subsection{enriched categories}
+\begin{frame}{Enriched categories}
+Let $\V$ be a monoidal category. A \textbf{$\V$-enriched category} is:
+  \[\begin{array}{ll}
+\text{object set} & \Obj(\C)\\
+\text{hom function} & \C(-,-)\maps \Obj(\C) \times \Obj(\C) \to \Obj(\V)\\
+\text{composition} & \circ_{a,b,c}\maps\C(b,c) \times \C(a,b) \to \C(a,c)\\
+\text{identity} & i_a\maps 1_\V \to\C(a,a)\\
+    \end{array}\]
+  with composition associative and unital.\\
+  A \textbf{$\V$-functor} $F\maps \C\to \D$ is:
+  \[\begin{array}{ll}
+\text{object function} & F\maps \Obj(\C) \to \Obj(\D)\\
+\text{hom morphisms} & F_{ab}\maps \C(a,b) \to \D(F(a),F(b))\\
+    \end{array}\]
+  preserving composition and identity.\\
+  A \textbf{$\V$-natural transformation} $\alpha\maps F \Rightarrow G$ is:
+\[\begin{array}{ll}
+\text{components} & \alpha_a \maps 1_\V \to \D(F(a),G(a))\\
+\end{array}\]
+ which is ``natural'' in $a$. These form the 2-category \textbf{$\V\Cat$}. 
+\end{frame}
+\subsection{enriched limits}
+\begin{frame}{Enriched limits}
+  a
+\end{frame}
+\begin{frame}{Preservation}
+  a
+\end{frame}
+
+\section{enriched theories}
+\subsection{enriched Lawvere theories}
+\begin{frame}{Enriched Lawvere theories}
+  a
+\end{frame}
+\begin{frame}{Generalized arities}
+  a
+\end{frame}
+\subsection{enriched monadicity}
+\begin{frame}{Enriched monadicity}
+  a
+\end{frame}
+\subsection{examples}
+\begin{frame}{Example: pseudomonoid}
+  \[ \Th(\mathrm{PsMon}) \]
+  \[\begin{array}{lll}
+  \textbf{type}\\ M & \text{pseudomonoid}\\ \\
+  \textbf{operations}\\ m\maps M^2 \to M & \text{multiplication}\\
+                e\maps1 \to M & \text{identity}\\ \\
+  \textbf{rewrites}\\ \alpha \colon m(m \times \id_M) \cong m (\id_M \times m) & \text{associator}\\
+                \lambda\maps  m(e \times \id_M) \cong \id_M & \text{left unitor}\\
+                \rho\maps m(\id_M \times e) \cong \id_M & \text{right unitor}\\ \\
+  \textbf{equations} & \text{pentagon, triangle}
+  \end{array}\]
+\end{frame}
+\begin{frame}{Example: cartesian object}
+  
+  \[ \Th(\mathsf{Cart}) \]
+  \[\begin{array}{lllllll}
+      \textbf{type}\\ \X & \text{cartesian object}\\ \\
+      \textbf{operations}\\ m \maps \X^2 \to \X & \text{product} \\ 
+        e \maps 1 \to \X & \text{terminal element} \\ \\
+      \textbf{rewrites}\\
+      \bigtriangleup\maps \mathrm{id}_\X \Longrightarrow m \circ\, \Delta_\X & \text{unit of $m \vdash \Delta_\X$}\\
+      \pi\maps \Delta_\X \circ m \Longrightarrow \mathrm{id}_{\X^2} & \text{counit of $m \vdash \Delta_\X$}\\
+      \top\maps \mathrm{id}_\X \Longrightarrow e \,\circ\, !_\X & \text{unit of $e \vdash !_\X$} \\
+      \epsilon \maps !_\X \, \circ \, e \Longrightarrow \mathrm{id}_{1} & \text{counit of $e \vdash !_\X$} \\\\
+ \textbf{equations}  & \text{triangle identities}
+ \end{array}\]
+\end{frame}
+
+\section{natural number arities}
+\subsection{arity subcategory}
+\begin{frame}{Natural numbers in $\mathsf{V}$}
+  a
+\end{frame}
+\subsection{equivalences}
+\begin{frame}{Equivalences}
+  a
+\end{frame}
+
+\section{change of semantics}
+\subsection{change of base}
+\begin{frame}{Change of base}
+  a
+\end{frame}
+\subsection{preserving theories}
+\begin{frame}{Preservation of theories}
+  a
+\end{frame}
+
+% \section{grothendieck?}
+% \subsection{category of all theories}
+% \begin{frame}
+  
+% \end{frame}
+
+\section{applications}
+\subsection{combinators}
+\begin{frame}{The $\mathsf{SKI}$-combinator calculus}
+  a
+\end{frame}
+%\subsection{theory}
+\begin{frame}{The theory of $\mathsf{SKI}$}
+  a
+\end{frame}
+\subsection{change of base}
+\begin{frame}{Change of semantics}
+  a
+\end{frame}
+% \subsection{change of theory}
+% \begin{frame}{Change of theory}
+%   a
+% \end{frame}
+% \subsection{bisimulation}
+\begin{frame}{Bisimulation}
+  a
+\end{frame}
+
+\begin{frame}{Conclusion}
+
+\end{frame}
+
+\end{document}
