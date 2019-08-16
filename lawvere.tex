@@ -162,9 +162,9 @@ To be clear, this is not a new idea. Using enriched Lawvere theories for operati
 
 The goal of this paper is to give a simple unified explanation of enriched Lawvere theories and some of their applications to operational semantics.    We aim our explanations at readers familiar with category theory but not yet enriched categories.  To reduce the technical overhead we only consider enrichment over cartesian closed categories.
 
-Because operational semantics uses (labelled) directed graphs to represent terms and rewrites, this should be our main example of enriching category; i.e. the ``thing'' of $n$-ary operations, or $n$-variable terms in a theory, should be a directed graph whose edges are rewrites. However, for reasons to be explained, we need to use a slightly different concept called a \emph{simplicial set}. For all intents and purposes, it can be understood as an ordinary directed graph; although, it does provide a more general and powerful framework for higher-dimensional rewriting, which should prove to be quite useful.
+Because operational semantics uses (labelled) directed graphs to represent terms and rewrites, this should be our main example of enriching category; i.e. the ``thing'' of $n$-ary operations, or $n$-variable terms in a theory, should be a directed graph whose edges are rewrites. However, for reasons to be explained, we need to use a slightly different concept called a \emph{simplicial set}. For our purposes, it can be understood as an ordinary directed graph -- though it does provide a more general framework for higher-dimensional rewriting, which may be quite useful.
 
-We denote by $\sSet := [\Delta^\op, \Set]$ the category of simplicial sets, contravariant functors from the category of linear orders and monotone maps to the category of sets and functions, and natural transformations between them. They can be visualized as spaces built from ``simplices'', which are triangles of any dimension. For an introduction to simplicial sets, see \cite{sset}. We will only need those simplicial sets which have ``nondegenerate'', or nontrivial, elements in dimension 1. These we give the simpler name \textbf{unital graphs}, and we denote the full subcategory of unital graphs by $\uGph$. Hereafter, by ``graph'' we mean unital graph, though it will usually be explicit.
+We denote by $\sSet := [\Delta^\op, \Set]$ the category of simplicial sets, contravariant functors from the category of finite linear orders and monotone maps to the category of sets and functions, and natural transformations between them. They can be visualized as spaces built from ``simplices'', which are triangles of any dimension. For an introduction to simplicial sets, see \cite{sset}. We will only need those simplicial sets which have ``nondegenerate'', or nontrivial, elements in dimension 1 -- and finite products thereof. These we give the simpler name \textbf{unital graphs}, and we denote the full subcategory of unital graphs by $\uGph$. Hereafter, by ``graph'' we mean unital graph, though it will usually be explicit.
 
 % % A key example for us is $\Gph$, the category of reflexive graphs.  This is $\Set^\R$, where $\R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.   A reflexive graph has directed edges and allows multiple edges between any pair of vertices; further, every vertex is equipped with a distinguished self-loop.    A category enriched over $\Gph$, or $\Gph$-category, has a set of objects and for any two objects a reflexive graph called a ``hom-graph''.  The vertices of this hom-graph represent morphisms, but there are also edges between these morphisms.  $\Gph$-categories have a clear connection to the original idea of operational semantics:
 
@@ -197,7 +197,7 @@ In Section \ref{sec:base_change} we discuss how suitable functors between enrich
 The right adjoints here automatically preserve finite products, and the left adjoints do as well:
 \begin{itemize}
 \item 
-$R \maps \uGph \to \Cat$, called \textit{realization}, maps a unital graph $G$ to the category whose morphisms are sequences of edges in $G$, and composition is concatenation, modulo equations for associativity and unitality. (This is where the distinction between graphs and unital graphs matters. For an explanation of this functor, see appendix.)  Change of base along $R$ maps small-step operational semantics to big-step operational semantics.
+$R \maps \uGph \to \Cat$, called \textit{realization}, maps a unital graph $G$ to the category whose objects are vertices of $G$, whose morphisms are sequences of composable edges in $G$, and composition is concatenation, modulo equations for associativity and unitality. (This is where the distinction between graphs and unital graphs matters.)  Change of base along $R$ maps small-step operational semantics to big-step operational semantics.
 \item
 $\FP \maps \Cat \to \Pos$ maps a category $C$ to the poset whose elements are objects of $C$, with $c \le c'$ iff $C$ has a morphism from $c$ to $c'$.
 Change of base along $\FP$ maps big-step operational semantics to full-step operational semantics.
@@ -456,7 +456,7 @@ We define $\V\Law$, the \define{category of} $\V$\define{-theories}, to be the c
 For every $\V$-theory $(T,\tau)$ and every $\V$-category $\C$ with finite $\V$-products, we define $\Mod(\T,\C)$, the \define{category of models} of $(\T,\tau)$ in $\C$, to be the category for which an object is a $\V$-functor $\mu \maps \T\to \C$ that preserves finite $\V$-products and a morphism is a $\V$-natural transformation.
 \end{definition}
 
-The basic monadicity results for Lawvere theories generalize to $\V$-theories when $\V$ is  complete and cocomplete, as in the main examples we consider: $\V = \Gph, \Cat, \Pos,$ and $\Set$.   Under this extra assumption $\V\Law$ and  $\Mod(\T,\C)$ can be promoted to 
+The basic monadicity results for Lawvere theories generalize to $\V$-theories when $\V$ is  complete and cocomplete, as in the main examples we consider: $\V = \uGph, \Cat, \Pos,$ and $\Set$.   Under this extra assumption $\V\Law$ and  $\Mod(\T,\C)$ can be promoted to 
 $\V$-categories, which we call $\underline{\V\Law}$ and $\underline{\Mod}(\T,\C)$.  Furthermore, there is a $\V$-functor 
 \[   U \maps \underline{\Mod}(\T,\V) \to \underline{\V} \]
 sending any model  $\mu \maps \T \to \V$ to its underlying object $\mu(t) \in \V$.   
@@ -689,7 +689,7 @@ Exponentials in $\NN_\V$ are also unique, given by
 \end{proof}
 
 We warn the reader that $\hom(m_\V,n_\V)$ may not have $n^m$ elements.  It does
-in $\Gph,\Cat,\Pos$ and of course $\Set$, but not in $\V = \Set^k$, where
+in $\uGph,\Cat,\Pos$ and of course $\Set$, but not in $\V = \Set^k$, where
 $|\hom(m_\V, n_\V)| = n^{km}$.    In fact, whenever $\NN_\V$ has finite hom-sets
 it is equivalent to $\FinSet^k$ for some $k$.   The reason is that $2_\V$ is 
 an internal Boolean algebra in $\V$, so its set of elements $\hom(1_\V,2_\V)$ 
@@ -988,7 +988,7 @@ Despite the apparent simplicity, there are complications regarding substitution.
 
 This problem was noticed early in the history of mathematical foundations, even before the $\lambda$-calculus, and so Moses Sch\"onfinkel invented \textbf{combinatory logic} \cite{combs}, a basic form of logic without the red tape of variable binding, hence without functions in the usual sense. The $SKI$-calculus is the ``variable-free'' representation of the $\lambda$-calculus; $\lambda$-terms are translated via ``abstraction elimination'' into strings of combinators and applications. This is a technique for programming languages to minimize the subtleties of variables. A great introduction into the strange world of combinators is given by Smullyan \cite{tmam}.
 
-The insight of Stay and Meredith \cite{roswelt} is that even though Lawvere theories have no variables, through abstraction elimination a programming language can be made into an algebraic object. When representing a computational calculus as a $\Gph$-theory, the general rewrite rules are simply edges in the hom-graphs $t^n \to t$, with the object $t$ serving in place of the variable. Below is the theory of the $SKI$-calculus:
+The insight of Stay and Meredith \cite{roswelt} is that even though Lawvere theories have no variables, through abstraction elimination a programming language can be made into an algebraic object. When representing a computational calculus as a $\uGph$-theory, the general rewrite rules are simply edges in the hom-graphs $t^n \to t$, with the object $t$ serving in place of the variable. Below is the theory of the $SKI$-calculus:
 
 \newpage
 \[  \Th(\mathsf{SKI})\]
@@ -1026,7 +1026,7 @@ A model of this theory is a power-preserving $\uGph$-functor $\mu\maps \Th(\math
 \end{tikzcd}\]
 The images of the nullary operations $S,K,I$ are distinguished vertices of the graph $\mu(t)$, because $\mu$ preserves the terminal object which ``points out'' vertices. The image of the binary operation $(-\; -)$ gives for every pair of vertices $(u,v) \in \mu(t)^2$, through the isomorphism $\mu(t)^2 \cong \mu(t^2)$, a vertex $(u\; v)$ in $\mu(t)$ which is their application. In this way we get all possible terms (writing $\mu(S),\mu(K),\mu(I)$ as $S,K,I$ for simplicity): 
 \[  ((((S\; (K\; (I\; I)))\; S) \dots ). \]
-The rewrites are transferred by the enrichment of the functor: rather than functions between hom-sets, the morphism component of $\mu$ consists of graph homomorphisms between hom-graphs. So, $$\mu_{1,t}\maps \Th(\mathsf{SKI})(1,t)\to \Gph(1,\mu(t))$$ maps the ``syntactic'' graph of all closed terms and rewrites coherently into the ``semantic'' graph, meaning a rewrite in the theory $a\Rightarrow b$ is sent to a rewrite in the model $\mu(a) \Rightarrow \mu(b)$.
+The rewrites are transferred by the enrichment of the functor: rather than functions between hom-sets, the morphism component of $\mu$ consists of graph homomorphisms between hom-graphs. So, $$\mu_{1,t}\maps \Th(\mathsf{SKI})(1,t)\to \uGph(1,\mu(t))$$ maps the ``syntactic'' graph of all closed terms and rewrites coherently into the ``semantic'' graph, meaning a rewrite in the theory $a\Rightarrow b$ is sent to a rewrite in the model $\mu(a) \Rightarrow \mu(b)$.
 
 These rewrites in the image of $\mu$ are \textit{graph transformations}, which are just like natural transformations of functors, without the commuting diagram: given two graph homomorphisms $f,g\maps G\to H$, a graph transformation $\alpha\maps f \Rightarrow g$ is a function $G_0\to H_1$ which sends a vertex $v\in G$ to an edge $\alpha(v)$ with source $f(v)$ and target $g(v)$.
 
@@ -1046,34 +1046,48 @@ Finally, the fact that $\mu((-\;-))$ is not just a function but a graph homomorp
 
 This process is intuitive, but how do we actually define the model, as a functor, to pick out a specific (unital) graph? There are many models of $\Th(\mathsf{SKI})$, but in particular we care about the canonical \textit{free} model, which means that $\mu(t)$ is simply the graph of all closed terms and rewrites in the $SKI$-calculus. This utilizes the enriched adjunction of Thm.\ \ref{thm:monadicity}:
 \[\begin{tikzcd}
-\phantom{AAAA} \underline{\Gph} \arrow[bend left=20,"f_\Gph"]{rr}
+\phantom{AAAA} \underline{\uGph} \arrow[bend left=20,"f_\uGph"]{rr}
 & {\phantom{Aa} \ld} &
-\arrow[bend left=20,"u_\Gph"]{ll} \underline{\Mod}(\Th(\mathsf{SKI}),\Gph)
+\arrow[bend left=20,"u_\uGph"]{ll} \underline{\Mod}(\Th(\mathsf{SKI}),\uGph)
 \end{tikzcd}\]
 
-Then the canonical model of closed terms and rewrites is simply the free model on the empty graph, $f_\Gph(\emptyset)$, i.e. the $\V$-functor $\T(1,-)\maps\T\to \V$. Hence for us, the syntax and semantics of the $SKI$ combinator calculus are unified in the model $$\mu_{SKI}^\Gph:= \Th(\mathsf{SKI})(1,-)\maps \Th(\mathsf{SKI}) \to \Gph.$$ Here we reap the benefits of the abstract construction: the graph $\mu_{SKI}^\Gph(t)$ is the \textit{transition system} which represents the \textbf{small-step operational semantics} of the $SKI$-calculus: $$(\mu(a) \to \mu(b) \in \mu_{SKI}^\Gph(t)) \iff (a \Rightarrow b \in \Th(\mathsf{SKI})(1,t)).$$
+Then the canonical model of closed terms and rewrites is simply the free model on the empty unital graph, $f_\uGph(\emptyset)$, i.e. the $\V$-functor $\T(1,-)\maps\T\to \V$. Hence for us, the syntax and semantics of the $SKI$ combinator calculus are unified in the model $$\mu_{SKI}^\uGph:= \Th(\mathsf{SKI})(1,-)\maps \Th(\mathsf{SKI}) \to \uGph.$$ Here we reap the benefits of the abstract construction: the graph $\mu_{SKI}^\uGph(t)$ is the \textit{transition system} which represents the \textbf{small-step operational semantics} of the $SKI$-calculus: $$(\mu(a) \to \mu(b) \in \mu_{SKI}^\uGph(t)) \iff (a \Rightarrow b \in \Th(\mathsf{SKI})(1,t)).$$
 
 Interestingly, in the free model on a nonempty graph, the vertices represent designated ``ground variables'', and edges represent rewrites of one variable into another. This is potentially useful for ``building in'' a language with other basic features not intrinsic to the theory.
 
 \subsection{Change of base}
-We can now succinctly characterize the transformation from small-step to \textbf{big-step} operational semantics. Letting $i\maps \Delta\to \Cat$ denote the inclusion of linear orders into categories, the ``realization'' functor $R\maps \uGph\to \Cat$ is computed:
+We can now characterize the translation from small-step to \textbf{big-step} operational semantics. First, we describe the functor from graphs to categories which intuitively expresses this translation; but there is a problem with this functor - we then explain the solution in terms of unital graphs.
 
-$$R(G) = \int^{n\in \Delta} G(n)\times i(n) = \coprod_{n\in \Delta}G(n)\times i(n) / \sim$$
+% Letting $i\maps \Delta\to \Cat$ denote the inclusion of linear orders into categories, the ``realization'' functor $R\maps \uGph\to \Cat$ is computed as a quotient of a sum:
+% $$R(G) = \coprod_{n\in \Delta}\coprod_{k\in G(n)}i(n) / \approx$$
+% where $(m,j,a)\sim (n,k,b)$ iff there exists $\varphi\maps m\to n$ such that $G(\varphi)(k)=j$ and $i(\varphi)(a)=b$.
+% The vertices of $G$, elements $j\in G(0)$, are the objects of $R(G)$. The edges, elements of $G(1)$, are the morphisms of $R(G)$. In general, the $n$-simplices of $G$ are the composites of $n$ morphisms of the realized category $R(G)$. The above is forming a union of categories which are unions of $n$-chains
+% The morphisms of $\Delta$ are face and degeneracy maps, which provide identities and composition when indexing the quotient given above.
 
-where $(x,j)\sim (y,k)$ iff there exists $f\maps j\to k$ such that 
+The ``free category'' functor $\FC\maps \Gph \to \Cat$ gives for every graph $G$ the category $\FC(G)$: %whose objects are the vertices of $G$, and whose morphisms are freely generated by the edges of $G$, i.e. sequences 
+\[\begin{array}{rl}
+\text{objects} & \text{vertices of } G\\
+\text{morphisms} & (e_1,e_2,...,e_n)\maps s(e_1)\to t(e_n) \;\; \; : \;\;\; \;\; \forall i<n \;\; t(e_i)=s(e_{i+1})\\
+\text{composition} & (e_1,e_2,...,e_n) \circ (e'_1,e'_2,...,e'_n) = (e_1,...,e_n,e'_1,...,e'_n) \; : \;\; t(e_n)=s(e'_1).\\
+  \end{array}\]
 
-%The ``free category'' functor $\FC\maps \Gph \to \Cat$ gives for every graph $G$ the category $\FC(G)$ whose objects are the vertices of $G$, and whose morphisms are freely generated by the edges of $G$, i.e. sequences 
-% \[\begin{array}{rl}
-% \text{objects} & \text{vertices of } G\\
-% \text{morphisms} & (v_1,e_1,v_2,e_2,...,v_n) \; : \; \;\; \forall i<n \;\; s(e_i)=v_i \; , \; t(e_i)=v_{i+1}\\
-% \text{composition} & (v_1,e_1,v_2,e_2,...,v_n) \circ (v'_1,e'_1,v'_2,e'_2,...,v'_n) = (v_1,e_1,...,v_n=v'_1,e'_1,...,v'_n)\\
-% \end{array}\]
+However, this functor does \emph{not} preserve products. Let $G_1 = {e\maps 0\to 1}$, the graph with one (nonreflexive) edge. Consider the product $G_1\times G_1$:
 
-% This functor is cartesian, because the definition of graphical product and categorical product are identical except for composition: vertices/objects are pairs of vertices/objects from each component, and same for edges/morphisms; hence the above operation fulfills the preservation isomorphism: $$\FC(G\times H) \cong \FC(G)\times \FC(H)$$ because they have the same objects, and a morphism of the former is a sequence of pairs, while that of the latter is the corresponding pair of sequences.
+\[\begin{tikzcd}
+    (0,0) \arrow[r,"(0{,}e)"] \ar[d,"(e{,}0)",swap] \ar[dr,"(e{,}e)"] & (0,1) \ar[d,"(e{,}1)"]\\
+    (1,0) \ar[r,"(1{,}e)",swap] & (1,1)\\
+  \end{tikzcd}\]
+
+The labels 0 and 1 in the edge components refer to the reflexive edges in $G_1$. Essentially the problem is that these two triangles ``should commute'' - in the resulting category, the outer composites should equal the diagonal. However, since we are forming the \emph{free} category, no such equation is imposed.
+
+In the unital graph $G_1\times G_1$, however, the fact that these triangles ``commute'' is represented by two pairs of degenerate 2-simplices in the product simplicial set. As a result, the realization functor $R\maps \uGph\to \Cat$ \emph{does} preserve products. The realized category $R(G_1\times G_1) \simeq R(G_1)\times R(G_1)$ looks exactly like the free category on $G_1\times G_1$ as a graph, except the unitality of identities in the product is respected.
+
+Thus, realization provides the correct notion of translating from \emph{small-step} operational semantics to \emph{big-step} operational semantics.
 
 % Thus $\FC$ is the change-of-computation which induces the transitive closure of the rewrite relation, hence $$\mu_{SKI}^\Cat := \FC_*(\mu_{SKI}^\Gph)$$ is the category which represents the big-step operational semantics of the $SKI$-calculus. To obtains the conventional big-step semantics, we can quotient by Curry's equations to identify $SKI$-terms that are extensionally equivalent \cite{barendregt}.
 
-The same reasoning applies to the ``free poset'' functor $\FP\maps \Cat \to \Pos$; it is a change-of-computation because the product of posets is defined in the same way. This induces the lesser-known \textbf{full-step semantics}, which collapses hom-sets to truth values, simply asserting the existence of a rewrite sequence between terms, without distinguishing between different paths. Starting from a free category, this is simply adding the property that all distinct paths between two terms are equal, while retaining transitivity.
+
+The next functors are easier because they do not involve the introduction of identities. The ``free poset'' functor $\FP\maps \Cat \to \Pos$; it is a change-of-computation because the product of posets is defined in the same way as the product of categories. This induces the lesser-known \textbf{full-step semantics}, which collapses hom-sets to truth values, simply asserting the existence of a rewrite sequence between terms, without distinguishing between different paths. Starting from a free category, this is simply adding the property that all distinct paths between two terms are equal, while retaining transitivity.
 
 Finally, we can pass to the purely abstract realm where all computation is already complete. We take the right adjoint $\FS\maps \Pos \to \Set$ to the functor $\UP \maps \Set \to \Pos$ sending any set to the discrete poset on that set.
 The functor $\FS$ collapses every connected component of the poset to a point.   This extracts
@@ -1085,7 +1099,7 @@ Thus from this simple sequence of functors, we can translate between several imp
 (((S\; K)\; K)\; S) \arrow[d,swap,"\sigma"] & & ((K\; S)\; ((I\; K)\; S)) \arrow[lld,swap,"\iota"] \arrow[d,"\kappa"]\\
 ((K\; S)\; (K\; S)) \arrow[rr,swap,"\kappa"] & & S
 \end{tikzcd}\]
-The solid arrows are the one-step rewrites of the initial $\Gph$-theory; applying $\FC_*$ gives the dotted composites, and $\FP_*$ asserts that all composites between any two objects are equal. Finally, $\FS_*$ collapses the whole diagram to $S$. This is a simple demonstration of the basic stages of computation: small-step, big-step, full-step, and denotational semantics.
+The solid arrows are the one-step rewrites of the initial $\uGph$-theory; applying $\FC_*$ gives the dotted composites, and $\FP_*$ asserts that all composites between any two objects are equal. Finally, $\FS_*$ collapses the whole diagram to $S$. This is a simple demonstration of the basic stages of computation: small-step, big-step, full-step, and denotational semantics.
 
 \subsection{Change-of-theory}
 
@@ -1108,20 +1122,20 @@ $$\Th(\mathsf{SKI}+\mathsf{R})$$
 
 The $SKI$-calculus is thereby equipped with ``lazy evaluation'', an essential paradigm in modern programming. This represents a broad potential application of equipping theories with computational methods, such as evaluation strategies.
 
-Moreover, these equipments can be added or removed as needed: using change-of-theory, we can utilize a ``free reduction'' $\Gph$-functor $f_R\maps\Th(\mathsf{SKI})\to \Th(\mathsf{SKI}+\mathsf{R})$:
+Moreover, these equipments can be added or removed as needed: using change-of-theory, we can utilize a ``free reduction'' $\uGph$-functor $f_R\maps\Th(\mathsf{SKI})\to \Th(\mathsf{SKI}+\mathsf{R})$:
 \[\begin{array}{rrcl}
 \text{objects} & t^n & \mapsto & t^n\\
 \text{hom-vertices} & S,K,I & \mapsto & S,K,I\\
 & (-\; -) & \mapsto & R(-\; -)\\
 \text{hom-edges} & \sigma, \kappa, \iota & \mapsto & \sigma_r, \kappa_r, \iota_r\\
 \end{array}\]
-This essentially interprets ordinary $SKI$ as having every subterm be a reduction context. This is a $\Gph$-functor because its hom component consists of graph-homomorphisms $$f_{n,m}\maps \Th(\mathsf{SKI})(t^n,t^m) \to \Th(\mathsf{SKI}+\mathsf{R})(t^n,t^m)$$ which simply send each application to its postcomposition with $R$, and each rewrite to its ``marked'' correspondent.
+This essentially interprets ordinary $SKI$ as having every subterm be a reduction context. This is a $\uGph$-functor because its hom component consists of graph-homomorphisms $$f_{n,m}\maps \Th(\mathsf{SKI})(t^n,t^m) \to \Th(\mathsf{SKI}+\mathsf{R})(t^n,t^m)$$ which simply send each application to its postcomposition with $R$, and each rewrite to its ``marked'' correspondent.
 
 So, by precomposition this induces the change of theory on categories of models: 
 \[   f_R^*\maps \Mod(\Th(\mathsf{SKI} + \mathsf{R}),\C) \to \Mod(\Th(\mathsf{SKI}),\C) \]
 for all semantic categories $\C$, which forgets the reduction contexts.
 
-Similarly, there is a $\Gph$-functor $u_R\maps \Th(SKI+R)\to \Th(SKI)$ which forgets reduction contexts, by sending $\sigma_r,\kappa_r,\iota_r \mapsto\sigma, \kappa,\iota$ and $R \mapsto id_t$; this latter is the only way that the marked reductions can be mapped coherently to the unmarked. However, this means that $u_R^*$ does not give the desired change-of-theory of ``freely adjoining contexts'', because collapsing $R$ to the identity eliminates the significance of the marker.
+Similarly, there is a $\uGph$-functor $u_R\maps \Th(SKI+R)\to \Th(SKI)$ which forgets reduction contexts, by sending $\sigma_r,\kappa_r,\iota_r \mapsto\sigma, \kappa,\iota$ and $R \mapsto id_t$; this latter is the only way that the marked reductions can be mapped coherently to the unmarked. However, this means that $u_R^*$ does not give the desired change-of-theory of ``freely adjoining contexts'', because collapsing $R$ to the identity eliminates the significance of the marker.
 
 This illustrates a key aspect of categorical universal algebra: because change-of-theory is given by precomposition and is thus contravariant, \textit{properties} (equations) and \textit{structure} (operations) can only be removed. This is a necessary limitation, at least in the present setup, but there are ways to make do. These abstract theories are not floating in isolation but are implemented in code: one can simply use a ``maximal theory'' with all pertinent structure, then selectively forget as needed.
 
@@ -1140,7 +1154,7 @@ In particular, labelled transition systems allow for the correct definition of p
     \end{array}\]
   Intuitively, this means that the processes $p$ and $q$ can always ``match each other's moves'' as they evolve. Then for all intents and purposes, these processes behave the same way, and hence should be considered as operationally equivalent. The \define{bisimulation} on $G$ is the largest bisimilarity relation which is also a \textit{congruence}, meaning that processes are bisimilar iff they are so in every context, i.e. when substituted into any one-hole term.
   
- This concept, as well as the calculus of communicating processes, were invented and demonstrated by Milner \cite{ccs}. The latter can be expressed as an $\LTS$-theory. The category of labelled transition systems is just like $\Gph$, except of course we now keep track of labels. Morphisms in $\LTS$, operations in $\LTS$-theories, and $\LTS$-functors all preserve labels; for example, when we compose and multiply rewrite rules, we retain this information by labelling with the actual denotation for that composite/product. Modulo these details, $\V=\LTS$ is exactly like the cases considered above.
+ This concept, as well as the calculus of communicating processes, were invented and demonstrated by Milner \cite{ccs}. The latter can be expressed as an $\LTS$-theory. The category of labelled transition systems is just like $\uGph$, except of course we now keep track of labels. Morphisms in $\LTS$, operations in $\LTS$-theories, and $\LTS$-functors all preserve labels; for example, when we compose and multiply rewrite rules, we retain this information by labelling with the actual denotation for that composite/product. Modulo these details, $\V=\LTS$ is exactly like the cases considered above.
 
 \[\Th(\mathsf{CCS})\]
 \[\begin{array}{lrll}
