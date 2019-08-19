@@ -119,6 +119,7 @@
     "crole"
     "pseudo"
     "dubuc"
+    "fiore"
     "hylandpower"
     "jacobs"
     "kelly"
@@ -138,13 +139,15 @@
     "tmam"
     "roswelt"
     "ladl"
-    "sset")
+    "sset"
+    "hdra")
    (LaTeX-add-amsthm-newtheorems
     "theorem"
     "definition"
     "lemma"
     "example"
-    "corollary")
+    "corollary"
+    "remark")
    (LaTeX-add-color-definecolors
     "myurlcolor"
     "mycitecolor"
