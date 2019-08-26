@@ -94,6 +94,9 @@ urlcolor=myurlcolor}
 \newcommand{\UC}{\mathrm{UC}}
 \newcommand{\UP}{\mathrm{UP}}
 \newcommand{\UG}{\mathrm{UG}}
+\newcommand{\US}{\mathrm{UsS}}
+
+
 
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\Obj}{\mathrm{Ob}}
@@ -168,7 +171,7 @@ Because operational semantics uses graphs to represent terms and rewrites, one m
 
 When studying formal languages, one wants to pass from this local view to a global view: given a term, one cares about its possible evolutions after not only one rewrite but any finite sequence of rewrites. We study how programs operate in finite time.  In computer science, this corresponds to defining a rewrite relation and forming its transitive closure, called \textit{big-step} operational semantics. This is the classic example which change of base aims to generalize.
 
-However, there is a subtlety. Categorically this translation corresponds to the ``free category'' functor from $\Gph$ to $\Cat$, which for any graph forms a category whose objects are vertices and morphisms are finite sequences of edges.  However, this functor does \emph{not} preserve products.   One might hope to cure this using a better-behaved variant of directed multigraphs, such as reflexive graphs.   The category $\RGph$ of reflexive graphs is $\Set^\R$, where $\R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.   A reflexive graph has directed edges and allows multiple edges between any pair of vertices; further, every vertex is equipped with a distinguished self-loop.  Unfortunately, the free category functor from $\RGph$ to $\Cat$ also fails to preserve products.
+However, there is a subtlety.  We may try to model the translation from small-step to big-step operational semantics using the ``free category'' functor from $\Gph$ to $\Cat$, which for any graph forms a category whose objects are vertices and morphisms are finite sequences of edges.   However, this functor does \emph{not} preserve products.   One might hope to cure this using a better-behaved variant of directed multigraphs, such as reflexive graphs.   The category $\RGph$ of reflexive graphs is $\Set^\R$, where $\R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.   A reflexive graph has directed edges and allows multiple edges between any pair of vertices; further, every vertex is equipped with a distinguished self-loop.   These self-loops are allow us to model `trivial' rewrites that have no effect.  Unfortunately, the free category functor from $\RGph$ to $\Cat$ also fails to preserve products.
 
 To obtain a product-preserving change of base taking us from small-step to big-step operational semantics, it seems the cleanest solution is to generalize graphs to \emph{simplicial sets}.  A simplicial set is a contravariant functor from the category $\Delta$ of finite linear orders and monotone maps to the category of sets and functions.  It can be visualized as a space built from ``simplices'', which generalize triangles to any dimension: point, line, triangle, tetrahedron, etc. For an introduction to simplicial sets, see Friedman \cite{sset}.  We use $\sSet$ to denote the category of simplicial sets, namely $\Set^{\Delta^{\op}}$.
 
@@ -176,47 +179,42 @@ Simplicial sets allow one to generalize rewriting to \emph{higher-dimensional} r
 
 \begin{itemize}
 \item There is a full and faithful embedding of $\RGph$ in $\sSet$, so we can think of reflexive graphs as a special kind of simplicial sets (namely those whose $n$-simplices for $n > 1$ are all degenerate).
-\item The free category functor $\FC \maps \sSet$, often called `realization', preserves products.
+\item The free category functor $\FC \maps \sSet \to \Cat$, often called `realization', preserves products.
 \end{itemize}
 
 We thus obtain a spectrum of cartesian closed categories $\V$ to enrich over, which allow us to examine the computation of term calculi in various ways: \\
 \[\begin{array}{lll}
 \textbf{Simplicial Sets} & \sSet \text{-theories represent ``small-step'' operational semantics:} \\ & \text{--- an edge is a \textit{single} term rewrite.}\\
-\textbf{Categories} & \Cat\text{-theories represent ``big-step'' operational semantics:} \\  & \text{(Often this means a rewrite to a \textit{normal form}. We use the term more generally.)}\\ & \text{--- a morphism is a \textit{finite sequence} of rewrites.}\\
+\textbf{Categories} & \Cat\text{-theories represent ``big-step'' operational semantics:} \\  & \text{(Often this means a rewrite to a normal form. We use the term more generally.)}\\ & \text{--- a morphism is a \textit{finite sequence} of rewrites.}\\
     \textbf{Posets} & \Pos \text{-theories represent ``full-step'' operational semantics:}\\ & \text{--- a boolean is the \textit{existence} of a big-step rewrite.}\\
 \textbf{Sets} & \Set \text{-theories represent denotational semantics:} \\ & \text{--- an element is a \textit{connected component} of the rewrite relation.} 
 \end{array}\]
-% \begin{itemize}
-% \item 
-% \textbf{Simplicial Sets}: $\sSet$-theories represent ``small-step" operational semantics: \\ --- an edge is a \textit{single} term rewrite.
-% \item
-% \textbf{Categories}: $\Cat$-theories represent ``big-step" operational semantics. \\  (Often this means a rewrite to a \textit{normal form}. We use the term more generally.)\\ --- a morphism is a \textit{finite sequence} of rewrites. 
-% \item
-% \textbf{Posets}: $\Pos$-theories represent ``full-step" operational semantics:\\ --- a boolean is the \textit{existence} of a big-step rewrite.
-% \item
-% \textbf{Sets}: $\Set$-theories represent denotational semantics: \\ --- an element is an \textit{connected component} of the rewrite relation.
-% \end{itemize}
+
 In Section \ref{sec:lawvere} we review Lawvere theories as a more explicit, but equivalent, presentation of finitary monads. In Section \ref{sec:enrichment}, we recall the basics of enrichment over cartesian closed categories.   In Section \ref{sec:enriched_lawvere} we give the central definition of $\V$-theory, adapted from the work of Lucyshyn-Wright \cite{lucyshyn-wright}, which allows us to apply his theorem relating enriched Lawvere theories and monads.
 
 In Section \ref{sec:base_change} we discuss how suitable functors between enriching categories induce \textit{change-of-base}: they transform theories, and their models, from one method of rewriting to another.   Our main examples arise from this chain of adjunctions:
 \[\begin{tikzcd}[column sep=small]
-\sSet \arrow[bend right,swap]{rr}{R}
+\sSet  \arrow[bend left,below]{rr}{\FC}
 & \ld &
-\arrow[bend right,swap]{ll}{N} \Cat \arrow[bend left,below]{rr}{\FP}
+\arrow[bend left,above]{ll}{\US} 
+\Cat \arrow[bend left,below]{rr}{\FP}
 & \ld &
 \arrow[bend left,above]{ll}{\UC} \Pos \arrow[bend left,below]{rr}{\FS}
 & \ld &
 \Set \arrow[bend left,above]{ll}{\UP}
 \end{tikzcd}\]
-The right adjoints here automatically preserve finite products, and the left adjoints do as well.
+The right adjoints here automatically preserve finite products, but the left adjoints do as well, and
+these are what we need:
 
-$R \maps \sSet \to \Cat$, called \textit{realization}, maps a simplicial set $G$ to the category whose objects are vertices of $G$, whose morphisms are sequences of composable edges in $G$, and composition is concatenation, modulo equations for associativity and unitality. Change of base along $R$ maps small-step operational semantics to big-step operational semantics.
-
-$\FP \maps \Cat \to \Pos$ maps a category $C$ to the poset whose elements are objects of $C$, with $c \le c'$ iff $C$ has a morphism from $c$ to $c'$.
+\begin{itemize}
+\item
+The functor $\FC \maps \sSet \to \Cat$, called \textit{realization}, maps a simplicial set (for example a reflexive graph) to the category it freely generates.  Change of base along $\FC$ maps small-step operational semantics to big-step operational semantics.
+\item 
+The functor $\FP \maps \Cat \to \Pos$ maps a category $C$ to the poset whose elements are objects of $C$, with $c \le c'$ iff $C$ has a morphism from $c$ to $c'$.
 Change of base along $\FP$ maps big-step operational semantics to full-step operational semantics.
-
-$\FS \maps \Pos \to \Set$ maps a poset $P$ to the set of ``components'' of $P$, where $p,p' \in P$ are in the same component if $p \le p'$. Change of base along $\FS$ maps full-step operational semantics to denotational semantics.
-
+\item 
+The functor $\FS \maps \Pos \to \Set$ maps a poset $P$ to the set of ``components'' of $P$, where $p,p' \in P$ are in the same component if $p \le p'$. Change of base along $\FS$ maps full-step operational semantics to denotational semantics.
+\end{itemize}
 
 In Section \ref{sec:V-theories} we show that models of all $\V$-theories for all enriching $\V$ can be assimilated into one category using the Grothendieck construction.  In Section \ref{ssec:SKI} we bring all the strands together and demonstrate these concepts with the $SKI$-combinator calculus.  In Section \ref{ssec:bisimulation} we show how theories enriched over the category of labelled graphs can be used to study bisimulation.
 
