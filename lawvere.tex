@@ -1,6 +1,6 @@
 % Enriched Lawvere Theories for Operational Semantics
 % John C. Baez and Christian Williams
-% 2019/5/15 - changes after first arXiv version
+% 2019/8/26 - changes after first arXiv version
 
 \documentclass{amsart}
 \usepackage{geometry}
@@ -50,13 +50,13 @@ urlcolor=myurlcolor}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{corollary}{Corollary}[theorem]
-\newtheorem*{remark}{Remark}
 
 \def\rd{\rotatebox[origin=c]{90}{$\dashv$}} %rotate dash right
 \def\ld{\rotatebox[origin=c]{-90}{$\dashv$}} %rotate dash left
 
 % categories
 
+\newcommand{\sSet}{\mathsf{sSet}}
 \newcommand{\Th}{\mathsf{Th}}
 \newcommand{\Gph}{\mathsf{Gph}}
 \newcommand{\Set}{\mathsf{Set}}
@@ -86,8 +86,6 @@ urlcolor=myurlcolor}
 \newcommand{\T}{\mathsf{T}}
 \newcommand{\Kl}{\mathsf{Kl}}
 \newcommand{\LTS}{\mathsf{LTS}}
-\newcommand{\sSet}{\mathsf{sSet}}
-\newcommand{\uGph}{\mathsf{uGph}}
 
 \newcommand{\FC}{\mathrm{FC}}
 \newcommand{\FP}{\mathrm{FP}}
@@ -163,9 +161,8 @@ To be clear, this is not a new idea. Using enriched Lawvere theories for operati
 
 The goal of this paper is to give a simple unified explanation of enriched Lawvere theories and some of their applications to operational semantics.    We aim our explanations at readers familiar with category theory but not yet enriched categories.  To reduce the technical overhead we only consider enrichment over cartesian closed categories.
 
-In general for a cartesian closed category $\V$, a \textbf{$\V$-theory} is a $\V$-enriched Lawvere theory with natural number arities. We consider $\V$ as a choice of ``method of computation'' for algebraic theories. The main original idea and result is that product-preserving functors between enriching categories allow for the translation between different kinds of operational and denotational semantics -- this translation may be called ``change of computation'' or simply \textbf{change of base}.\\
+In general for a cartesian closed category $\V$, a \textbf{$\V$-theory} is a $\V$-enriched Lawvere theory with natural number arities. We consider $\V$ as a choice of ``method of computation'' for algebraic theories. The main original idea and result is that product-preserving functors between enriching categories allow for the translation between different kinds of operational and denotational semantics -- this translation may be called ``change of computation'' or simply \textbf{change of base}.
 
-\begin{remark}
 Because operational semantics uses labelled directed (reflexive) graphs to represent terms and rewrites, one might expect $\Gph$, the category of directed graphs, to be our main example of enriching category; i.e. the ``thing'' of $n$-ary operations, or $n$-variable terms in a theory, should be a directed graph whose edges are rewrites. This is known as \textit{small step} operational semantics, meaning each edge represents a single instance of a rewrite rule.
 
 When studying formal languages, one wants to pass from this local view to a global view -- given a term, one cares about its possible evolutions after not only one rewrite but a finite sequence of rewrites. We study how programs operate in finite time. In computer science, this corresponds to defining a rewrite relation and forming its transitive closure, called \textit{big step} operational semantics. This is the classic example which change of base aims to generalize.
@@ -177,7 +174,6 @@ Hence, the intuitive categorical interpretation of rewriting does not quite fit 
 A simplicial set is a contravariant functor from the category of finite linear orders and monotone maps to the category of sets and functions. It can be visualized as a space built from ``simplices'', which generalize triangles to any dimension -- point, line, triangle, tetrahedron, etc. For an introduction to simplicial sets, see \cite{sset}. Denote by $\sSet := [\Delta^\op, \Set]$ the category of simplicial sets and natural transformations between them.
 
 We consider simplicial sets which have only ``reflexivities'' above dimension 1, and finite products thereof. For our purposes, these can be thought of as ordinary directed multigraphs. If the reader does not know or learn about simplicial sets, one only needs to know that ours are like graphs equipped with a functor $R\maps \sSet\to \Cat$, which is similar to $\FC$ except that it preserves products.
-\end{remark}
 
 % % A key example for us is $\Gph$, the category of reflexive graphs.  This is $\Set^\R$, where $\R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.   A reflexive graph has directed edges and allows multiple edges between any pair of vertices; further, every vertex is equipped with a distinguished self-loop.    A category enriched over $\Gph$, or $\Gph$-category, has a set of objects and for any two objects a reflexive graph called a ``hom-graph''.  The vertices of this hom-graph represent morphisms, but there are also edges between these morphisms.  $\Gph$-categories have a clear connection to the original idea of operational semantics:
 
