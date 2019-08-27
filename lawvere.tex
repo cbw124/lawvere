@@ -170,18 +170,18 @@ Because operational semantics uses graphs to represent terms and rewrites, one m
 
 When studying formal languages, one wants to pass from this local view to a global view: given a term, one cares about its possible evolutions after not only one rewrite but any finite sequence of rewrites. We study how programs operate in finite time.  In computer science, this corresponds to defining a rewrite relation and forming its transitive closure, called \textit{big-step} operational semantics. This is the classic example which change of base aims to generalize.
 
-However, there is a subtlety.  We may try to model the translation from small-step to big-step operational semantics using the ``free category'' functor from $\Gph$ to $\Cat$, which for any graph forms a category whose objects are vertices and morphisms are finite sequences of edges.   However, this functor does \emph{not} preserve products.   One might hope to cure this using a better-behaved variant of directed multigraphs, such as reflexive graphs.   The category $\RGph$ of reflexive graphs is $\Set^\R$, where $\R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.   A reflexive graph has directed edges and allows multiple edges between any pair of vertices; further, every vertex is equipped with a distinguished self-loop.   One advantage of $\RGph$ over $\Gph$ is that the distinguish self-loops describe rewrites that ``do nothing''.  Thus, in a product of reflexive graphs there are edges describing the process of rewriting one factor while doing nothing in the other.  This lets us handle parallelism.  Unfortunately, the free category functor from $\RGph$ to $\Cat$ still fails to preserve products.
+However, there is a subtlety.  We may try to model the translation from small-step to big-step operational semantics using the ``free category'' functor, which for any directed multigraph forms the category whose objects are vertices and morphisms are finite paths of edges.   However, this functor does \emph{not} preserve products.   One might hope to cure this using a better-behaved variant of directed multigraphs, such as reflexive graphs.    One advantage of reflexive graphs is that that each vertex has a distinguished edge from it to itself; these describe rewrites that ``do nothing''.  Thus, in a product of reflexive graphs there are edges describing the process of rewriting one factor while doing nothing in the other.  This lets us handle parallelism.  Unfortunately, as we shall explain, the free category functor from reflexive graphs to categories still fails to preserve products.
 
 To obtain a product-preserving change of base taking us from small-step to big-step operational semantics, it seems the cleanest solution is to generalize graphs to \emph{simplicial sets}.  A simplicial set is a contravariant functor from the category $\Delta$ of finite linear orders and monotone maps to the category of sets and functions.  It can be visualized as a space built from ``simplices'', which generalize triangles to any dimension: point, line, triangle, tetrahedron, etc. For an introduction to simplicial sets, see Friedman \cite{sset}.  We use $\sSet$ to denote the category of simplicial sets, namely $\Set^{\Delta^{\op}}$.
 
 Simplicial sets allow one to generalize rewriting to \emph{higher-dimensional} rewriting \cite{hdra}, but this is not our focus here.  Indeed, we only need two facts about simplicial sets in this paper:
 
 \begin{itemize}
-\item There is a full and faithful embedding of $\RGph$ in $\sSet$, so we can think of reflexive graphs as a special kind of simplicial sets (namely those whose $n$-simplices for $n > 1$ are all degenerate).
-\item The free category functor $\FC \maps \sSet \to \Cat$, often called `realization', preserves products.
+\item There is a full and faithful embedding of $\RGph$, the category of reflexive graphs, in $\sSet$, so we can think of reflexive graphs as a special kind of simplicial sets (namely those whose $n$-simplices for $n > 1$ are all degenerate).
+\item The free category functor $\FC \maps \sSet \to \Cat$, often called ``realization'', preserves products.
 \end{itemize}
 
-We thus obtain a spectrum of cartesian closed categories $\V$ to enrich over, which allow us to examine the computation of term calculi in various ways: \\
+We thus obtain a spectrum of cartesian closed categories $\V$ to enrich over, each connected to the next by a product-preserving functor, which allow us to examine the computation of term calculi in various ways: \\
 \[\begin{array}{lll}
 \textbf{Simplicial Sets} & \sSet \text{-theories represent ``small-step'' operational semantics:} \\ & \text{--- an edge is a \textit{single} term rewrite.}\\
 \textbf{Categories} & \Cat\text{-theories represent ``big-step'' operational semantics:} \\  & \text{(Often this means a rewrite to a normal form. We use the term more generally.)}\\ & \text{--- a morphism is a \textit{finite sequence} of rewrites.}\\
@@ -215,7 +215,7 @@ Change of base along $\FP$ maps big-step operational semantics to full-step oper
 The functor $\FS \maps \Pos \to \Set$ maps a poset $P$ to the set of ``components'' of $P$, where $p,p' \in P$ are in the same component if $p \le p'$. Change of base along $\FS$ maps full-step operational semantics to denotational semantics.
 \end{itemize}
 
-In Section \ref{sec:V-theories} we show that models of all $\V$-theories for all enriching $\V$ can be assimilated into one category using the Grothendieck construction.  In Section \ref{ssec:SKI} we bring all the strands together and demonstrate these concepts with the $SKI$-combinator calculus.  In Section \ref{ssec:bisimulation} we show how theories enriched over the category of labelled graphs can be used to study bisimulation.
+In Section \ref{sec:V-theories} we show that models of all $\V$-theories for all enriching $\V$ can be assimilated into one category using the Grothendieck construction.  In Section \ref{sec:applications} we bring all the strands together and demonstrate these concepts in applications.  First we consider the $SKI$-combinator calculus, and then we show how theories enriched over the category of labelled graphs can be used to study bisimulation.
 
 \subsection*{Acknowledgements}
 
@@ -1063,7 +1063,8 @@ Then the canonical model of closed terms and rewrites is simply the free model o
 % Interestingly, in the free model on a nonempty graph, the vertices represent designated ``ground variables'', and edges represent rewrites of one variable into another. This is potentially useful for ``building in'' a language with other basic features not intrinsic to the theory.
 
 \subsection{Change of base}
-We can now characterize the translation from small-step to \textbf{big-step} operational semantics. As explained in the introduction, we need to use simplicial sets rather than graphs; we now give the issue in detail.
+
+We can now describe the translation from small-step to \textbf{big-step} operational semantics. As explained in the introduction, we need to use simplicial sets rather than graphs; we now give the issue in detail.
 
 % Letting $i\maps \Delta\to \Cat$ denote the inclusion of linear orders into categories, the ``realization'' functor $R\maps \sSet\to \Cat$ is computed as a quotient of a sum:
 % $$R(G) = \coprod_{n\in \Delta}\coprod_{k\in G(n)}i(n) / \approx$$
@@ -1084,6 +1085,8 @@ However, this functor does \emph{not} preserve products. Let $G_1$ be $\{0\xrigh
     (1,0) \ar[r,"(1{,}e)",swap] & (1,1).
   \end{tikzcd}\]
 The labels 0 and 1 in the edge components refer to the reflexive edges in $G_1$. Essentially the problem is that these two triangles ``should commute'' -- in the resulting category, the outer composites should equal the diagonal. But in forming the \emph{free} category, no such equation is imposed. So we do not have $\FC(G_1\times G_1) \simeq \FC(G_1)\times \FC(G_1)$, as we require of a change of base.
+
+The category $\RGph$ of reflexive graphs is $\Set^\R$, where $\R$ is the category with two objects $v$ and $e$, two morphisms $s,t \maps e \to v$, and a morphism $i \maps v \to e$ obeying $si = ti = 1_v$.   A reflexive graph has directed edges and allows multiple edges between any pair of vertices; further, every vertex is equipped with a distinguished self-loop.  
 
 The realization functor $R\maps \sSet\to \Cat$ is the left Kan extension of the inclusion $\iota\maps \Delta \to \Cat$ along the Yoneda embedding $y\maps \Delta\to \sSet$; it has a coend formula similar to the monad generated by a theory. This functor is a right adjoint, and thus preserves finite products.
 
