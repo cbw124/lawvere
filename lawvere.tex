@@ -88,6 +88,7 @@ urlcolor=myurlcolor}
 \newcommand{\T}{\mathsf{T}}
 \newcommand{\Kl}{\mathsf{Kl}}
 \newcommand{\LTS}{\mathsf{LTS}}
+\newcommand{\SKI}{\mathsf{SKI}}
 
 \newcommand{\F}{\mathrm{F}}
 \newcommand{\FC}{\mathrm{FC}}
@@ -97,7 +98,6 @@ urlcolor=myurlcolor}
 \newcommand{\UP}{\mathrm{UP}}
 \newcommand{\UG}{\mathrm{UG}}
 \newcommand{\US}{\mathrm{UsS}}
-
 
 
 \newcommand{\op}{\mathrm{op}}
@@ -888,7 +888,7 @@ preserves $\NN_\W$-powers.  We leave this as an exercise to the reader.
 Hence, any cartesian functor that preserves chosen finite coproducts of the terminal object gives a change of base.  It thus provides for a method of translating formal languages between various ``modes of operation''.   Moreover, this reasoning generalizes to \textit{multisorted} $\V$-theories, enriched theories which have multiple sorts: given any $n\in \mathbb{N}$, the monoidal subcategory $(\NN_\V)^n$ is also an eleutheric system of arities, so Lucyshyn-Wright's monadicity theorem still applies.   In Section \ref{ssec:bisimulation} we show how this is useful in the study of bisimulation.
 
 \subsection{Examples}
-\label{ssec:base_change_examples}
+\label{sec:base_change_examples}
 
 Now let us look at some examples.  The most important changes of base are the left adjoints in this diagram from the Introduction:
 \[ \label{eq:diagram}  \begin{tikzcd}[column sep=small]
@@ -1062,7 +1062,7 @@ Despite the apparent simplicity, there are complications regarding substitution.
 
 This problem was noticed early in the history of mathematical foundations, even before the $\lambda$-calculus, and so Moses Sch\"onfinkel invented \textbf{combinatory logic} \cite{combs}, a basic form of logic without the red tape of variable binding, hence without functions in the usual sense. The $SKI$-calculus is the ``variable-free'' representation of the $\lambda$-calculus; $\lambda$-terms are translated via ``abstraction elimination'' into strings of combinators and applications. This is a technique for programming languages to minimize the subtleties of variables. A great introduction into the strange world of combinators is given by Smullyan \cite{tmam}.
 
-The insight of Stay and Meredith \cite{roswelt} is that even though Lawvere theories have no variables, through abstraction elimination a programming language can be made into an algebraic object. When representing a computational calculus as a $\sSet$-theory, the general rewrite rules are simply edges in the homs $t^n \to t$, with the object $t$ serving in place of the variable. Below is the theory of the $SKI$-calculus:
+The insight of Stay and Meredith \cite{roswelt} is that even though Lawvere theories have no variables, through abstraction elimination a programming language can be made into an algebraic object. When representing a computational calculus as a $\sSet$-theory, the general rewrite rules are simply edges (1-simplices) in the homs $t^n \to t$, with the object $t$ serving in place of the variable. Below is the theory of the $SKI$-calculus:
 
 \newpage
 \[  \Th(\mathsf{SKI})\]
@@ -1077,7 +1077,7 @@ The insight of Stay and Meredith \cite{roswelt} is that even though Lawvere theo
 & \kappa\maps & ((K\; -)\; =) \Rightarrow -\\
 & \iota\maps & (I\; -) \Rightarrow -\\
 \end{array}\]
-These rewrites are implicitly universally quantified; i.e. they apply to arbitrary subterms $-, =, \equiv$ without any variable binding involved, by using the cartesian structure of the category. (Here $l,r$ denote the unitors and $\sigma$ the symmetry of the product.) They are simply edges with vertices:
+These rewrites are implicitly universally quantified; i.e. they apply to arbitrary subterms $-, =, \equiv$ without any variable binding involved, by using the cartesian structure of the category. (Here $l,r$ denote the unitors and $\sigma$ the symmetry of the product.) They are edges with vertices (0-simplices):
 \[\begin{tikzcd}
 (((S\; -)\; =)\; \equiv)\maps \arrow[Rightarrow,d,swap,"\sigma"] & t^3 \arrow[d,equal] \arrow[r,"l^{-1} \times t^3"] & 1\times t^3 \arrow[r,"S \times t^3"] & t^4 \arrow[Rightarrow,d,shorten >=0.2cm,shorten <=0.2cm] \arrow[r,"(-\;-)\times t^2"] & t^3 \arrow[r,"(-\;-) \times t"] & t^2 \arrow[r,"(-\;-)"] & t\arrow[d,equal]\\
 ((-\; \equiv)\; (=\; \equiv))\maps & t^3 \arrow[r,"t^2 \times \Delta"] & t^4 \arrow[r,"t \times \tau \times t"]& t^4 \arrow[rr,"(-\;-) \times (-\;-)"]&& t^2 \arrow[r,"(-\;-)"]& t\\
@@ -1094,22 +1094,22 @@ These abstract rules are evaluated on concrete terms by ``plugging in'' via prec
 \end{tikzcd}\]\\
 (Morphisms $1\to t$ are the ``closed'' terms, meaning they have no holes in which to substitute terms; in general morphisms $t^n\to t$ are terms with $n$ holes, or $n$-ary operations, and the same reasoning applies.)
 
-A model of this theory is a power-preserving $\sSet$-functor $\mu\maps \Th(\mathsf{SKI}) \to \sSet$. This gives a 1-dimensional simplicial set (hereafter by abuse of terminology ``graph'') $\mu(t)$ of all terms and rewrites in the $SKI$-calculus as follows:
+A model of this theory is a power-preserving $\sSet$-functor $\mu\maps \Th(\mathsf{SKI}) \to \sSet$. This gives a 1-dimensional simplicial set (hereafter, by the inclusion described in \ref{sec:base_change_examples}, ``reflexive graph'') $\mu(t)$ of all terms and rewrites in the $SKI$-calculus as follows:
 \[\begin{tikzcd}
 1 \cong \mu(1) \arrow[r,"\mu(S)"] & \mu(t) & \mu(t^2) \arrow[l,swap,"\mu(\left(-\;-\right))"] \cong \mu(t)^2
 \end{tikzcd}\]
 The images of the nullary operations $S,K,I$ are distinguished vertices of the graph $\mu(t)$, because $\mu$ preserves the terminal object which ``points out'' vertices. The image of the binary operation $(-\; -)$ gives for every pair of vertices $(u,v) \in \mu(t)^2$, through the isomorphism $\mu(t)^2 \cong \mu(t^2)$, a vertex $(u\; v)$ in $\mu(t)$ which is their application. In this way we get all possible terms (writing $\mu(S),\mu(K),\mu(I)$ as $S,K,I$ for simplicity): 
 \[  ((((S\; (K\; (I\; I)))\; S) \dots ). \]
-The rewrites are transferred by the enrichment of the functor: rather than functions between hom-sets, the morphism component of $\mu$ consists of graph homomorphisms between hom-graphs. So, $$\mu_{1,t}\maps \Th(\mathsf{SKI})(1,t)\to \sSet(1,\mu(t))$$ maps the ``syntactic'' graph of all closed terms and rewrites coherently into the ``semantic'' graph, meaning a rewrite in the theory $a\Rightarrow b$ is sent to a rewrite in the model $\mu(a) \Rightarrow \mu(b)$.
+The rewrites are transferred by the enrichment of the functor: rather than functions between hom-sets, the morphism component of $\mu$ consists of (reflexive) graph homomorphisms between hom-graphs. So, $$\mu_{1,t}\maps \Th(\mathsf{SKI})(1,t)\to \sSet(1,\mu(t))$$ maps the ``syntactic'' graph of all closed terms and rewrites coherently into the ``semantic'' graph, meaning a rewrite in the theory $a\Rightarrow b$ is sent to a rewrite in the model $\mu(a) \Rightarrow \mu(b)$.
 
 These rewrites in the image of $\mu$ are \textit{graph transformations}, which are just like natural transformations of functors, without the commuting diagram: given two graph homomorphisms $f,g\maps G\to H$, a graph transformation $\alpha\maps f \Rightarrow g$ is a function $G_0\to H_1$ which sends a vertex $v\in G$ to an edge $\alpha(v)$ with source $f(v)$ and target $g(v)$.
 
-This is how $\mu$ realizes $\Th(\mathsf{SKI})$ as a graph of terms and rewrites: in the same way that a natural transformation of two constant functors $a\Rightarrow b\maps 1\to \C$ is a morphism $a(1)\to b(1)$ in $\C$, a rewrite of closed terms $a\Rightarrow b\maps 1\to \mu(t)$ corresponds to an edge in $\mu(t)$:
+This is how $\mu$ realizes $\Th(\mathsf{SKI})$ as a reflexive graph of terms and rewrites: in the same way that a natural transformation of two constant functors $a\Rightarrow b\maps 1\to \C$ is a morphism $a(1)\to b(1)$ in $\C$, a rewrite of closed terms $a\Rightarrow b\maps 1\to \mu(t)$ corresponds to an edge in $\mu(t)$:
 \[\begin{tikzcd}
 	\mu((I\; S)) \;\; \bullet \arrow[r,"\mu(\iota)"] & \bullet \;\; \mu(S)
 \end{tikzcd}\]
 
-Finally, the fact that $\mu((-\;-))$ is not just a function but a graph homomorphism means that pairs of edges (rewrites) $(a\to b, c\to d)$ are sent to rewrites $(a\; b) \to (c\; d)$. This gives the full complexity of the theory: given a large term (program), there are many different ways it can be computed --- and some are better than others:
+Finally, the fact that $\mu((-\;-))$ is not just a function but a reflexive graph homomorphism means that pairs of edges (rewrites) $(a\to b, c\to d)$ are sent to rewrites $(a\; b) \to (c\; d)$. This gives the full complexity of the theory: given a large term (program), there are many different ways it can be computed --- and some are better than others:
 \[\begin{tikzcd}
 	((K\; S)\; (((S\; K)\; I)\; (I\; K))) \arrow[r,"((K\; S)\; \sigma)"] \arrow[dddd,swap,"\kappa"] & ((K\; S)\; ((K\;(I\; K))\; (I\; (I\; K)))) \arrow[d,"(((K\; S)\; \iota)\; (I\; (I\; K)))"]\\
 	& ((K\; S)\; ((K\; K)\; (I\; (I\; K)))) \arrow[d,"((K\; S)\; ((K\; K)\; (I\; \iota)))"]\\
@@ -1129,7 +1129,15 @@ Then the canonical model of closed terms and rewrites is simply the free model o
 
 % Interestingly, in the free model on a nonempty graph, the vertices represent designated ``ground variables'', and edges represent rewrites of one variable into another. This is potentially useful for ``building in'' a language with other basic features not intrinsic to the theory.
 
-Applying the base changes in Sec.\ \ref{sec:base_change_examples}, we can translate between several important kinds of computation for the $SKI$-calculus. For example, consider the following computation:
+We can now consider the base changes in Sec.\ \ref{sec:base_change_examples}, to translate between several important kinds of computation for the $SKI$-calculus. Given the above description of $\Th(\SKI)$ as enriched in $\sSet$, we can apply the ``free category'' realization functor to the hom-objects, turning these reflexive graphs into categories.
+
+Here we enjoy the fact that this functor indeed preserves products, which is essential for considering tuples of programs running in parallel: for example if we designate $G_n := \Th(\SKI)(t^n,t)$, then the fact that $\FC(G_m\times G_n)\simeq \FC(G_m)\times \FC(G_n)$ ensures that the execution of an $m$-term program and an $n$-term program simultaneously (but independently) is the same as executing one, then the other.
+
+Thus $\FC$ translates the theory of $SKI$ from ``small-step'' to ``big-step'' operational semantics: $\FC_*(\Th(\SKI))$ is the theory of the $SKI$ calculus, but now with hom-categories whose morphisms represent finite sequences of rewrite edges in the original theory.
+
+We can continue these base-changes to ``full-step'' and denotational semantics, by applying the ``free poset'' and ``free set'' (connected components) functors to the hom-objects of this theory. This process demonstrates the idea of having a ``spectrum'' of detail with which to analyze the semantics of a programming language, or general algebraic theory.
+
+For example, consider the following computation:
 \[\begin{tikzcd}
 &	(((S\; K)\; (I\; K))\; S) \arrow[rd,"\sigma"] \arrow[ld,swap,"\iota"] \arrow[ddl,dotted,bend left=10,"\sigma\iota"] \arrow[ddl,dotted,bend right=10,"\iota\sigma"] \arrow[ddr,dotted,swap,bend left=10,"\kappa\sigma"] \arrow[ddr,dotted,bend right=10,swap,"\kappa\sigma\iota"] \arrow[ddr,dotted,swap,bend right=25,"\kappa\iota\sigma"] &\\
 (((S\; K)\; K)\; S) \arrow[d,swap,"\sigma"] & & ((K\; S)\; ((I\; K)\; S)) \arrow[lld,swap,"\iota"] \arrow[d,"\kappa"]\\
